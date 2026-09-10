@@ -180,49 +180,72 @@
     // ignored. A sideways move past the gate starts the drag; a vertical one is the page's own scroll, and
     // if the browser then takes the gesture the seam goes back where the hand found it. The browser's own
     // image drag is refused outright (dragstart) — it would tear a ghost across the screen and cancel the pointer.
-    var dragging = false, locked = false, moved = 0, startX = 0, startY = 0, x0 = x, xDown = x, pid = null, t0 = 0, gate = 3, slop = 6, onKnob = false, wasIntro = true;
+    var dragging = false, locked = false, moved = 0, startX = 0, startY = 0, x0 = x, xDown = x, pid = null, t0 = 0, gate = 3, slop = 6, onKnob = false, wasIntro = true, isTouch = false;
     box.addEventListener('dragstart', function (e) { e.preventDefault(); });
     function endDrag() { dragging = false; locked = false; pid = null; box.classList.remove('dragging'); }
-    box.addEventListener('pointerdown', function (e) {
-      if (e.button > 0 || dragging || e.isPrimary === false) return;          // right or middle button, or a second finger: not ours
-      stop(); unhold();                                                       // whatever was moving freezes under the hand
-      var touch = e.pointerType === 'touch';
-      gate = touch ? 8 : 3; slop = touch ? 12 : 6;
+    function onDown(e) {
+      if (e.button > 0 || e.isPrimary === false) return;                      // right or middle button, or a second finger: not ours
+      stop(); unhold();                                                       // whatever was moving freezes under the hand; a stale drag is simply replaced
+      isTouch = e.pointerType !== 'mouse';
+      gate = isTouch ? 8 : 3; slop = isTouch ? 12 : 6;
       dragging = true; locked = false; moved = 0; startX = e.clientX; startY = e.clientY; x0 = xDown = x; pid = e.pointerId; t0 = e.timeStamp;
-      onKnob = !!(e.target.closest && e.target.closest('.xr-knob')); wasIntro = !touched;
+      onKnob = !!(e.target && e.target.closest && e.target.closest('.xr-knob')); wasIntro = !touched;
       box.classList.add('dragging');
-      if (box.setPointerCapture) { try { box.setPointerCapture(e.pointerId); } catch (err) {} }
-      e.preventDefault();                                                     // no selection, no focus theft…
-      try { range.focus({ preventScroll: true }); } catch (err) { try { range.focus(); } catch (err2) {} }   // …and the arrows work right after
-    });
-    box.addEventListener('pointermove', function (e) {
+      if (e.pointerId != null && box.setPointerCapture) { try { box.setPointerCapture(e.pointerId); } catch (err) {} }
+      if (!isTouch) {                                                         // a mouse: no selection, no focus theft, and the arrows work right after
+        if (e.preventDefault) e.preventDefault();
+        try { range.focus({ preventScroll: true }); } catch (err) { try { range.focus(); } catch (err2) {} }
+      }
+    }
+    function onMove(e) {
       if (!dragging || e.pointerId !== pid) return;
-      if (e.pointerType === 'mouse' && e.buttons === 0) { endDrag(); return; }   // a release this page never saw
+      if (!isTouch && e.buttons === 0) { endDrag(); return; }                // a mouse release this page never saw
       var dx = e.clientX - startX, dy = e.clientY - startY;
       moved = Math.max(moved, Math.sqrt(dx * dx + dy * dy));
       if (!locked) {
-        if (Math.abs(dx) < gate || Math.abs(dx) <= Math.abs(dy)) return;      // not a sideways drag yet: a tap, or the page's own scroll
+        // a finger: the browser has already refused to scroll sideways (touch-action), so a sideways move past the
+        // gate is ours — a vertical one arrives as pointercancel. A mouse also has to be more across than down.
+        if (Math.abs(dx) < gate || (!isTouch && Math.abs(dx) <= Math.abs(dy))) return;
         locked = true; retire();
       }
       var v = x0 + dx / box.clientWidth * 100;
       set(v);
       if (x !== v) { x0 = x; startX = e.clientX; }                             // at the clamp: re-anchor, so reversing moves at once
-    });
+    }
     function flip(reveal) { tween(park(reveal), 550, easeOut); }
-    box.addEventListener('pointerup', function (e) {
+    function onUp(e) {
       if (!dragging || e.pointerId !== pid) return;
       var tap = !locked && moved < slop && (e.timeStamp - t0) < 500, wi = wasIntro;
       endDrag();
       if (tap) { retire(); if (!onKnob) flip(wi || dataShare() <= 50); }      // the first tap always reveals; the knob is a handle, not a switch
       else if (!locked && !touched) tween(rest, 500, easeOut);                // a long hold mid-intro: settle
-    });
-    box.addEventListener('pointercancel', function (e) {
+    }
+    function onCancel(e) {
       if (!dragging || e.pointerId !== pid) return;
       var wasLocked = locked; endDrag();
       if (wasLocked) tween(xDown, 160, easeOut);                              // the browser took the gesture: back where the hand found it
       else if (!touched) tween(rest, 500, easeOut);                           // a scroll that began on the picture mid-intro: settle
-    });
-    box.addEventListener('lostpointercapture', function (e) { if (dragging && e.pointerId === pid) endDrag(); });
+    }
+    if (window.PointerEvent) {
+      box.addEventListener('pointerdown', onDown);
+      box.addEventListener('pointermove', onMove);
+      box.addEventListener('pointerup', onUp);
+      box.addEventListener('pointercancel', onCancel);
+      box.addEventListener('lostpointercapture', function (e) { if (dragging && !isTouch && e.pointerId === pid) endDrag(); });   // a mouse only: a finger's end is its up or cancel
+    } else {                                                                  // no pointer events (iOS 12 and older): the same rules from touch events
+      function tp(te, type) {
+        var t = te.changedTouches[0];
+        return { pointerId: t.identifier, pointerType: 'touch', isPrimary: te.touches.length <= 1 || t.identifier === pid, button: 0, buttons: 1,
+                 clientX: t.clientX, clientY: t.clientY, timeStamp: te.timeStamp, target: te.target, type: type };
+      }
+      box.addEventListener('touchstart', function (te) { if (te.touches.length === 1) onDown(tp(te, 'pointerdown')); }, { passive: true });
+      box.addEventListener('touchmove', function (te) { onMove(tp(te, 'pointermove')); }, { passive: true });
+      box.addEventListener('touchend', function (te) { onUp(tp(te, 'pointerup')); });
+      box.addEventListener('touchcancel', function (te) { onCancel(tp(te, 'pointercancel')); });
+      box.addEventListener('mousedown', function (e) { onDown({ pointerId: 1, pointerType: 'mouse', isPrimary: true, button: e.button, buttons: e.buttons, clientX: e.clientX, clientY: e.clientY, timeStamp: e.timeStamp, target: e.target, preventDefault: function () { e.preventDefault(); } }); });
+      window.addEventListener('mousemove', function (e) { onMove({ pointerId: 1, pointerType: 'mouse', buttons: e.buttons, clientX: e.clientX, clientY: e.clientY }); });
+      window.addEventListener('mouseup', function (e) { onUp({ pointerId: 1, timeStamp: e.timeStamp }); });
+    }
     box.addEventListener('wheel', function (e) {                               // a trackpad's sideways swipe slides the seam instead of going "back"
       if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
       e.preventDefault(); stop(); retire();
@@ -236,6 +259,19 @@
       set(100 - x);
     };
     window.__fitX = fit;
+    if (/[?&]debug\b/.test(location.search)) {                                 // ?debug — an on-screen log of what the phone actually sends, for a screenshot
+      var dbg = document.createElement('pre'); dbg.id = 'xr-debug';
+      dbg.style.cssText = 'position:fixed;left:0;right:0;bottom:0;max-height:38vh;overflow:auto;margin:0;padding:8px;background:rgba(0,0,0,.85);color:#9AD4FF;font:11px/1.4 monospace;z-index:99;direction:ltr;text-align:left;white-space:pre-wrap';
+      document.body.appendChild(dbg);
+      var n = 0;
+      function logEv(e) {
+        n++; var line = n + ' ' + e.type + ' ' + (e.pointerType || '') + ' id' + e.pointerId + (e.isPrimary === false ? ' 2nd' : '') + ' x' + Math.round(e.clientX || 0) + ' y' + Math.round(e.clientY || 0) + ' → --x ' + x.toFixed(1) + (dragging ? ' drag' : '') + (locked ? ' locked' : '') + '\n';
+        dbg.textContent = line + dbg.textContent.slice(0, 4000);
+      }
+      ['pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'gotpointercapture', 'lostpointercapture', 'touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(function (t) { box.addEventListener(t, logEv, { passive: true }); });
+      dbg.textContent = 'MIDDLEWARE hero debug · PointerEvent ' + (window.PointerEvent ? 'yes' : 'NO') + ' · UA ' + navigator.userAgent + '\n';
+      window.addEventListener('error', function (ev) { dbg.textContent = 'ERROR ' + ev.message + ' @' + ev.lineno + '\n' + dbg.textContent; });
+    }
     window.__xrIntro = function () { return { x: x, rest: rest, running: !!tw || !!hold, touched: touched }; };   // for the harness
     set(x);
   }

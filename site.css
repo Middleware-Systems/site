@@ -76,8 +76,8 @@ html[lang="ar"] .btn-big{font-size:18px;padding:15px 28px 17px}
 .xr-layer{position:absolute;inset:0;overflow:hidden}
 .xr-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
 .xr-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;user-drag:none}   /* the hand lands on the frame, never on a draggable image */
-.xr-data{clip-path:inset(0 0 0 var(--x,58%))}
-html[dir="rtl"] .xr-data{clip-path:inset(0 calc(100% - var(--x,42%)) 0 0)}   /* the data opens on the end side: left in Arabic, right in English */
+.xr-data{-webkit-clip-path:inset(0 0 0 var(--x,58%));clip-path:inset(0 0 0 var(--x,58%))}
+html[dir="rtl"] .xr-data{-webkit-clip-path:inset(0 calc(100% - var(--x,42%)) 0 0);clip-path:inset(0 calc(100% - var(--x,42%)) 0 0)}   /* the data opens on the end side: left in Arabic, right in English */
 .xr-data::before{content:"";position:absolute;inset:0;z-index:1;background-image:
   linear-gradient(rgba(90,176,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(90,176,255,.06) 1px,transparent 1px);
   background-size:48px 48px;pointer-events:none}
