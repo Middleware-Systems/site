@@ -184,7 +184,8 @@
     box.addEventListener('dragstart', function (e) { e.preventDefault(); });
     function endDrag() { dragging = false; locked = false; pid = null; box.classList.remove('dragging'); }
     function onDown(e) {
-      if (e.button > 0 || e.isPrimary === false) return;                      // right or middle button, or a second finger: not ours
+      if (e.button > 0) return;                                             // right or middle button: not ours
+      if (dragging && locked) return;                                         // a finger already dragging keeps the seam; a resting finger (the thumb holding the phone) yields to the one that lands next
       stop(); unhold();                                                       // whatever was moving freezes under the hand; a stale drag is simply replaced
       isTouch = e.pointerType !== 'mouse';
       gate = isTouch ? 8 : 3; slop = isTouch ? 12 : 6;

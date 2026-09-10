@@ -70,8 +70,10 @@ html[lang="ar"] .btn-big{font-size:18px;padding:15px 28px 17px}
 
 /* ---------- 1 · the X-ray hero ---------- */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#0A0A0D}
-.xray{position:absolute;inset:0;cursor:ew-resize;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
-  --ty:calc(var(--ky,34%) - 14px);--tx:34px}   /* the tag rides beside the knob; on phones it goes back to the top corner */
+.xray{position:absolute;inset:0;cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
+  --ty:calc(var(--ky,34%) - 14px);--tx:34px}   /* the tag rides beside the knob; on phones it goes back to the top corner.
+  touch-action pan-y, and NOT pinch-zoom: with pinch-zoom allowed, iOS treats a resting thumb plus a dragging finger as a possible
+  pinch, cancels the pointers and never sends the finger's pointerdown — measured on Samir's phone, 11 Sep 2026. The rest of the page still zooms. */
 .xr-knob:hover,.xray.dragging .xr-knob{transform:scale(1.06);box-shadow:0 0 34px var(--glow)}
 .xr-layer{position:absolute;inset:0;overflow:hidden}
 .xr-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
