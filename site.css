@@ -94,6 +94,9 @@ html[lang="ar"] .callouts span{font-family:var(--arabic);font-size:12px;letter-s
 .xr-knob{position:absolute;top:34%;left:var(--x,58%);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:1px solid var(--accent);
   background:rgba(10,10,13,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 26px var(--glow);z-index:4;cursor:ew-resize;
   display:flex;align-items:center;justify-content:center;color:var(--accent-2);font-family:var(--mono);font-size:13px;letter-spacing:.1em;padding-inline-start:.1em}
+.xr-knob::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid var(--accent);opacity:0;pointer-events:none}
+.xr-knob.pulse::after{animation:xr-pulse 1.5s ease-out 2}   /* after the intro settles: the knob breathes twice */
+@keyframes xr-pulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.2);opacity:0}}
 .xr-hint{position:absolute;top:calc(34% + 34px);left:var(--x,58%);transform:translateX(-50%);z-index:4;pointer-events:none;
   font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);white-space:nowrap;opacity:.9}
 html[lang="ar"] .xr-hint{font-family:var(--arabic);font-size:12.5px;letter-spacing:0;text-transform:none}

@@ -39,11 +39,13 @@
     try { localStorage.setItem('mw_lang', lang); } catch (e) {}
   }
 
-  /* ---- the X-ray: drag anywhere on the photograph, click to flip, arrows on the keyboard ---- */
+  /* ---- the X-ray: drag anywhere on the photograph, click to flip, arrows on the keyboard.
+     On load the seam sweeps across once and settles back, so a visitor sees the layer is there;
+     the first touch cancels it, reduced motion never runs it. ---- */
   function xray() {
     var box = document.getElementById('xray'), range = document.getElementById('xr-range');
     if (!box || !range) return;
-    var list = document.getElementById('callouts');
+    var list = document.getElementById('callouts'), knob = box.querySelector('.xr-knob');
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     CALLOUTS.forEach(function (c) {
       var li = document.createElement('li');
@@ -66,33 +68,77 @@
     fit(); window.addEventListener('resize', fit);
     var narrow = window.matchMedia('(max-width: 700px)').matches;
     var x = narrow ? 50 : (document.documentElement.dir === 'rtl' ? 42 : 58);   // the data opens on the end side
-    function set(v, animate) {
+    var rest = x;
+    function set(v) {
       x = Math.max(4, Math.min(96, v));
-      box.style.transition = (animate && !reduce) ? '--x .55s cubic-bezier(.2,.8,.2,1)' : 'none';
       box.style.setProperty('--x', x + '%');
       range.value = String(Math.round(x));
     }
+    // one tween, driven by requestAnimationFrame — a custom property does not transition on its own
+    var tw = null, raf = 0;
+    function easeOut(p) { return 1 - Math.pow(1 - p, 3); }
+    function easeInOut(p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; }
+    function stop() { if (raf) cancelAnimationFrame(raf); raf = 0; tw = null; }
+    function step(ts) {
+      var t = tw; if (!t) return;
+      if (t.t0 === null) t.t0 = ts;
+      var p = Math.min(1, (ts - t.t0) / t.D);
+      set(t.from + (t.to - t.from) * t.ease(p));
+      if (p < 1) raf = requestAnimationFrame(step); else { raf = 0; tw = null; if (t.done) t.done(); }
+    }
+    function tween(to, D, ease, done) {
+      stop();
+      if (reduce) { set(to); if (done) done(); return; }
+      tw = { from: x, to: to, t0: null, D: D, ease: ease, done: done };
+      raf = requestAnimationFrame(step);
+    }
+    // the intro: out to the far side (the data covering nine tenths), a beat, back to rest, then the knob breathes twice
+    var hold = 0, touched = false;
+    function cancelIntro() { touched = true; stop(); if (hold) { clearTimeout(hold); hold = 0; } if (knob) knob.classList.remove('pulse'); }
+    function sweep() {
+      hold = 0;
+      if (touched || reduce || box.getBoundingClientRect().bottom <= 0) return;   // opened scrolled past the hero: nothing to show
+      var far = document.documentElement.dir === 'rtl' ? 90 : 10;
+      tween(far, 1500, easeInOut, function () {
+        hold = setTimeout(function () {
+          hold = 0;
+          tween(rest, 1300, easeInOut, function () { if (knob && !touched) knob.classList.add('pulse'); });
+        }, 700);
+      });
+    }
+    function ready() {   // both frames decoded, or 2.5 s, whichever first
+      var imgs = $$('.xr-frame img');
+      var all = Promise.all(imgs.map(function (i) { return i.decode ? i.decode().catch(function () {}) : null; }));
+      return Promise.race([all, new Promise(function (r) { setTimeout(r, 2500); })]);
+    }
+    if (!reduce) ready().then(function () { if (!touched) hold = setTimeout(sweep, 600); });
     var dragging = false, moved = 0, startX = 0;
     box.addEventListener('pointerdown', function (e) {
       if (e.target.closest && e.target.closest('.hero-inner')) return;
+      cancelIntro();
       dragging = true; moved = 0; startX = e.clientX;
       if (box.setPointerCapture) { try { box.setPointerCapture(e.pointerId); } catch (err) {} }
-      set((e.clientX - box.getBoundingClientRect().left) / box.clientWidth * 100, false);
+      set((e.clientX - box.getBoundingClientRect().left) / box.clientWidth * 100);
     });
     box.addEventListener('pointermove', function (e) {
       if (!dragging) return;
       moved = Math.max(moved, Math.abs(e.clientX - startX));
-      set((e.clientX - box.getBoundingClientRect().left) / box.clientWidth * 100, false);
+      set((e.clientX - box.getBoundingClientRect().left) / box.clientWidth * 100);
     });
     function up() {
       if (!dragging) return; dragging = false;
-      if (moved < 6) set(x > 50 ? 8 : 92, true);   // a click flips the layer
+      if (moved < 6) tween(x > 50 ? 8 : 92, 550, easeOut);   // a click flips the layer
     }
     box.addEventListener('pointerup', up); box.addEventListener('pointercancel', up);
-    range.addEventListener('input', function () { set(parseFloat(range.value), false); });
-    window.__setX = function (v) { set(v, false); };
-    window.__flipX = function () { set(100 - x, false); };       // the language toggle mirrors the seam
-    set(x, false);
+    range.addEventListener('input', function () { cancelIntro(); set(parseFloat(range.value)); });
+    window.__setX = function (v) { cancelIntro(); set(v); };
+    window.__flipX = function () {                            // the language toggle mirrors the seam — mid-intro too
+      rest = 100 - rest;
+      if (tw) { tw.from = 100 - tw.from; tw.to = 100 - tw.to; }
+      set(100 - x);
+    };
+    window.__xrIntro = function () { return { x: x, rest: rest, running: !!tw || !!hold, touched: touched }; };   // for the harness
+    set(x);
   }
 
   /* ---- the count-up: a figure counts from zero to its value the first time it enters view ---- */
