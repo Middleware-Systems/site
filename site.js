@@ -32,8 +32,6 @@
     $$('[data-i18n-alt]').forEach(function (el) { var k = el.getAttribute('data-i18n-alt'); if (k in d) el.alt = d[k]; });
     $$('[data-i18n-aria]').forEach(function (el) { var k = el.getAttribute('data-i18n-aria'); if (k in d) el.setAttribute('aria-label', d[k]); });
     $$('[data-wa]').forEach(function (a) { a.href = WA + encodeURIComponent(d.msg); });
-    var narrow = window.matchMedia && window.matchMedia('(max-width: 700px)').matches;
-    $$('#callouts li span').forEach(function (s, i) { var c = CALLOUTS[i]; if (c) s.textContent = (narrow && c[lang + 's']) || c[lang]; });
     var b = document.getElementById('lang'), other = lang === 'ar' ? 'en' : 'ar';
     if (b) { b.textContent = T[other].toggle; b.lang = other; b.setAttribute('aria-label', T[other].toggleName); b.title = T[other].toggleName; }
     try { localStorage.setItem('mw_lang', lang); } catch (e) {}
@@ -71,14 +69,32 @@
       var w = W, h = W / ar;
       if (h < H) { h = H; w = H * ar; }
       frames.forEach(function (f) { f.style.width = w + 'px'; f.style.height = h + 'px'; });
-      if (!inner) return;
-      var bt = box.getBoundingClientRect().top, r = inner.getBoundingClientRect();
-      if (narrow()) box.style.removeProperty('--ky');
-      else box.style.setProperty('--ky', Math.max(110, Math.min(H * 0.34, r.top - bt - 48)) + 'px');   // the knob stays clear of the headline on short screens
-      lis.forEach(function (li) {                                                                       // a callout the headline would overprint steps back
-        var c = li.getBoundingClientRect();
-        li.classList.toggle('under', !narrow() && c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top);
+      // labels: the long ones on desktop, the short ones on phones and on the shelf
+      var nar = narrow(), lang = document.documentElement.lang, k = lang + 's';
+      lis.forEach(function (li, i) {
+        var c = CALLOUTS[i]; if (!c) return;
+        li.classList.remove('shelf', 'under'); li.style.left = ''; li.style.top = '';
+        li.lastChild.textContent = (nar && c[k]) || c[lang] || c.en;
       });
+      if (!inner || nar) { box.style.removeProperty('--ky'); return; }
+      var bt = box.getBoundingClientRect().top, r = inner.getBoundingClientRect(), fr = list.getBoundingClientRect();
+      // a callout the headline would overprint moves to a shelf above the headline, on its side, in reading order,
+      // with its short label and no pin; only when even the shelf has no room does it step back
+      var L = ltr(), X = L ? r.left : r.right, X0 = X, Y = bt + 64, rowH = 0, floor = r.top, lim = L ? W - 24 : 24, shelfBottom = 0;   // under the header, down to the headline
+      lis.forEach(function (li, i) {
+        var c = li.getBoundingClientRect(), cc = CALLOUTS[i];
+        if (!cc || !(c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top)) return;
+        li.lastChild.textContent = cc[k] || cc[lang] || cc.en; li.classList.add('shelf');
+        var w = li.offsetWidth, h = li.offsetHeight;
+        if (X !== X0 && (L ? X + w > lim : X - w < lim)) { X = X0; Y += rowH + 8; rowH = 0; }   // the row is full: the next one
+        if (Y + h > floor) { li.classList.add('under'); return; }
+        li.style.left = ((L ? X : X - w) - fr.left) + 'px'; li.style.top = (Y - fr.top) + 'px';
+        X += L ? w + 8 : -(w + 8); rowH = Math.max(rowH, h); shelfBottom = Math.max(shelfBottom, Y + h - bt);
+      });
+      // the knob, its tag and its hint are one cluster on the seam: clear of the header, the shelf and, when there is room, the headline
+      var ky = Math.max(110, Math.min(H * 0.34, r.top - bt - 48), shelfBottom ? shelfBottom + 31 : 0);
+      box.style.setProperty('--ky', ky + 'px');
+      box.classList.toggle('cramped', ky + 40 > r.top - bt);                 // the hint would sit on the headline's letters: the pulse invites instead
     }
     fit(); window.addEventListener('resize', fit);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
