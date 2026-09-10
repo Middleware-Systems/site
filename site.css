@@ -1,0 +1,225 @@
+/* MIDDLEWARE — site.css
+   Tokens: playbook/brand-brief.html §01, verbatim, both themes.
+   Fonts: self-hosted subsets in fonts/ (BRIEF §3.4). Nothing on this page is
+   fetched from another host. Logical properties throughout: the mirror is free;
+   the hero photograph is physical and never mirrored. */
+
+@font-face{font-family:"Archivo";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/archivo-latin.woff2) format("woff2")}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/newsreader-latin-400.woff2) format("woff2")}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/newsreader-latin-500.woff2) format("woff2")}
+@font-face{font-family:"Newsreader";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/newsreader-latin-400-italic.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ibm-plex-mono-latin-400.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-latin-500.woff2) format("woff2")}
+@font-face{font-family:"Noto Naskh Arabic";font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/noto-naskh-arabic.woff2) format("woff2");unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFC}
+
+:root{
+  --paper:#F6F5F1; --surface:#FFFFFF; --sunk:#EDEBE4; --ink:#17171B; --muted:#6E6A62;
+  --line:#DFDCD3; --hair:#EBE8E0; --rule:#A02B24; --rule-soft:#F6E9E7;
+  --blue:#26456B; --blue-soft:#EAEEF4; --gold:#8A6A18; --ok:#2F6B4F;
+  --shadow:0 1px 2px rgba(23,23,27,.05), 0 10px 28px -20px rgba(23,23,27,.30);
+  color-scheme:light;
+}
+:root[data-theme="light"]{
+  --paper:#F6F5F1; --surface:#FFFFFF; --sunk:#EDEBE4; --ink:#17171B; --muted:#6E6A62;
+  --line:#DFDCD3; --hair:#EBE8E0; --rule:#A02B24; --rule-soft:#F6E9E7;
+  --blue:#26456B; --blue-soft:#EAEEF4; --gold:#8A6A18; --ok:#2F6B4F;
+  --shadow:0 1px 2px rgba(23,23,27,.05), 0 10px 28px -20px rgba(23,23,27,.30);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#131316; --surface:#1B1B1F; --sunk:#232328; --ink:#EDEAE2; --muted:#95908A;
+    --line:#33333A; --hair:#282830; --rule:#D9756B; --rule-soft:#2B1D1C;
+    --blue:#8FB0D6; --blue-soft:#1A222E; --gold:#CFA94E; --ok:#7FC5A2;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 30px -20px rgba(0,0,0,.9);
+    color-scheme:dark;
+  }
+  :root:not([data-theme="light"]) .hd.past .wm .wm-l{display:none}
+  :root:not([data-theme="light"]) .hd.past .wm .wm-d{display:block}
+  :root:not([data-theme="light"]) .wm-ft.wm .wm-l{display:none}
+  :root:not([data-theme="light"]) .wm-ft.wm .wm-d{display:block}
+}
+:root[data-theme="dark"]{
+  --paper:#131316; --surface:#1B1B1F; --sunk:#232328; --ink:#EDEAE2; --muted:#95908A;
+  --line:#33333A; --hair:#282830; --rule:#D9756B; --rule-soft:#2B1D1C;
+  --blue:#8FB0D6; --blue-soft:#1A222E; --gold:#CFA94E; --ok:#7FC5A2;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 30px -20px rgba(0,0,0,.9);
+  color-scheme:dark;
+}
+:root[data-theme="dark"] .hd.past .wm .wm-l{display:none}
+:root[data-theme="dark"] .hd.past .wm .wm-d{display:block}
+:root[data-theme="dark"] .wm-ft.wm .wm-l{display:none}
+:root[data-theme="dark"] .wm-ft.wm .wm-d{display:block}
+
+/* ---------- base ---------- */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+html[lang="ar"] body{font-family:"Noto Naskh Arabic","Newsreader",Georgia,serif;line-height:1.95}
+h1,h2,h3,h4{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-weight:700;letter-spacing:-.015em;text-wrap:balance;margin:0}
+html[lang="ar"] :is(h1,h2,h3,h4){font-family:"Noto Naskh Arabic","Newsreader",serif;font-weight:600;letter-spacing:0;line-height:1.7}
+p{margin:0}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rule);outline-offset:3px}
+.n,.mono,.num,.eyebrow,.ledger .amt{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums}
+html[lang="ar"] .n{font-size:.92em}
+.lat{font-family:"Newsreader",Georgia,serif;unicode-bidi:isolate}
+[dir="ltr"]{unicode-bidi:isolate}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(20px,4vw,48px)}
+
+/* ---------- header ---------- */
+.hd{position:fixed;inset-inline:0;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px clamp(16px,3vw,40px);min-height:56px;color:#EDEAE2;transition:background-color .25s,color .25s}
+.hd.past{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line)}
+.wm{display:inline-block;line-height:0}
+.wm img{height:15px;width:auto}
+.wm .wm-l{display:block}
+.wm .wm-d{display:none}
+.hd:not(.past) .wm .wm-l{display:none}
+.hd:not(.past) .wm .wm-d{display:block}
+.hd-end{display:flex;align-items:center;gap:10px}
+.btn-hd{visibility:hidden;opacity:0;transition:opacity .25s}
+.hd.past .btn-hd{visibility:visible;opacity:1}
+.btn-hd .short{display:none}
+@media (max-width:520px){.btn-hd .full{display:none}.btn-hd .short{display:inline}}
+.lang{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;background:none;border:1px solid currentColor;color:inherit;
+  padding:7px 10px 6px;border-radius:2px;cursor:pointer;min-width:42px;line-height:1}
+.lang[lang="ar"]{font-family:"Noto Naskh Arabic",serif;font-size:14px;letter-spacing:0;padding:4px 10px 5px}
+
+/* ---------- the button ---------- */
+.btn{display:inline-block;background:var(--rule);color:var(--paper);text-decoration:none;
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-weight:600;font-size:15px;line-height:1;
+  padding:14px 22px;border-radius:3px;white-space:nowrap}
+html[lang="ar"] .btn{font-family:"Noto Naskh Arabic",serif;font-weight:600;font-size:16px;padding:11px 20px 14px}
+.btn .n{font-size:1em}
+.btn-hero{background:#A02B24;color:#F6F5F1}
+.btn-hd{font-size:13px;padding:9px 13px}
+html[lang="ar"] .btn-hd{font-size:14px;padding:7px 12px 9px}
+.btn-big{font-size:18px;padding:18px 30px}
+html[lang="ar"] .btn-big{font-size:19px;padding:14px 28px 17px}
+.cta{margin:0}
+
+/* ---------- 1 · the sentence ---------- */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:#EDEAE2;background:#17171B;overflow:hidden}
+.hero-img{position:absolute;inset:0;display:block}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(23,23,27,.42) 0%,rgba(23,23,27,0) 24%,rgba(23,23,27,0) 44%,rgba(23,23,27,.84) 76%,rgba(23,23,27,.97) 100%)}
+.hero-txt{position:relative;width:100%;padding-top:120px;padding-bottom:clamp(40px,7vw,88px)}
+.hero h1{font-size:clamp(28px,4.6vw,58px);line-height:1.12;max-width:22ch;color:#F6F5F1}
+html[lang="ar"] .hero h1{font-size:clamp(29px,4.4vw,56px);line-height:1.62;max-width:26ch}
+.answer{font-style:italic;font-size:clamp(19px,2.2vw,26px);margin:18px 0 26px;color:#EDEAE2;max-width:40ch}
+html[lang="ar"] .answer{font-style:normal;line-height:1.8}
+.sentinel{position:absolute;bottom:0;inset-inline-start:0;width:1px;height:1px}
+@media (min-width:900px){
+  /* wide screens: the type keeps to the start half and the photograph slides so the phone sits under the end half */
+  .hero-inner{max-width:560px}
+  html[dir="ltr"] .hero-inner{margin-inline-start:auto}   /* the type on the right in both directions: the phone stays on the left */
+  .hero h1{font-size:clamp(28px,4vw,52px);max-width:none}
+  html[lang="ar"] .hero h1{font-size:clamp(29px,3.8vw,50px);max-width:none}
+  .answer{max-width:none}
+  .hero-img img{object-position:100% center}
+}
+
+/* ---------- blocks ---------- */
+.blk{padding-top:clamp(56px,9vw,120px)}
+.blk .wrap::before{content:"";display:block;height:2px;background:var(--rule);margin-bottom:clamp(26px,4vw,40px)}
+.blk .wrap{padding-bottom:clamp(36px,5vw,64px)}
+.eyebrow{display:flex;gap:14px;align-items:baseline;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 18px;line-height:1.4}
+.eyebrow .n{color:var(--rule);font-weight:500}
+html[lang="ar"] .eyebrow span:not(.n){font-family:"Noto Naskh Arabic",serif;font-size:14.5px;letter-spacing:0;text-transform:none}
+h2{font-size:clamp(26px,3.4vw,40px);max-width:26ch;margin:0 0 clamp(24px,4vw,44px);line-height:1.18}
+html[lang="ar"] h2{max-width:32ch}
+h3{font-size:20px;font-weight:600;margin:0 0 14px}
+.lede{font-size:clamp(18px,1.6vw,20px);max-width:60ch;margin:0 0 32px}
+
+/* ---------- 2 · the Reading ---------- */
+.reading{display:grid;gap:clamp(28px,4vw,56px);grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.reading{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:start}}
+.pages{margin:0}
+.pages img{width:100%;height:auto;display:block}
+.pages figcaption{font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.6;color:var(--muted);margin-top:12px}
+html[lang="ar"] .pages figcaption{font-family:"Noto Naskh Arabic",serif;font-size:14.5px;line-height:1.8}
+.findings{list-style:none;margin:0;padding:0}
+.findings li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
+.findings li:last-child{border-bottom:1px solid var(--line)}
+.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500;font-size:clamp(26px,3vw,36px);letter-spacing:-.01em;line-height:1.1;white-space:nowrap;color:var(--ink)}
+.name{font-size:16px;color:var(--muted);line-height:1.5}
+html[lang="ar"] .name{font-size:16.5px;line-height:1.85}
+
+/* ---------- 3 · the first client ---------- */
+.three{display:grid;grid-template-columns:1fr;gap:0;margin:0 0 44px}
+.stat{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
+.three .stat:last-child{border-bottom:1px solid var(--line)}
+@media (min-width:760px){
+  .three{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+  .stat{grid-template-columns:1fr;gap:8px;padding:18px 0 0;border-bottom:0}
+  .three .stat:last-child{border-bottom:0}
+}
+.rec{margin:0;max-width:400px}
+.rec-frame{position:relative;aspect-ratio:4/5;background:var(--sunk);overflow:hidden}
+.rec-frame img,.rec-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.play{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);background:var(--rule);color:var(--paper);border:0;border-radius:3px;
+  font-family:"IBM Plex Mono",monospace;font-size:13px;padding:10px 16px;cursor:pointer}
+html[lang="ar"] .play{font-family:"Noto Naskh Arabic",serif;font-size:15px}
+.rec figcaption{margin-top:10px;font-size:12px;color:var(--muted)}
+html[lang="ar"] .rec figcaption{font-family:"Noto Naskh Arabic",serif;font-size:14px}
+
+/* ---------- 4 · how it starts ---------- */
+.hook{font-size:clamp(28px,4vw,46px);max-width:none}
+.hook .n{font-weight:500}
+.hook .dash{color:var(--rule)}
+.steps{list-style:none;padding:0;margin:0 0 56px;max-width:760px}
+.steps li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.sn{color:var(--rule);font-size:13px;font-weight:500;padding-top:5px}
+html[lang="ar"] .sn{padding-top:9px}
+.steps p{max-width:62ch}
+.ledger{width:100%;border-collapse:collapse;max-width:720px;margin:0 0 52px}
+.ledger td{padding:12px 0;border-bottom:1px solid var(--line);vertical-align:baseline;text-align:start}
+.ledger .amt{text-align:end;white-space:nowrap;font-size:16px;font-weight:500;width:1%;padding-inline-start:24px}
+.ledger .z{color:var(--ok)}
+.ledger .last td{border-bottom:2px solid var(--line);color:var(--rule);font-weight:500}
+.lastrow{display:flex;justify-content:space-between;align-items:baseline;gap:24px}
+.ledger .ref{font-size:16px;text-align:end;max-width:60%}
+html[lang="en"] .ledger .ref{font-style:italic;font-weight:400}
+.refusal{font-size:clamp(19px,2vw,22px);max-width:56ch;margin:0 0 28px;font-weight:500}
+html[lang="ar"] .refusal{font-weight:600}
+.accountant{color:var(--blue);font-style:italic;max-width:62ch;padding-inline-start:18px;border-inline-start:2px solid var(--blue)}
+html[lang="ar"] .accountant{font-style:normal}
+
+/* ---------- 5 · what we build ---------- */
+.prod{display:grid;grid-template-columns:minmax(0,1fr);gap:6px 32px;padding:22px 0;border-top:1px solid var(--line)}
+@media (min-width:760px){.prod{grid-template-columns:240px minmax(0,1fr)}}
+.prod.top h3{font-size:22px;margin:0}
+.prod.sub{padding-inline-start:clamp(18px,3vw,40px);border-top:1px solid var(--hair)}
+.prod h4{font-size:17px;font-weight:600;margin:0}
+.prod p{max-width:60ch}
+.proof{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);margin-top:8px;letter-spacing:.01em;line-height:1.6}
+html[lang="ar"] .proof{font-family:"Noto Naskh Arabic",serif;font-size:13.5px;letter-spacing:0;line-height:1.8}
+
+/* ---------- 6 · two people ---------- */
+.people{display:grid;grid-template-columns:1fr;gap:28px;margin:0 0 32px}
+@media (min-width:640px){.people{grid-template-columns:1fr 1fr;gap:40px}}
+.portrait{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--sunk);margin-bottom:16px}
+.pname{font-family:"Archivo",sans-serif;font-weight:600;font-size:20px;margin:0 0 6px;letter-spacing:-.01em}
+html[lang="ar"] .pname{font-family:"Noto Naskh Arabic",serif;letter-spacing:0}
+.pline{color:var(--muted);max-width:36ch}
+.scarcity{font-size:17px;margin:0 0 12px}
+.phone{font-size:14px;color:var(--muted)}
+.phone a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
+html[lang="ar"] .phone{font-family:"Noto Naskh Arabic",serif;font-size:15px}
+html[lang="ar"] .phone a{font-family:"IBM Plex Mono",monospace;font-size:14px}
+
+/* ---------- 7 · the button again, and the foot ---------- */
+.blk.end .wrap{padding-bottom:clamp(56px,8vw,96px)}
+.ft{border-top:1px solid var(--line);padding:30px 0 52px;color:var(--muted);font-size:14px}
+html[lang="ar"] .ft{font-size:15px}
+.ft .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.wm-ft img{height:11px}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important}
+}
