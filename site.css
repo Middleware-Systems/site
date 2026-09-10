@@ -129,11 +129,15 @@ html[lang="ar"] .hero h1{font-size:clamp(30px,4.8vw,60px);line-height:1.45;lette
 .answer{margin:20px 0 30px;font-size:clamp(18px,2vw,24px);color:var(--muted);max-width:40ch}
 .sentinel{position:absolute;bottom:0;inset-inline-start:0;width:1px;height:1px}
 @media (min-width:900px){
-  .hero-veil{background:
-    linear-gradient(to bottom,rgba(10,10,13,.6) 0%,rgba(10,10,13,0) 22%,rgba(10,10,13,0) 52%,rgba(10,10,13,.55) 80%,rgba(10,10,13,.94) 100%),
-    linear-gradient(to left,rgba(10,10,13,.7) 0%,rgba(10,10,13,.45) 40%,rgba(10,10,13,0) 58%)}
-  html[dir="ltr"] .hero-veil{background:
-    linear-gradient(to bottom,rgba(10,10,13,.6) 0%,rgba(10,10,13,0) 22%,rgba(10,10,13,0) 52%,rgba(10,10,13,.55) 80%,rgba(10,10,13,.94) 100%),
+  /* two layers: a vertical band for the header and the foot, and a side band that keeps the headline legible over the
+     data layer. The side band starts at the headline's top (--veil-top, written by fit()), so the shelf of figures and
+     the callouts above the headline are never dimmed by it. */
+  .hero-veil{background-image:
+    linear-gradient(to bottom,rgba(10,10,13,.6) 0%,rgba(10,10,13,0) 10%,rgba(10,10,13,0) 52%,rgba(10,10,13,.55) 80%,rgba(10,10,13,.94) 100%),
+    linear-gradient(to left,rgba(10,10,13,.7) 0%,rgba(10,10,13,.45) 40%,rgba(10,10,13,0) 58%);
+    background-size:100% 100%,100% calc(100% - var(--veil-top,0px));background-position:0 0,0 var(--veil-top,0px);background-repeat:no-repeat}
+  html[dir="ltr"] .hero-veil{background-image:
+    linear-gradient(to bottom,rgba(10,10,13,.6) 0%,rgba(10,10,13,0) 10%,rgba(10,10,13,0) 52%,rgba(10,10,13,.55) 80%,rgba(10,10,13,.94) 100%),
     linear-gradient(to right,rgba(10,10,13,.7) 0%,rgba(10,10,13,.45) 40%,rgba(10,10,13,0) 58%)}
 }
 

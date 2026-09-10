@@ -76,7 +76,7 @@
         li.classList.remove('shelf', 'under'); li.style.left = ''; li.style.top = '';
         li.lastChild.textContent = (nar && c[k]) || c[lang] || c.en;
       });
-      if (!inner || nar) { box.style.removeProperty('--ky'); return; }
+      if (!inner || nar) { box.style.removeProperty('--ky'); box.style.removeProperty('--veil-top'); return; }
       var bt = box.getBoundingClientRect().top, r = inner.getBoundingClientRect(), fr = list.getBoundingClientRect();
       // a callout the headline would overprint moves to a shelf above the headline, on its side, in reading order,
       // with its short label and no pin; only when even the shelf has no room does it step back
@@ -95,6 +95,7 @@
       var ky = Math.max(110, Math.min(H * 0.34, r.top - bt - 48), shelfBottom ? shelfBottom + 31 : 0);
       box.style.setProperty('--ky', ky + 'px');
       box.classList.toggle('cramped', ky + 40 > r.top - bt);                 // the hint would sit on the headline's letters: the pulse invites instead
+      box.style.setProperty('--veil-top', Math.max(0, r.top - bt - 24) + 'px');   // the side veil darkens from the headline down, never the shelf above it
     }
     fit(); window.addEventListener('resize', fit);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
