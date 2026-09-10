@@ -116,11 +116,16 @@ html[lang="ar"] .answer{font-style:normal;line-height:1.8}
 @media (min-width:900px){
   /* wide screens: the type keeps to the start half and the photograph slides so the phone sits under the end half */
   .hero-inner{max-width:560px}
-  html[dir="ltr"] .hero-inner{margin-inline-start:auto}   /* the type on the right in both directions: the phone stays on the left */
+  html[dir="ltr"] .hero-inner{margin-inline-start:auto;max-width:540px}   /* the type on the right in both directions: the phone stays on the left */
+  html[dir="ltr"] .hero-txt{padding-inline-end:0}
   .hero h1{font-size:clamp(28px,4vw,52px);max-width:none}
   html[lang="ar"] .hero h1{font-size:clamp(29px,3.8vw,50px);max-width:none}
   .answer{max-width:none}
   .hero-img img{object-position:100% center}
+  /* the veil follows the type: heavier under the start-side column, lighter where the photograph's subject sits */
+  .hero-veil{background:
+    linear-gradient(to bottom,rgba(23,23,27,.42) 0%,rgba(23,23,27,0) 22%,rgba(23,23,27,0) 50%,rgba(23,23,27,.50) 78%,rgba(23,23,27,.88) 100%),
+    linear-gradient(to left,rgba(23,23,27,.72) 0%,rgba(23,23,27,.52) 42%,rgba(23,23,27,0) 60%)}
 }
 
 /* ---------- blocks ---------- */
