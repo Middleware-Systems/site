@@ -85,16 +85,11 @@ html[dir="rtl"] .xr-data{clip-path:inset(0 calc(100% - var(--x,42%)) 0 0)}   /* 
 .callouts li{position:absolute;left:var(--cx);top:var(--cy);transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:flex-start;gap:1px;
   padding:9px 12px 8px;border:1px solid rgba(90,176,255,.55);background:rgba(10,10,13,.6);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
   border-radius:6px;color:var(--accent-2);white-space:nowrap;box-shadow:0 0 22px var(--glow-soft);direction:ltr;transition:opacity .3s}
-.callouts li.under{opacity:0}   /* not even the shelf had room (computed in fit()) */
+.callouts li.under{opacity:0}   /* no pin on this screen keeps it clear of the headline (computed in fit()) */
 .callouts li::before{content:"";position:absolute;left:-7px;top:50%;width:7px;height:7px;margin-top:-4px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--glow)}
 .callouts li.al{transform:translate(0,-50%);margin-left:10px}
 .callouts li.ar{transform:translate(-100%,-50%);margin-left:-10px}
 .callouts li.ar::before{left:auto;right:-7px}
-.callouts li.shelf{transform:none;margin:0;padding:6px 9px 5px}   /* moved above the headline by fit(): no pin, short label, compact */
-.callouts li.shelf::before{display:none}
-.callouts li.shelf b{font-size:13.5px}
-.callouts li.shelf span{font-size:11px}
-html[lang="ar"] .callouts li.shelf span{font-size:12px}
 .callouts b{font-family:var(--mono);font-weight:500;font-size:16px;color:#fff;letter-spacing:-.01em}
 .callouts span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
 html[lang="ar"] .callouts span{font-family:var(--arabic);font-size:12px;letter-spacing:0;text-transform:none;direction:rtl}
@@ -125,7 +120,7 @@ html[dir="rtl"] .xr-tag{left:auto;right:calc(100% - var(--x,42%) + var(--tx,14px
 .hero-inner .btn{pointer-events:auto}
 .hero h1{font-size:clamp(34px,5.6vw,70px);line-height:1.02;letter-spacing:-.03em;color:#fff}
 html[lang="ar"] .hero h1{font-size:clamp(30px,4.8vw,60px);line-height:1.45;letter-spacing:0}
-@media (min-width:701px) and (max-height:720px){.hero h1{font-size:clamp(30px,4.4vw,54px)}html[lang="ar"] .hero h1{font-size:clamp(28px,4vw,48px)}}   /* a short laptop: room above the headline for the figures and the knob */
+@media (min-width:701px) and (max-height:820px){.hero h1{font-size:clamp(30px,4.4vw,56px)}html[lang="ar"] .hero h1{font-size:clamp(28px,4vw,50px)}}   /* a laptop: the headline a step smaller, so the upper bays above it hold the figures */
 .answer{margin:20px 0 30px;font-size:clamp(18px,2vw,24px);color:var(--muted);max-width:40ch}
 .sentinel{position:absolute;bottom:0;inset-inline-start:0;width:1px;height:1px}
 @media (min-width:900px){

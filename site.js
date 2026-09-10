@@ -15,6 +15,9 @@
   /* the data layer's callouts — written by tools/fill.py from site/copy.json (real figures only) */
   var CALLOUTS = /*CALLOUTS*/[{"cx": 26, "cy": 30, "a": "l", "fig": "$118,600", "ar": "نايمة على الرفوف · 820 صنف", "en": "asleep on the racks · 820 items", "lg": false, "mx": 20, "my": 18.6, "ars": "نايمة · 820 صنف", "ens": "asleep · 820 items"}, {"cx": 86, "cy": 30, "a": "r", "fig": "$15,600", "ar": "مبيع شهري على 40 صنف · أقل من شهرين تغطية", "en": "a month on 40 items · under two months of cover", "lg": false, "mx": 80, "my": 18.6, "ars": "بالشهر · 40 صنف", "ens": "a month · 40 items"}, {"cx": 30, "cy": 46, "a": "l", "fig": "2,829", "ar": "صنف عالدفتر · ولا واحد بلا رقم", "en": "items on the book · not one without a number", "lg": false, "mx": 20, "my": 28.5, "ars": "صنف عالدفتر", "ens": "items on the book"}, {"cx": 26, "cy": 68, "a": "l", "fig": "243", "ar": "صنف بالأحمر · 113 خلصوا", "en": "in the red · 113 out of stock", "lg": false, "mx": 20, "my": 42.2, "ars": "بالأحمر · 113 خلصوا", "ens": "in the red · 113 out"}, {"cx": 82, "cy": 57, "a": "r", "fig": "6", "ar": "بنود انباعوا تحت الكلفة", "en": "lines sold below cost", "lg": false, "mx": 80, "my": 35.3, "ars": "تحت الكلفة", "ens": "below cost"}, {"cx": 62, "cy": 70, "a": "l", "fig": "$79,400", "ar": "مستحقة عند 134 زبون", "en": "owed by 134 customers", "lg": false, "mx": 55.5, "my": 43.4, "ars": "مستحقة · 134 زبون", "ens": "owed · 134 customers"}]/*/CALLOUTS*/;
 
+  /* alternate pins up the racks for a callout the headline would cover — written by tools/fill.py from site/copy.json */
+  var SLOTS = /*SLOTS*/{"ltr": [[13, 13.5, "l"], [26, 18.5, "l"], [39, 23.5, "l"], [88, 13.5, "r"]], "rtl": [[87, 13.5, "r"], [74, 18.5, "r"], [61, 23.5, "r"], [12, 13.5, "l"]]}/*/SLOTS*/;
+
   function tpl(s) { return s.replace(/\{(\w+)\}/g, function (m, k) { return k in FIG ? FIG[k] : '—'; }); }
   function $$(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
 
@@ -69,30 +72,48 @@
       var w = W, h = W / ar;
       if (h < H) { h = H; w = H * ar; }
       frames.forEach(function (f) { f.style.width = w + 'px'; f.style.height = h + 'px'; });
-      // labels: the long ones on desktop, the short ones on phones and on the shelf
+      // every callout back on its own pin with its long label (the phone keeps the short ones)
       var nar = narrow(), lang = document.documentElement.lang, k = lang + 's';
+      function pin(li, c, cx, cy, a, slot) {
+        li.style.setProperty('--cx', cx + '%'); li.style.setProperty('--cy', cy + '%');
+        li.className = (a === 'l' ? 'al' : a === 'r' ? 'ar' : '') + (slot ? ' slot' : '') + (c.lg ? ' lg' : '');
+      }
       lis.forEach(function (li, i) {
         var c = CALLOUTS[i]; if (!c) return;
-        li.classList.remove('shelf', 'under'); li.style.left = ''; li.style.top = '';
+        pin(li, c, c.cx, c.cy, c.a, false);
         li.lastChild.textContent = (nar && c[k]) || c[lang] || c.en;
       });
       if (!inner || nar) { box.style.removeProperty('--ky'); box.style.removeProperty('--veil-top'); return; }
-      var bt = box.getBoundingClientRect().top, r = inner.getBoundingClientRect(), fr = list.getBoundingClientRect();
-      // a callout the headline would overprint moves to a shelf above the headline, on its side, in reading order,
-      // with its short label and no pin; only when even the shelf has no room does it step back
-      var L = ltr(), X = L ? r.left : r.right, X0 = X, Y = bt + 64, rowH = 0, floor = r.top, lim = L ? W - 24 : 24, shelfBottom = 0;   // under the header, down to the headline
-      lis.forEach(function (li, i) {
-        var c = li.getBoundingClientRect(), cc = CALLOUTS[i];
-        if (!cc || !(c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top)) return;
-        li.lastChild.textContent = cc[k] || cc[lang] || cc.en; li.classList.add('shelf');
-        var w = li.offsetWidth, h = li.offsetHeight;
-        if (X !== X0 && (L ? X + w > lim : X - w < lim)) { X = X0; Y += rowH + 8; rowH = 0; }   // the row is full: the next one
-        if (Y + h > floor) { li.classList.add('under'); return; }
-        li.style.left = ((L ? X : X - w) - fr.left) + 'px'; li.style.top = (Y - fr.top) + 'px';
-        X += L ? w + 8 : -(w + 8); rowH = Math.max(rowH, h); shelfBottom = Math.max(shelfBottom, Y + h - bt);
+      var bt = box.getBoundingClientRect().top, r = inner.getBoundingClientRect();
+      // a callout the headline block would cover keeps its dot on a real object: first it tries its own pin with the
+      // short label, then the next free alternate pin up the same rack (copy.json → SLOTS, near to far, so they
+      // follow the rack's perspective instead of forming a row); only a screen where nothing fits hides it
+      function hit(li) { var c = li.getBoundingClientRect(); return c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top; }
+      var placed = [], fh = list.getBoundingClientRect().height, moving = [];
+      lis.forEach(function (li, i) { if (CALLOUTS[i]) { if (hit(li)) moving.push(i); else placed.push(li.getBoundingClientRect()); } });
+      function settle(li) {                                          // slide down the carton until clear of the header and of every box already placed
+        for (var t = 0; t < 8; t++) {
+          var rc = li.getBoundingClientRect(), dy = 0;
+          if (rc.top < bt + 64) dy = bt + 64 - rc.top;
+          placed.forEach(function (o) { if (rc.left < o.right && rc.right > o.left && rc.top < o.bottom && rc.bottom > o.top) dy = Math.max(dy, o.bottom + 8 - rc.top); });
+          if (dy < 0.5) break;
+          li.style.setProperty('--cy', (parseFloat(li.style.getPropertyValue('--cy')) + dy / fh * 100) + '%');
+        }
+        return !hit(li);
+      }
+      var slots = (SLOTS[ltr() ? 'ltr' : 'rtl'] || []).slice();
+      moving.forEach(function (i) {
+        var li = lis[i], c = CALLOUTS[i];
+        li.lastChild.textContent = c[k] || c[lang] || c.en;
+        if (settle(li)) { placed.push(li.getBoundingClientRect()); return; }
+        while (slots.length) {
+          var sl = slots.shift(); pin(li, c, sl[0], sl[1], sl[2], true);
+          if (settle(li)) { placed.push(li.getBoundingClientRect()); return; }
+        }
+        li.classList.add('under');
       });
       // the knob, its tag and its hint are one cluster on the seam: clear of the header, the shelf and, when there is room, the headline
-      var ky = Math.max(110, Math.min(H * 0.34, r.top - bt - 48), shelfBottom ? shelfBottom + 31 : 0);
+      var ky = Math.max(110, Math.min(H * 0.34, r.top - bt - 48));
       box.style.setProperty('--ky', ky + 'px');
       box.classList.toggle('cramped', ky + 40 > r.top - bt);                 // the hint would sit on the headline's letters: the pulse invites instead
       box.style.setProperty('--veil-top', Math.max(0, r.top - bt - 24) + 'px');   // the side veil darkens from the headline down, never the shelf above it
