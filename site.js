@@ -37,16 +37,20 @@
     var b = document.getElementById('lang'), other = lang === 'ar' ? 'en' : 'ar';
     if (b) { b.textContent = T[other].toggle; b.lang = other; b.setAttribute('aria-label', T[other].toggleName); b.title = T[other].toggleName; }
     try { localStorage.setItem('mw_lang', lang); } catch (e) {}
+    if (window.__fitX) window.__fitX();                          // the headline's height changed: the knob and the callouts under it follow
   }
 
-  /* ---- the X-ray: drag anywhere on the photograph, click to flip, arrows on the keyboard.
-     On load the seam sweeps across once and settles back, so a visitor sees the layer is there;
-     the first touch cancels it, reduced motion never runs it. ---- */
+  /* ---- the X-ray: drag anywhere on the picture, click to flip, arrows on the keyboard, a trackpad
+     swipe. On load the seam sweeps across once and settles back, so a visitor sees the layer is
+     there; the first real interaction retires it, reduced motion never runs it. ---- */
   function xray() {
     var box = document.getElementById('xray'), range = document.getElementById('xr-range');
     if (!box || !range) return;
-    var list = document.getElementById('callouts'), knob = box.querySelector('.xr-knob');
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var list = document.getElementById('callouts'), knob = box.querySelector('.xr-knob'), inner = document.querySelector('.hero-inner');
+    var rmq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+    var reduce = !!(rmq && rmq.matches);
+    if (rmq && rmq.addEventListener) rmq.addEventListener('change', function (e) { reduce = e.matches; });
+    var lis = [];
     CALLOUTS.forEach(function (c) {
       var li = document.createElement('li');
       li.style.setProperty('--cx', c.cx + '%'); li.style.setProperty('--cy', c.cy + '%');
@@ -54,26 +58,41 @@
       li.className = (c.a === 'l' ? 'al' : c.a === 'r' ? 'ar' : '') + (c.lg ? ' lg' : '');
       var b = document.createElement('b'); b.textContent = c.fig;
       var s = document.createElement('span');
-      li.appendChild(b); li.appendChild(s); list.appendChild(li);
+      li.appendChild(b); li.appendChild(s); list.appendChild(li); lis.push(li);
     });
-    // the two frames cover the box at the photograph's own aspect, so callouts stay on the things they name
     var frames = $$('.xr-frame');
+    function ltr() { return document.documentElement.dir !== 'rtl'; }
+    function narrow() { return window.matchMedia('(max-width: 700px)').matches; }
+    function edge() { return Math.max(4, 48 / box.clientWidth * 100); }        // the knob never parks inside a phone's edge-swipe zone
+    // the two frames cover the box at the photograph's own aspect, so callouts stay on the things they name
     function fit() {
       var W = box.clientWidth, H = box.clientHeight;
-      var ar = window.matchMedia('(max-width: 700px)').matches ? 900 / 1125 : 16 / 9;
+      var ar = narrow() ? 900 / 1125 : 16 / 9;
       var w = W, h = W / ar;
       if (h < H) { h = H; w = H * ar; }
       frames.forEach(function (f) { f.style.width = w + 'px'; f.style.height = h + 'px'; });
+      if (!inner) return;
+      var bt = box.getBoundingClientRect().top, r = inner.getBoundingClientRect();
+      if (narrow()) box.style.removeProperty('--ky');
+      else box.style.setProperty('--ky', Math.max(110, Math.min(H * 0.34, r.top - bt - 48)) + 'px');   // the knob stays clear of the headline on short screens
+      lis.forEach(function (li) {                                                                       // a callout the headline would overprint steps back
+        var c = li.getBoundingClientRect();
+        li.classList.toggle('under', !narrow() && c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top);
+      });
     }
     fit(); window.addEventListener('resize', fit);
-    var narrow = window.matchMedia('(max-width: 700px)').matches;
-    var x = narrow ? 50 : (document.documentElement.dir === 'rtl' ? 42 : 58);   // the data opens on the end side
-    var rest = x;
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    var x = narrow() ? 50 : (ltr() ? 58 : 42), rest = x;                       // the data opens on the end side
+    function dataShare() { return ltr() ? 100 - x : x; }
     function set(v) {
-      x = Math.max(4, Math.min(96, v));
+      var e = edge();
+      x = Math.max(e, Math.min(100 - e, v));
       box.style.setProperty('--x', x + '%');
       range.value = String(Math.round(x));
+      range.setAttribute('aria-valuetext', Math.round(dataShare()) + '%');
+      box.classList.toggle('sliver', dataShare() < 12);
     }
+    function park(reveal) { var e = Math.max(8, edge()); return (ltr() === reveal) ? e : 100 - e; }   // where a flip lands
     // one tween, driven by requestAnimationFrame — a custom property does not transition on its own
     var tw = null, raf = 0;
     function easeOut(p) { return 1 - Math.pow(1 - p, 3); }
@@ -94,11 +113,16 @@
     }
     // the intro: out to the far side (the data covering nine tenths), a beat, back to rest, then the knob breathes twice
     var hold = 0, touched = false;
-    function cancelIntro() { touched = true; stop(); if (hold) { clearTimeout(hold); hold = 0; } if (knob) knob.classList.remove('pulse'); }
+    function unhold() { if (hold) { clearTimeout(hold); hold = 0; } }
+    function retire() {                                                        // the first real interaction: the hint goes, the knob stops breathing
+      if (touched) return;
+      touched = true; unhold(); box.classList.add('touched');
+      if (knob) knob.classList.remove('pulse');
+    }
     function sweep() {
       hold = 0;
       if (touched || reduce || box.getBoundingClientRect().bottom <= 0) return;   // opened scrolled past the hero: nothing to show
-      var far = document.documentElement.dir === 'rtl' ? 90 : 10;
+      var far = ltr() ? Math.max(10, edge()) : Math.min(90, 100 - edge());
       tween(far, 1500, easeInOut, function () {
         hold = setTimeout(function () {
           hold = 0;
@@ -111,32 +135,69 @@
       var all = Promise.all(imgs.map(function (i) { return i.decode ? i.decode().catch(function () {}) : null; }));
       return Promise.race([all, new Promise(function (r) { setTimeout(r, 2500); })]);
     }
-    if (!reduce) ready().then(function () { if (!touched) hold = setTimeout(sweep, 600); });
-    var dragging = false, moved = 0, startX = 0;
+    if (!reduce) ready().then(function () { if (!touched && !hold) hold = setTimeout(sweep, 600); });
+    // the drag is RELATIVE from wherever the hand lands — the seam moves by what the hand moves and never
+    // jumps under it; on the knob the grab keeps its offset. A tap (no movement, under half a second) flips:
+    // whichever layer is smaller takes the frame. The first contact owns the drag; a second finger is
+    // ignored. A sideways move past the gate starts the drag; a vertical one is the page's own scroll, and
+    // if the browser then takes the gesture the seam goes back where the hand found it. The browser's own
+    // image drag is refused outright (dragstart) — it would tear a ghost across the screen and cancel the pointer.
+    var dragging = false, locked = false, moved = 0, startX = 0, startY = 0, x0 = x, xDown = x, pid = null, t0 = 0, gate = 3, slop = 6, onKnob = false, wasIntro = true;
+    box.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    function endDrag() { dragging = false; locked = false; pid = null; box.classList.remove('dragging'); }
     box.addEventListener('pointerdown', function (e) {
-      if (e.target.closest && e.target.closest('.hero-inner')) return;
-      cancelIntro();
-      dragging = true; moved = 0; startX = e.clientX;
+      if (e.button > 0 || dragging || e.isPrimary === false) return;          // right or middle button, or a second finger: not ours
+      stop(); unhold();                                                       // whatever was moving freezes under the hand
+      var touch = e.pointerType === 'touch';
+      gate = touch ? 8 : 3; slop = touch ? 12 : 6;
+      dragging = true; locked = false; moved = 0; startX = e.clientX; startY = e.clientY; x0 = xDown = x; pid = e.pointerId; t0 = e.timeStamp;
+      onKnob = !!(e.target.closest && e.target.closest('.xr-knob')); wasIntro = !touched;
+      box.classList.add('dragging');
       if (box.setPointerCapture) { try { box.setPointerCapture(e.pointerId); } catch (err) {} }
-      set((e.clientX - box.getBoundingClientRect().left) / box.clientWidth * 100);
+      e.preventDefault();                                                     // no selection, no focus theft…
+      try { range.focus({ preventScroll: true }); } catch (err) { try { range.focus(); } catch (err2) {} }   // …and the arrows work right after
     });
     box.addEventListener('pointermove', function (e) {
-      if (!dragging) return;
-      moved = Math.max(moved, Math.abs(e.clientX - startX));
-      set((e.clientX - box.getBoundingClientRect().left) / box.clientWidth * 100);
+      if (!dragging || e.pointerId !== pid) return;
+      if (e.pointerType === 'mouse' && e.buttons === 0) { endDrag(); return; }   // a release this page never saw
+      var dx = e.clientX - startX, dy = e.clientY - startY;
+      moved = Math.max(moved, Math.sqrt(dx * dx + dy * dy));
+      if (!locked) {
+        if (Math.abs(dx) < gate || Math.abs(dx) <= Math.abs(dy)) return;      // not a sideways drag yet: a tap, or the page's own scroll
+        locked = true; retire();
+      }
+      var v = x0 + dx / box.clientWidth * 100;
+      set(v);
+      if (x !== v) { x0 = x; startX = e.clientX; }                             // at the clamp: re-anchor, so reversing moves at once
     });
-    function up() {
-      if (!dragging) return; dragging = false;
-      if (moved < 6) tween(x > 50 ? 8 : 92, 550, easeOut);   // a click flips the layer
-    }
-    box.addEventListener('pointerup', up); box.addEventListener('pointercancel', up);
-    range.addEventListener('input', function () { cancelIntro(); set(parseFloat(range.value)); });
-    window.__setX = function (v) { cancelIntro(); set(v); };
-    window.__flipX = function () {                            // the language toggle mirrors the seam — mid-intro too
-      rest = 100 - rest;
+    function flip(reveal) { tween(park(reveal), 550, easeOut); }
+    box.addEventListener('pointerup', function (e) {
+      if (!dragging || e.pointerId !== pid) return;
+      var tap = !locked && moved < slop && (e.timeStamp - t0) < 500, wi = wasIntro;
+      endDrag();
+      if (tap) { retire(); if (!onKnob) flip(wi || dataShare() <= 50); }      // the first tap always reveals; the knob is a handle, not a switch
+      else if (!locked && !touched) tween(rest, 500, easeOut);                // a long hold mid-intro: settle
+    });
+    box.addEventListener('pointercancel', function (e) {
+      if (!dragging || e.pointerId !== pid) return;
+      var wasLocked = locked; endDrag();
+      if (wasLocked) tween(xDown, 160, easeOut);                              // the browser took the gesture: back where the hand found it
+      else if (!touched) tween(rest, 500, easeOut);                           // a scroll that began on the picture mid-intro: settle
+    });
+    box.addEventListener('lostpointercapture', function (e) { if (dragging && e.pointerId === pid) endDrag(); });
+    box.addEventListener('wheel', function (e) {                               // a trackpad's sideways swipe slides the seam instead of going "back"
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault(); stop(); retire();
+      set(x - e.deltaX / box.clientWidth * 100);
+    }, { passive: false });
+    range.addEventListener('input', function () { stop(); retire(); set(parseFloat(range.value)); });
+    window.__setX = function (v) { stop(); retire(); set(v); };
+    window.__flipX = function () {                                             // the language toggle mirrors the seam — mid-drag and mid-intro too
+      rest = 100 - rest; x0 = 100 + x0 - 2 * x; xDown = 100 - xDown;
       if (tw) { tw.from = 100 - tw.from; tw.to = 100 - tw.to; }
       set(100 - x);
     };
+    window.__fitX = fit;
     window.__xrIntro = function () { return { x: x, rest: rest, running: !!tw || !!hold, touched: touched }; };   // for the harness
     set(x);
   }
@@ -195,4 +256,6 @@
   var toggle = document.getElementById('lang');
   if (toggle) toggle.addEventListener('click', function () { apply(document.documentElement.lang === 'ar' ? 'en' : 'ar'); });
   window.__setLang = apply;
+  var nq = window.matchMedia && window.matchMedia('(max-width: 700px)');   // a phone turned sideways gets the long captions
+  if (nq && nq.addEventListener) nq.addEventListener('change', function () { apply(document.documentElement.lang); });
 })();

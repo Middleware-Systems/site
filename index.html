@@ -56,25 +56,25 @@
       <div class="xr-frame">
         <picture>
           <source media="(max-width: 700px)" srcset="img/scene-900.jpg">
-          <img src="img/scene-1600.jpg" alt="" width="1600" height="900" fetchpriority="high" decoding="async" data-i18n-alt="hero.alt">
+          <img src="img/scene-1600.jpg" alt="" width="1600" height="900" fetchpriority="high" decoding="async" data-i18n-alt="hero.alt" draggable="false">
         </picture>
       </div>
     </div>
-    <div class="xr-layer xr-data" aria-hidden="true">
+    <div class="xr-layer xr-data">
       <div class="xr-frame">
-        <picture>
+        <picture aria-hidden="true">
           <source media="(max-width: 700px)" srcset="img/xray-900.jpg">
-          <img src="img/xray-1600.jpg" alt="" width="1600" height="900" decoding="async">
+          <img src="img/xray-1600.jpg" alt="" width="1600" height="900" decoding="async" draggable="false">
         </picture>
-        <ul class="callouts" id="callouts"></ul>
+        <ul class="callouts" id="callouts" aria-label="الأرقام" data-i18n-aria="xray.label"></ul>
       </div>
     </div>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="xr-line" aria-hidden="true"></div>
-    <input class="xr-range" id="xr-range" type="range" min="4" max="96" value="58" aria-label="" data-i18n-aria="xray.hint">
+    <input class="xr-range" id="xr-range" type="range" min="4" max="96" step="2" value="58" dir="ltr" aria-label="الأرقام" data-i18n-aria="xray.label">
     <div class="xr-knob" id="xr-knob" aria-hidden="true">‹ ›</div>
-    <p class="xr-hint" id="xr-hint" data-i18n="xray.hint">اسحب وشوف</p>
-    <p class="xr-tag" data-i18n="xray.label">الأرقام</p>
+    <p class="xr-hint" id="xr-hint" aria-hidden="true" data-i18n="xray.hint">اسحب وشوف</p>
+    <p class="xr-tag" aria-hidden="true" data-i18n="xray.label">الأرقام</p>
   </div>
   <div class="hero-txt wrap">
     <div class="hero-inner">

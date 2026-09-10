@@ -42,6 +42,7 @@ html[lang="ar"] .n{font-size:.94em}
 .hd{position:fixed;inset-inline:0;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:14px clamp(16px,3vw,40px);min-height:60px;transition:background-color .25s,border-color .25s;border-bottom:1px solid transparent}
 .hd.past{background:rgba(10,10,13,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.hd:not(.past){pointer-events:none}.hd .wm,.hd .hd-end{pointer-events:auto}   /* over the hero the bar is glass: the picture beneath it still drags */
 .wm{display:inline-block;line-height:0}
 .wm img{height:14px;width:auto}
 .hd-end{display:flex;align-items:center;gap:10px}
@@ -69,10 +70,11 @@ html[lang="ar"] .btn-big{font-size:18px;padding:15px 28px 17px}
 
 /* ---------- 1 · the X-ray hero ---------- */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#0A0A0D}
-.xray{position:absolute;inset:0;cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.xray{position:absolute;inset:0;cursor:ew-resize;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.xr-knob:hover,.xray.dragging .xr-knob{transform:scale(1.06);box-shadow:0 0 34px var(--glow)}
 .xr-layer{position:absolute;inset:0;overflow:hidden}
 .xr-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
-.xr-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.xr-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;user-drag:none}   /* the hand lands on the frame, never on a draggable image */
 .xr-data{clip-path:inset(0 0 0 var(--x,58%))}
 html[dir="rtl"] .xr-data{clip-path:inset(0 calc(100% - var(--x,42%)) 0 0)}   /* the data opens on the end side: left in Arabic, right in English */
 .xr-data::before{content:"";position:absolute;inset:0;z-index:1;background-image:
@@ -81,7 +83,8 @@ html[dir="rtl"] .xr-data{clip-path:inset(0 calc(100% - var(--x,42%)) 0 0)}   /* 
 .callouts{list-style:none;margin:0;padding:0;position:absolute;inset:0;z-index:2}
 .callouts li{position:absolute;left:var(--cx);top:var(--cy);transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:flex-start;gap:1px;
   padding:9px 12px 8px;border:1px solid rgba(90,176,255,.55);background:rgba(10,10,13,.6);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
-  border-radius:6px;color:var(--accent-2);white-space:nowrap;box-shadow:0 0 22px var(--glow-soft);direction:ltr}
+  border-radius:6px;color:var(--accent-2);white-space:nowrap;box-shadow:0 0 22px var(--glow-soft);direction:ltr;transition:opacity .3s}
+.callouts li.under{opacity:0}   /* the headline would overprint it (computed in fit()) */
 .callouts li::before{content:"";position:absolute;left:-7px;top:50%;width:7px;height:7px;margin-top:-4px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--glow)}
 .callouts li.al{transform:translate(0,-50%);margin-left:10px}
 .callouts li.ar{transform:translate(-100%,-50%);margin-left:-10px}
@@ -89,27 +92,31 @@ html[dir="rtl"] .xr-data{clip-path:inset(0 calc(100% - var(--x,42%)) 0 0)}   /* 
 .callouts b{font-family:var(--mono);font-weight:500;font-size:16px;color:#fff;letter-spacing:-.01em}
 .callouts span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
 html[lang="ar"] .callouts span{font-family:var(--arabic);font-size:12px;letter-spacing:0;text-transform:none;direction:rtl}
-@media (max-width:700px){.callouts li{transform:translate(-50%,-50%) scale(.86);left:var(--mx,var(--cx));top:var(--my,var(--cy));white-space:normal;max-width:44vw;padding:7px 10px 6px}.callouts b{font-size:15px}.callouts span{line-height:1.35}.callouts li.al{transform:translate(0,-50%) scale(.86);transform-origin:left center}.callouts li.ar{transform:translate(-100%,-50%) scale(.86);transform-origin:right center}.callouts li.lg{display:none}}
+@media (max-width:700px){.callouts li{left:var(--mx,var(--cx));top:var(--my,var(--cy));white-space:normal;max-width:44vw;padding:6px 9px 5px}.callouts b{font-size:13.5px}.callouts span{font-size:11px;line-height:1.35}html[lang="ar"] .callouts span{font-size:12px}.callouts li.lg{display:none}.xray{--ky:42%}}   /* real sizes, not a scaled box: the captions stay legible; the knob sits nearer the thumb */
 .xr-line{position:absolute;top:0;bottom:0;left:var(--x,58%);width:1px;background:var(--accent);box-shadow:0 0 12px var(--glow),0 0 36px var(--glow);pointer-events:none;z-index:3}
-.xr-knob{position:absolute;top:34%;left:var(--x,58%);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:1px solid var(--accent);
+.xr-knob{position:absolute;top:var(--ky,34%);left:var(--x,58%);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:1px solid var(--accent);
   background:rgba(10,10,13,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 26px var(--glow);z-index:4;cursor:ew-resize;
   display:flex;align-items:center;justify-content:center;color:var(--accent-2);font-family:var(--mono);font-size:13px;letter-spacing:.1em;padding-inline-start:.1em}
 .xr-knob::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid var(--accent);opacity:0;pointer-events:none}
 .xr-knob.pulse::after{animation:xr-pulse 1.5s ease-out 2}   /* after the intro settles: the knob breathes twice */
 @keyframes xr-pulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.2);opacity:0}}
-.xr-hint{position:absolute;top:calc(34% + 34px);left:var(--x,58%);transform:translateX(-50%);z-index:4;pointer-events:none;
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);white-space:nowrap;opacity:.9}
+.xr-hint{position:absolute;top:calc(var(--ky,34%) + 34px);left:var(--x,58%);transform:translateX(-50%);z-index:4;pointer-events:none;
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);white-space:nowrap;
+  padding:4px 8px;border-radius:4px;background:rgba(10,10,13,.66);transition:opacity .5s}
+.xray.touched .xr-hint{opacity:0}   /* the coach mark retires after the first real interaction */
 html[lang="ar"] .xr-hint{font-family:var(--arabic);font-size:12.5px;letter-spacing:0;text-transform:none}
 .xr-tag{position:absolute;top:88px;left:calc(var(--x,58%) + 14px);z-index:4;pointer-events:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);
-  padding:5px 9px;border:1px solid rgba(90,176,255,.45);border-radius:4px;background:rgba(10,10,13,.5)}
+  padding:5px 9px;border:1px solid rgba(90,176,255,.45);border-radius:4px;background:rgba(10,10,13,.7);white-space:nowrap;transition:opacity .25s}
+.xray.sliver .xr-tag{opacity:0}   /* on a sliver the label would wrap against the edge, and it is redundant there */
 html[lang="ar"] .xr-tag{font-family:var(--arabic);font-size:12px;letter-spacing:0;text-transform:none}
 html[dir="rtl"] .xr-tag{left:auto;right:calc(100% - var(--x,42%) + 14px)}
-.xr-range{position:absolute;opacity:0;width:1px;height:1px;left:0;top:0}
-.xr-range:focus-visible ~ .xr-knob{outline:2px solid var(--accent-2);outline-offset:3px}
+.xr-range{position:absolute;opacity:0;width:1px;height:1px;left:0;top:0;direction:ltr}   /* physical, like the seam: → is right in both languages */
+.xr-range:focus-visible ~ .xr-knob{outline:2px solid #fff;outline-offset:4px}
 .hero-veil{position:absolute;inset:0;pointer-events:none;z-index:2;
   background:linear-gradient(to bottom,rgba(10,10,13,.6) 0%,rgba(10,10,13,0) 24%,rgba(10,10,13,0) 48%,rgba(10,10,13,.78) 76%,rgba(10,10,13,.97) 100%)}
 .hero-txt{position:relative;z-index:5;width:100%;padding-top:120px;padding-bottom:clamp(44px,8vw,96px);pointer-events:none}
-.hero-inner{pointer-events:auto;max-width:680px}
+.hero-inner{pointer-events:none;max-width:680px}   /* the hand drags the seam through the headline; only the button catches the pointer */
+.hero-inner .btn{pointer-events:auto}
 .hero h1{font-size:clamp(34px,5.6vw,70px);line-height:1.02;letter-spacing:-.03em;color:#fff}
 html[lang="ar"] .hero h1{font-size:clamp(30px,4.8vw,60px);line-height:1.45;letter-spacing:0}
 .answer{margin:20px 0 30px;font-size:clamp(18px,2vw,24px);color:var(--muted);max-width:40ch}
