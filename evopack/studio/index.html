@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="EvolutionPackaging makes paper cups and food packaging in Syria to the tenth of a millimetre, prints custom runs from 1,000 cups, and ships to Lebanon, Saudi Arabia and Germany.">
+<meta name="theme-color" content="#0A0C10">
+<meta property="og:site_name" content="EvoPack">
+<meta property="og:title" content="EvoPack — Paper cups and food packaging, printed from 1,000 pieces">
+<meta property="og:description" content="EvolutionPackaging makes paper cups and food packaging in Syria to the tenth of a millimetre, prints custom runs from 1,000 cups, and ships to Lebanon, Saudi Arabia and Germany.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/site/evopack/og.jpg">
+<meta property="og:locale" content="en_GB">
+<link rel="alternate" hreflang="ar" href="/site/evopack/ar/studio/" >
+<link rel="alternate" hreflang="en" href="/site/evopack/" >
+<link rel="icon" href="/site/evopack/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/site/evopack/apple-touch-icon.png">
+
+  <title>Your logo, on the cup, turning. — EvoPack</title>
+  <script type="module" crossorigin src="/site/evopack/assets/studio-5A91WIzw.js"></script>
+  <link rel="modulepreload" crossorigin href="/site/evopack/assets/catalogue-BA3tgClp.js">
+  <link rel="modulepreload" crossorigin href="/site/evopack/assets/three-Bg2ZFb32.js">
+  <link rel="modulepreload" crossorigin href="/site/evopack/assets/handoff-DbMagOWF.js">
+  <link rel="modulepreload" crossorigin href="/site/evopack/assets/copy-CfbOPe7F.js">
+  <link rel="stylesheet" crossorigin href="/site/evopack/assets/catalogue-gmT36IFy.css">
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="container nav__in">
+    <a class="logo" href="/site/evopack/" aria-label="EvoPack — home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="4" width="26" height="4.5" rx="2.25" fill="#0EA5C6"/><path d="M6 11.5h16.5L26 15l-2.55 11.1A2.3 2.3 0 0 1 21.19 28H10.81a2.3 2.3 0 0 1-2.26-1.9z" fill="currentColor"/></svg><span class="logo__word"><b>Evo</b>Pack</span>
+</a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/site/evopack/custom/">Custom print</a>
+      <a href="/site/evopack/wholesale/">Wholesale</a>
+      <a href="/site/evopack/catalogue/">Size matrix</a>
+      <a href="/site/evopack/studio/">3D studio</a>
+      <a class="btn btn--sm" href="/site/evopack/quote/">Build a quote</a>
+    </nav>
+    <div class="nav__tools">
+      <a class="nav__lang" href="/site/evopack/ar/studio/" hreflang="ar" lang="ar" dir="rtl" aria-label="Switch to Arabic">عربي</a>
+      <button class="nav__burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="banner container" style="padding-bottom:2rem">
+    <p class="kicker">The studio</p>
+    <h1 class="h1">Your logo, on the cup, turning.</h1>
+    <p class="lead">Everything here happens in your browser. Your file goes nowhere until you send the quote.</p>
+  </section>
+  <section class="section" style="padding-top:1rem" id="studio">
+    <div class="container studio">
+      <div class="studio__view" id="st-canvas-host">
+        <span class="studio__badge" id="st-badge"></span>
+        <p class="studio__empty" id="st-empty"><b>No logo yet</b> — The cup is waiting. Upload a file to see your brand wrap around it.</p>
+      </div>
+      <div class="note note--bad" id="st-webgl-missing" hidden>This browser cannot show the 3D cup. The quote builder still works, and we send a proof on the real dieline either way.</div>
+      <div class="studio__panel">
+        <div class="field">
+          <span class="lbl">Wall</span>
+          <div class="toggle" id="st-wall" role="group" aria-label="Wall">
+            <button type="button" data-wall="single" aria-pressed="true">Single</button>
+            <button type="button" data-wall="double" aria-pressed="false">Double</button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="lbl">Size</span>
+          <div class="chips" id="st-sizes"></div>
+        </div>
+        <div class="field">
+          <span class="lbl">Board</span>
+          <div class="swatches" id="st-board" role="group" aria-label="Board">
+            <button type="button" class="swatch" data-board="kraft" aria-pressed="false" aria-label="Kraft" style="background:#C69A6B"></button>
+            <button type="button" class="swatch" data-board="white" aria-pressed="true" aria-label="White" style="background:#F4F1EA"></button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="lbl">Logo</span>
+          <label class="drop" id="st-drop"><input type="file" id="st-file" accept=".svg,.png,.jpg,.jpeg,.webp,image/svg+xml,image/png,image/jpeg,image/webp"><span class="small">Drop a logo here, or click to choose. SVG, PNG or JPG. Vector is best.</span></label>
+          <div class="file" id="st-file-card" hidden>
+            <img id="st-file-thumb" alt="">
+            <div><b id="st-file-name"></b><small>Vector recommended. Stays in your browser.</small></div>
+            <button type="button" class="btn btn--ghost btn--sm" id="st-replace">Replace</button>
+            <button type="button" class="btn btn--ghost btn--sm" id="st-remove">Remove</button>
+          </div>
+        </div>
+        <div class="grid grid--2" style="gap:1rem">
+          <div class="field"><label for="st-scale">Scale <output id="st-scale-out"></output></label><input class="range" type="range" id="st-scale" min="0.15" max="0.95" step="0.01"></div>
+          <div class="field"><label for="st-pos">Height <output id="st-pos-out"></output></label><input class="range" type="range" id="st-pos" min="0.2" max="0.8" step="0.01"></div>
+        </div>
+        <div class="field">
+          <span class="lbl">Repeat</span>
+          <div class="toggle" id="st-repeat" role="group" aria-label="Repeat">
+            <button type="button" data-repeat="1" aria-pressed="true">Once</button>
+            <button type="button" data-repeat="2" aria-pressed="false">Twice</button>
+            <button type="button" data-repeat="3" aria-pressed="false">Three times</button>
+          </div>
+        </div>
+        <div class="row between">
+          <label class="row" style="gap:.5rem"><input type="checkbox" id="st-spin"> Spin</label>
+          <button type="button" class="btn btn--ghost btn--sm" id="st-reset">Reset view</button>
+        </div>
+        <div class="stack" style="margin-top:.5rem">
+          <button type="button" class="btn btn--lg" id="st-quote">Get a quote for this design</button>
+          <p class="small">The size, board and your artwork travel with you into the quote.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container footer__in">
+    <div class="stack">
+      <a class="logo" href="/site/evopack/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="4" width="26" height="4.5" rx="2.25" fill="#0EA5C6"/><path d="M6 11.5h16.5L26 15l-2.55 11.1A2.3 2.3 0 0 1 21.19 28H10.81a2.3 2.3 0 0 1-2.26-1.9z" fill="currentColor"/></svg><span class="logo__word"><b>Evo</b>Pack</span>
+</a>
+      <p>EvolutionPackaging · Made in Syria · Lebanon · Saudi Arabia · Germany</p>
+      <p class="small">© <span data-year></span> EvolutionPackaging. All rights reserved.</p>
+    </div>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="/site/evopack/custom/">Custom print</a>
+      <a href="/site/evopack/wholesale/">Wholesale</a>
+      <a href="/site/evopack/catalogue/">Size matrix</a>
+      <a href="/site/evopack/studio/">3D studio</a>
+      <a href="/site/evopack/quote/">Build a quote</a>
+      <a href="/site/evopack/ar/studio/" hreflang="ar" lang="ar">عربي</a>
+      
+      
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

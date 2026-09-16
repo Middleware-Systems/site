@@ -1,0 +1,1 @@
+const s="evopack:design";function n(e){sessionStorage.setItem(s,JSON.stringify({...e,v:1,savedAt:Date.now()}))}function t(){try{const e=JSON.parse(sessionStorage.getItem(s)||"null");return e&&e.sizeId?e:null}catch{return null}}function o(){sessionStorage.removeItem(s)}export{o as c,t as l,n as s};
