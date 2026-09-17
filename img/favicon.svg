@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- MIDDLEWARE "M." mark — ink tile, paper M, oxblood period. Built by build_marks.py -->
-  <rect width="64" height="64" rx="14" fill="#17171B"/>
-  <path d="M14 45 V19 L26.5 35.5 L39 19 V45" fill="none" stroke="#EDEAE2" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="48" cy="45" r="4.5" fill="#D9756B"/>
-</svg>

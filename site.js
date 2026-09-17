@@ -10,7 +10,7 @@
   var FIG = /*FIG*/{"f1n": "820", "f2n": "40", "f4n": "134", "f4o": "$31,000"}/*/FIG*/;
 
   /* the dictionary — written by tools/fill.py from site/copy.json; never edit here */
-  var T = /*T*/{"ar": {"title": "MIDDLEWARE — بتصير شايف.", "desc": "شركتك عكل تلفون.", "xray.hint": "اسحب وشوف", "xray.label": "الأرقام", "hero.alt": "دفتر وتلفون بالخان", "reading.eb": "القراءة", "reading.h": "ورقتين. أرقامك جنب بعضها.", "reading.cap": "أسامي مشالة، أرقام مدوّرة.", "reading.alt": "القراءة", "f1": "نايمة بـ <span class=\"n\">{f1n}</span> صنف هالسنة", "f2": "بالشهر على <span class=\"n\">{f2n}</span> صنف تغطيتهن تحت الشهرين", "f3": "زبون فوق <span class=\"n\" dir=\"ltr\">$2,000</span> بالسنة، غايبين أربع أشهر", "f4": "عند <span class=\"n\">{f4n}</span> زبون، <span class=\"n\" dir=\"ltr\">{f4o}</span> فوق <span class=\"n\">90</span> يوم", "f5": "بنود انباعوا تحت الكلفة", "client.eb": "زبون: Lightware", "client.h": "لليوم شغّال عالنظام.", "client.p": "موزّع إنارة. كل شي جوّا <span class=\"lat\">Al-Ameen</span>، ولا شي عتلفون صاحبو.", "c1": "صنف عكل تلفون", "c2": "صنف مصوّر عالموقع", "c3": "من تموز، كل ساعة. Al-Ameen بحالو.", "how.eb": "البداية", "how.h": "<span class=\"n\">20</span> دقيقة. <span class=\"n\">3</span> ملفات. ورقتين.", "s1": "<span class=\"n\">20</span> دقيقة. بلا عرض. منسأل وإنت بتحكي.", "s2": "<span class=\"n\">3</span> ملفات، وتعهّد موقّع قبلهن.", "s3": "ورقتين، أصنافك عتلفونك، بعدين السعر.", "s4": "بتدفع لما تختار.", "accountant": "للمحاسب: دخول قراءة بس. جرّبو، بيرفض. واحذفو براحتك.", "build.eb": "الشغل", "build.intro": "أنظمة شركتك، مو تسويقها.", "p.system": "النظام", "p.systemL": "برنامجك عكل تلفون بالمحل، كل ساعة.", "p.morning": "الصبح", "p.morningL": "رقمك قبل ما توصل.", "p.statement": "الكشف", "p.statementL": "كشف بالصور، عالواتساب بثواني.", "p.floor": "الصالة", "p.floorL": "ورق وواتساب، طابور واحد عند يلي بيفوتر.", "p.catalogue": "الكتالوج", "p.catalogueL": "أصنافك بصورة، أو متجر أونلاين.", "p.profile": "البروفايل", "p.profileL": "لزبون من برّا: موقع، بروفايل، عرض سعر.", "p.exception": "الاستثناء", "p.exceptionL": "عندك «إلا لما…»؟ منبنيه.", "proof": "من تموز <span class=\"n\">2026</span>: <span class=\"n\">2,800</span> صنف.", "contact.eb": "المكالمة", "contact.h": "الأرقام عندك. شوفها.", "contact.wa": "واتساب", "foot": "دمشق", "sentence": "برنامج المحاسبة عندك بيعرف كل شي عن شركتك. وإنت ما عم تشوف منو ولا شي.", "answer": "ما منغيّر شي. بس فجأة بتصير شايف.", "btn": "<span class=\"n\">20</span> دقيقة عالتلفون", "btnShort": "<span class=\"n\">20</span> دقيقة", "msg": "مرحبا، شفت الموقع. بدي أحكي معكن ٢٠ دقيقة عن شغلي.", "toggle": "عربي", "toggleName": "العربية"}, "en": {"title": "MIDDLEWARE — Suddenly you can see.", "desc": "Everything in your program, on every phone.", "xray.hint": "Drag to see", "xray.label": "The numbers", "hero.alt": "Ledger and phone, khan storeroom", "reading.eb": "The Reading", "reading.h": "Two pages. Your numbers, side by side.", "reading.cap": "Names removed, figures rounded.", "reading.alt": "The Reading", "f1": "asleep all year in <span class=\"n\">{f1n}</span> items", "f2": "a month on <span class=\"n\">{f2n}</span> items under two months’ cover", "f3": "customers over <span class=\"n\" dir=\"ltr\">$2,000</span> last year, absent four months", "f4": "owed by <span class=\"n\">{f4n}</span> customers, <span class=\"n\" dir=\"ltr\">{f4o}</span> past ninety days", "f5": "lines sold below cost", "client.eb": "A client: Lightware", "client.h": "Still runs on the System.", "client.p": "A lighting distributor. Everything in <span class=\"lat\">Al-Ameen</span>, nothing on the owner’s phone.", "c1": "items on every phone", "c2": "items photographed, published", "c3": "since July, hourly. Al-Ameen untouched.", "how.eb": "The start", "how.h": "<span class=\"n\">20</span> minutes. <span class=\"n\">3</span> files. <span class=\"n\">2</span> pages.", "s1": "<span class=\"n\">20</span> minutes. No pitch. We ask, you talk.", "s2": "<span class=\"n\">3</span> files. Signed undertaking first.", "s3": "Two pages. Your items on your phone. Then a price.", "s4": "You pay when you choose.", "accountant": "For the accountant: read-only login. Watch it fail. Delete anytime.", "build.eb": "The Work", "build.intro": "Systems a business runs on. Not marketing.", "p.system": "The System", "p.systemL": "Your program, every phone, every hour.", "p.morning": "The Morning", "p.morningL": "One number, before you arrive.", "p.statement": "The Statement", "p.statementL": "Statement with photographs, on WhatsApp in seconds.", "p.floor": "The Floor", "p.floorL": "Paper and WhatsApp, one queue for whoever bills.", "p.catalogue": "The Catalogue", "p.catalogueL": "Products photographed. Or a full online store.", "p.profile": "The Profile", "p.profileL": "For the buyer abroad: site, profile, quotation.", "p.exception": "The Exception", "p.exceptionL": "We build your “except when…”.", "proof": "Since July <span class=\"n\">2026</span>: <span class=\"n\">2,800</span> items.", "contact.eb": "The call", "contact.h": "The numbers exist. See them.", "contact.wa": "WhatsApp", "foot": "Damascus", "sentence": "Your accounting program knows everything about your business. You can’t see any of it.", "answer": "Nothing changes. Suddenly you can see.", "btn": "Twenty minutes on the phone", "btnShort": "Twenty minutes", "msg": "Hello, I saw the site. I’d like the twenty minutes about my business.", "toggle": "EN", "toggleName": "English"}}/*/T*/;
+  var T = /*T*/{"ar": {"title": "MIDDLEWARE — بتصير شايف.", "desc": "شركتك عكل تلفون.", "xray.hint": "اسحب وشوف", "xray.label": "الأرقام", "hero.alt": "دفتر وتلفون بالخان", "reading.eb": "القراءة", "reading.h": "ورقتين. أرقامك جنب بعضها.", "reading.cap": "أسامي مشالة، أرقام مدوّرة.", "reading.alt": "القراءة", "f1": "نايمة بـ <span class=\"n\">{f1n}</span> صنف هالسنة", "f2": "بالشهر على <span class=\"n\">{f2n}</span> صنف تغطيتهن تحت الشهرين", "f3": "زبون فوق <span class=\"n\" dir=\"ltr\">$2,000</span> بالسنة، غايبين أربع أشهر", "f4": "عند <span class=\"n\">{f4n}</span> زبون، <span class=\"n\" dir=\"ltr\">{f4o}</span> فوق <span class=\"n\">90</span> يوم", "f5": "بنود انباعوا تحت الكلفة", "client.eb": "زبون: Lightware", "client.h": "لليوم شغّال عالنظام.", "client.p": "موزّع إنارة. كل شي جوّا <span class=\"lat\">Al-Ameen</span>، ولا شي عتلفون صاحبو.", "c1": "صنف عكل تلفون", "c2": "صنف مصوّر عالموقع", "c3": "من تموز، كل ساعة. Al-Ameen بحالو.", "how.eb": "البداية", "how.h": "<span class=\"n\">20</span> دقيقة. <span class=\"n\">3</span> ملفات. ورقتين.", "s1": "<span class=\"n\">20</span> دقيقة. بلا عرض. منسأل وإنت بتحكي.", "s2": "<span class=\"n\">3</span> ملفات، وتعهّد موقّع قبلهن.", "s3": "ورقتين، أصنافك عتلفونك، بعدين السعر.", "s4": "بتدفع لما تختار.", "accountant": "للمحاسب: دخول قراءة بس. جرّبو، بيرفض. واحذفو براحتك.", "how.q": "بعد المكالمة: <span class=\"n\">14</span> سؤال عن شغلك ونظامك، بتجاوب عليهن عتلفونك.", "how.qa": "افتح الأسئلة", "build.eb": "الشغل", "build.intro": "أنظمة شركتك، مو تسويقها.", "p.system": "النظام", "p.systemL": "برنامجك عكل تلفون بالمحل، كل ساعة.", "p.morning": "الصبح", "p.morningL": "رقمك قبل ما توصل.", "p.statement": "الكشف", "p.statementL": "كشف بالصور، عالواتساب بثواني.", "p.floor": "الصالة", "p.floorL": "ورق وواتساب، طابور واحد عند يلي بيفوتر.", "p.catalogue": "الكتالوج", "p.catalogueL": "أصنافك بصورة، أو متجر أونلاين.", "p.profile": "البروفايل", "p.profileL": "لزبون من برّا: موقع، بروفايل، عرض سعر.", "p.exception": "الاستثناء", "p.exceptionL": "عندك «إلا لما…»؟ منبنيه.", "proof": "من تموز <span class=\"n\">2026</span>: <span class=\"n\">2,800</span> صنف.", "contact.eb": "المكالمة", "contact.h": "الأرقام عندك. شوفها.", "contact.wa": "واتساب", "foot": "دمشق", "sentence": "برنامج المحاسبة عندك بيعرف كل شي عن شركتك. وإنت ما عم تشوف منو ولا شي.", "answer": "ما منغيّر شي. بس فجأة بتصير شايف.", "btn": "<span class=\"n\">20</span> دقيقة عالتلفون", "btnShort": "<span class=\"n\">20</span> دقيقة", "msg": "مرحبا، شفت الموقع. بدي أحكي معكن ٢٠ دقيقة عن شغلي.", "toggle": "عربي", "toggleName": "العربية"}, "en": {"title": "MIDDLEWARE — Suddenly you can see.", "desc": "Everything in your program, on every phone.", "xray.hint": "Drag to see", "xray.label": "The numbers", "hero.alt": "Ledger and phone, khan storeroom", "reading.eb": "The Reading", "reading.h": "Two pages. Your numbers, side by side.", "reading.cap": "Names removed, figures rounded.", "reading.alt": "The Reading", "f1": "asleep all year in <span class=\"n\">{f1n}</span> items", "f2": "a month on <span class=\"n\">{f2n}</span> items under two months’ cover", "f3": "customers over <span class=\"n\" dir=\"ltr\">$2,000</span> last year, absent four months", "f4": "owed by <span class=\"n\">{f4n}</span> customers, <span class=\"n\" dir=\"ltr\">{f4o}</span> past ninety days", "f5": "lines sold below cost", "client.eb": "A client: Lightware", "client.h": "Still runs on the System.", "client.p": "A lighting distributor. Everything in <span class=\"lat\">Al-Ameen</span>, nothing on the owner’s phone.", "c1": "items on every phone", "c2": "items photographed, published", "c3": "since July, hourly. Al-Ameen untouched.", "how.eb": "The start", "how.h": "<span class=\"n\">20</span> minutes. <span class=\"n\">3</span> files. <span class=\"n\">2</span> pages.", "s1": "<span class=\"n\">20</span> minutes. No pitch. We ask, you talk.", "s2": "<span class=\"n\">3</span> files. Signed undertaking first.", "s3": "Two pages. Your items on your phone. Then a price.", "s4": "You pay when you choose.", "accountant": "For the accountant: read-only login. Watch it fail. Delete anytime.", "how.q": "After the call: <span class=\"n\">14</span> questions about your business and your system, answered on your phone.", "how.qa": "Open the questions", "build.eb": "The Work", "build.intro": "Systems a business runs on. Not marketing.", "p.system": "The System", "p.systemL": "Your program, every phone, every hour.", "p.morning": "The Morning", "p.morningL": "One number, before you arrive.", "p.statement": "The Statement", "p.statementL": "Statement with photographs, on WhatsApp in seconds.", "p.floor": "The Floor", "p.floorL": "Paper and WhatsApp, one queue for whoever bills.", "p.catalogue": "The Catalogue", "p.catalogueL": "Products photographed. Or a full online store.", "p.profile": "The Profile", "p.profileL": "For the buyer abroad: site, profile, quotation.", "p.exception": "The Exception", "p.exceptionL": "We build your “except when…”.", "proof": "Since July <span class=\"n\">2026</span>: <span class=\"n\">2,800</span> items.", "contact.eb": "The call", "contact.h": "The numbers exist. See them.", "contact.wa": "WhatsApp", "foot": "Damascus", "sentence": "Your accounting program knows everything about your business. You can’t see any of it.", "answer": "Nothing changes. Suddenly you can see.", "btn": "Twenty minutes on the phone", "btnShort": "Twenty minutes", "msg": "Hello, I saw the site. I’d like the twenty minutes about my business.", "toggle": "EN", "toggleName": "English"}}/*/T*/;
 
   /* the data layer's callouts — written by tools/fill.py from site/copy.json (real figures only) */
   var CALLOUTS = /*CALLOUTS*/[{"cx": 26, "cy": 30, "a": "l", "fig": "$118,600", "ar": "نايمة على الرفوف · 820 صنف", "en": "asleep on the racks · 820 items", "lg": false, "mx": 20, "my": 18.6, "ars": "نايمة · 820 صنف", "ens": "asleep · 820 items"}, {"cx": 86, "cy": 30, "a": "r", "fig": "$15,600", "ar": "مبيع شهري على 40 صنف · أقل من شهرين تغطية", "en": "a month on 40 items · under two months of cover", "lg": false, "mx": 80, "my": 18.6, "ars": "بالشهر · 40 صنف", "ens": "a month · 40 items"}, {"cx": 30, "cy": 46, "a": "l", "fig": "2,829", "ar": "صنف عالدفتر · ولا واحد بلا رقم", "en": "items on the book · not one without a number", "lg": false, "mx": 20, "my": 28.5, "ars": "صنف عالدفتر", "ens": "items on the book"}, {"cx": 26, "cy": 68, "a": "l", "fig": "243", "ar": "صنف بالأحمر · 113 خلصوا", "en": "in the red · 113 out of stock", "lg": false, "mx": 20, "my": 42.2, "ars": "بالأحمر · 113 خلصوا", "ens": "in the red · 113 out"}, {"cx": 82, "cy": 57, "a": "r", "fig": "6", "ar": "بنود انباعوا تحت الكلفة", "en": "lines sold below cost", "lg": false, "mx": 80, "my": 35.3, "ars": "تحت الكلفة", "ens": "below cost"}, {"cx": 62, "cy": 70, "a": "l", "fig": "$79,400", "ar": "مستحقة عند 134 زبون", "en": "owed by 134 customers", "lg": false, "mx": 55.5, "my": 43.4, "ars": "مستحقة · 134 زبون", "ens": "owed · 134 customers"}]/*/CALLOUTS*/;
@@ -47,7 +47,8 @@
   function xray() {
     var box = document.getElementById('xray'), range = document.getElementById('xr-range');
     if (!box || !range) return;
-    var list = document.getElementById('callouts'), knob = box.querySelector('.xr-knob'), inner = document.querySelector('.hero-inner');
+    var list = document.getElementById('callouts'), knob = box.querySelector('.xr-knob'), inner = document.querySelector('.hero-inner'),
+        hint = box.querySelector('.xr-hint'), tag = box.querySelector('.xr-tag');
     var rmq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
     var reduce = !!(rmq && rmq.matches);
     if (rmq && rmq.addEventListener) rmq.addEventListener('change', function (e) { reduce = e.matches; });
@@ -62,9 +63,10 @@
       li.appendChild(b); li.appendChild(s); list.appendChild(li); lis.push(li);
     });
     var frames = $$('.xr-frame');
+    var x = narrow() ? 50 : (ltr() ? 58 : 42), rest = x;                       // the data opens on the end side
     function ltr() { return document.documentElement.dir !== 'rtl'; }
     function narrow() { return window.matchMedia('(max-width: 700px)').matches; }
-    function edge() { return Math.max(4, 48 / box.clientWidth * 100); }        // the knob never parks inside a phone's edge-swipe zone
+    function edge() { return Math.max(4, 48 / box.clientWidth * 100); }        // the KNOB never parks inside a phone's edge-swipe zone; the seam itself goes to the edge
     // the two frames cover the box at the photograph's own aspect, so callouts stay on the things they name
     function fit() {
       var W = box.clientWidth, H = box.clientHeight;
@@ -83,12 +85,53 @@
         pin(li, c, c.cx, c.cy, c.a, false);
         li.lastChild.textContent = (nar && c[k]) || c[lang] || c.en;
       });
-      if (!inner || nar) { box.style.removeProperty('--ky'); box.style.removeProperty('--veil-top'); return; }
-      var bt = box.getBoundingClientRect().top, r = inner.getBoundingClientRect();
+      var bt = box.getBoundingClientRect().top, r = inner ? inner.getBoundingClientRect() : null;
+      // the knob cluster's real boxes, measured once (the hint and the tag are wider in English than in Arabic)
+      var hintR = hint ? hint.getBoundingClientRect() : { width: 110, height: 26 }, tagR = tag ? tag.getBoundingClientRect() : { width: 112, height: 24 };
+      var hw = hintR.width / 2 + 2, hb = 34 + hintR.height + 2, tw = tagR.width + 2, tb = tagR.height - 14 + 2;
+      var rects = [];
+      function collect() { rects = []; lis.forEach(function (li, i) { if (CALLOUTS[i] && getComputedStyle(li).display !== 'none' && !li.classList.contains('under')) { var c = li.getBoundingClientRect(); rects.push([c.left, c.right, c.top - bt, c.bottom - bt]); } }); }
+      function overlap(x0, x1, y0, y1) { var a = 0; rects.forEach(function (b) { a += Math.max(0, Math.min(x1, b[1]) - Math.max(x0, b[0])) * Math.max(0, Math.min(y1, b[3]) - Math.max(y0, b[2])); }); return a; }
+      function cost(cy, kxs, withHint) {   // the knob at each x in kxs, the tag beside it on the data side, the hint under it
+        var a = 0, L = ltr();
+        kxs.forEach(function (kx) {
+          a += overlap(kx - 23, kx + 23, cy - 23, cy + 23);
+          a += L ? overlap(kx + 34, kx + 34 + tw, cy - 14, cy + tb) : overlap(kx - 34 - tw, kx - 34, cy - 14, cy + tb);
+          if (withHint) a += overlap(kx - hw, kx + hw, cy + 24, cy + hb);
+        });
+        return a;
+      }
+      function hit(li) { var c = li.getBoundingClientRect(); return !!r && c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top; }
+      if (nar) {
+        // a phone: first, a callout pinned past the screen's edge slides inside it (the frame is wider than a tall phone)
+        lis.forEach(function (li, i) {
+          if (!CALLOUTS[i] || getComputedStyle(li).display === 'none') return;
+          var c = li.getBoundingClientRect(), over = c.right > W - 4 ? c.right - (W - 4) : c.left < 4 ? c.left - 4 : 0;
+          if (over) li.style.setProperty('--mx', (parseFloat(li.style.getPropertyValue('--mx') || li.style.getPropertyValue('--cx')) - over / frames[0].getBoundingClientRect().width * 100) + '%');
+        });
+        // a callout the headline block covers is hidden rather than cut through (a 560 px viewport has no room for six):
+        lis.forEach(function (li, i) { if (CALLOUTS[i]) li.classList.toggle('under', getComputedStyle(li).display !== 'none' && hit(li)); });
+        // then the knob's row: it parks 48 px inside either edge when the seam is at the end, so its row must be clear of the
+        // callouts at BOTH clamps and above the headline — the lowest such band (nearest the thumb), with the hint under
+        // it when that fits, without it when not; on a short phone the strip under the glass header counts, and the row
+        // that covers the least is the last resort (.squeezed). The tag rides beside the knob on phones too, as on the desktop.
+        box.style.removeProperty('--veil-top');
+        collect();
+        var hl = r ? r.top - bt : H, L = ltr(), kin = L ? 48 : W - 48, kout = L ? W - 48 : 48;
+        var lg = document.getElementById('lang'), floor = lg ? Math.ceil(lg.getBoundingClientRect().bottom - bt) + 23 + 4 : 68;   // clear of the language toggle
+        var best = 0, bestCost = Infinity, ky = 0, cramped = true, cy;
+        for (cy = Math.floor(hl - 16 - hb); cy >= floor; cy -= 2) { if (cost(cy, [kin, kout], true) === 0) { ky = cy; cramped = false; break; } }
+        if (!ky) for (cy = Math.floor(hl - 16 - 23); cy >= floor; cy -= 2) { var k = cost(cy, [kin, kout], false); if (k === 0) { ky = cy; break; } if (k < bestCost) { bestCost = k; best = cy; } }
+        box.classList.toggle('squeezed', !ky);
+        if (!ky) ky = best || Math.round(H * 0.42);
+        box.style.setProperty('--ky', ky + 'px');
+        box.classList.toggle('cramped', cramped);
+        return;
+      }
+      if (!inner) { box.style.removeProperty('--ky'); box.style.removeProperty('--veil-top'); return; }
       // a callout the headline block would cover keeps its dot on a real object: first it tries its own pin with the
       // short label, then the next free alternate pin up the same rack (copy.json → SLOTS, near to far, so they
       // follow the rack's perspective instead of forming a row); only a screen where nothing fits hides it
-      function hit(li) { var c = li.getBoundingClientRect(); return c.left < r.right && c.right > r.left && c.top < r.bottom && c.bottom > r.top; }
       var placed = [], fh = list.getBoundingClientRect().height, moving = [];
       lis.forEach(function (li, i) { if (CALLOUTS[i]) { if (hit(li)) moving.push(i); else placed.push(li.getBoundingClientRect()); } });
       function settle(li) {                                          // slide down the carton until clear of the header and of every box already placed
@@ -114,23 +157,38 @@
       });
       // the knob, its tag and its hint are one cluster on the seam: clear of the header, the shelf and, when there is room, the headline
       var ky = Math.max(110, Math.min(H * 0.34, r.top - bt - 48));
+      // at rest the knob, its tag and its hint must not sit on a figure: the nearest clear band to the preferred row wins
+      collect();
+      var eD = edge() / 100 * W, kxs = [rest / 100 * W, eD, W - eD], hlD = r.top - bt, cramped = ky + 40 > hlD;
+      function band(withHint) {   // the nearest row to the preferred one where the cluster covers no figure; 0 if none
+        if (cost(ky, kxs, withHint) === 0) return ky;
+        for (var d = 2; d <= 240; d += 2) {
+          var up = ky - d, dn = ky + d;
+          if (up >= 110 && cost(up, kxs, withHint) === 0) return up;
+          if (dn + 23 + (withHint ? hb - 23 : 0) + 16 <= hlD && cost(dn, kxs, withHint) === 0) return dn;
+        }
+        return 0;
+      }
+      var kyB = cramped ? 0 : band(true);
+      if (!kyB) { kyB = band(false); if (kyB) cramped = true; }   // no row holds the hint too: the pulse invites instead
+      if (kyB) ky = kyB;
       box.style.setProperty('--ky', ky + 'px');
-      box.classList.toggle('cramped', ky + 40 > r.top - bt);                 // the hint would sit on the headline's letters: the pulse invites instead
+      box.classList.toggle('cramped', cramped);                              // the hint would sit on the headline's letters: the pulse invites instead
       box.style.setProperty('--veil-top', Math.max(0, r.top - bt - 24) + 'px');   // the side veil darkens from the headline down, never the shelf above it
     }
     fit(); window.addEventListener('resize', fit);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-    var x = narrow() ? 50 : (ltr() ? 58 : 42), rest = x;                       // the data opens on the end side
     function dataShare() { return ltr() ? 100 - x : x; }
     function set(v) {
       var e = edge();
-      x = Math.max(e, Math.min(100 - e, v));
+      x = Math.max(0, Math.min(100, v));                                      // to the very edge: a callout pinned there shows whole (Samir, 18 Sep 2026)
       box.style.setProperty('--x', x + '%');
+      box.style.setProperty('--kx', Math.max(e, Math.min(100 - e, x)) + '%');   // the knob, its tag and its hint stop 48 px short and let the line go on
       range.value = String(Math.round(x));
       range.setAttribute('aria-valuetext', Math.round(dataShare()) + '%');
       box.classList.toggle('sliver', dataShare() < 12);
     }
-    function park(reveal) { var e = Math.max(8, edge()); return (ltr() === reveal) ? e : 100 - e; }   // where a flip lands
+    function park(reveal) { return (ltr() === reveal) ? 0 : 100; }   // where a flip lands: the whole layer, every figure whole
     // one tween, driven by requestAnimationFrame — a custom property does not transition on its own
     var tw = null, raf = 0;
     function easeOut(p) { return 1 - Math.pow(1 - p, 3); }
@@ -160,7 +218,7 @@
     function sweep() {
       hold = 0;
       if (touched || reduce || box.getBoundingClientRect().bottom <= 0) return;   // opened scrolled past the hero: nothing to show
-      var far = ltr() ? Math.max(10, edge()) : Math.min(90, 100 - edge());
+      var far = ltr() ? 0 : 100;                                              // the intro shows the whole layer once
       tween(far, 1500, easeInOut, function () {
         hold = setTimeout(function () {
           hold = 0;

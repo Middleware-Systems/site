@@ -71,7 +71,7 @@ html[lang="ar"] .btn-big{font-size:18px;padding:15px 28px 17px}
 /* ---------- 1 · the X-ray hero ---------- */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#0A0A0D}
 .xray{position:absolute;inset:0;cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
-  --ty:calc(var(--ky,34%) - 14px);--tx:34px}   /* the tag rides beside the knob; on phones it goes back to the top corner.
+  --ty:calc(var(--ky,34%) - 14px);--tx:34px}   /* the tag rides beside the knob, on every screen (phones too since 18 Sep 2026).
   touch-action pan-y, and NOT pinch-zoom: with pinch-zoom allowed, iOS treats a resting thumb plus a dragging finger as a possible
   pinch, cancels the pointers and never sends the finger's pointerdown — measured on Samir's phone, 11 Sep 2026. The rest of the page still zooms. */
 .xr-knob:hover,.xray.dragging .xr-knob{transform:scale(1.06);box-shadow:0 0 34px var(--glow)}
@@ -87,7 +87,8 @@ html[dir="rtl"] .xr-data{-webkit-clip-path:inset(0 calc(100% - var(--x,42%)) 0 0
 .callouts li{position:absolute;left:var(--cx);top:var(--cy);transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:flex-start;gap:1px;
   padding:9px 12px 8px;border:1px solid rgba(90,176,255,.55);background:rgba(10,10,13,.6);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
   border-radius:6px;color:var(--accent-2);white-space:nowrap;box-shadow:0 0 22px var(--glow-soft);direction:ltr;transition:opacity .3s}
-.callouts li.under{opacity:0}   /* no pin on this screen keeps it clear of the headline (computed in fit()) */
+.callouts li.under{opacity:0}   /* no pin on this screen keeps it clear of the headline (computed in fit()); on a phone, a callout the headline block covers */
+@media (max-width:700px){.xray.squeezed .xr-tag{opacity:0}}   /* the smallest phones have no clear row for the whole cluster: the tag yields, the knob keeps its arrows */
 .callouts li::before{content:"";position:absolute;left:-7px;top:50%;width:7px;height:7px;margin-top:-4px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--glow)}
 .callouts li.al{transform:translate(0,-50%);margin-left:10px}
 .callouts li.ar{transform:translate(-100%,-50%);margin-left:-10px}
@@ -95,24 +96,25 @@ html[dir="rtl"] .xr-data{-webkit-clip-path:inset(0 calc(100% - var(--x,42%)) 0 0
 .callouts b{font-family:var(--mono);font-weight:500;font-size:16px;color:#fff;letter-spacing:-.01em}
 .callouts span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
 html[lang="ar"] .callouts span{font-family:var(--arabic);font-size:12px;letter-spacing:0;text-transform:none;direction:rtl}
-@media (max-width:700px){.callouts li{left:var(--mx,var(--cx));top:var(--my,var(--cy));white-space:normal;max-width:44vw;padding:6px 9px 5px}.callouts b{font-size:13.5px}.callouts span{font-size:11px;line-height:1.35}html[lang="ar"] .callouts span{font-size:12px}.callouts li.lg{display:none}.xray{--ky:42%;--ty:88px;--tx:14px}}   /* real sizes, not a scaled box: the captions stay legible; the knob sits nearer the thumb */
+@media (max-width:700px){.callouts li{left:var(--mx,var(--cx));top:var(--my,var(--cy));white-space:normal;max-width:44vw;padding:6px 9px 5px}.callouts b{font-size:13.5px}.callouts span{font-size:11px;line-height:1.35}html[lang="ar"] .callouts span{font-size:12px}.callouts li.lg{display:none}.xray{--ky:42%;--tx:34px}}   /* real sizes, not a scaled box: the captions stay legible; --ky here is the no-JS fallback — fit() writes the row clear of the callouts, and the tag rides beside the knob as on the desktop */
 .xr-line{position:absolute;top:0;bottom:0;left:var(--x,58%);width:1px;background:var(--accent);box-shadow:0 0 12px var(--glow),0 0 36px var(--glow);pointer-events:none;z-index:3}
-.xr-knob{position:absolute;top:var(--ky,34%);left:var(--x,58%);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:1px solid var(--accent);
+.xr-knob{position:absolute;top:var(--ky,34%);left:var(--kx,var(--x,58%));width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:1px solid var(--accent);
   background:rgba(10,10,13,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 26px var(--glow);z-index:6;cursor:ew-resize;
   display:flex;align-items:center;justify-content:center;color:var(--accent-2);font-family:var(--mono);font-size:13px;letter-spacing:.1em;padding-inline-start:.1em}
 .xr-knob::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid var(--accent);opacity:0;pointer-events:none}
 .xr-knob.pulse::after{animation:xr-pulse 1.5s ease-out 2}   /* after the intro settles: the knob breathes twice */
 @keyframes xr-pulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.2);opacity:0}}
-.xr-hint{position:absolute;top:calc(var(--ky,34%) + 34px);left:var(--x,58%);transform:translateX(-50%);z-index:6;pointer-events:none;
+.xr-hint{position:absolute;top:calc(var(--ky,34%) + 34px);left:var(--kx,var(--x,58%));left:clamp(64px,var(--kx,var(--x,58%)),calc(100% - 64px));transform:translateX(-50%);z-index:6;pointer-events:none;
   font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);white-space:nowrap;
   padding:4px 8px;border-radius:4px;background:rgba(10,10,13,.66);transition:opacity .5s}
 .xray.touched .xr-hint,.xray.cramped .xr-hint{opacity:0}   /* the coach mark retires after the first real interaction, or when a short screen has no room under the knob */
 html[lang="ar"] .xr-hint{font-family:var(--arabic);font-size:12.5px;letter-spacing:0;text-transform:none}
-.xr-tag{position:absolute;top:var(--ty,88px);left:calc(var(--x,58%) + var(--tx,14px));z-index:6;pointer-events:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);
+.xr-tag{position:absolute;top:var(--ty,88px);left:calc(var(--kx,var(--x,58%)) + var(--tx,14px));z-index:6;pointer-events:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);
   padding:5px 9px;border:1px solid rgba(90,176,255,.45);border-radius:4px;background:rgba(10,10,13,.7);white-space:nowrap;transition:opacity .25s}
 .xray.sliver .xr-tag{opacity:0}   /* on a sliver the label would wrap against the edge, and it is redundant there */
 html[lang="ar"] .xr-tag{font-family:var(--arabic);font-size:12px;letter-spacing:0;text-transform:none}
-html[dir="rtl"] .xr-tag{left:auto;right:calc(100% - var(--x,42%) + var(--tx,14px))}
+html[dir="rtl"] .xr-tag{left:auto;right:calc(100% - var(--kx,var(--x,42%)) + var(--tx,14px))}
+html[dir="rtl"] .xr-line{left:var(--x,42%)}html[dir="rtl"] .xr-knob,html[dir="rtl"] .xr-hint{left:var(--kx,var(--x,42%))}   /* without JS the seam, the knob and the data agree in Arabic too */
 .xr-range{position:absolute;opacity:0;width:1px;height:1px;left:0;top:0;direction:ltr}   /* physical, like the seam: → is right in both languages */
 .xr-range:focus-visible ~ .xr-knob{outline:2px solid #fff;outline-offset:4px}
 .hero-veil{position:absolute;inset:0;pointer-events:none;z-index:2;
@@ -123,6 +125,7 @@ html[dir="rtl"] .xr-tag{left:auto;right:calc(100% - var(--x,42%) + var(--tx,14px
 .hero h1{font-size:clamp(34px,5.6vw,70px);line-height:1.02;letter-spacing:-.03em;color:#fff}
 html[lang="ar"] .hero h1{font-size:clamp(30px,4.8vw,60px);line-height:1.45;letter-spacing:0}
 @media (min-width:701px) and (max-height:820px){.hero h1{font-size:clamp(30px,4.4vw,56px)}html[lang="ar"] .hero h1{font-size:clamp(28px,4vw,50px)}}   /* a laptop: the headline a step smaller, so the upper bays above it hold the figures */
+@media (max-width:700px) and (max-height:660px){.hero h1{font-size:28px}html[lang="ar"] .hero h1{font-size:27px}.answer{font-size:16px;margin:12px 0 22px}}   /* the smallest phones (640 tall): the headline a step smaller, so the bottom row of figures is not under it */
 .answer{margin:20px 0 30px;font-size:clamp(18px,2vw,24px);color:var(--muted);max-width:40ch}
 .sentinel{position:absolute;bottom:0;inset-inline-start:0;width:1px;height:1px}
 @media (min-width:900px){
@@ -178,6 +181,10 @@ html[lang="ar"] .pages figcaption{font-family:var(--arabic);font-size:13.5px;let
 .steps p{font-size:16px;color:var(--text)}
 html[lang="ar"] .steps p{font-size:16.5px}
 .accountant{color:var(--muted);max-width:60ch;font-size:16px;padding-inline-start:18px;border-inline-start:2px solid var(--accent)}
+.qlink{margin-top:28px;color:var(--muted);max-width:60ch;font-size:15px}
+html[lang="ar"] .qlink{font-size:15.5px}
+.qlink a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;white-space:nowrap;transition:color .2s}
+.qlink a:hover{color:var(--accent-2)}   /* the fourteen questions, sent after the call: questions/ */
 
 /* ---------- 5 · what we build ---------- */
 .prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:0 0 28px}

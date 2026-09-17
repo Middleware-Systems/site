@@ -9,7 +9,7 @@
   var KEY = 'mw_q1', LKEY = 'mw_lang';
   var qs = slice(doc.querySelectorAll('.q'));
   var send = doc.getElementById('send'), pn = doc.getElementById('pn'), copyBtn = doc.getElementById('copy'),
-      printBtn = doc.getElementById('print'), clearBtn = doc.getElementById('clear'), toggle = doc.getElementById('lang'),
+      clearBtn = doc.getElementById('clear'), toggle = doc.getElementById('lang'),
       forEl = doc.getElementById('for');
 
   function slice(l) { return Array.prototype.slice.call(l); }
@@ -81,7 +81,6 @@
       toggle.setAttribute('aria-label', S[o].toggleName); toggle.title = S[o].toggleName;
     }
     if (forEl) { var nm = forEl.getAttribute('data-name'); if (nm) forEl.textContent = S[l]['for'].replace('{name}', nm); }
-    if (printBtn) printBtn.href = 'MIDDLEWARE-questions-' + l + '.pdf';   // the paper twin in the language he is reading
     try { localStorage.setItem(LKEY, l); } catch (e) {}
     refresh();
     growAll();
