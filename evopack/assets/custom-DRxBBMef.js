@@ -1,1 +1,0 @@
-import{$ as c,b as o,e as i,a as d,s as f}from"./catalogue-BA3tgClp.js";const r=c("#featured-sizes");for(const e of["single-wall","double-wall"]){const s=o(e),l=i("div",{class:"stack"},i("span",{class:"kicker"},s.name),i("div",{class:"chips"},s.sizes.filter(a=>a.featured).map(a=>i("a",{class:"chip",href:d("studio/",{family:s.id,size:a.id})},f(a,s)))));r.append(l)}
