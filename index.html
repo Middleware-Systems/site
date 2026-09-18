@@ -91,18 +91,34 @@
   <div class="wrap">
     <p class="eyebrow"><span class="n">01</span><span data-i18n="reading.eb">القراءة</span></p>
     <h2 data-i18n="reading.h">ورقتين. أرقامك جنب بعضها.</h2>
-    <div class="reading">
-      <div class="stats" id="findings">
-        <div class="stat"><span class="num" dir="ltr"><span data-count data-value="118600" data-prefix="$">$118,600</span></span><span class="name" data-i18n-html="f1">نايمة بـ <span class="n">820</span> صنف هالسنة</span></div>
-        <div class="stat"><span class="num" dir="ltr"><span data-count data-value="15600" data-prefix="$">$15,600</span></span><span class="name" data-i18n-html="f2">بالشهر على <span class="n">40</span> صنف تغطيتهن تحت الشهرين</span></div>
-        <div class="stat"><span class="num" dir="ltr"><span data-count data-value="11">11</span></span><span class="name" data-i18n-html="f3">زبون فوق <span class="n" dir="ltr">$2,000</span> بالسنة، غايبين أربع أشهر</span></div>
-        <div class="stat"><span class="num" dir="ltr"><span data-count data-value="79400" data-prefix="$">$79,400</span></span><span class="name" data-i18n-html="f4">عند <span class="n">134</span> زبون، <span class="n" dir="ltr">$31,000</span> فوق <span class="n">90</span> يوم</span></div>
-        <div class="stat"><span class="num" dir="ltr"><span data-count data-value="6">6</span></span><span class="name" data-i18n-html="f5">بنود انباعوا تحت الكلفة</span></div>
+    <div class="inst" id="instrument" data-book="2829" data-dead="820" data-risk="40" data-quiet="11" data-owed="79400" data-over="31000" data-lines="6" data-cur="1">
+      <p class="inst-hd"><span data-i18n-html="reading.meta">أيلول <span class="n" dir="ltr">2026</span> · موزّع بالشام</span></p>
+      <div class="inst-body">
+        <ol class="gauges" id="findings" role="list">
+          <li class="g" id="r1">
+            <div class="g-fig"><span class="num" dir="ltr"><span data-count data-fig="dead.usd" data-value="118600" data-prefix="$">$118,600</span></span><span class="name" data-i18n-html="f1">نايمة بـ <span class="n">820</span> صنف هالسنة</span></div>
+            <div class="g-draw" role="img" aria-label="820 صنف من 2,829 نايمين — 29 بالمية من الدفتر" data-i18n-aria="r1.aria"><span class="rule" style="--n:10"></span><span class="zone" style="--a:0.00%;--w:28.99%"><span class="dl" data-i18n-html="r1.dim"><span class="n" dir="ltr">820</span> صنف · <span class="n" dir="ltr">29%</span></span></span><span class="ax s" data-i18n-html="r1.s"><span class="n" dir="ltr">0</span></span><span class="ax e" data-i18n-html="r1.e"><span class="n" dir="ltr">2,829</span> صنف عالدفتر</span></div>
+          </li>
+          <li class="g" id="r2">
+            <div class="g-fig"><span class="num" dir="ltr"><span data-count data-fig="risk.usd_month" data-value="15600" data-prefix="$">$15,600</span></span><span class="name" data-i18n-html="f2">بالشهر على <span class="n">40</span> صنف تغطيتهن تحت الشهرين</span></div>
+            <div class="g-draw tally" role="img" aria-label="40 صنف تغطيتهن أقل من شهرين، كل خط صنف" data-i18n-aria="r2.aria"><span class="line"></span><span class="ax c" data-i18n-html="r2.line">شهرين تغطية</span><span class="marks" style="--n:40"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="ax s" data-i18n-html="r2.tally"><span class="n" dir="ltr">40</span> صنف تحت الشهرين</span></div>
+          </li>
+          <li class="g" id="r3">
+            <div class="g-fig"><span class="num" dir="ltr"><span data-count data-fig="quiet.customers" data-value="11">11</span></span><span class="name" data-i18n-html="f3">زبون فوق <span class="n" dir="ltr">$2,000</span> بالسنة، غايبين أربع أشهر</span></div>
+            <div class="g-draw tally" role="img" aria-label="11 زبون ما طلبوا من أربع أشهر، كل خط زبون" data-i18n-aria="r3.aria"><span class="line"></span><span class="ax c" data-i18n-html="r3.line">أربع أشهر بلا طلبية</span><span class="marks" style="--n:11"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="ax s" data-i18n-html="r3.tally"><span class="n" dir="ltr">11</span> زبون</span></div>
+          </li>
+          <li class="g" id="r4">
+            <div class="g-fig"><span class="num" dir="ltr"><span data-count data-fig="owed.usd" data-value="79400" data-prefix="$">$79,400</span></span><span class="name" data-i18n-html="f4">عند <span class="n">134</span> زبون، <span class="n" dir="ltr">$31,000</span> فوق <span class="n">90</span> يوم</span></div>
+            <div class="g-draw" role="img" aria-label="$31,000 من $79,400 فوق 90 يوم — 39 بالمية" data-i18n-aria="r4.aria"><span class="rule" style="--n:10"></span><span class="zone at-end" style="--a:60.96%;--w:39.04%"><span class="dl" data-i18n-html="r4.dim"><span class="n" dir="ltr">$31,000</span> فوق <span class="n" dir="ltr">90</span> يوم · <span class="n" dir="ltr">39%</span></span></span><i class="tk mark" style="--x:60.96%"></i><span class="ax s" data-i18n-html="r4.s"><span class="n" dir="ltr">0</span></span><span class="ax e" data-i18n-html="r4.e"><span class="n" dir="ltr">$79,400</span> مستحقة</span></div>
+          </li>
+          <li class="g" id="r5">
+            <div class="g-fig"><span class="num" dir="ltr"><span data-count data-fig="wrong.lines" data-value="6">6</span></span><span class="name" data-i18n-html="f5">بنود انباعوا تحت الكلفة</span></div>
+            <div class="g-draw tally" role="img" aria-label="6 بنود انباعوا تحت الكلفة، و1 فاتورة بعملة غلط" data-i18n-aria="r5.aria"><span class="line"></span><span class="ax c" data-i18n-html="r5.cost">الكلفة</span><span class="marks" style="--n:6"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="ax s" data-i18n-html="r5.tally"><span class="n" dir="ltr">6</span> بنود تحت الكلفة</span><span class="rings"><i></i></span><span class="ax e" data-i18n-html="r5.ring"><span class="n" dir="ltr">1</span> فاتورة بعملة غلط</span></div>
+          </li>
+        </ol>
+        <span class="inst-seam" aria-hidden="true"></span>
       </div>
-      <figure class="pages">
-        <img src="img/reading.png" alt="" width="1600" height="1112" loading="lazy" decoding="async" data-i18n-alt="reading.alt">
-        <figcaption data-i18n="reading.cap">أسامي مشالة، أرقام مدوّرة.</figcaption>
-      </figure>
+      <p class="inst-ft" data-i18n="reading.cap">أسامي مشالة، أرقام مدوّرة، مرسومة عالمقياس.</p>
     </div>
   </div>
 </section>

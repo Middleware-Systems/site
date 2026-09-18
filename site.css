@@ -154,22 +154,85 @@ h2{font-size:clamp(28px,3.8vw,48px);line-height:1.08;max-width:22ch;margin:0 0 c
 html[lang="ar"] h2{max-width:26ch;line-height:1.45}
 .lede{font-size:clamp(17px,1.5vw,19px);color:var(--muted);max-width:56ch;margin:0 0 32px}
 
-/* ---------- 2 · the Reading ---------- */
-.reading{display:grid;gap:clamp(28px,4vw,56px);grid-template-columns:minmax(0,1fr)}
-@media (min-width:960px){.reading{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);align-items:start}}
+/* ---------- 2 · the Reading: the instrument (18 Sep 2026) ----------
+   The five findings as one measured panel in the hero's blueprint grammar — a ruler and a hatched zone,
+   or a threshold line and a tally, per finding; thin accent lines on obsidian, mono labels. Every drawn
+   proportion is a ratio of two figures in reading/figures.json, written by reading/build.py into the
+   inline --a/--w/--x and the tally counts; site.js re-derives them from the panel's data- attributes and
+   shouts if a drawing disagrees. The big number and its name are the three-second read; the drawing is
+   the second look. Mono labels are sized with #reading in the selector because html[lang="ar"] .n
+   would otherwise outrank them. */
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-#findings .stat:first-child{grid-column:1 / -1}
 .stats.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:560px){.stats,.stats.three{grid-template-columns:minmax(0,1fr)}}
 .stat{background:var(--bg-2);padding:26px 22px 24px;display:flex;flex-direction:column;gap:8px;transition:background-color .2s}
 .stat:hover{background:var(--surface)}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500;font-size:clamp(26px,2.6vw,36px);letter-spacing:-.02em;line-height:1.1;white-space:nowrap;color:#fff}
-.stat .name{font-size:14px;color:var(--muted);line-height:1.5}
-html[lang="ar"] .stat .name{font-size:14.5px;line-height:1.75}
-.pages{margin:0}
-.pages img{width:100%;height:auto;border-radius:8px}
-.pages figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--dim);margin-top:12px;letter-spacing:.02em}
-html[lang="ar"] .pages figcaption{font-family:var(--arabic);font-size:13.5px;letter-spacing:0;line-height:1.75}
+html[dir="rtl"] .num{text-align:right}   /* the digits stay LTR; the figure shares its name's edge */
+.stat .name,.g .name{font-size:14px;color:var(--muted);line-height:1.5;text-wrap:pretty}
+html[lang="ar"] :is(.stat,.g) .name{font-size:14.5px;line-height:1.75}
+
+.inst{position:relative;border:1px solid var(--line);border-radius:12px;background:var(--bg-2);overflow:hidden}
+.inst::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background-image:
+  linear-gradient(rgba(90,176,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(90,176,255,.045) 1px,transparent 1px);
+  background-size:48px 48px}   /* the X-ray twin's grid, a shade quieter */
+.inst>*{position:relative;z-index:1}
+.inst-hd{display:flex;flex-wrap:wrap;gap:4px 0;align-items:baseline;margin:0;padding:13px 16px 11px;border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.5}
+.inst-hd span{white-space:nowrap}
+html[lang="ar"] .inst-hd span:not(.n){font-family:var(--arabic);font-size:12.5px;letter-spacing:0;text-transform:none}
+html[lang="ar"] .inst-hd .n{font-size:11px;letter-spacing:.06em}
+.inst-body{position:relative}
+.gauges{list-style:none;margin:0;padding:0}
+.g{display:grid;grid-template-columns:minmax(0,1fr);gap:6px 32px;padding:15px 16px 13px;border-top:1px solid var(--line)}
+.g:first-child{border-top:0}
+@media (min-width:760px){.g{grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);align-items:center;padding:20px 26px}.inst-hd,.inst-ft{padding-inline:26px}}
+@media (min-width:1100px){.g{grid-template-columns:minmax(0,.34fr) minmax(0,.66fr);gap:10px 56px}}
+.g-fig{display:flex;flex-direction:column;gap:6px;min-width:0}
+
+/* the drawing: --ry is the ruler's row, --zh the zone's height; everything hangs off those two */
+.g-draw{position:relative;height:66px;min-width:0;--ry:40px;--zh:20px}
+@media (min-width:760px){.g-draw{height:72px;--ry:46px;--zh:24px}}
+.g-draw>span,.g-draw>i,.zone>.dl{position:absolute;display:block}
+.rule{inset-inline:0;top:var(--ry);height:6px;border-top:1px solid rgba(244,244,247,.22);
+  background:repeating-linear-gradient(to right,rgba(244,244,247,.22) 0 1px,transparent 1px calc(100% / var(--n,10)))}   /* --n ticks, then the end tick below */
+html[dir="rtl"] .rule{background:repeating-linear-gradient(to left,rgba(244,244,247,.22) 0 1px,transparent 1px calc(100% / var(--n,10)))}
+.rule::before,.rule::after{content:"";position:absolute;top:-1px;width:1px;height:9px;background:rgba(244,244,247,.42)}
+.rule::before{inset-inline-start:0}.rule::after{inset-inline-end:0}
+.tk.mark{top:calc(var(--ry) - 8px);inset-inline-start:var(--x);width:1px;height:14px;background:var(--accent);box-shadow:0 0 8px var(--glow-soft)}
+.zone{top:calc(var(--ry) - var(--zh));height:var(--zh);inset-inline-start:var(--a);width:var(--w);
+  border-top:1px solid var(--accent-2);border-inline:1px solid rgba(90,176,255,.75);
+  background:repeating-linear-gradient(-45deg,rgba(90,176,255,.34) 0 1px,transparent 1px 7px)}
+html[dir="rtl"] .zone{background:repeating-linear-gradient(45deg,rgba(90,176,255,.34) 0 1px,transparent 1px 7px)}
+.zone .dl{bottom:calc(100% + 5px);inset-inline-start:-1px;white-space:nowrap}
+.zone.at-end .dl{inset-inline-start:auto;inset-inline-end:-1px}
+#reading .ax,#reading .dl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;line-height:1.3;white-space:nowrap;color:var(--muted)}
+#reading .dl{color:var(--accent-2)}
+html[lang="ar"] #reading :is(.ax,.dl){font-family:var(--arabic);font-size:12.5px;letter-spacing:0;text-transform:none}
+html[lang="ar"] #reading :is(.ax,.dl) .n{font-size:11px;letter-spacing:.06em}
+.ax.s{top:calc(var(--ry) + 10px);inset-inline-start:0}
+.ax.e{top:calc(var(--ry) + 10px);inset-inline-end:0}
+/* a threshold line and a tally under it: rows 2 and 5 */
+.line{inset-inline:0;top:calc(var(--ry) - 14px);height:1px;background:rgba(244,244,247,.3)}
+.ax.c{top:calc(var(--ry) - 31px);inset-inline-start:0}
+.g-draw .marks{top:calc(var(--ry) - 13px);inset-inline-start:0;display:flex;gap:5px}   /* .g-draw>span would blockify it otherwise */
+.marks i{flex:none;width:1px;height:16px;background:var(--accent);box-shadow:0 0 6px var(--glow-soft)}
+.marks i:nth-child(5n+1):not(:first-child){margin-inline-start:7px}   /* a gap every five: forty reads as eight fives, not a comb */
+.g-draw .rings{top:calc(var(--ry) - 29px);inset-inline-end:0;display:flex;gap:9px}   /* the ring is its label's trailing mark, on the label's own row above the line: it counts one invoice and claims no position on the cost axis */
+.rings i{width:9px;height:9px;border:1px solid var(--accent);border-radius:50%;box-shadow:0 0 8px var(--glow-soft)}
+#reading .tally .ax.s{color:var(--accent-2)}   /* the tally's count is the row's dimension, like a zone's label */
+.tally .ax.e{top:calc(var(--ry) - 31px);inset-inline-end:16px}   /* the ring's label, above the line at the end, the ring after it */
+.inst-ft{margin:0;padding:12px 22px 13px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--dim);letter-spacing:.02em}
+html[lang="ar"] .inst-ft{font-family:var(--arabic);font-size:13.5px;letter-spacing:0;line-height:1.75}
+@media (max-width:759px){.inst-hd{padding:11px 16px 9px;font-size:10px;letter-spacing:.1em}.inst-hd span{white-space:normal}.inst-ft{padding-inline:16px}}
+/* entry: a seam sweeps the panel once and each drawing appears behind it (site.js clips the drawings to the seam;
+   the numbers are never clipped, so a visitor landing mid-scroll sees figures, not an empty card). Without JS
+   the panel is simply there; under reduced motion .arm is never set. */
+.inst-seam{position:absolute;top:0;bottom:0;left:var(--sx,0);width:1px;background:var(--accent);box-shadow:0 0 12px var(--glow),0 0 36px var(--glow);opacity:0;pointer-events:none;z-index:3}
+.inst.sweeping .inst-seam{opacity:1}
+.inst.done .inst-seam{opacity:0;transition:opacity .3s}
+.inst.broken .g-draw{visibility:hidden}   /* site.js found a drawing that disagrees with the figures: the numbers stay, the drawings go */
+@media print{.g-draw{clip-path:none!important;-webkit-clip-path:none!important}.inst-seam{display:none}}
 
 /* ---------- 3 · the first client ---------- */
 .three{margin:0 0 8px}
