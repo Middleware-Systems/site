@@ -17,12 +17,13 @@
 <link rel="icon" href="/site/evopack/ar/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/site/evopack/ar/apple-touch-icon.png">
 
-  <title>شعارك، على الكوب، بيلفّ. — EvoPack</title>
-  <script type="module" crossorigin src="/site/evopack/ar/assets/studio-DyIMNMNn.js"></script>
-  <link rel="modulepreload" crossorigin href="/site/evopack/ar/assets/catalogue-DevnW_d3.js">
+  <title>تصميمك، على الكوب، بيلفّ. — EvoPack</title>
+  <script type="module" crossorigin src="/site/evopack/ar/assets/studio-CLEw5URJ.js"></script>
+  <link rel="modulepreload" crossorigin href="/site/evopack/ar/assets/catalogue-Bz-pLmil.js">
   <link rel="modulepreload" crossorigin href="/site/evopack/ar/assets/three-Bg2ZFb32.js">
   <link rel="modulepreload" crossorigin href="/site/evopack/ar/assets/handoff-DbMagOWF.js">
-  <link rel="stylesheet" crossorigin href="/site/evopack/ar/assets/catalogue-B2X2_D5L.css">
+  <link rel="modulepreload" crossorigin href="/site/evopack/ar/assets/print-BxGIEijq.js">
+  <link rel="stylesheet" crossorigin href="/site/evopack/ar/assets/catalogue-DQJ3bqsi.css">
 </head>
 <body>
 <header class="nav" id="nav">
@@ -46,14 +47,14 @@
 <main>
   <section class="banner container" style="padding-bottom:2rem">
     <p class="kicker">الاستوديو</p>
-    <h1 class="h1">شعارك، على الكوب، بيلفّ.</h1>
+    <h1 class="h1">تصميمك، على الكوب، بيلفّ.</h1>
     <p class="lead">كل شي بيضلّ بمتصفّحك لحدّ ما تبعت عرض السعر.</p>
   </section>
   <section class="section" style="padding-top:1rem" id="studio">
     <div class="container studio">
       <div class="studio__view" id="st-canvas-host">
         <span class="studio__badge" id="st-badge"></span>
-        <p class="studio__empty" id="st-empty"><b>ما في شعار بعد</b> — الكوب ناطر. ارفع ملف لتشوف ماركتك بتلتفّ حواليه.</p>
+        <p class="studio__empty" id="st-empty"><b id="st-empty-title">ما في شعار بعد</b> — <span id="st-empty-body">الكوب ناطر. ارفع ملف لتشوف ماركتك بتلتفّ حواليه.</span></p>
       </div>
       <div class="note note--bad" id="st-webgl-missing" hidden>هالمتصفّح ما بيقدر يعرض الكوب 3D. عرض السعر بيشتغل عادي، ومنبعتلك بروفة على خط القصّ الحقيقي بكل الأحوال.</div>
       <div class="studio__panel">
@@ -76,15 +77,23 @@
           </div>
         </div>
         <div class="field">
-          <span class="lbl">الشعار</span>
-          <label class="drop" id="st-drop"><input type="file" id="st-file" accept=".svg,.png,.jpg,.jpeg,.webp,image/svg+xml,image/png,image/jpeg,image/webp"><span class="small">اسحب الشعار لهون، أو اكبس لتختار. SVG أو PNG أو JPG. الـ vector أفضل.</span></label>
+          <span class="lbl">الطباعة</span>
+          <div class="toggle" id="st-mode" role="group" aria-label="الطباعة">
+            <button type="button" data-mode="logo" aria-pressed="true">شعار</button>
+            <button type="button" data-mode="wrap" aria-pressed="false">لفّ كامل</button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="lbl" id="st-art-label">الشعار</span>
+          <label class="drop" id="st-drop"><input type="file" id="st-file" accept=".svg,.png,.jpg,.jpeg,.webp,image/svg+xml,image/png,image/jpeg,image/webp"><span class="small" id="st-drop-logo">اسحب الشعار لهون، أو اكبس لتختار. SVG أو PNG أو JPG. الـ vector أفضل.</span><span class="small" id="st-drop-wrap" hidden>اسحب التصميم الكامل لهون، أو اكبس لتختار. بيلفّ الكوب مرّة وحدة.</span></label>
           <div class="file" id="st-file-card" hidden>
             <img id="st-file-thumb" alt="">
-            <div><b id="st-file-name"></b><small>الـ vector مفضّل. بيضلّ بمتصفّحك.</small></div>
+            <div><b id="st-file-name"></b><small id="st-file-note">الـ vector مفضّل. بيضلّ بمتصفّحك.</small></div>
             <button type="button" class="btn btn--ghost btn--sm" id="st-replace">بدّل</button>
             <button type="button" class="btn btn--ghost btn--sm" id="st-remove">شيل</button>
           </div>
         </div>
+        <div id="st-placement" style="display:grid;gap:var(--space-3)">
         <div class="grid grid--2" style="gap:1rem">
           <div class="field"><label for="st-scale">الحجم <output id="st-scale-out"></output></label><input class="range" type="range" id="st-scale" min="0.15" max="0.95" step="0.01"></div>
           <div class="field"><label for="st-pos">الارتفاع <output id="st-pos-out"></output></label><input class="range" type="range" id="st-pos" min="0.2" max="0.8" step="0.01"></div>
@@ -96,6 +105,7 @@
             <button type="button" data-repeat="2" aria-pressed="false">مرّتين</button>
             <button type="button" data-repeat="3" aria-pressed="false">تلات مرّات</button>
           </div>
+        </div>
         </div>
         <div class="row between">
           <label class="row" style="gap:.5rem"><input type="checkbox" id="st-spin"> دوران</label>
