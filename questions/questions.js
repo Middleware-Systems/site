@@ -81,6 +81,7 @@
       toggle.setAttribute('aria-label', S[o].toggleName); toggle.title = S[o].toggleName;
     }
     if (forEl) { var nm = forEl.getAttribute('data-name'); if (nm) forEl.textContent = S[l]['for'].replace('{name}', nm); }
+    var home = doc.querySelector('a.wm'); if (home) home.setAttribute('href', l === 'en' ? '../en/' : '../');   // the one page's language is its URL: home in the language he is reading
     try { localStorage.setItem(LKEY, l); } catch (e) {}
     refresh();
     growAll();
