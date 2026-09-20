@@ -203,3 +203,36 @@ html[lang="ar"] .ft{font-size:14px}
   .phone{margin-top:0;font-size:11pt}
   .printNote{display:block;margin:0 0 3mm;font-size:11pt;color:#111114;padding-inline-start:4mm;border-inline-start:2px solid #1E6BE8}
 }
+
+/* ---------- voice (20 Sep 2026) ----------
+   Shown by questions.js only on a phone that can record AND hand a file to WhatsApp; hidden
+   otherwise, and the card is exactly what it was. The mic is a ghost pill under the box, the
+   recording a small player beside a delete. Red while it records, and the seconds tick. */
+.voice{margin:10px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.voice[hidden],.rec[hidden],.vsend[hidden],.vfail[hidden]{display:none}   /* a class with display: beats the hidden attribute; say it twice */
+.mic{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 14px;background:none;border:1px solid #4A4A56;border-radius:999px;color:var(--text);font:inherit;font-size:14px;line-height:1.3;cursor:pointer;transition:border-color .2s,background-color .2s,color .2s}
+html[lang="ar"] .mic{font-size:15px}
+.mic svg{flex:none;color:var(--accent)}
+.mic:hover{border-color:var(--accent)}
+.mic:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mic .on,.mic .sec{display:none}
+.q.recording .mic{border-color:#FF6B6B;background:rgba(255,107,107,.1);color:#FFD1D1}
+.q.recording .mic svg{color:#FF6B6B;animation:mw-pulse 1.1s ease-in-out infinite}
+.q.recording .mic .lbl{display:none}
+.q.recording .mic .on,.q.recording .mic .sec{display:inline}
+.mic .sec{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:#FF6B6B}
+@keyframes mw-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.q.recording .mic svg{animation:none}}
+.rec{display:flex;flex-wrap:wrap;align-items:center;gap:10px;width:100%;margin-top:2px}
+.rec .rl{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--accent);white-space:nowrap}
+html[lang="ar"] .rec .rl{font-family:var(--arabic);font-size:13px;letter-spacing:0}
+.rec audio{flex:1 1 120px;min-width:120px;height:40px;max-width:360px}   /* label + player + delete on one line at 390px */
+.rec .del{padding:8px 12px 9px;font-size:13px;color:var(--muted)}
+.rec .del:hover{color:var(--text)}
+.vfail{color:#FFB4B4}
+.vsend{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.vsend .cta .btn{background:var(--surface);color:var(--text);border:1px solid var(--accent);box-shadow:none}
+.vsend .cta .btn:hover{background:var(--bg-2);box-shadow:0 0 22px var(--glow-soft)}
+.vsend .btn .flash{display:none}
+.vhow{margin:12px 0 0;font-size:14px;color:var(--muted);max-width:52ch}
+html[lang="ar"] .vhow{font-size:15px}
