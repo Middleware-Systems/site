@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title data-i18n="title">MIDDLEWARE — برنامج المحاسبة لديك، على كل هاتف · دمشق</title>
+<title data-i18n="title">MIDDLEWARE — برنامج المحاسبة لديك، على كل هاتف · دمشق، سوريا</title>
 <meta name="description" content="برنامج المحاسبة لديك — الأمين (Al-Ameen) أو غيره — أرقامه على كل هاتف في الشركة. لا نغيّر شيئًا. «بتصير شايف». دمشق، سوريا." data-i18n-content="desc">
 <link rel="canonical" href="https://middlewaresy.com/">
 <meta property="og:type" content="website">
@@ -286,6 +286,7 @@ html[lang="ar"] .steps p{font-size:16.5px}
 html[lang="ar"] .qlink{font-size:15.5px}
 .qlink a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;white-space:nowrap;transition:color .2s}
 .qlink a:hover{color:var(--accent-2)}   /* the fourteen questions, sent after the call: questions/ */
+.qlink.wide{margin-top:22px}.qlink.wide a{white-space:normal}   /* a whole phrase as the anchor (the warehouse page, 21 Sep 2026): it wraps on a phone */
 
 /* ---------- 5 · what we build ---------- */
 .prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:0 0 28px}
@@ -296,6 +297,9 @@ html[lang="ar"] .qlink{font-size:15.5px}
 .prod.top h3{font-size:24px}
 .prod p{font-size:15px;color:var(--muted);max-width:60ch}
 html[lang="ar"] .prod p{font-size:15.5px}
+.prod-link{display:inline-block;margin-top:14px;font-size:14px;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.prod-link:hover{border-color:var(--accent)}
+html[lang="ar"] .prod-link{font-size:15px}
 .proof{font-family:var(--mono);font-size:11.5px;color:var(--dim);letter-spacing:.02em;line-height:1.6}
 html[lang="ar"] .proof{font-family:var(--arabic);font-size:13.5px;letter-spacing:0}
 
@@ -308,14 +312,16 @@ html[lang="ar"] .phone{font-size:15px}
 .ft{border-top:1px solid var(--line);padding:32px 0 56px;color:var(--dim);font-size:13px}
 html[lang="ar"] .ft{font-size:14px}
 .ft .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.wm-ft img{height:11px}
+.ft .lat{color:var(--muted)}
+.ft-link{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .2s,border-color .2s}
+.ft-link:hover{color:var(--text);border-color:var(--accent)}   /* the name, one step up from the dim line; the footer mark went on 21 Sep 2026 — the name as text is what search reads */
 
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important}
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://middlewaresy.com/#website","url":"https://middlewaresy.com/","name":"MIDDLEWARE","inLanguage":["ar","en"],"publisher":{"@id":"https://middlewaresy.com/#org"}},{"@type":["Organization","LocalBusiness"],"@id":"https://middlewaresy.com/#org","name":"MIDDLEWARE","url":"https://middlewaresy.com/","description":"برنامج المحاسبة لديك — الأمين (Al-Ameen) أو غيره — أرقامه على كل هاتف في الشركة. لا نغيّر شيئًا. «بتصير شايف». دمشق، سوريا.","slogan":"بتصير شايف.","logo":{"@type":"ImageObject","url":"https://middlewaresy.com/apple-touch-icon.png","width":180,"height":180},"image":"https://middlewaresy.com/og-v2.jpg","telephone":"+963953250111","address":{"@type":"PostalAddress","addressLocality":"Damascus","addressCountry":"SY"},"areaServed":{"@type":"Country","name":"Syria"},"knowsLanguage":["ar","en"]},{"@type":"WebPage","@id":"https://middlewaresy.com/#webpage","url":"https://middlewaresy.com/","name":"MIDDLEWARE — برنامج المحاسبة لديك، على كل هاتف · دمشق","description":"برنامج المحاسبة لديك — الأمين (Al-Ameen) أو غيره — أرقامه على كل هاتف في الشركة. لا نغيّر شيئًا. «بتصير شايف». دمشق، سوريا.","inLanguage":"ar","isPartOf":{"@id":"https://middlewaresy.com/#website"},"about":{"@id":"https://middlewaresy.com/#org"},"primaryImageOfPage":"https://middlewaresy.com/og-v2.jpg"}]}
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://middlewaresy.com/#website","url":"https://middlewaresy.com/","name":"MIDDLEWARE","inLanguage":["ar","en"],"publisher":{"@id":"https://middlewaresy.com/#org"}},{"@type":["Organization","LocalBusiness"],"@id":"https://middlewaresy.com/#org","name":"MIDDLEWARE","url":"https://middlewaresy.com/","description":"برنامج المحاسبة لديك — الأمين (Al-Ameen) أو غيره — أرقامه على كل هاتف في الشركة. لا نغيّر شيئًا. «بتصير شايف». دمشق، سوريا.","slogan":"بتصير شايف.","logo":{"@type":"ImageObject","url":"https://middlewaresy.com/apple-touch-icon.png","width":180,"height":180},"image":"https://middlewaresy.com/og-v2.jpg","telephone":"+963953250111","address":{"@type":"PostalAddress","addressLocality":"Damascus","addressCountry":"SY"},"areaServed":{"@type":"Country","name":"Syria"},"knowsLanguage":["ar","en"]},{"@type":"WebPage","@id":"https://middlewaresy.com/#webpage","url":"https://middlewaresy.com/","name":"MIDDLEWARE — برنامج المحاسبة لديك، على كل هاتف · دمشق، سوريا","description":"برنامج المحاسبة لديك — الأمين (Al-Ameen) أو غيره — أرقامه على كل هاتف في الشركة. لا نغيّر شيئًا. «بتصير شايف». دمشق، سوريا.","inLanguage":"ar","isPartOf":{"@id":"https://middlewaresy.com/#website"},"about":{"@id":"https://middlewaresy.com/#org"},"primaryImageOfPage":"https://middlewaresy.com/og-v2.jpg"}]}
 </script>
 </head>
 <body>
@@ -401,6 +407,7 @@ html[lang="ar"] .ft{font-size:14px}
       </div>
       <p class="inst-ft" data-i18n="reading.cap">أسماء محذوفة، أرقام مدوّرة، مرسومة على المقياس.</p>
     </div>
+    <p class="qlink wide"><a href="dead-stock/" data-i18n="link.dead">بضاعة راكدة وفرق الجرد: أين هي في برنامجك</a></p>
   </div>
 </section>
 
@@ -440,11 +447,11 @@ html[lang="ar"] .ft{font-size:14px}
     <p class="eyebrow"><span class="n">04</span><span data-i18n="build.eb">العمل</span></p>
     <h2 data-i18n="build.intro">أنظمة شركتك، لا تسويقها.</h2>
     <div class="prods">
-      <div class="prod top"><h3 data-i18n="p.system">النظام</h3><p data-i18n="p.systemL">برنامجك على كل هاتف، كل ساعة.</p></div>
+      <div class="prod top"><h3 data-i18n="p.system">النظام</h3><p data-i18n="p.systemL">برنامجك على كل هاتف، كل ساعة.</p><a class="prod-link" href="al-ameen-mobile/" data-i18n="link.system">برنامج الأمين على الموبايل</a></div>
       <div class="prod"><h3 data-i18n="p.morning">الصبح</h3><p data-i18n="p.morningL">رقمك قبل أن تصل.</p></div>
-      <div class="prod"><h3 data-i18n="p.statement">الكشف</h3><p data-i18n="p.statementL">كشف حساب بالصور، على واتساب بثوانٍ.</p></div>
+      <div class="prod"><h3 data-i18n="p.statement">الكشف</h3><p data-i18n="p.statementL">كشف حساب بالصور، على واتساب بثوانٍ.</p><a class="prod-link" href="statement-whatsapp/" data-i18n="link.statement">كشف حساب زبون على واتساب</a></div>
       <div class="prod"><h3 data-i18n="p.floor">الصالة</h3><p data-i18n="p.floorL">ورق وواتساب، طابور واحد للفوترة.</p></div>
-      <div class="prod"><h3 data-i18n="p.catalogue">الكتالوج</h3><p data-i18n="p.catalogueL">أصنافك بالصور، أو متجر إلكتروني.</p></div>
+      <div class="prod"><h3 data-i18n="p.catalogue">الكتالوج</h3><p data-i18n="p.catalogueL">أصنافك بالصور، أو متجر إلكتروني.</p><a class="prod-link" href="al-ameen-online-store/" data-i18n="link.catalogue">ربط الأمين بمتجر إلكتروني</a></div>
       <div class="prod"><h3 data-i18n="p.profile">البروفايل</h3><p data-i18n="p.profileL">لزبون من الخارج: موقع إلكتروني، بروفايل، عرض سعر.</p></div>
       <div class="prod"><h3 data-i18n="p.exception">الاستثناء</h3><p data-i18n="p.exceptionL">لديك «إلا إذا…»؟ نبنيه.</p></div>
     </div>
@@ -466,8 +473,8 @@ html[lang="ar"] .ft{font-size:14px}
 
 <footer class="ft">
   <div class="wrap">
-    <span class="wm wm-ft" aria-hidden="true"><img src="img/wordmark-accent.svg" alt="" width="746" height="60"></span>
-    <p data-i18n="foot">دمشق، سوريا</p>
+    <p data-i18n-html="foot"><span class="lat" lang="en">MIDDLEWARE</span> — شركة برمجة في دمشق، سوريا</p>
+    <a class="ft-link" href="software-company-damascus/" data-i18n="link.firm">عن MIDDLEWARE</a>
   </div>
 </footer>
 

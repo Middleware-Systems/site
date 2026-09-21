@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title data-i18n="title">MIDDLEWARE — Your accounting program, on every phone</title>
+<title data-i18n="title">MIDDLEWARE — Your accounting program, on every phone · Syria</title>
 <meta name="description" content="The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria." data-i18n-content="desc">
 <link rel="canonical" href="https://middlewaresy.com/en/">
 <meta property="og:type" content="website">
@@ -286,6 +286,7 @@ html[lang="ar"] .steps p{font-size:16.5px}
 html[lang="ar"] .qlink{font-size:15.5px}
 .qlink a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;white-space:nowrap;transition:color .2s}
 .qlink a:hover{color:var(--accent-2)}   /* the fourteen questions, sent after the call: questions/ */
+.qlink.wide{margin-top:22px}.qlink.wide a{white-space:normal}   /* a whole phrase as the anchor (the warehouse page, 21 Sep 2026): it wraps on a phone */
 
 /* ---------- 5 · what we build ---------- */
 .prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:0 0 28px}
@@ -296,6 +297,9 @@ html[lang="ar"] .qlink{font-size:15.5px}
 .prod.top h3{font-size:24px}
 .prod p{font-size:15px;color:var(--muted);max-width:60ch}
 html[lang="ar"] .prod p{font-size:15.5px}
+.prod-link{display:inline-block;margin-top:14px;font-size:14px;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.prod-link:hover{border-color:var(--accent)}
+html[lang="ar"] .prod-link{font-size:15px}
 .proof{font-family:var(--mono);font-size:11.5px;color:var(--dim);letter-spacing:.02em;line-height:1.6}
 html[lang="ar"] .proof{font-family:var(--arabic);font-size:13.5px;letter-spacing:0}
 
@@ -308,14 +312,16 @@ html[lang="ar"] .phone{font-size:15px}
 .ft{border-top:1px solid var(--line);padding:32px 0 56px;color:var(--dim);font-size:13px}
 html[lang="ar"] .ft{font-size:14px}
 .ft .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.wm-ft img{height:11px}
+.ft .lat{color:var(--muted)}
+.ft-link{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .2s,border-color .2s}
+.ft-link:hover{color:var(--text);border-color:var(--accent)}   /* the name, one step up from the dim line; the footer mark went on 21 Sep 2026 — the name as text is what search reads */
 
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important}
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://middlewaresy.com/#website","url":"https://middlewaresy.com/","name":"MIDDLEWARE","inLanguage":["ar","en"],"publisher":{"@id":"https://middlewaresy.com/#org"}},{"@type":["Organization","LocalBusiness"],"@id":"https://middlewaresy.com/#org","name":"MIDDLEWARE","url":"https://middlewaresy.com/","description":"The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria.","slogan":"Suddenly you can see.","logo":{"@type":"ImageObject","url":"https://middlewaresy.com/apple-touch-icon.png","width":180,"height":180},"image":"https://middlewaresy.com/og-v2-en.jpg","telephone":"+963953250111","address":{"@type":"PostalAddress","addressLocality":"Damascus","addressCountry":"SY"},"areaServed":{"@type":"Country","name":"Syria"},"knowsLanguage":["ar","en"]},{"@type":"WebPage","@id":"https://middlewaresy.com/en/#webpage","url":"https://middlewaresy.com/en/","name":"MIDDLEWARE — Your accounting program, on every phone","description":"The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria.","inLanguage":"en","isPartOf":{"@id":"https://middlewaresy.com/#website"},"about":{"@id":"https://middlewaresy.com/#org"},"primaryImageOfPage":"https://middlewaresy.com/og-v2-en.jpg"}]}
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://middlewaresy.com/#website","url":"https://middlewaresy.com/","name":"MIDDLEWARE","inLanguage":["ar","en"],"publisher":{"@id":"https://middlewaresy.com/#org"}},{"@type":["Organization","LocalBusiness"],"@id":"https://middlewaresy.com/#org","name":"MIDDLEWARE","url":"https://middlewaresy.com/","description":"The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria.","slogan":"Suddenly you can see.","logo":{"@type":"ImageObject","url":"https://middlewaresy.com/apple-touch-icon.png","width":180,"height":180},"image":"https://middlewaresy.com/og-v2-en.jpg","telephone":"+963953250111","address":{"@type":"PostalAddress","addressLocality":"Damascus","addressCountry":"SY"},"areaServed":{"@type":"Country","name":"Syria"},"knowsLanguage":["ar","en"]},{"@type":"WebPage","@id":"https://middlewaresy.com/en/#webpage","url":"https://middlewaresy.com/en/","name":"MIDDLEWARE — Your accounting program, on every phone · Syria","description":"The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria.","inLanguage":"en","isPartOf":{"@id":"https://middlewaresy.com/#website"},"about":{"@id":"https://middlewaresy.com/#org"},"primaryImageOfPage":"https://middlewaresy.com/og-v2-en.jpg"}]}
 </script>
 </head>
 <body>
@@ -401,6 +407,7 @@ html[lang="ar"] .ft{font-size:14px}
       </div>
       <p class="inst-ft" data-i18n="reading.cap">Names removed, figures rounded, drawn to scale.</p>
     </div>
+    <p class="qlink wide"><a href="dead-stock/" data-i18n="link.dead">Dead stock and the count difference: where they hide in your program</a></p>
   </div>
 </section>
 
@@ -440,11 +447,11 @@ html[lang="ar"] .ft{font-size:14px}
     <p class="eyebrow"><span class="n">04</span><span data-i18n="build.eb">The Work</span></p>
     <h2 data-i18n="build.intro">Systems a business runs on. Not marketing.</h2>
     <div class="prods">
-      <div class="prod top"><h3 data-i18n="p.system">The System</h3><p data-i18n="p.systemL">Your program, every phone, every hour.</p></div>
+      <div class="prod top"><h3 data-i18n="p.system">The System</h3><p data-i18n="p.systemL">Your program, every phone, every hour.</p><a class="prod-link" href="al-ameen-mobile/" data-i18n="link.system">Al-Ameen on mobile</a></div>
       <div class="prod"><h3 data-i18n="p.morning">The Morning</h3><p data-i18n="p.morningL">One number, before you arrive.</p></div>
-      <div class="prod"><h3 data-i18n="p.statement">The Statement</h3><p data-i18n="p.statementL">Customer statement with photographs, on WhatsApp in seconds.</p></div>
+      <div class="prod"><h3 data-i18n="p.statement">The Statement</h3><p data-i18n="p.statementL">Customer statement with photographs, on WhatsApp in seconds.</p><a class="prod-link" href="statement-whatsapp/" data-i18n="link.statement">A customer statement on WhatsApp</a></div>
       <div class="prod"><h3 data-i18n="p.floor">The Floor</h3><p data-i18n="p.floorL">Paper and WhatsApp, one queue for whoever bills.</p></div>
-      <div class="prod"><h3 data-i18n="p.catalogue">The Catalogue</h3><p data-i18n="p.catalogueL">Products photographed. Or a full online store.</p></div>
+      <div class="prod"><h3 data-i18n="p.catalogue">The Catalogue</h3><p data-i18n="p.catalogueL">Products photographed. Or a full online store.</p><a class="prod-link" href="al-ameen-online-store/" data-i18n="link.catalogue">Al-Ameen linked to an online store</a></div>
       <div class="prod"><h3 data-i18n="p.profile">The Profile</h3><p data-i18n="p.profileL">For the buyer abroad: website, profile, quotation.</p></div>
       <div class="prod"><h3 data-i18n="p.exception">The Exception</h3><p data-i18n="p.exceptionL">We build your “except when…”.</p></div>
     </div>
@@ -466,8 +473,8 @@ html[lang="ar"] .ft{font-size:14px}
 
 <footer class="ft">
   <div class="wrap">
-    <span class="wm wm-ft" aria-hidden="true"><img src="../img/wordmark-accent.svg" alt="" width="746" height="60"></span>
-    <p data-i18n="foot">Damascus, Syria</p>
+    <p data-i18n-html="foot">MIDDLEWARE — a software company in Damascus, Syria</p>
+    <a class="ft-link" href="software-company-damascus/" data-i18n="link.firm">About MIDDLEWARE</a>
   </div>
 </footer>
 
