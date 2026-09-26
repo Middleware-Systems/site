@@ -249,6 +249,7 @@ html[lang="ar"] .steps p{font-size:16.5px}
 html[lang="ar"] .qlink{font-size:15.5px}
 .qlink a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;white-space:nowrap;transition:color .2s}
 .qlink a:hover{color:var(--accent-2)}   /* the fourteen questions, sent after the call: questions/ */
+.qlink.wide{margin-top:22px}.qlink.wide a{white-space:normal}   /* a whole phrase as the anchor (the warehouse page, 21 Sep 2026): it wraps on a phone */
 
 /* ---------- 5 · what we build ---------- */
 .prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:0 0 28px}
@@ -259,6 +260,9 @@ html[lang="ar"] .qlink{font-size:15.5px}
 .prod.top h3{font-size:24px}
 .prod p{font-size:15px;color:var(--muted);max-width:60ch}
 html[lang="ar"] .prod p{font-size:15.5px}
+.prod-link{display:inline-block;margin-top:14px;font-size:14px;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.prod-link:hover{border-color:var(--accent)}
+html[lang="ar"] .prod-link{font-size:15px}
 .proof{font-family:var(--mono);font-size:11.5px;color:var(--dim);letter-spacing:.02em;line-height:1.6}
 html[lang="ar"] .proof{font-family:var(--arabic);font-size:13.5px;letter-spacing:0}
 
@@ -271,7 +275,9 @@ html[lang="ar"] .phone{font-size:15px}
 .ft{border-top:1px solid var(--line);padding:32px 0 56px;color:var(--dim);font-size:13px}
 html[lang="ar"] .ft{font-size:14px}
 .ft .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.wm-ft img{height:11px}
+.ft .lat{color:var(--muted)}
+.ft-link{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .2s,border-color .2s}
+.ft-link:hover{color:var(--text);border-color:var(--accent)}   /* the name, one step up from the dim line; the footer mark went on 21 Sep 2026 — the name as text is what search reads */
 
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important}
