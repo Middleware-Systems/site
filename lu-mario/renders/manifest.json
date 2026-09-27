@@ -1,0 +1,193 @@
+{
+ "sceneHash": "sha256:008682e55efdd55b46ad67ea94c587b731e6c9f0b2bc279cb61d1465cf0932ce",
+ "note": "Rendered by tools/renders.mjs from the engine’s own scene (DESIGN §6, S4). Re-run `npm run renders` after any change to src/scene/** or src/shared/**.",
+ "renderer": {
+  "node": "v22.11.0",
+  "chrome": "Google Chrome 153.0.8010.53",
+  "three": "0.186.1",
+  "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Pro, Unspecified Version)",
+  "supersample": 2
+ },
+ "clearance": {
+  "S": 2048,
+  "px": 94.1
+ },
+ "files": [
+  {
+   "name": "lean-digestive-1.avif",
+   "bytes": 70955
+  },
+  {
+   "name": "lean-digestive-1.webp",
+   "bytes": 83572
+  },
+  {
+   "name": "lean-digestive-2.avif",
+   "bytes": 68836
+  },
+  {
+   "name": "lean-digestive-2.webp",
+   "bytes": 80982
+  },
+  {
+   "name": "lean-digestive-3.avif",
+   "bytes": 70952
+  },
+  {
+   "name": "lean-digestive-3.webp",
+   "bytes": 85554
+  },
+  {
+   "name": "rest-desk.avif",
+   "bytes": 73359
+  },
+  {
+   "name": "rest-desk.webp",
+   "bytes": 148382
+  },
+  {
+   "name": "rest-phone.avif",
+   "bytes": 76302
+  },
+  {
+   "name": "rest-phone.webp",
+   "bytes": 109304
+  },
+  {
+   "name": "still-A-desk.avif",
+   "bytes": 20588
+  },
+  {
+   "name": "still-A-desk.webp",
+   "bytes": 44666
+  },
+  {
+   "name": "still-A-phone.avif",
+   "bytes": 23695
+  },
+  {
+   "name": "still-A-phone.webp",
+   "bytes": 56722
+  },
+  {
+   "name": "still-B-desk.avif",
+   "bytes": 14998
+  },
+  {
+   "name": "still-B-desk.webp",
+   "bytes": 28378
+  },
+  {
+   "name": "still-B-phone.avif",
+   "bytes": 13909
+  },
+  {
+   "name": "still-B-phone.webp",
+   "bytes": 23548
+  },
+  {
+   "name": "still-C-desk.avif",
+   "bytes": 24054
+  },
+  {
+   "name": "still-C-desk.webp",
+   "bytes": 44436
+  },
+  {
+   "name": "still-C-phone.avif",
+   "bytes": 17042
+  },
+  {
+   "name": "still-C-phone.webp",
+   "bytes": 40698
+  },
+  {
+   "name": "still-D-desk.avif",
+   "bytes": 37558
+  },
+  {
+   "name": "still-D-desk.webp",
+   "bytes": 48940
+  },
+  {
+   "name": "still-D-phone.avif",
+   "bytes": 37900
+  },
+  {
+   "name": "still-D-phone.webp",
+   "bytes": 47492
+  },
+  {
+   "name": "still-E-ltr-desk.avif",
+   "bytes": 55424
+  },
+  {
+   "name": "still-E-ltr-desk.webp",
+   "bytes": 83956
+  },
+  {
+   "name": "still-E-ltr-phone.avif",
+   "bytes": 41821
+  },
+  {
+   "name": "still-E-ltr-phone.webp",
+   "bytes": 57216
+  },
+  {
+   "name": "still-E-rtl-desk.avif",
+   "bytes": 55305
+  },
+  {
+   "name": "still-E-rtl-desk.webp",
+   "bytes": 83536
+  },
+  {
+   "name": "still-E-rtl-phone.avif",
+   "bytes": 41932
+  },
+  {
+   "name": "still-E-rtl-phone.webp",
+   "bytes": 56844
+  },
+  {
+   "name": "turn-butter.avif",
+   "bytes": 263015
+  },
+  {
+   "name": "turn-butter.webp",
+   "bytes": 339798
+  },
+  {
+   "name": "turn-digestive.avif",
+   "bytes": 266060
+  },
+  {
+   "name": "turn-digestive.webp",
+   "bytes": 336526
+  },
+  {
+   "name": "turn-light.avif",
+   "bytes": 264283
+  },
+  {
+   "name": "turn-light.webp",
+   "bytes": 334402
+  },
+  {
+   "name": "turn-milk.avif",
+   "bytes": 332623
+  },
+  {
+   "name": "turn-milk.webp",
+   "bytes": 343172
+  },
+  {
+   "name": "turn-strawberry.avif",
+   "bytes": 330804
+  },
+  {
+   "name": "turn-strawberry.webp",
+   "bytes": 350462
+  }
+ ]
+}
