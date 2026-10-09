@@ -60,4 +60,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://middlewaresy.com/en/dead-stock/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://middlewaresy.com/dead-stock/"/>
   </url>
+  <url><loc>https://middlewaresy.com/demo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://middlewaresy.com/demo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://middlewaresy.com/en/demo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://middlewaresy.com/demo/"/>
+  </url>
+  <url><loc>https://middlewaresy.com/en/demo/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://middlewaresy.com/demo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://middlewaresy.com/en/demo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://middlewaresy.com/demo/"/>
+  </url>
 </urlset>
