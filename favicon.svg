@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- MIDDLEWARE "M." mark — obsidian tile, the wordmark's white M, the accent period. Built by tools/favicon.py -->
+  <!-- MIDDLEWARE "M." — the wordmark's own M and square period (HelveticaNeue-Medium / HelveticaNeue-Bold), dark tile. Built by site/tools/favicon.py -->
   <rect width="64" height="64" rx="14" fill="#0A0A0D"/>
-  <path d="M14 45 V19 L26.5 35.5 L39 19 V45" fill="none" stroke="#F4F4F7" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="48" cy="45" r="4.5" fill="#5AB0FF"/>
+  <path fill="#F4F4F7" d="M12.861 16.512H20.118L28.241 39.561H28.323L36.24 16.512H43.414V45.952H38.508V23.233H38.425L30.261 45.952H26.014L17.85 23.233H17.768V45.952H12.861Z"/>
+  <path fill="#5AB0FF" d="M48.94 39.602V45.952H55.413V39.602Z"/>
 </svg>
