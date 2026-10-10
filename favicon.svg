@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- MIDDLEWARE "M." — the wordmark's own M and square period (HelveticaNeue-Medium / HelveticaNeue-Bold), dark tile. Built by site/tools/favicon.py -->
+  <!-- MIDDLEWARE "M." — Helvetica Neue's own M (HelveticaNeue-Medium), its outer corners rounded, and a round dot; dark tile. Built by site/tools/favicon.py -->
   <rect width="64" height="64" rx="14" fill="#0A0A0D"/>
-  <path fill="#F4F4F7" d="M12.861 16.512H20.118L28.241 39.561H28.323L36.24 16.512H43.414V45.952H38.508V23.233H38.425L30.261 45.952H26.014L17.85 23.233H17.768V45.952H12.861Z"/>
-  <path fill="#5AB0FF" d="M48.94 39.602V45.952H55.413V39.602Z"/>
+  <path fill="#F4F4F7" d="M12.257 18.979A2.467 2.467 0 0 1 14.723 16.512L17.77 16.512A2.467 2.467 0 0 1 20.095 18.155L27.489 39.029A0.197 0.197 0 0 0 27.862 39.028L35.062 18.174A2.467 2.467 0 0 1 37.393 16.512L40.343 16.512A2.467 2.467 0 0 1 42.81 18.979L42.81 43.499A2.453 2.453 0 0 1 40.357 45.952L40.352 45.952A2.453 2.453 0 0 1 37.899 43.503L37.864 24.354A0.197 0.197 0 0 0 37.481 24.288L30.245 44.323A2.467 2.467 0 0 1 27.925 45.952L27.141 45.952A2.467 2.467 0 0 1 24.821 44.323L17.585 24.288A0.197 0.197 0 0 0 17.202 24.354L17.168 43.503A2.453 2.453 0 0 1 14.715 45.952L14.71 45.952A2.453 2.453 0 0 1 12.257 43.499Z"/>
+  <circle fill="#5AB0FF" cx="51.592" cy="41.635" r="4.317"/>
 </svg>
