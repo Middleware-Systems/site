@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 749" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<defs>
+<pattern id="ap-g" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" stroke="#5AB0FF" stroke-opacity=".06" stroke-width="1.5"/></pattern>
+<radialGradient id="ap-r" cx=".63" cy=".5" r=".55"><stop offset="0" stop-color="#5AB0FF" stop-opacity=".18"/><stop offset="1" stop-color="#5AB0FF" stop-opacity="0"/></radialGradient>
+<rect id="ap-vb" x="268" y="168" width="220" height="250" rx="12"/>
+<rect id="ap-ph" x="22" y="352" width="192" height="384" rx="36"/>
+<path id="ap-k" d="M0 0h58v72H0zM29 0v20"/>
+<g id="ap-tk"><circle r="14" fill="#5AB0FF"/><path d="M-7 0l5 5 9-10" stroke="#0A0A0D" stroke-width="5"/></g>
+<g id="ap-cg"><rect x="-13" y="-12" width="26" height="24" rx="3" stroke="#9AD4FF" stroke-width="4"/><path d="M0-12v8" stroke="#9AD4FF" stroke-width="4"/></g>
+</defs>
+<style>
+.ap-gl{stroke:#5AB0FF;stroke-width:30;opacity:.15}
+.ap-c1,.ap-c2,.ap-c3{animation:12s ease-out infinite}
+.ap-c1{animation-name:ap-c1}.ap-c2{animation-name:ap-c2}.ap-c3{animation-name:ap-c3}
+.ap-k1,.ap-k2,.ap-k3,.ap-tt{transform-box:fill-box;transform-origin:50% 50%;animation:12s ease-out infinite}
+.ap-k1{animation-name:ap-k1}.ap-k2{animation-name:ap-k2}.ap-k3{animation-name:ap-k3}.ap-tt{animation-name:ap-tt}
+@keyframes ap-c1{0%,6%{opacity:.3}9%,95%{opacity:1}100%{opacity:.3}}
+@keyframes ap-c2{0%,10%{opacity:.3}13%,95%{opacity:1}100%{opacity:.3}}
+@keyframes ap-c3{0%,14%{opacity:.3}17%,95%{opacity:1}100%{opacity:.3}}
+@keyframes ap-k1{0%,6%{opacity:0;transform:scale(.4)}9%{opacity:1;transform:scale(1.2)}11%,95%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.4)}}
+@keyframes ap-k2{0%,10%{opacity:0;transform:scale(.4)}13%{opacity:1;transform:scale(1.2)}15%,95%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.4)}}
+@keyframes ap-k3{0%,14%{opacity:0;transform:scale(.4)}17%{opacity:1;transform:scale(1.2)}19%,95%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.4)}}
+@keyframes ap-tt{0%,19%{opacity:.25}23%,95%{opacity:1}100%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.ap-c1,.ap-c2,.ap-c3,.ap-k1,.ap-k2,.ap-k3,.ap-tt{animation:none}}
+</style>
+<rect width="600" height="749" rx="12" fill="#0A0A0D"/>
+<rect width="600" height="749" rx="12" fill="url(#ap-g)"/>
+<rect width="600" height="749" rx="12" fill="url(#ap-r)"/>
+<!-- the warehouse aisle, as the hero draws it -->
+<g transform="matrix(-1 0 0 1 600 0)">
+<g stroke="#5AB0FF" stroke-width="4" opacity=".38">
+<path d="M30 -4V496M69 30V438M99 66V394M123 95V359M142 119V331M522 -4V654M462 -4V566M414 -4V496M375 30V438M345 66V394M321 95V359M302 119V331"/>
+<path d="M-4 440L142 294M-4 297L142 243M-4 154L142 193M-4 11L142 142M522 514L302 294M522 324L302 243M522 134L302 193M522 -56L302 142M-4 545L142 331M522 654L302 331"/>
+</g>
+<path d="M-12 443L24 408L24 326L-12 347ZM36 396L63 370L63 315L36 332ZM75 265L93 259L93 223L75 224ZM-12 295L24 283L24 207L-12 206ZM105 329L117 317L117 288L105 296ZM36 161L63 168L63 124L36 109ZM369 265L351 259L351 223L369 224ZM456 295L420 283L420 207L456 206ZM339 329L327 317L327 288L339 296ZM408 161L381 168L381 124L408 109Z" stroke="#5AB0FF" stroke-width="3" fill="rgba(90,176,255,.07)" opacity=".55"/>
+</g>
+<!-- the van at the gate, from behind, doors open: its load -->
+<ellipse cx="378" cy="518" rx="160" ry="11" fill="#0A0A0D"/>
+<g fill="#15151B" stroke="#5AB0FF" stroke-width="5"><rect x="276" y="420" width="30" height="92" rx="9"/><rect x="310" y="420" width="30" height="92" rx="9"/><rect x="416" y="420" width="30" height="92" rx="9"/><rect x="450" y="420" width="30" height="92" rx="9"/></g>
+<path d="M296 424H460" stroke="#5AB0FF" stroke-width="12" opacity=".5"/>
+<g fill="#0F0F13" stroke="#5AB0FF" stroke-width="6"><path d="M268 174V412L230 436V150Z"/><path d="M488 174V412L526 436V150Z"/></g>
+<path d="M249 164V422M507 164V422" stroke="#5AB0FF" stroke-width="4" opacity=".7"/>
+<use href="#ap-vb" class="ap-gl"/>
+<use href="#ap-vb" fill="#0F0F13" stroke="#5AB0FF" stroke-width="9"/>
+<use href="#ap-vb" stroke="#9AD4FF" stroke-width="2.5"/>
+<rect x="284" y="184" width="188" height="226" rx="6" fill="#0A0A0D" stroke="#24242C" stroke-width="3"/>
+<g stroke="#5AB0FF" stroke-width="5" fill="rgba(90,176,255,.16)">
+<g class="ap-c1"><use href="#ap-k" x="287" y="186"/><use href="#ap-k" x="349" y="186"/><use href="#ap-k" x="411" y="186"/></g>
+<g class="ap-c2"><use href="#ap-k" x="287" y="262"/><use href="#ap-k" x="349" y="262"/><use href="#ap-k" x="411" y="262"/></g>
+<g class="ap-c3"><use href="#ap-k" x="287" y="338"/><use href="#ap-k" x="349" y="338"/><use href="#ap-k" x="411" y="338"/></g>
+</g>
+<rect x="256" y="444" width="244" height="18" rx="6" fill="#15151B" stroke="#5AB0FF" stroke-width="6"/>
+<g fill="#FFFFFF"><rect x="264" y="449" width="24" height="8" rx="3"/><rect x="468" y="449" width="24" height="8" rx="3"/></g>
+<rect x="356" y="448" width="44" height="10" rx="3" fill="#2E2E38"/>
+<!-- the rep's phone: the count -->
+<use href="#ap-ph" class="ap-gl"/>
+<use href="#ap-ph" fill="#0F0F13" stroke="#5AB0FF" stroke-width="9"/>
+<use href="#ap-ph" stroke="#9AD4FF" stroke-width="2.5"/>
+<rect x="36" y="366" width="164" height="356" rx="24" stroke="#24242C" stroke-width="3"/>
+<rect x="88" y="378" width="60" height="10" rx="5" fill="#24242C"/>
+<rect x="110" y="408" width="76" height="14" rx="7" fill="#2E2E38"/>
+<g fill="#15151B"><rect x="44" y="438" width="148" height="44" rx="10"/><rect x="44" y="492" width="148" height="44" rx="10"/><rect x="44" y="546" width="148" height="44" rx="10"/></g>
+<g fill="#2E2E38"><rect x="90" y="453" width="54" height="14" rx="7"/><rect x="98" y="507" width="46" height="14" rx="7"/><rect x="86" y="561" width="58" height="14" rx="7"/></g>
+<use href="#ap-cg" x="169" y="460"/><use href="#ap-cg" x="169" y="514"/><use href="#ap-cg" x="169" y="568"/>
+<g class="ap-k1"><use href="#ap-tk" x="65" y="460"/></g>
+<g class="ap-k2"><use href="#ap-tk" x="65" y="514"/></g>
+<g class="ap-k3"><use href="#ap-tk" x="65" y="568"/></g>
+<path d="M48 612H188" stroke="#8A8A9E" stroke-width="3"/>
+<g class="ap-tt"><rect x="96" y="630" width="90" height="26" rx="9" fill="#FFFFFF"/><circle cx="65" cy="643" r="17" fill="#FFFFFF"/><path d="M57 643l5 6 11-12" stroke="#0A0A0D" stroke-width="5"/></g>
+</svg>

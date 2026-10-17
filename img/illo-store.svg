@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 749" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<defs>
+<pattern id="st-g" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" stroke="#5AB0FF" stroke-opacity=".06" stroke-width="1.5"/></pattern>
+<radialGradient id="st-r" cx=".55" cy=".62" r=".55"><stop offset="0" stop-color="#5AB0FF" stop-opacity=".16"/><stop offset="1" stop-color="#5AB0FF" stop-opacity="0"/></radialGradient>
+<radialGradient id="st-l" cy=".85" r=".8"><stop offset="0" stop-color="#9AD4FF" stop-opacity=".3"/><stop offset="1" stop-color="#5AB0FF" stop-opacity="0"/></radialGradient>
+<g id="st-cd"><rect width="254" height="240" rx="18" fill="#0F0F13"/><rect x="12" y="12" width="230" height="152" rx="10" fill="#15151B" stroke="none"/><ellipse cx="127" cy="146" rx="70" ry="9" fill="#0A0A0D" stroke="none"/></g>
+<g id="st-tin"><path d="M-46-36H44V64H-46ZM-46-36L-24-58H66L44-36ZM44 64L66 42V-58"/><path d="M-20-50V-70H-2V-50" fill="none"/><path d="M0-16C-8-4-17 8-17 20A17 17 0 0 0 17 20C17 8 8-4 0-16Z" fill="#9AD4FF" stroke="none"/></g>
+<path id="st-ct" d="M140 582H178L212 690H412L450 606H185"/>
+</defs>
+<style>
+.st-gl{stroke:#5AB0FF;stroke-width:30;opacity:.15}
+.st-rp,.st-tk{transform-box:fill-box;transform-origin:50% 50%}
+.st-rp{opacity:0;animation:st-rp 12s ease-out infinite}
+.st-tk{animation:st-tk 12s ease-out infinite}
+.st-a{opacity:0;transform-box:view-box;transform-origin:0 0;animation:st-a 12s linear infinite}
+.st-b{animation:st-b 12s linear infinite}
+.st-dp{animation:st-dp 12s ease-out infinite}
+.st-pr{animation:st-pr 12s linear infinite}
+@keyframes st-rp{0%,4%{transform:scale(.5);opacity:0}5%{opacity:.9}12%,100%{transform:scale(1.8);opacity:0}}
+@keyframes st-tk{0%,5%{transform:scale(.4);opacity:0}7%{transform:scale(1.2);opacity:1}9%,96%{transform:scale(1);opacity:1}100%{transform:scale(.4);opacity:0}}
+@keyframes st-a{0%,7.9%{opacity:0;transform:translate(433px,362px) scale(1)}8%{opacity:1;transform:translate(433px,362px) scale(1)}10%{transform:translate(405px,425px) scale(.82)}12%{transform:translate(350px,535px) scale(.66)}14%{opacity:1;transform:translate(300px,628px) scale(.55)}14.1%,100%{opacity:0;transform:translate(300px,628px) scale(.55)}}
+@keyframes st-b{0%,13.9%{opacity:0}14%,96%{opacity:1}100%{opacity:0}}
+@keyframes st-dp{0%,14%{transform:translateY(0)}15.5%{transform:translateY(9px)}18%,100%{transform:translateY(0)}}
+@keyframes st-pr{0%,8%{opacity:1}8.1%{opacity:.2}14%{opacity:.2}18%,100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.st-rp,.st-tk,.st-a,.st-b,.st-dp,.st-pr{animation:none}}
+</style>
+<rect width="600" height="749" rx="12" fill="#0A0A0D"/>
+<rect width="600" height="749" rx="12" fill="url(#st-g)"/>
+<rect width="600" height="749" rx="12" fill="url(#st-r)"/>
+<!-- the catalogue: biscuits, detergent, a carton, olive oil -->
+<g stroke="#2E2E38" stroke-width="4"><use href="#st-cd" x="34" y="20"/><use href="#st-cd" x="312" y="20"/><use href="#st-cd" x="34" y="276"/></g>
+<g fill="#2E2E38"><rect x="52" y="208" width="120" height="16" rx="8"/><rect x="330" y="208" width="96" height="16" rx="8"/><rect x="52" y="464" width="108" height="16" rx="8"/></g>
+<g stroke="#5AB0FF" stroke-width="6">
+<path transform="translate(161 106)" d="M-74-34Q0-46 74-34V34Q0 46-74 34ZM-74-34H-92L-85-23L-92-12L-85-1L-92 10L-85 21L-92 32V34H-74M74-34H92L85-23L92-12L85-1L92 10L85 21L92 32V34H74"/>
+<g transform="translate(161 106)"><circle r="25"/><g fill="#5AB0FF" stroke="none"><circle cx="-9" cy="-7" r="4"/><circle cx="9" cy="-7" r="4"/><circle cx="-9" cy="8" r="4"/><circle cx="9" cy="8" r="4"/></g></g>
+<path transform="translate(436 112)" d="M-46 60V-6Q-46-28-26-36L-18-38V-54H14V-38L32-32Q52-24 52-4V60Q52 66 46 66H-40Q-46 66-46 60ZM16-26H32Q40-26 40-18V-4Q40 4 32 4H16ZM-18-54V-66H14V-54M-30 14H30V44H-30Z"/>
+<path transform="translate(161 362)" d="M-62-18L0-46L62-18L0 10ZM-62-18V38L0 66L62 38V-18M0 10V66M-31-32L31-4"/>
+</g>
+<!-- the one tapped: photographed, framed, ordered -->
+<use href="#st-cd" x="312" y="276" class="st-gl"/>
+<use href="#st-cd" x="312" y="276" stroke="#9AD4FF" stroke-width="6"/>
+<rect x="324" y="288" width="230" height="152" rx="10" fill="url(#st-l)"/>
+<path d="M338 324V302H360M518 302H540V324M540 404V426H518M360 426H338V404" stroke="#FFFFFF" stroke-width="6"/>
+<g class="st-pr"><use href="#st-tin" x="433" y="362" stroke="#FFFFFF" stroke-width="6" fill="none"/></g>
+<rect x="330" y="464" width="110" height="16" rx="8" fill="#9AD4FF"/>
+<circle class="st-rp" cx="526" cy="488" r="44" stroke="#FFFFFF" stroke-width="5"/>
+<g class="st-tk"><circle cx="526" cy="488" r="26" fill="#FFFFFF"/><path d="M514 488l8 8 15-16" stroke="#0A0A0D" stroke-width="6"/></g>
+<!-- the cart: the order, held -->
+<g class="st-dp">
+<g class="st-b"><use href="#st-tin" transform="translate(300 628) scale(.55)" stroke="#FFFFFF" stroke-width="10" fill="#15151B"/></g>
+<path d="M185 606H450L412 690H212Z" fill="#0A0A0D" opacity=".4"/>
+<path d="M262 606V690M312 606V690M362 606V690M199 648H431" stroke="#5AB0FF" stroke-width="4" opacity=".55"/>
+<g stroke-width="9"><use href="#st-ct" class="st-gl"/><use href="#st-ct" stroke="#5AB0FF"/><use href="#st-ct" stroke="#9AD4FF" stroke-width="2.5"/>
+<circle cx="232" cy="720" r="14" stroke="#5AB0FF" stroke-width="8"/><circle cx="392" cy="720" r="14" stroke="#5AB0FF" stroke-width="8"/></g>
+</g>
+<!-- in flight: above everything -->
+<g class="st-a"><use href="#st-tin" stroke="#FFFFFF" stroke-width="10" fill="#15151B"/></g>
+</svg>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title data-i18n="title">MIDDLEWARE — Your accounting program, on every phone · Syria</title>
-<meta name="description" content="The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria." data-i18n-content="desc">
+<title data-i18n="title">MIDDLEWARE — Systems, apps and websites · Damascus, Syria</title>
+<meta name="description" content="We don’t replace what your business runs on — we build what’s missing: custom systems, apps, websites and online stores. A software company in Damascus, Syria." data-i18n-content="desc">
 <link rel="canonical" href="https://middlewaresy.com/en/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MIDDLEWARE">
@@ -14,18 +14,18 @@
 <meta name="robots" content="max-image-preview:large">
 <meta property="og:locale" content="en_GB">
 <meta property="og:locale:alternate" content="ar_AR">
-<meta property="og:title" content="MIDDLEWARE — Suddenly you can see." data-i18n-content="share">
-<meta property="og:description" content="The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria." data-i18n-content="desc">
+<meta property="og:title" content="MIDDLEWARE — We build what your business is missing." data-i18n-content="share">
+<meta property="og:description" content="We don’t replace what your business runs on — we build what’s missing: custom systems, apps, websites and online stores. A software company in Damascus, Syria." data-i18n-content="desc">
 <meta property="og:url" content="https://middlewaresy.com/en/">
 <meta property="og:image" content="https://middlewaresy.com/og-v2-en.jpg">
 <meta property="og:image:secure_url" content="https://middlewaresy.com/og-v2-en.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="MIDDLEWARE — Suddenly you can see." data-i18n-content="share">
+<meta property="og:image:alt" content="MIDDLEWARE — We build what your business is missing." data-i18n-content="share">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MIDDLEWARE — Suddenly you can see." data-i18n-content="share">
-<meta name="twitter:description" content="The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria." data-i18n-content="desc">
+<meta name="twitter:title" content="MIDDLEWARE — We build what your business is missing." data-i18n-content="share">
+<meta name="twitter:description" content="We don’t replace what your business runs on — we build what’s missing: custom systems, apps, websites and online stores. A software company in Damascus, Syria." data-i18n-content="desc">
 <meta name="twitter:image" content="https://middlewaresy.com/og-v2-en.jpg">
 <meta name="theme-color" content="#0A0A0D">
 <meta name="color-scheme" content="dark">
@@ -163,8 +163,7 @@ html[dir="rtl"] .xr-line{transform:translateX(var(--xp,42vw))}html[dir="rtl"] .x
 .hero h1{font-size:clamp(34px,5.6vw,70px);line-height:1.02;letter-spacing:-.03em;color:#fff}
 html[lang="ar"] .hero h1{font-size:clamp(30px,4.8vw,60px);line-height:1.45;letter-spacing:0}
 @media (min-width:701px) and (max-height:820px){.hero h1{font-size:clamp(30px,4.4vw,56px)}html[lang="ar"] .hero h1{font-size:clamp(28px,4vw,50px)}}   /* a laptop: the headline a step smaller, so the upper bays above it hold the figures */
-@media (max-width:700px) and (max-height:660px){.hero h1{font-size:28px}html[lang="ar"] .hero h1{font-size:27px}.answer{font-size:16px;margin:12px 0 22px}}   /* the smallest phones (640 tall): the headline a step smaller, so the bottom row of figures is not under it */
-.answer{margin:20px 0 30px;font-size:clamp(18px,2vw,24px);color:var(--muted);max-width:40ch}
+@media (max-width:700px) and (max-height:660px){.hero h1{font-size:28px}html[lang="ar"] .hero h1{font-size:27px}.chips{margin:10px 0 16px}}   /* the smallest phones (640 tall): the headline a step smaller, so the pins are not under it */
 .sentinel{position:absolute;bottom:0;inset-inline-start:0;width:1px;height:1px}
 @media (min-width:900px){
   /* two layers: a vertical band for the header and the foot, and a side band that keeps the headline legible over the
@@ -179,9 +178,26 @@ html[lang="ar"] .hero h1{font-size:clamp(30px,4.8vw,60px);line-height:1.45;lette
     linear-gradient(to right,rgba(10,10,13,.7) 0%,rgba(10,10,13,.45) 40%,rgba(10,10,13,0) 58%)}
 }
 
+/* ---------- 1b · the hero's words: the line, what we build as chips, one button (15 Oct 2026) ---------- */
+.ic{width:19px;height:19px;flex:none}
+.btn-big .ic{width:21px;height:21px}
+.chips{list-style:none;margin:18px 0 26px;padding:0;display:flex;flex-wrap:wrap;gap:8px;pointer-events:auto}
+.chips a{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid rgba(90,176,255,.42);border-radius:999px;
+  background:rgba(10,10,13,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--accent-2);
+  font-size:14px;text-decoration:none;transition:border-color .2s,background-color .2s,color .2s}
+.chips a:hover{border-color:var(--accent);background:rgba(90,176,255,.12);color:#fff}
+html[lang="ar"] .chips a{font-size:14.5px;padding-bottom:2px}
+.hero-inner .chips a{pointer-events:auto}
+@media (max-width:700px){.chips{margin:14px 0 20px;gap:6px}.chips a{min-height:36px;padding:0 11px;font-size:13px}html[lang="ar"] .chips a{font-size:13.5px}}
+/* the pins name what we build, in words, not figures */
+.callouts b{font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:0}
+html[lang="ar"] .callouts b{font-family:var(--arabic);font-size:15.5px;direction:rtl}
+html[lang="ar"] .callouts li{align-items:flex-end}
+@media (max-width:700px){.callouts b{font-size:13.5px}html[lang="ar"] .callouts b{font-size:14px}}
+
 /* ---------- blocks ---------- */
-.blk{padding-block:clamp(72px,10vw,140px) 0}
-.blk .wrap{padding-bottom:clamp(40px,6vw,72px)}
+.blk{padding-block:clamp(64px,8.5vw,116px) 0}
+.blk .wrap{padding-bottom:clamp(36px,5vw,64px)}
 .blk .wrap::before{content:"";display:block;height:1px;margin-bottom:clamp(28px,4vw,44px);
   background:linear-gradient(to right,var(--accent) 0,rgba(90,176,255,.35) 22%,var(--line) 48%,var(--line) 100%)}
 html[dir="rtl"] .blk .wrap::before{background:linear-gradient(to left,var(--accent) 0,rgba(90,176,255,.35) 22%,var(--line) 48%,var(--line) 100%)}
@@ -191,91 +207,52 @@ html[lang="ar"] .eyebrow span:not(.n){font-family:var(--arabic);font-size:13.5px
 h2{font-size:clamp(28px,3.8vw,48px);line-height:1.08;max-width:22ch;margin:0 0 clamp(28px,4vw,48px)}
 html[lang="ar"] h2{max-width:26ch;line-height:1.45}
 .lede{font-size:clamp(17px,1.5vw,19px);color:var(--muted);max-width:56ch;margin:0 0 32px}
+.home h2{font-size:clamp(28px,3.8vw,46px);line-height:1.1;max-width:24ch;margin:0 0 clamp(26px,3.6vw,44px)}
+html[lang="ar"] .home h2{max-width:28ch;line-height:1.45}
+.sec-h{display:flex;align-items:baseline;gap:14px}
+.sec-h>span:last-child{min-width:0}   /* a long heading wraps inside its own box; the number stays at its start */
+.sec-h>.n:first-child{font-size:13px;font-weight:500;letter-spacing:.16em;color:var(--accent);flex:none}   /* the section's number — not a figure inside the heading (the year in 02) */
+html[lang="ar"] .sec-h>.n:first-child{font-size:12.5px}
+.arr{display:inline-block;transition:transform .2s}
+html[dir="ltr"] .arr{transform:scaleX(-1)}   /* «←» points forward in Arabic; mirrored, it points forward in English */
 
-/* ---------- 2 · the Reading: the instrument (18 Sep 2026) ----------
-   The five findings as one measured panel in the hero's blueprint grammar — a ruler and a hatched zone,
-   or a threshold line and a tally, per finding; thin accent lines on obsidian, mono labels. Every drawn
-   proportion is a ratio of two figures in reading/figures.json, written by reading/build.py into the
-   inline --a/--w/--x and the tally counts; site.js re-derives them from the panel's data- attributes and
-   shouts if a drawing disagrees. The big number and its name are the three-second read; the drawing is
-   the second look. Mono labels are sized with #reading in the selector because html[lang="ar"] .n
-   would otherwise outrank them. */
-.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.stats.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:560px){.stats,.stats.three{grid-template-columns:minmax(0,1fr)}}
-.stat{background:var(--bg-2);padding:26px 22px 24px;display:flex;flex-direction:column;gap:8px;transition:background-color .2s}
-.stat:hover{background:var(--surface)}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500;font-size:clamp(26px,2.6vw,36px);letter-spacing:-.02em;line-height:1.1;white-space:nowrap;color:#fff}
-html[dir="rtl"] .num{text-align:right}   /* the digits stay LTR; the figure shares its name's edge */
-.stat .name,.g .name{font-size:14px;color:var(--muted);line-height:1.5;text-wrap:pretty}
-html[lang="ar"] :is(.stat,.g) .name{font-size:14.5px;line-height:1.75}
+/* ---------- 2 · what we build: four tiles ---------- */
+.tiles{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+@media (min-width:640px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+@media (min-width:1080px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}}
+.tile{position:relative;display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);gap:16px;align-items:center;padding:12px;
+  border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--bg-2),var(--bg));
+  scroll-margin-top:84px;transition:border-color .25s,transform .25s,box-shadow .25s}
+.tile:hover{border-color:rgba(90,176,255,.55);transform:translateY(-3px);box-shadow:0 24px 60px -36px var(--glow)}
+.tile:target{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 24px 60px -30px var(--glow)}   /* a chip in the hero lands here */
+@media (min-width:640px){.tile{grid-template-columns:minmax(0,1fr);align-items:start;gap:18px;padding:14px 14px 20px}}
+.vis{position:relative;aspect-ratio:600/749;border-radius:12px;overflow:hidden;background:#0A0A0D;border:1px solid var(--hair)}
+.vis.illo img{width:100%;height:100%;display:block}
+.vis.illo::after{display:none}   /* a drawing is composed to the frame; only the demo screens needed the fade */
+.vis::after{content:"";position:absolute;inset:auto 0 0 0;height:28%;background:linear-gradient(to bottom,rgba(10,10,13,0),rgba(10,10,13,.85));pointer-events:none}   /* the screen fades into the card instead of stopping at a cut */
+.vis.browser{display:flex;flex-direction:column}
+.vis.browser .bar{flex:none;display:flex;align-items:center;gap:5px;height:24px;padding:0 9px;background:#15151B;border-bottom:1px solid var(--line);direction:ltr}
+.vis.browser .bar i{width:7px;height:7px;border-radius:50%;background:#2E2E38}
+.vis.browser .bar span{flex:1;height:10px;margin-left:8px;border-radius:5px;background:#1E1E26}
+.vis.browser .view{position:relative;flex:1;overflow:hidden}
+.vis.browser .view picture,.vis.browser .view img:not(.vwm){position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vis.browser .view .xr{-webkit-clip-path:inset(0 0 0 52%);clip-path:inset(0 0 0 52%)}
+html[dir="rtl"] .vis.browser .view .xr{-webkit-clip-path:inset(0 48% 0 0);clip-path:inset(0 48% 0 0)}   /* the data on the end side, as in the hero */
+.vline{position:absolute;top:0;bottom:0;left:52%;width:1px;background:var(--accent);box-shadow:0 0 10px var(--glow),0 0 24px var(--glow)}
+html[dir="rtl"] .vline{left:52%}
+.vwm{position:absolute;top:12px;left:12px;height:7px;width:auto;opacity:.95}
+.tile-txt{min-width:0}
+.tile h3{font-size:19px;line-height:1.3;margin:0 0 6px}
+html[lang="ar"] .tile h3{font-size:19px;line-height:1.5}
+.tile p{font-size:14.5px;color:var(--muted);line-height:1.6}
+html[lang="ar"] .tile p{font-size:15px;line-height:1.75}
+.ask{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:6px;color:var(--accent);font-size:14.5px;font-weight:600;text-decoration:none}
+.ask:hover{color:var(--accent-2)}
+html[dir="rtl"] .ask:hover .arr{transform:translateX(-3px)}
+html[dir="ltr"] .ask:hover .arr{transform:scaleX(-1) translateX(-3px)}
+html[lang="ar"] .ask{font-size:15px}
 
-.inst{position:relative;border:1px solid var(--line);border-radius:12px;background:var(--bg-2);overflow:hidden}
-.inst::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background-image:
-  linear-gradient(rgba(90,176,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(90,176,255,.045) 1px,transparent 1px);
-  background-size:48px 48px}   /* the X-ray twin's grid, a shade quieter */
-.inst>*{position:relative;z-index:1}
-.inst-hd{display:flex;flex-wrap:wrap;gap:4px 0;align-items:baseline;margin:0;padding:13px 16px 11px;border-bottom:1px solid var(--line);
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.5}
-.inst-hd span{white-space:nowrap}
-html[lang="ar"] .inst-hd span:not(.n){font-family:var(--arabic);font-size:12.5px;letter-spacing:0;text-transform:none}
-html[lang="ar"] .inst-hd .n{font-size:11px;letter-spacing:.06em}
-.inst-body{position:relative}
-.gauges{list-style:none;margin:0;padding:0}
-.g{display:grid;grid-template-columns:minmax(0,1fr);gap:6px 32px;padding:15px 16px 13px;border-top:1px solid var(--line)}
-.g:first-child{border-top:0}
-@media (min-width:760px){.g{grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);align-items:center;padding:20px 26px}.inst-hd,.inst-ft{padding-inline:26px}}
-@media (min-width:1100px){.g{grid-template-columns:minmax(0,.34fr) minmax(0,.66fr);gap:10px 56px}}
-.g-fig{display:flex;flex-direction:column;gap:6px;min-width:0}
-
-/* the drawing: --ry is the ruler's row, --zh the zone's height; everything hangs off those two */
-.g-draw{position:relative;height:66px;min-width:0;--ry:40px;--zh:20px}
-@media (min-width:760px){.g-draw{height:72px;--ry:46px;--zh:24px}}
-.g-draw>span,.g-draw>i,.zone>.dl{position:absolute;display:block}
-.rule{inset-inline:0;top:var(--ry);height:6px;border-top:1px solid rgba(244,244,247,.22);
-  background:repeating-linear-gradient(to right,rgba(244,244,247,.22) 0 1px,transparent 1px calc(100% / var(--n,10)))}   /* --n ticks, then the end tick below */
-html[dir="rtl"] .rule{background:repeating-linear-gradient(to left,rgba(244,244,247,.22) 0 1px,transparent 1px calc(100% / var(--n,10)))}
-.rule::before,.rule::after{content:"";position:absolute;top:-1px;width:1px;height:9px;background:rgba(244,244,247,.42)}
-.rule::before{inset-inline-start:0}.rule::after{inset-inline-end:0}
-.tk.mark{top:calc(var(--ry) - 8px);inset-inline-start:var(--x);width:1px;height:14px;background:var(--accent);box-shadow:0 0 8px var(--glow-soft)}
-.zone{top:calc(var(--ry) - var(--zh));height:var(--zh);inset-inline-start:var(--a);width:var(--w);
-  border-top:1px solid var(--accent-2);border-inline:1px solid rgba(90,176,255,.75);
-  background:repeating-linear-gradient(-45deg,rgba(90,176,255,.34) 0 1px,transparent 1px 7px)}
-html[dir="rtl"] .zone{background:repeating-linear-gradient(45deg,rgba(90,176,255,.34) 0 1px,transparent 1px 7px)}
-.zone .dl{bottom:calc(100% + 5px);inset-inline-start:-1px;white-space:nowrap}
-.zone.at-end .dl{inset-inline-start:auto;inset-inline-end:-1px}
-#reading .ax,#reading .dl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;line-height:1.3;white-space:nowrap;color:var(--muted)}
-#reading .dl{color:var(--accent-2)}
-html[lang="ar"] #reading :is(.ax,.dl){font-family:var(--arabic);font-size:12.5px;letter-spacing:0;text-transform:none}
-html[lang="ar"] #reading :is(.ax,.dl) .n{font-size:11px;letter-spacing:.06em}
-.ax.s{top:calc(var(--ry) + 10px);inset-inline-start:0}
-.ax.e{top:calc(var(--ry) + 10px);inset-inline-end:0}
-/* a threshold line and a tally under it: rows 2 and 5 */
-.line{inset-inline:0;top:calc(var(--ry) - 14px);height:1px;background:rgba(244,244,247,.3)}
-.ax.c{top:calc(var(--ry) - 31px);inset-inline-start:0}
-.g-draw .marks{top:calc(var(--ry) - 13px);inset-inline-start:0;display:flex;gap:5px}   /* .g-draw>span would blockify it otherwise */
-.marks i{flex:none;width:1px;height:16px;background:var(--accent);box-shadow:0 0 6px var(--glow-soft)}
-.marks i:nth-child(5n+1):not(:first-child){margin-inline-start:7px}   /* a gap every five: forty reads as eight fives, not a comb */
-.g-draw .rings{top:calc(var(--ry) - 29px);inset-inline-end:0;display:flex;gap:9px}   /* the ring is its label's trailing mark, on the label's own row above the line: it counts one invoice and claims no position on the cost axis */
-.rings i{width:9px;height:9px;border:1px solid var(--accent);border-radius:50%;box-shadow:0 0 8px var(--glow-soft)}
-#reading .tally .ax.s{color:var(--accent-2)}   /* the tally's count is the row's dimension, like a zone's label */
-.tally .ax.e{top:calc(var(--ry) - 31px);inset-inline-end:16px}   /* the ring's label, above the line at the end, the ring after it */
-.inst-ft{margin:0;padding:12px 22px 13px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--dim);letter-spacing:.02em}
-html[lang="ar"] .inst-ft{font-family:var(--arabic);font-size:13.5px;letter-spacing:0;line-height:1.75}
-@media (max-width:759px){.inst-hd{padding:11px 16px 9px;font-size:10px;letter-spacing:.1em}.inst-hd span{white-space:normal}.inst-ft{padding-inline:16px}}
-/* entry: a seam sweeps the panel once and each drawing appears behind it (site.js clips the drawings to the seam;
-   the numbers are never clipped, so a visitor landing mid-scroll sees figures, not an empty card). Without JS
-   the panel is simply there; under reduced motion .arm is never set. */
-.inst-seam{position:absolute;top:0;bottom:0;left:0;transform:translateX(var(--sx,0px));width:1px;background:var(--accent);box-shadow:0 0 12px var(--glow),0 0 36px var(--glow);opacity:0;pointer-events:none;z-index:3}
-.inst.sweeping .inst-seam{opacity:1}
-.inst.done .inst-seam{opacity:0;transition:opacity .3s}
-.inst.broken .g-draw{visibility:hidden}   /* site.js found a drawing that disagrees with the figures: the numbers stay, the drawings go */
-@media print{.g-draw{clip-path:none!important;-webkit-clip-path:none!important}.inst-seam{display:none}}
-
-/* ---------- 3 · the first client ---------- */
-.three{margin:0 0 8px}
-
-/* ---------- 4 · how it starts ---------- */
+/* ---------- 3 · how it starts ---------- */
 .steps{list-style:none;padding:0;margin:0 0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
 .steps li{padding:22px 22px 20px;border:1px solid var(--line);border-radius:12px;background:var(--bg-2)}
 .sn{display:block;color:var(--accent);font-size:12px;font-weight:500;letter-spacing:.14em;margin-bottom:10px}
@@ -287,186 +264,160 @@ html[lang="ar"] .qlink{font-size:15.5px}
 .qlink a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;white-space:nowrap;transition:color .2s}
 .qlink a:hover{color:var(--accent-2)}   /* the fourteen questions, sent after the call: questions/ */
 .qlink.wide{margin-top:22px}.qlink.wide a{white-space:normal}   /* a whole phrase as the anchor (the warehouse page, 21 Sep 2026): it wraps on a phone */
+.home .steps{margin:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px}
+.home .steps li{border-radius:16px}
+.home .steps p{font-size:17px;line-height:1.5}
+html[lang="ar"] .home .steps p{font-size:17px;line-height:1.75}
+@media (max-width:639px){.home .steps{gap:10px}.home .steps li{display:flex;align-items:baseline;gap:14px;padding:16px 18px}.home .sn{margin:0;flex:none}}   /* a phone: number and line on one row — three short lines need no three tall cards */
+.promises{list-style:none;padding:0;margin:26px 0 0;display:flex;flex-wrap:wrap;gap:12px 32px}
+.promises li{display:flex;align-items:baseline;gap:12px;color:var(--muted);font-size:15px;max-width:52ch}
+.promises li::before{content:"✓";flex:none;color:var(--accent);font-family:var(--sans);font-weight:600}
+html[lang="ar"] .promises li{font-size:15.5px}
 
-/* ---------- 5 · what we build ---------- */
-.prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:0 0 28px}
-.prod{padding:24px 24px 22px;border:1px solid var(--line);border-radius:12px;background:var(--bg-2);transition:border-color .2s,transform .2s,box-shadow .2s}
-.prod:hover{border-color:rgba(90,176,255,.6);transform:translateY(-2px);box-shadow:0 12px 40px -24px var(--glow)}
-.prod.top{grid-column:1 / -1;background:linear-gradient(135deg,var(--surface),var(--bg-2))}
-.prod h3{font-size:19px;margin:0 0 8px}
-.prod.top h3{font-size:24px}
-.prod p{font-size:15px;color:var(--muted);max-width:60ch}
-html[lang="ar"] .prod p{font-size:15.5px}
-.prod-link{display:inline-block;margin-top:14px;font-size:14px;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
-.prod-link:hover{border-color:var(--accent)}
-html[lang="ar"] .prod-link{font-size:15px}
-.proof{font-family:var(--mono);font-size:11.5px;color:var(--dim);letter-spacing:.02em;line-height:1.6}
-html[lang="ar"] .proof{font-family:var(--arabic);font-size:13.5px;letter-spacing:0}
-
-/* ---------- 6 · contact, and the foot ---------- */
+/* ---------- 4 · contact, and the foot ---------- */
 .contact .wrap{padding-bottom:clamp(64px,9vw,120px)}
-.contact h2{margin-bottom:28px}
+.contact h2{font-size:clamp(32px,5.2vw,64px);line-height:1.05;margin-bottom:30px;max-width:18ch}
+html[lang="ar"] .contact h2{line-height:1.4;max-width:20ch}
 .phone{margin-top:22px;font-size:14px;color:var(--muted)}
 .phone a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;font-family:var(--mono)}
 html[lang="ar"] .phone{font-size:15px}
 .ft{border-top:1px solid var(--line);padding:32px 0 56px;color:var(--dim);font-size:13px}
 html[lang="ar"] .ft{font-size:14px}
 .ft .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.home .ft .wrap{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:16px}
 .ft .lat{color:var(--muted)}
-.ft-link{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .2s,border-color .2s}
-.ft-link:hover{color:var(--text);border-color:var(--accent)}   /* the name, one step up from the dim line; the footer mark went on 21 Sep 2026 — the name as text is what search reads */
+.ft-links{display:flex;flex-wrap:wrap;gap:6px 18px}
+.ft-links a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .2s,border-color .2s}
+.ft-links a:hover{color:var(--text);border-color:var(--accent)}   /* the query pages keep their links from the home, at the foot: search reads them, a visitor from a post is not sent there */
+
+/* ---------- a phone: the WhatsApp bar under the thumb, past the hero ---------- */
+.wa-bar{position:fixed;inset-inline:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  background:rgba(10,10,13,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);
+  transform:translateY(110%);transition:transform .3s ease}
+.wa-bar.on{transform:none}
+.wa-bar .btn{width:100%;justify-content:center}
+@media (min-width:701px){.wa-bar{display:none}}
+@media (max-width:700px){.home .btn-hd{display:none}.home .ft{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}}   /* the home page on a phone: the bar is the button and the foot clears it — the query pages keep their header button */
 
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important}
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://middlewaresy.com/#website","url":"https://middlewaresy.com/","name":"MIDDLEWARE","inLanguage":["ar","en"],"publisher":{"@id":"https://middlewaresy.com/#org"}},{"@type":["Organization","LocalBusiness"],"@id":"https://middlewaresy.com/#org","name":"MIDDLEWARE","url":"https://middlewaresy.com/","description":"The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria.","slogan":"Suddenly you can see.","logo":{"@type":"ImageObject","url":"https://middlewaresy.com/apple-touch-icon.png","width":180,"height":180},"image":"https://middlewaresy.com/og-v2-en.jpg","telephone":"+963953250111","address":{"@type":"PostalAddress","addressLocality":"Damascus","addressCountry":"SY"},"areaServed":{"@type":"Country","name":"Syria"},"knowsLanguage":["ar","en"]},{"@type":"WebPage","@id":"https://middlewaresy.com/en/#webpage","url":"https://middlewaresy.com/en/","name":"MIDDLEWARE — Your accounting program, on every phone · Syria","description":"The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria.","inLanguage":"en","isPartOf":{"@id":"https://middlewaresy.com/#website"},"about":{"@id":"https://middlewaresy.com/#org"},"primaryImageOfPage":"https://middlewaresy.com/og-v2-en.jpg"}]}
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://middlewaresy.com/#website","url":"https://middlewaresy.com/","name":"MIDDLEWARE","inLanguage":["ar","en"],"publisher":{"@id":"https://middlewaresy.com/#org"}},{"@type":["Organization","LocalBusiness"],"@id":"https://middlewaresy.com/#org","name":"MIDDLEWARE","url":"https://middlewaresy.com/","description":"We don’t replace what your business runs on — we build what’s missing: custom systems, apps, websites and online stores. A software company in Damascus, Syria.","slogan":"We don’t replace what your business runs on. We build what’s missing.","logo":{"@type":"ImageObject","url":"https://middlewaresy.com/apple-touch-icon.png","width":180,"height":180},"image":"https://middlewaresy.com/og-v2-en.jpg","telephone":"+963953250111","address":{"@type":"PostalAddress","addressLocality":"Damascus","addressCountry":"SY"},"areaServed":{"@type":"Country","name":"Syria"},"knowsLanguage":["ar","en"]},{"@type":"WebPage","@id":"https://middlewaresy.com/en/#webpage","url":"https://middlewaresy.com/en/","name":"MIDDLEWARE — Systems, apps and websites · Damascus, Syria","description":"We don’t replace what your business runs on — we build what’s missing: custom systems, apps, websites and online stores. A software company in Damascus, Syria.","inLanguage":"en","isPartOf":{"@id":"https://middlewaresy.com/#website"},"about":{"@id":"https://middlewaresy.com/#org"},"primaryImageOfPage":"https://middlewaresy.com/og-v2-en.jpg"}]}
 </script>
 </head>
-<body>
+<body class="home">
 
 <header class="hd" id="hd">
   <a class="wm" href="#top" aria-label="MIDDLEWARE"><img src="../img/wordmark-accent.svg" alt="MIDDLEWARE" width="746" height="60"></a>
   <div class="hd-end">
-    <a class="btn btn-hd" data-wa href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20the%20site.%20I%E2%80%99d%20like%20the%20twenty%20minutes%20about%20my%20business." rel="noopener"><span class="full" data-i18n-html="btn">Twenty minutes on the phone</span><span class="short" data-i18n-html="btnShort">Twenty minutes</span></a>
+    <a class="btn btn-hd" data-wa="call" href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20your%20website.%20I%E2%80%99d%20like%20the%20twenty%20minutes%20about%20my%20business." rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.2 8.6c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.3 0 .5-.1.7l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.5-.2.7-.1l1.5.6c.3.1.4.3.4.5v.5c0 .3-.1.6-.4.8-.6.4-1.4.5-2.1.3-2.4-.8-4.2-2.6-5-5-.2-.7-.1-1.5.3-2.1z" fill="currentColor"/></svg><span data-i18n="ctaShort">Contact us</span></a>
     <a class="lang" id="lang" href="../" hreflang="ar" lang="ar" aria-label="العربية" title="العربية">عربي</a>
   </div>
 </header>
 
 <main id="top">
 
-<!-- 1 · the X-ray hero -->
+<!-- 1 · the X-ray hero: the photograph is what the business runs on; the blueprint under the seam is what we build on it (15 Oct 2026) -->
 <section class="hero" id="hero" aria-label="MIDDLEWARE">
   <div class="xray" id="xray">
     <div class="xr-layer xr-photo">
       <div class="xr-frame">
-        <picture>
-          <source media="(max-width: 700px)" srcset="../img/scene-900.jpg">
-          <img src="../img/scene-1600.jpg" alt="A warehouse aisle: racks of cartons, a phone on one carton" width="1600" height="900" fetchpriority="high" decoding="async" data-i18n-alt="hero.alt" draggable="false">
-        </picture>
+        <picture><source media="(max-width: 700px)" srcset="../img/scene-900.webp" type="image/webp"><source media="(max-width: 700px)" srcset="../img/scene-900.jpg"><source srcset="../img/scene-1600.webp" type="image/webp"><img src="../img/scene-1600.jpg" alt="A warehouse aisle: racks of cartons, a phone on one carton" width="1600" height="900" fetchpriority="high" decoding="async" data-i18n-alt="hero.alt" draggable="false"></picture>
       </div>
     </div>
     <div class="xr-layer xr-data">
       <div class="xr-frame">
-        <picture aria-hidden="true">
-          <source media="(max-width: 700px)" srcset="../img/xray-900.jpg">
-          <img src="../img/xray-1600.jpg" alt="" width="1600" height="900" decoding="async" draggable="false">
-        </picture>
-        <ul class="callouts" id="callouts" aria-label="The numbers" data-i18n-aria="xray.label"></ul>
+        <picture aria-hidden="true"><source media="(max-width: 700px)" srcset="../img/xray-900.webp" type="image/webp"><source media="(max-width: 700px)" srcset="../img/xray-900.jpg"><source srcset="../img/xray-1600.webp" type="image/webp"><img src="../img/xray-1600.jpg" alt="" width="1600" height="900" fetchpriority="low" decoding="async" draggable="false"></picture>
+        <ul class="callouts" id="callouts" aria-label="What we build" data-i18n-aria="xray.label"></ul>
       </div>
     </div>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="xr-line" aria-hidden="true"></div>
-    <input class="xr-range" id="xr-range" type="range" min="0" max="100" step="2" value="58" dir="ltr" aria-label="The numbers" data-i18n-aria="xray.label">
+    <input class="xr-range" id="xr-range" type="range" min="0" max="100" step="2" value="58" dir="ltr" aria-label="What we build" data-i18n-aria="xray.label">
     <div class="xr-knob" id="xr-knob" aria-hidden="true">‹ ›</div>
     <p class="xr-hint" id="xr-hint" aria-hidden="true" data-i18n="xray.hint">Drag to see</p>
-    <p class="xr-tag" aria-hidden="true" data-i18n="xray.label">The numbers</p>
+    <p class="xr-tag" aria-hidden="true" data-i18n="xray.label">What we build</p>
   </div>
   <div class="hero-txt wrap">
     <div class="hero-inner">
-      <h1 data-i18n="sentence">Your accounting program knows everything about your business. You can’t see any of it.</h1>
-      <p class="answer" data-i18n="answer">Nothing changes. Suddenly you can see.</p>
-      <p class="cta"><a class="btn" data-wa href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20the%20site.%20I%E2%80%99d%20like%20the%20twenty%20minutes%20about%20my%20business." rel="noopener" data-i18n-html="btn">Twenty minutes on the phone</a></p>
+      <h1 data-i18n="hero.h1">We don’t replace what your business runs on. We build what’s missing.</h1>
+      <ul class="chips" aria-label="What we build" data-i18n-aria="build.h">
+        <li><a href="#t-system" data-i18n="t.system.h">Custom systems</a></li>
+        <li><a href="#t-apps" data-i18n="t.apps.h">Apps</a></li>
+        <li><a href="#t-web" data-i18n="t.web.h">Websites</a></li>
+        <li><a href="#t-store" data-i18n="t.store.h">Online stores</a></li>
+      </ul>
+      <p class="cta"><a class="btn btn-big" data-wa="call" href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20your%20website.%20I%E2%80%99d%20like%20the%20twenty%20minutes%20about%20my%20business." rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.2 8.6c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.3 0 .5-.1.7l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.5-.2.7-.1l1.5.6c.3.1.4.3.4.5v.5c0 .3-.1.6-.4.8-.6.4-1.4.5-2.1.3-2.4-.8-4.2-2.6-5-5-.2-.7-.1-1.5.3-2.1z" fill="currentColor"/></svg><span data-i18n="cta">Message us on WhatsApp</span></a></p>
     </div>
   </div>
   <div class="sentinel" id="hero-end" aria-hidden="true"></div>
 </section>
 
-<!-- 2 · the Reading -->
-<section class="blk" id="reading">
+<!-- 2 · what we build: four tiles, one line each, a real screen each, one question to WhatsApp each -->
+<section class="blk" id="build" aria-labelledby="build-h">
   <div class="wrap">
-    <p class="eyebrow"><span class="n">01</span><span data-i18n="reading.eb">The Reading</span></p>
-    <h2 data-i18n="reading.h">Two pages. Your numbers, side by side.</h2>
-    <div class="inst" id="instrument" data-book="2829" data-dead="820" data-risk="40" data-quiet="11" data-owed="79400" data-over="31000" data-lines="6" data-cur="1">
-      <p class="inst-hd"><span data-i18n-html="reading.meta">September <span class="n" dir="ltr">2026</span> · a Damascus distributor</span></p>
-      <div class="inst-body">
-        <ol class="gauges" id="findings" role="list">
-          <li class="g" id="r1">
-            <div class="g-fig"><span class="num" dir="ltr"><span data-count data-fig="dead.usd" data-value="118600" data-prefix="$">$118,600</span></span><span class="name" data-i18n-html="f1">in Dead Stock · <span class="n">820</span> items untouched for a year</span></div>
-            <div class="g-draw" role="img" aria-label="820 of 2,829 items asleep — 29 percent of the book" data-i18n-aria="r1.aria"><span class="rule" style="--n:10"></span><span class="zone" style="--a:0.00%;--w:28.99%"><span class="dl" data-i18n-html="r1.dim"><span class="n" dir="ltr">820</span> items · <span class="n" dir="ltr">29%</span></span></span><span class="ax s" data-i18n-html="r1.s"><span class="n" dir="ltr">0</span></span><span class="ax e" data-i18n-html="r1.e"><span class="n" dir="ltr">2,829</span> items on the book</span></div>
-          </li>
-          <li class="g" id="r2">
-            <div class="g-fig"><span class="num" dir="ltr"><span data-count data-fig="risk.usd_month" data-value="15600" data-prefix="$">$15,600</span></span><span class="name" data-i18n-html="f2">in Monthly Revenue at Risk · <span class="n">40</span> items under two months of cover</span></div>
-            <div class="g-draw tally" role="img" aria-label="40 items with under two months’ cover, one stroke each" data-i18n-aria="r2.aria"><span class="line"></span><span class="ax c" data-i18n-html="r2.line">two months’ cover</span><span class="marks" style="--n:40"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="ax s" data-i18n-html="r2.tally"><span class="n" dir="ltr">40</span> items under two months</span></div>
-          </li>
-          <li class="g" id="r3">
-            <div class="g-fig"><span class="num" dir="ltr"><span data-count data-fig="quiet.customers" data-value="11">11</span></span><span class="name" data-i18n-html="f3">Dormant Accounts · over <span class="n" dir="ltr">$2,000</span> each last year, no order in four months</span></div>
-            <div class="g-draw tally" role="img" aria-label="11 customers with no order for four months, one stroke each" data-i18n-aria="r3.aria"><span class="line"></span><span class="ax c" data-i18n-html="r3.line">four months without an order</span><span class="marks" style="--n:11"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="ax s" data-i18n-html="r3.tally"><span class="n" dir="ltr">11</span> customers</span></div>
-          </li>
-          <li class="g" id="r4">
-            <div class="g-fig"><span class="num" dir="ltr"><span data-count data-fig="owed.usd" data-value="79400" data-prefix="$">$79,400</span></span><span class="name" data-i18n-html="f4">in Outstanding Receivables · <span class="n">134</span> customers, <span class="n" dir="ltr">$31,000</span> past <span class="n">90</span> days</span></div>
-            <div class="g-draw" role="img" aria-label="$31,000 of $79,400 past 90 days — 39 percent" data-i18n-aria="r4.aria"><span class="rule" style="--n:10"></span><span class="zone at-end" style="--a:60.96%;--w:39.04%"><span class="dl" data-i18n-html="r4.dim"><span class="n" dir="ltr">$31,000</span> past <span class="n" dir="ltr">90</span> days · <span class="n" dir="ltr">39%</span></span></span><i class="tk mark" style="--x:60.96%"></i><span class="ax s" data-i18n-html="r4.s"><span class="n" dir="ltr">0</span></span><span class="ax e" data-i18n-html="r4.e"><span class="n" dir="ltr">$79,400</span> owed</span></div>
-          </li>
-          <li class="g" id="r5">
-            <div class="g-fig"><span class="num" dir="ltr"><span data-count data-fig="wrong.lines" data-value="6">6</span></span><span class="name" data-i18n-html="f5">Below-Cost Sales · invoiced under cost price</span></div>
-            <div class="g-draw tally" role="img" aria-label="6 lines sold below cost, and 1 invoice in the wrong currency" data-i18n-aria="r5.aria"><span class="line"></span><span class="ax c" data-i18n-html="r5.cost">cost</span><span class="marks" style="--n:6"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="ax s" data-i18n-html="r5.tally"><span class="n" dir="ltr">6</span> lines below cost</span><span class="rings"><i></i></span><span class="ax e" data-i18n-html="r5.ring"><span class="n" dir="ltr">1</span> invoice · wrong currency</span></div>
-          </li>
-        </ol>
-        <span class="inst-seam" aria-hidden="true"></span>
-      </div>
-      <p class="inst-ft" data-i18n="reading.cap">Names removed, figures rounded, drawn to scale.</p>
-    </div>
-    <p class="qlink wide"><a href="dead-stock/" data-i18n="link.dead">Dead stock and the count difference: where they hide in your program</a></p>
-  </div>
-</section>
-
-<!-- 3 · the first client -->
-<section class="blk" id="client">
-  <div class="wrap">
-    <p class="eyebrow"><span class="n">02</span><span data-i18n="client.eb">A client: Lightware</span></p>
-    <h2 data-i18n="client.h">Still runs on the System.</h2>
-    <p class="lede" data-i18n-html="client.p">A lighting distributor. Everything in <span class="lat">Al-Ameen</span>, nothing on the owner’s phone.</p>
-    <div class="stats three">
-      <div class="stat"><span class="num" dir="ltr"><span data-count data-value="2800">2,800</span></span><span class="name" data-i18n="c1">items on every phone</span></div>
-      <div class="stat"><span class="num" dir="ltr"><span data-count data-value="1400">1,400</span></span><span class="name" data-i18n="c2">items photographed, published</span></div>
-      <div class="stat"><span class="num" dir="ltr"><span class="n">2026</span></span><span class="name" data-i18n="c3">since July, hourly. Al-Ameen untouched.</span></div>
+    <h2 class="sec-h" id="build-h"><span class="n">01</span><span data-i18n="build.h">What we build</span></h2>
+    <div class="tiles">
+      <article class="tile" id="t-system">
+        <div class="vis illo"><img src="../img/illo-system.svg" alt="An office computer showing the accounting program’s ledger, and one balance from it on a phone." data-i18n-alt="t.system.alt" width="600" height="749" loading="lazy" decoding="async"></div>
+        <div class="tile-txt">
+          <h3 data-i18n="t.system.h">Custom systems</h3>
+          <p data-i18n-html="t.system.p">Your accounting program’s numbers — Al-Ameen or another — on every phone.</p>
+          <a class="ask" data-wa="system" href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20your%20website.%20I%E2%80%99m%20interested%20in%20a%20system%20for%20my%20business." rel="noopener"><span data-i18n="ask">Ask about this</span><span class="arr" aria-hidden="true">←</span></a>
+        </div>
+      </article>
+      <article class="tile" id="t-apps">
+        <div class="vis illo"><img src="../img/illo-apps.svg" alt="A delivery van at the warehouse, its cartons counted on the rep’s phone." data-i18n-alt="t.apps.alt" width="600" height="749" loading="lazy" decoding="async"></div>
+        <div class="tile-txt">
+          <h3 data-i18n="t.apps.h">Apps</h3>
+          <p data-i18n-html="t.apps.p">For your reps, vans and warehouse, on their own phones.</p>
+          <a class="ask" data-wa="apps" href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20your%20website.%20I%E2%80%99m%20interested%20in%20an%20app%20for%20my%20business." rel="noopener"><span data-i18n="ask">Ask about this</span><span class="arr" aria-hidden="true">←</span></a>
+        </div>
+      </article>
+      <article class="tile" id="t-web">
+        <div class="vis browser" role="img" aria-label="This website: the warehouse photograph and its blueprint" data-i18n-aria="t.web.alt"><div class="bar" aria-hidden="true"><i></i><i></i><i></i><span></span></div><div class="view" aria-hidden="true"><picture><source media="(max-width: 700px)" srcset="../img/scene-900.webp" type="image/webp"><source media="(max-width: 700px)" srcset="../img/scene-900.jpg"><source srcset="../img/scene-1600.webp" type="image/webp"><img src="../img/scene-1600.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async"></picture><picture class="xr"><source media="(max-width: 700px)" srcset="../img/xray-900.webp" type="image/webp"><source media="(max-width: 700px)" srcset="../img/xray-900.jpg"><source srcset="../img/xray-1600.webp" type="image/webp"><img src="../img/xray-1600.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async"></picture><span class="vline"></span><img class="vwm" src="../img/wordmark-accent.svg" alt="" width="746" height="60"></div></div>
+        <div class="tile-txt">
+          <h3 data-i18n="t.web.h">Websites</h3>
+          <p data-i18n-html="t.web.p">Your company online, in Arabic and English.</p>
+          <a class="ask" data-wa="web" href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20your%20website.%20I%E2%80%99m%20interested%20in%20a%20website%20for%20my%20business." rel="noopener"><span data-i18n="ask">Ask about this</span><span class="arr" aria-hidden="true">←</span></a>
+        </div>
+      </article>
+      <article class="tile" id="t-store">
+        <div class="vis illo"><img src="../img/illo-store.svg" alt="Photographed products; an olive-oil tin is tapped and goes into the cart." data-i18n-alt="t.store.alt" width="600" height="749" loading="lazy" decoding="async"></div>
+        <div class="tile-txt">
+          <h3 data-i18n="t.store.h">Online stores</h3>
+          <p data-i18n-html="t.store.p">Your products photographed, ordered in a tap.</p>
+          <a class="ask" data-wa="store" href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20your%20website.%20I%E2%80%99m%20interested%20in%20an%20online%20store%20for%20my%20business." rel="noopener"><span data-i18n="ask">Ask about this</span><span class="arr" aria-hidden="true">←</span></a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- 4 · how it starts -->
-<section class="blk" id="how">
+<!-- 3 · how it starts: three lines, and the two promises -->
+<section class="blk" id="start" aria-labelledby="start-h">
   <div class="wrap">
-    <p class="eyebrow"><span class="n">03</span><span data-i18n="how.eb">The start</span></p>
-    <h2 class="hook" data-i18n-html="how.h"><span class="n">20</span> minutes. <span class="n">3</span> files. <span class="n">2</span> pages.</h2>
+    <h2 class="sec-h" id="start-h"><span class="n">02</span><span data-i18n="start.h">How it starts</span></h2>
     <ol class="steps">
-      <li><span class="sn n">01</span><p data-i18n-html="s1"><span class="n">20</span> minutes. No pitch. We ask, you talk.</p></li>
-      <li><span class="sn n">02</span><p data-i18n-html="s2"><span class="n">3</span> files. Signed undertaking first.</p></li>
-      <li><span class="sn n">03</span><p data-i18n-html="s3">Two pages. Your items on your phone. Then a price.</p></li>
-      <li><span class="sn n">04</span><p data-i18n-html="s4">You pay when you choose.</p></li>
+      <li><span class="sn n">01</span><p data-i18n="st1">Message us on WhatsApp.</p></li>
+      <li><span class="sn n">02</span><p data-i18n-html="st2">A <span class="n">20</span>-minute call: we ask, you talk.</p></li>
+      <li><span class="sn n">03</span><p data-i18n="st3">We show what we’d build, then the price.</p></li>
     </ol>
-    <p class="accountant" data-i18n="accountant">For the accountant: read-only login. Watch it fail. Delete anytime.</p>
-    <p class="qlink"><span data-i18n-html="how.q">After the call: <span class="n">12</span> questions about your business and your system, answered on your phone — typed or spoken.</span> <a href="../questions/" data-i18n="how.qa">Open the questions</a></p>
+    <ul class="promises">
+      <li data-i18n="pr1">Nothing you run is replaced.</li>
+      <li data-i18n="pr2">We never write to your accounting program; we only read.</li>
+    </ul>
   </div>
 </section>
 
-<!-- 5 · what we build -->
-<section class="blk" id="build">
+<!-- 4 · the button again -->
+<section class="blk contact" id="contact" aria-labelledby="contact-h">
   <div class="wrap">
-    <p class="eyebrow"><span class="n">04</span><span data-i18n="build.eb">The Work</span></p>
-    <h2 data-i18n="build.intro">Systems a business runs on. Not marketing.</h2>
-    <div class="prods">
-      <div class="prod top"><h3 data-i18n="p.system">The System</h3><p data-i18n="p.systemL">Your program, every phone, every hour.</p><a class="prod-link" href="al-ameen-mobile/" data-i18n="link.system">Al-Ameen on mobile</a></div>
-      <div class="prod"><h3 data-i18n="p.morning">The Morning</h3><p data-i18n="p.morningL">One number, before you arrive.</p></div>
-      <div class="prod"><h3 data-i18n="p.statement">The Statement</h3><p data-i18n="p.statementL">Customer statement with photographs, on WhatsApp in seconds.</p><a class="prod-link" href="statement-whatsapp/" data-i18n="link.statement">A customer statement on WhatsApp</a></div>
-      <div class="prod"><h3 data-i18n="p.floor">The Floor</h3><p data-i18n="p.floorL">Paper and WhatsApp, one queue for whoever bills.</p></div>
-      <div class="prod"><h3 data-i18n="p.catalogue">The Catalogue</h3><p data-i18n="p.catalogueL">Products photographed. Or a full online store.</p><a class="prod-link" href="al-ameen-online-store/" data-i18n="link.catalogue">Al-Ameen linked to an online store</a></div>
-      <div class="prod"><h3 data-i18n="p.profile">The Profile</h3><p data-i18n="p.profileL">For the buyer abroad: website, profile, quotation.</p></div>
-      <div class="prod"><h3 data-i18n="p.exception">The Exception</h3><p data-i18n="p.exceptionL">We build your “except when…”.</p></div>
-    </div>
-    <p class="qlink"><span data-i18n="build.q">Everything above, working on invented figures, in the browser.</span> <a href="demo/" data-i18n="build.qa">Try what we build</a></p>
-    <p class="proof" data-i18n-html="proof">Since July <span class="n">2026</span>: <span class="n">2,800</span> items.</p>
-  </div>
-</section>
-
-<!-- 6 · the button again, and the foot -->
-<section class="blk contact" id="contact">
-  <div class="wrap">
-    <p class="eyebrow"><span class="n">05</span><span data-i18n="contact.eb">The call</span></p>
-    <h2 data-i18n="contact.h">The numbers exist. See them.</h2>
-    <p class="cta"><a class="btn btn-big" data-wa href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20the%20site.%20I%E2%80%99d%20like%20the%20twenty%20minutes%20about%20my%20business." rel="noopener" data-i18n-html="btn">Twenty minutes on the phone</a></p>
-    <p class="phone"><span data-i18n="contact.wa">WhatsApp</span> <a href="https://wa.me/963953250111" rel="noopener" dir="ltr">+963 953 250 111</a></p>
+    <h2 id="contact-h" data-i18n="contact.h">Tell us what your business is missing.</h2>
+    <p class="cta"><a class="btn btn-big" data-wa="call" href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20your%20website.%20I%E2%80%99d%20like%20the%20twenty%20minutes%20about%20my%20business." rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.2 8.6c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.3 0 .5-.1.7l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.5-.2.7-.1l1.5.6c.3.1.4.3.4.5v.5c0 .3-.1.6-.4.8-.6.4-1.4.5-2.1.3-2.4-.8-4.2-2.6-5-5-.2-.7-.1-1.5.3-2.1z" fill="currentColor"/></svg><span data-i18n="cta">Message us on WhatsApp</span></a></p>
+    <p class="phone"><span data-i18n="contact.wa">WhatsApp</span> <a class="tel" data-wa="call" href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20your%20website.%20I%E2%80%99d%20like%20the%20twenty%20minutes%20about%20my%20business." rel="noopener" dir="ltr">+963 953 250 111</a></p>
   </div>
 </section>
 
@@ -474,10 +425,21 @@ html[lang="ar"] .ft{font-size:14px}
 
 <footer class="ft">
   <div class="wrap">
-    <p data-i18n-html="foot">MIDDLEWARE — a software company in Damascus, Syria</p>
-    <a class="ft-link" href="software-company-damascus/" data-i18n="link.firm">About MIDDLEWARE</a>
+    <p class="ft-name" data-i18n-html="foot">MIDDLEWARE — a software company in Damascus, Syria</p>
+    <nav class="ft-links" aria-label="More pages" data-i18n-aria="ft.nav">
+      <a href="software-company-damascus/" data-i18n="link.firm">About MIDDLEWARE</a>
+      <a href="al-ameen-mobile/" data-i18n="link.system">Al-Ameen on mobile</a>
+      <a href="statement-whatsapp/" data-i18n="link.statement">A customer statement on WhatsApp</a>
+      <a href="al-ameen-online-store/" data-i18n="link.catalogue">Al-Ameen linked to an online store</a>
+      <a href="dead-stock/" data-i18n="link.dead">Dead stock and the count difference: where they hide in your program</a>
+      <a href="demo/" data-i18n="build.qa">Try what we build</a>
+      <a href="../questions/" data-i18n="q.link">The questions, after the call</a>
+    </nav>
   </div>
 </footer>
+
+<!-- a phone, past the hero: the button stays under the thumb -->
+<div class="wa-bar" id="wa-bar"><a class="btn btn-bar" data-wa="call" href="https://wa.me/963953250111?text=Hello%2C%20I%20saw%20your%20website.%20I%E2%80%99d%20like%20the%20twenty%20minutes%20about%20my%20business." rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.2 8.6c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.3 0 .5-.1.7l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.5-.2.7-.1l1.5.6c.3.1.4.3.4.5v.5c0 .3-.1.6-.4.8-.6.4-1.4.5-2.1.3-2.4-.8-4.2-2.6-5-5-.2-.7-.1-1.5.3-2.1z" fill="currentColor"/></svg><span data-i18n="cta">Message us on WhatsApp</span></a></div>
 
 <script src="../site.js" defer></script>
 </body>

@@ -10,13 +10,27 @@
   var FIG = /*FIG*/{"f1n": "820", "f2n": "40", "f3n": "11", "f3m": "4", "f3t": "$2,000", "f4n": "134", "f4o": "$31,000", "f4t": "$79,400", "f4d": "90", "f5n": "6", "cur": "1", "book": "2,829", "pct1": "29", "pct4": "39", "read_on_ar": "أيلول 2026", "read_on_en": "September 2026", "client_ar": "موزّع بالشام", "client_en": "a Damascus distributor", "read_m_ar": "أيلول", "read_m_en": "September", "read_y": "2026"}/*/FIG*/;
 
   /* the dictionary — written by tools/fill.py from site/copy.json; never edit here */
-  var T = /*T*/{"ar": {"title": "MIDDLEWARE — برنامج المحاسبة لديك، على كل هاتف · دمشق، سوريا", "share": "MIDDLEWARE — بتصير شايف.", "slogan": "بتصير شايف.", "desc": "برنامج المحاسبة لديك — الأمين (Al-Ameen) أو غيره — أرقامه على كل هاتف في الشركة. لا نغيّر شيئًا. «بتصير شايف». دمشق، سوريا.", "xray.hint": "اسحب لترى", "xray.label": "الأرقام", "hero.alt": "ممر مستودع: رفوف وكراتين، وهاتف على كرتونة", "reading.eb": "القراءة", "reading.h": "ورقتان. أرقامك جنبًا إلى جنب.", "reading.cap": "أسماء محذوفة، أرقام مدوّرة، مرسومة على المقياس.", "reading.meta": "{read_m_ar} <span class=\"n\" dir=\"ltr\">{read_y}</span> · {client_ar}", "r1.dim": "<span class=\"n\" dir=\"ltr\">{f1n}</span> صنف · <span class=\"n\" dir=\"ltr\">{pct1}%</span>", "r1.s": "<span class=\"n\" dir=\"ltr\">0</span>", "r1.e": "<span class=\"n\" dir=\"ltr\">{book}</span> صنف بالدفتر", "r1.aria": "{f1n} صنف من {book} راكدة — {pct1} بالمئة من الدفتر", "r2.line": "تغطية شهرين", "r2.tally": "<span class=\"n\" dir=\"ltr\">{f2n}</span> صنف دون الشهرين", "r2.aria": "{f2n} صنف تغطيتها أقل من شهرين، كل خط صنف", "r3.line": "أربعة أشهر بلا طلبية", "r3.tally": "<span class=\"n\" dir=\"ltr\">{f3n}</span> زبون", "r3.aria": "{f3n} زبون لم يطلبوا منذ أربعة أشهر، كل خط زبون", "r4.dim": "<span class=\"n\" dir=\"ltr\">{f4o}</span> فوق <span class=\"n\" dir=\"ltr\">{f4d}</span> يوم · <span class=\"n\" dir=\"ltr\">{pct4}%</span>", "r4.s": "<span class=\"n\" dir=\"ltr\">0</span>", "r4.e": "<span class=\"n\" dir=\"ltr\">{f4t}</span> مستحقة", "r4.aria": "{f4o} من {f4t} فوق {f4d} يوم — {pct4} بالمئة", "r5.cost": "الكلفة", "r5.tally": "<span class=\"n\" dir=\"ltr\">{f5n}</span> بنود تحت الكلفة", "r5.ring": "<span class=\"n\" dir=\"ltr\">{cur}</span> فاتورة بعملة خاطئة", "r5.aria": "{f5n} بنود بيعت تحت الكلفة، و{cur} فاتورة بعملة خاطئة", "f1": "في بضاعة راكدة · <span class=\"n\">{f1n}</span> صنفًا دون حركة منذ سنة", "f2": "من الإيرادات الشهرية المعرّضة للخطر · <span class=\"n\">{f2n}</span> صنفًا تغطيتها أقل من شهرين", "f3": "حسابات خاملة · فوق <span class=\"n\" dir=\"ltr\">{f3t}</span> لكل منها العام الماضي، ولا طلبية منذ أربعة أشهر", "f4": "ذمم مستحقة غير محصَّلة · <span class=\"n\">{f4n}</span> زبونًا، منها <span class=\"n\" dir=\"ltr\">{f4o}</span> تجاوزت <span class=\"n\">{f4d}</span> يومًا", "f5": "مبيعات دون الكلفة · فوترت بأقل من سعر الكلفة", "client.eb": "زبون: Lightware", "client.h": "ما زال يعمل على النظام.", "client.p": "موزّع إنارة. كل شيء داخل برنامج الأمين (<span class=\"lat\">Al-Ameen</span>)، ولا شيء على هاتف صاحبه.", "c1": "صنف بكل هاتف", "c2": "صنف مصوّر ومنشور", "c3": "من تموز، كل ساعة. Al-Ameen كما هو.", "how.eb": "البداية", "how.h": "<span class=\"n\">20</span> دقيقة. <span class=\"n\">3</span> ملفات. ورقتان.", "s1": "<span class=\"n\">20</span> دقيقة. بلا عرض. نسأل وأنت تتحدث.", "s2": "<span class=\"n\">3</span> ملفات، وتعهّد موقّع قبلها.", "s3": "ورقتان، أصنافك على هاتفك، ثم السعر.", "s4": "تدفع عندما تختار.", "accountant": "للمحاسب: دخول للقراءة فقط. جرّبه، يرفض. واحذفه في أي وقت.", "how.q": "بعد المكالمة: <span class=\"n\">12</span> سؤالًا عن عملك ونظامك، تجيب عنها على هاتفك — كتابةً أو صوتًا.", "how.qa": "افتح الأسئلة", "build.eb": "العمل", "build.intro": "أنظمة شركتك، لا تسويقها.", "build.q": "كل ما في الأعلى يعمل أمامك على أرقام افتراضية، في المتصفح.", "build.qa": "جرّب ما نبنيه", "p.system": "النظام", "p.systemL": "برنامجك على كل هاتف، كل ساعة.", "p.morning": "الصبح", "p.morningL": "رقمك قبل أن تصل.", "p.statement": "الكشف", "p.statementL": "كشف حساب بالصور، على واتساب بثوانٍ.", "p.floor": "الصالة", "p.floorL": "ورق وواتساب، طابور واحد للفوترة.", "p.catalogue": "الكتالوج", "p.catalogueL": "أصنافك بالصور، أو متجر إلكتروني.", "p.profile": "البروفايل", "p.profileL": "لزبون من الخارج: موقع إلكتروني، بروفايل، عرض سعر.", "p.exception": "الاستثناء", "p.exceptionL": "لديك «إلا إذا…»؟ نبنيه.", "proof": "من تموز <span class=\"n\">2026</span>: <span class=\"n\">2,800</span> صنف.", "contact.eb": "المكالمة", "contact.h": "الأرقام لديك. شاهدها.", "contact.wa": "واتساب", "foot": "<span class=\"lat\" lang=\"en\">MIDDLEWARE</span> — شركة برمجة في دمشق، سوريا", "link.system": "برنامج الأمين على الموبايل", "link.statement": "كشف حساب زبون على واتساب", "link.catalogue": "ربط الأمين بمتجر إلكتروني", "link.dead": "بضاعة راكدة وفرق الجرد: أين هي في برنامجك", "link.firm": "عن MIDDLEWARE", "sentence": "برنامج المحاسبة عندك بيعرف كل شي عن شركتك. وإنت ما عم تشوف منو ولا شي.", "answer": "ما منغيّر شي. بس فجأة بتصير شايف.", "btn": "<span class=\"n\">20</span> دقيقة بالهاتف", "btnShort": "<span class=\"n\">20</span> دقيقة", "msg": "مرحبا، شفت الموقع. بدي أحكي معكن ٢٠ دقيقة عن شغلي.", "toggle": "عربي", "toggleName": "العربية"}, "en": {"title": "MIDDLEWARE — Your accounting program, on every phone · Syria", "share": "MIDDLEWARE — Suddenly you can see.", "slogan": "Suddenly you can see.", "desc": "The accounting program you already run — Al-Ameen or another — on every phone in the company. Nothing changes. Suddenly you can see. Damascus, Syria.", "xray.hint": "Drag to see", "xray.label": "The numbers", "hero.alt": "A warehouse aisle: racks of cartons, a phone on one carton", "reading.eb": "The Reading", "reading.h": "Two pages. Your numbers, side by side.", "reading.cap": "Names removed, figures rounded, drawn to scale.", "reading.meta": "{read_m_en} <span class=\"n\" dir=\"ltr\">{read_y}</span> · {client_en}", "r1.dim": "<span class=\"n\" dir=\"ltr\">{f1n}</span> items · <span class=\"n\" dir=\"ltr\">{pct1}%</span>", "r1.s": "<span class=\"n\" dir=\"ltr\">0</span>", "r1.e": "<span class=\"n\" dir=\"ltr\">{book}</span> items on the book", "r1.aria": "{f1n} of {book} items asleep — {pct1} percent of the book", "r2.line": "two months’ cover", "r2.tally": "<span class=\"n\" dir=\"ltr\">{f2n}</span> items under two months", "r2.aria": "{f2n} items with under two months’ cover, one stroke each", "r3.line": "four months without an order", "r3.tally": "<span class=\"n\" dir=\"ltr\">{f3n}</span> customers", "r3.aria": "{f3n} customers with no order for four months, one stroke each", "r4.dim": "<span class=\"n\" dir=\"ltr\">{f4o}</span> past <span class=\"n\" dir=\"ltr\">{f4d}</span> days · <span class=\"n\" dir=\"ltr\">{pct4}%</span>", "r4.s": "<span class=\"n\" dir=\"ltr\">0</span>", "r4.e": "<span class=\"n\" dir=\"ltr\">{f4t}</span> owed", "r4.aria": "{f4o} of {f4t} past {f4d} days — {pct4} percent", "r5.cost": "cost", "r5.tally": "<span class=\"n\" dir=\"ltr\">{f5n}</span> lines below cost", "r5.ring": "<span class=\"n\" dir=\"ltr\">{cur}</span> invoice · wrong currency", "r5.aria": "{f5n} lines sold below cost, and {cur} invoice in the wrong currency", "f1": "in Dead Stock · <span class=\"n\">{f1n}</span> items untouched for a year", "f2": "in Monthly Revenue at Risk · <span class=\"n\">{f2n}</span> items under two months of cover", "f3": "Dormant Accounts · over <span class=\"n\" dir=\"ltr\">{f3t}</span> each last year, no order in four months", "f4": "in Outstanding Receivables · <span class=\"n\">{f4n}</span> customers, <span class=\"n\" dir=\"ltr\">{f4o}</span> past <span class=\"n\">{f4d}</span> days", "f5": "Below-Cost Sales · invoiced under cost price", "client.eb": "A client: Lightware", "client.h": "Still runs on the System.", "client.p": "A lighting distributor. Everything in <span class=\"lat\">Al-Ameen</span>, nothing on the owner’s phone.", "c1": "items on every phone", "c2": "items photographed, published", "c3": "since July, hourly. Al-Ameen untouched.", "how.eb": "The start", "how.h": "<span class=\"n\">20</span> minutes. <span class=\"n\">3</span> files. <span class=\"n\">2</span> pages.", "s1": "<span class=\"n\">20</span> minutes. No pitch. We ask, you talk.", "s2": "<span class=\"n\">3</span> files. Signed undertaking first.", "s3": "Two pages. Your items on your phone. Then a price.", "s4": "You pay when you choose.", "accountant": "For the accountant: read-only login. Watch it fail. Delete anytime.", "how.q": "After the call: <span class=\"n\">12</span> questions about your business and your system, answered on your phone — typed or spoken.", "how.qa": "Open the questions", "build.eb": "The Work", "build.intro": "Systems a business runs on. Not marketing.", "build.q": "Everything above, working on invented figures, in the browser.", "build.qa": "Try what we build", "p.system": "The System", "p.systemL": "Your program, every phone, every hour.", "p.morning": "The Morning", "p.morningL": "One number, before you arrive.", "p.statement": "The Statement", "p.statementL": "Customer statement with photographs, on WhatsApp in seconds.", "p.floor": "The Floor", "p.floorL": "Paper and WhatsApp, one queue for whoever bills.", "p.catalogue": "The Catalogue", "p.catalogueL": "Products photographed. Or a full online store.", "p.profile": "The Profile", "p.profileL": "For the buyer abroad: website, profile, quotation.", "p.exception": "The Exception", "p.exceptionL": "We build your “except when…”.", "proof": "Since July <span class=\"n\">2026</span>: <span class=\"n\">2,800</span> items.", "contact.eb": "The call", "contact.h": "The numbers exist. See them.", "contact.wa": "WhatsApp", "foot": "MIDDLEWARE — a software company in Damascus, Syria", "link.system": "Al-Ameen on mobile", "link.statement": "A customer statement on WhatsApp", "link.catalogue": "Al-Ameen linked to an online store", "link.dead": "Dead stock and the count difference: where they hide in your program", "link.firm": "About MIDDLEWARE", "sentence": "Your accounting program knows everything about your business. You can’t see any of it.", "answer": "Nothing changes. Suddenly you can see.", "btn": "Twenty minutes on the phone", "btnShort": "Twenty minutes", "msg": "Hello, I saw the site. I’d like the twenty minutes about my business.", "toggle": "EN", "toggleName": "English"}}/*/T*/;
+  var T = /*T*/{"ar": {"title": "MIDDLEWARE — أنظمة وتطبيقات ومواقع لشركتك · دمشق، سوريا", "share": "MIDDLEWARE — نبني ما ينقص شركتك.", "desc": "لا نستبدل ما تعمل عليه شركتك؛ نبني ما ينقصها: أنظمة مخصّصة، وتطبيقات، ومواقع ومتاجر إلكترونية. شركة برمجة في دمشق، سوريا.", "xray.hint": "اسحب لترى", "xray.label": "ما نبنيه", "hero.alt": "ممر مستودع: رفوف وكراتين، وهاتف على كرتونة", "build.qa": "جرّب ما نبنيه", "contact.h": "أخبرنا بما ينقص شركتك.", "contact.wa": "واتساب", "foot": "<span class=\"lat\" lang=\"en\">MIDDLEWARE</span> — شركة برمجة في دمشق، سوريا", "link.system": "برنامج الأمين على الموبايل", "link.statement": "كشف حساب زبون على واتساب", "link.catalogue": "ربط الأمين بمتجر إلكتروني", "link.dead": "بضاعة راكدة وفرق الجرد: أين هي في برنامجك", "link.firm": "عن MIDDLEWARE", "msg": "مرحبا، شفت الموقع. بدي أحكي معكن ٢٠ دقيقة عن شغلي.", "hero.h1": "لا نستبدل ما تعمل عليه شركتك. نبني ما ينقصها.", "cta": "تواصل معنا على واتساب", "ctaShort": "تواصل معنا", "build.h": "ما نبنيه", "t.system.h": "أنظمة مخصّصة", "t.system.p": "أرقام برنامج المحاسبة لديك — الأمين (<span class=\"lat\">Al-Ameen</span>) أو غيره — على كل هاتف.", "t.system.alt": "حاسوب المكتب وعليه دفتر برنامج المحاسبة، ورصيد منه معروض على هاتف.", "t.apps.h": "تطبيقات", "t.apps.p": "للمندوبين والفانات والمستودع، على هواتفهم.", "t.apps.alt": "سيارة توزيع عند المستودع، وكراتينها معدودة على هاتف المندوب.", "t.web.h": "مواقع إلكترونية", "t.web.p": "شركتك على الإنترنت، بالعربية والإنجليزية.", "t.web.alt": "هذا الموقع: صورة المستودع ونسختها المرسومة", "t.store.h": "متاجر إلكترونية", "t.store.p": "منتجاتك مصوّرة، والطلب منها بضغطة.", "t.store.alt": "منتجات مصوّرة؛ تُختار صفيحة زيت زيتون فتنتقل إلى السلة.", "ask": "اسألنا عن هذا", "start.h": "البداية", "st1": "راسلنا على واتساب.", "st2": "مكالمة <span class=\"n\">20</span> دقيقة: نسأل وأنت تتحدث.", "st3": "نعرض عليك ما سنبنيه، ثم السعر.", "pr1": "لا نستبدل شيئًا مما تعمل عليه.", "pr2": "لا نكتب في برنامج المحاسبة لديك؛ نقرأ منه فقط.", "q.link": "أسئلة ما بعد المكالمة", "g.site": "مرحبا، شفت الموقع.", "g.ig": "مرحبا، شفتكم على إنستغرام.", "g.fb": "مرحبا، شفتكم على فيسبوك.", "w.call": "بدي أحكي معكن ٢٠ دقيقة عن شغلي.", "w.system": "مهتم بنظام لشركتي.", "w.apps": "مهتم بتطبيق لشركتي.", "w.web": "مهتم بموقع إلكتروني لشركتي.", "w.store": "مهتم بمتجر إلكتروني لشركتي.", "ft.nav": "صفحات أخرى", "toggle": "عربي", "toggleName": "العربية"}, "en": {"title": "MIDDLEWARE — Systems, apps and websites · Damascus, Syria", "share": "MIDDLEWARE — We build what your business is missing.", "desc": "We don’t replace what your business runs on — we build what’s missing: custom systems, apps, websites and online stores. A software company in Damascus, Syria.", "xray.hint": "Drag to see", "xray.label": "What we build", "hero.alt": "A warehouse aisle: racks of cartons, a phone on one carton", "build.qa": "Try what we build", "contact.h": "Tell us what your business is missing.", "contact.wa": "WhatsApp", "foot": "MIDDLEWARE — a software company in Damascus, Syria", "link.system": "Al-Ameen on mobile", "link.statement": "A customer statement on WhatsApp", "link.catalogue": "Al-Ameen linked to an online store", "link.dead": "Dead stock and the count difference: where they hide in your program", "link.firm": "About MIDDLEWARE", "msg": "Hello, I saw your website. I’d like the twenty minutes about my business.", "hero.h1": "We don’t replace what your business runs on. We build what’s missing.", "cta": "Message us on WhatsApp", "ctaShort": "Contact us", "build.h": "What we build", "t.system.h": "Custom systems", "t.system.p": "Your accounting program’s numbers — Al-Ameen or another — on every phone.", "t.system.alt": "An office computer showing the accounting program’s ledger, and one balance from it on a phone.", "t.apps.h": "Apps", "t.apps.p": "For your reps, vans and warehouse, on their own phones.", "t.apps.alt": "A delivery van at the warehouse, its cartons counted on the rep’s phone.", "t.web.h": "Websites", "t.web.p": "Your company online, in Arabic and English.", "t.web.alt": "This website: the warehouse photograph and its blueprint", "t.store.h": "Online stores", "t.store.p": "Your products photographed, ordered in a tap.", "t.store.alt": "Photographed products; an olive-oil tin is tapped and goes into the cart.", "ask": "Ask about this", "start.h": "How it starts", "st1": "Message us on WhatsApp.", "st2": "A <span class=\"n\">20</span>-minute call: we ask, you talk.", "st3": "We show what we’d build, then the price.", "pr1": "Nothing you run is replaced.", "pr2": "We never write to your accounting program; we only read.", "q.link": "The questions, after the call", "g.site": "Hello, I saw your website.", "g.ig": "Hello, I saw you on Instagram.", "g.fb": "Hello, I saw you on Facebook.", "w.call": "I’d like the twenty minutes about my business.", "w.system": "I’m interested in a system for my business.", "w.apps": "I’m interested in an app for my business.", "w.web": "I’m interested in a website for my business.", "w.store": "I’m interested in an online store for my business.", "ft.nav": "More pages", "toggle": "EN", "toggleName": "English"}}/*/T*/;
 
   /* the data layer's callouts — written by tools/fill.py from site/copy.json (real figures only) */
-  var CALLOUTS = /*CALLOUTS*/[{"cx": 26, "cy": 30, "a": "l", "fig": "$118,600", "ar": "راكدة على الرفوف · 820 صنف", "en": "asleep on the racks · 820 items", "lg": false, "mx": 20, "my": 18.6, "ars": "راكدة · 820 صنف", "ens": "asleep · 820 items"}, {"cx": 86, "cy": 30, "a": "r", "fig": "$15,600", "ar": "مبيع شهري على 40 صنف · تغطية أقل من شهرين", "en": "a month on 40 items · under two months of cover", "lg": false, "mx": 80, "my": 18.6, "ars": "بالشهر · 40 صنف", "ens": "a month · 40 items"}, {"cx": 30, "cy": 46, "a": "l", "fig": "2,829", "ar": "صنف بالدفتر · ولا واحد بلا رقم", "en": "items on the book · not one without a number", "lg": false, "mx": 20, "my": 28.5, "ars": "صنف بالدفتر", "ens": "items on the book"}, {"cx": 26, "cy": 68, "a": "l", "fig": "243", "ar": "صنف بالأحمر · 113 نفدت", "en": "in the red · 113 out of stock", "lg": false, "mx": 20, "my": 42.2, "ars": "بالأحمر · 113 نفدت", "ens": "in the red · 113 out"}, {"cx": 82, "cy": 57, "a": "r", "fig": "6", "ar": "بنود بيعت تحت الكلفة", "en": "lines sold below cost", "lg": false, "mx": 80, "my": 35.3, "ars": "تحت الكلفة", "ens": "below cost"}, {"cx": 62, "cy": 70, "a": "l", "fig": "$79,400", "ar": "مستحقة لدى 134 زبون", "en": "owed by 134 customers", "lg": false, "mx": 55.5, "my": 43.4, "ars": "مستحقة · 134 زبون", "ens": "owed · 134 customers"}]/*/CALLOUTS*/;
+  var CALLOUTS = /*CALLOUTS*/[{"cx": 24, "cy": 33, "a": "l", "fig": {"ar": "نظام", "en": "System"}, "ar": "المخزون والحسابات على كل هاتف", "en": "stock and accounts on every phone", "lg": false, "mx": 20, "my": 20.5, "ars": "المخزون على كل هاتف", "ens": "stock on every phone"}, {"cx": 86, "cy": 35, "a": "r", "fig": {"ar": "متجر إلكتروني", "en": "Online store"}, "ar": "أصنافك مصوّرة ومعروضة", "en": "your products, photographed and listed", "lg": false, "mx": 80, "my": 21.7, "ars": "أصنافك على الإنترنت", "ens": "your products online"}, {"cx": 36, "cy": 17, "a": "c", "fig": {"ar": "موقع إلكتروني", "en": "Website"}, "ar": "شركتك على الإنترنت", "en": "your company, online", "lg": false, "mx": 20, "my": 10.5, "ars": "شركتك على الإنترنت", "ens": "your company, online"}, {"cx": 59, "cy": 72, "a": "l", "fig": {"ar": "تطبيق", "en": "App"}, "ar": "على هاتف كل مندوب", "en": "on every rep’s phone", "lg": false, "mx": 51.4, "my": 44.6, "ars": "لكل مندوب", "ens": "for every rep"}]/*/CALLOUTS*/;
 
   /* alternate pins up the racks for a callout the headline would cover — written by tools/fill.py from site/copy.json */
   var SLOTS = /*SLOTS*/{"ltr": [[13, 13.5, "l"], [26, 18.5, "l"], [39, 23.5, "l"], [88, 13.5, "r"]], "rtl": [[87, 13.5, "r"], [74, 18.5, "r"], [61, 23.5, "r"], [12, 13.5, "l"]]}/*/SLOTS*/;
+
+  /* a pin's name: a figure (one string) or, since 15 Oct 2026, what we build ({ar, en}) */
+  function figOf(c) { return typeof c.fig === 'object' ? (c.fig[document.documentElement.lang] || c.fig.en) : c.fig; }
+
+  /* what a visitor sends on WhatsApp: the greeting names where they came from (a profile's link carries
+     ?from=instagram or ?from=facebook — no cookie, no pixel: the first message is the count), then what the
+     button is about (data-wa="system" …). The words are voice lines, written by tools/fill.py from copy.json. */
+  var SRC = (function () {
+    var m = /[?&]from=(instagram|ig|facebook|fb)\b/i.exec(location.search);
+    if (!m) return 'site';
+    var v = m[1].toLowerCase();
+    return v === 'instagram' || v === 'ig' ? 'ig' : 'fb';
+  })();
+  function waText(d, want) { return (d['g.' + SRC] || d['g.site']) + ' ' + (d['w.' + want] || d['w.call']); }
 
   function tpl(s) { return s.replace(/\{(\w+)\}/g, function (m, k) { return k in FIG ? FIG[k] : '—'; }); }
   function $$(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
@@ -34,7 +48,7 @@
     $$('[data-i18n-html]').forEach(function (el) { var k = el.getAttribute('data-i18n-html'); if (k in d) el.innerHTML = tpl(d[k]); });
     $$('[data-i18n-alt]').forEach(function (el) { var k = el.getAttribute('data-i18n-alt'); if (k in d) el.alt = d[k]; });
     $$('[data-i18n-aria]').forEach(function (el) { var k = el.getAttribute('data-i18n-aria'); if (k in d) el.setAttribute('aria-label', tpl(d[k])); });
-    $$('[data-wa]').forEach(function (a) { a.href = WA + encodeURIComponent(d.msg); });
+    $$('[data-wa]').forEach(function (a) { a.href = WA + encodeURIComponent(waText(d, a.getAttribute('data-wa'))); });
     var b = document.getElementById('lang'), other = lang === 'ar' ? 'en' : 'ar';
     if (b) { b.textContent = T[other].toggle; b.lang = other; b.setAttribute('aria-label', T[other].toggleName); b.title = T[other].toggleName; }   // its href is the other document's URL, written by fill.py
     try { localStorage.setItem('mw_lang', lang); } catch (e) {}   // not read here any more (the language is the URL) — questions/ reads it to open in the same language
@@ -58,7 +72,7 @@
       li.style.setProperty('--cx', c.cx + '%'); li.style.setProperty('--cy', c.cy + '%');
       if (c.mx != null) { li.style.setProperty('--mx', c.mx + '%'); li.style.setProperty('--my', c.my + '%'); }
       li.className = (c.a === 'l' ? 'al' : c.a === 'r' ? 'ar' : '') + (c.lg ? ' lg' : '');
-      var b = document.createElement('b'); b.textContent = c.fig;
+      var b = document.createElement('b'); b.textContent = figOf(c);
       var s = document.createElement('span');
       li.appendChild(b); li.appendChild(s); list.appendChild(li); lis.push(li);
     });
@@ -85,7 +99,7 @@
       lis.forEach(function (li, i) {
         var c = CALLOUTS[i]; if (!c) return;
         pin(li, c, c.cx, c.cy, c.a, false);
-        li.lastChild.textContent = (nar && c[k]) || c[lang] || c.en;
+        li.firstChild.textContent = figOf(c); li.lastChild.textContent = (nar && c[k]) || c[lang] || c.en;
       });
       var bt = box.getBoundingClientRect().top, r = inner ? inner.getBoundingClientRect() : null;
       // the knob cluster's real boxes, measured once (the hint and the tag are wider in English than in Arabic)
@@ -381,90 +395,27 @@
     });
   }
 
-  /* ---- the instrument (block 2): every drawn proportion is re-derived from the panel's own data-
-     attributes and compared with what build.py wrote into the inline --a/--w/--x and the tallies. A
-     disagreement is shouted, never smoothed over — a wrong drawing shown confidently is worse than none.
-     Then the entry: a seam sweeps the panel once and each drawing appears behind it; the figures are
-     never clipped, so a visitor landing mid-scroll sees numbers, not an empty card. ---- */
-  function instrument() {
-    var box = document.getElementById('instrument');
-    if (!box) return;
-    function num(k) { return parseFloat(box.getAttribute('data-' + k)); }
-    function prop(sel, p) { var el = box.querySelector(sel); return el ? parseFloat(el.style.getPropertyValue(p)) : NaN; }
-    function count(sel) { return box.querySelectorAll(sel).length; }
-    function check() {
-      var book = num('book'), dead = num('dead'), owed = num('owed'), over = num('over');
-      var want = [
-        ['r1 zone', prop('#r1 .zone', '--w'), dead / book * 100],
-        ['r4 mark', prop('#r4 .tk.mark', '--x'), (owed - over) / owed * 100],
-        ['r4 zone start', prop('#r4 .zone', '--a'), (owed - over) / owed * 100],
-        ['r4 zone', prop('#r4 .zone', '--w'), over / owed * 100],
-        ['r2 tally', count('#r2 .marks i'), num('risk')],
-        ['r3 tally', count('#r3 .marks i'), num('quiet')],
-        ['r5 tally', count('#r5 .marks i'), num('lines')],
-        ['r5 rings', count('#r5 .rings i'), num('cur')]
-      ], bad = [];
-      want.forEach(function (w) { if (!(Math.abs(w[1] - w[2]) < 0.02)) bad.push(w[0] + ': drawn ' + w[1] + ', figures say ' + w[2]); });
-      // and the words beside each drawing carry the same figure the drawing was made from
-      [['#r1 .dl', dead], ['#r2 .ax.s', num('risk')], ['#r3 .ax.s', num('quiet')], ['#r4 .dl', over], ['#r5 .ax.s', num('lines')]].forEach(function (w) {
-        var el = box.querySelector(w[0]), t = el ? el.textContent.replace(/,/g, '') : '';
-        if (t.indexOf(String(w[1])) < 0) bad.push(w[0] + ': the label says "' + (el ? el.textContent : '') + '", the figure is ' + w[1]);
-      });
-      if (bad.length) {   // the numbers stay; the drawings go — a wrong drawing shown confidently is worse than none
-        if (!/\bbroken\b/.test(box.className)) box.className += ' broken';
-        console.error('MIDDLEWARE: the instrument disagrees with the figures —', bad.join('; '));
-      }
-      return bad;
-    }
-    window.__mwCheck = check;
-    if (check().length) return;
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || !('IntersectionObserver' in window) || !window.requestAnimationFrame) return;
-    var draws = $$('#instrument .g-draw');
-    function hidden() { var v = 'inset(0 0 0 100%)'; draws.forEach(function (el) { el.style.webkitClipPath = v; el.style.clipPath = v; }); }
-    hidden();
-    box.className += ' arm';
-    var io = new IntersectionObserver(function (entries) {
-      if (!entries[0].isIntersecting) return;
-      io.disconnect();
-      var t0 = null, D = 1400;
-      box.className += ' sweeping';
-      function step(ts) {
-        if (t0 === null) t0 = ts;
-        var rtl = document.documentElement.dir === 'rtl', b = box.getBoundingClientRect(), W = b.width;   // read every frame: the language can flip, the window can turn
-        var k = Math.min(1, (ts - t0) / D), e = 1 - Math.pow(1 - k, 3);   // ease out, the count-up's curve: fast across the figures, slowing over the drawings
-        var x = rtl ? W * (1 - e) : W * e;   // the seam's x inside the panel
-        box.style.setProperty('--sx', x + 'px');
-        draws.forEach(function (el) {
-          var r = el.getBoundingClientRect(), l = r.left - b.left, w = r.width;
-          var p = Math.max(0, Math.min(1, rtl ? (l + w - x) / w : (x - l) / w)), hide = ((1 - p) * 100).toFixed(2) + '%';
-          var v = rtl ? 'inset(0 0 0 ' + hide + ')' : 'inset(0 ' + hide + ' 0 0)';
-          el.style.webkitClipPath = v; el.style.clipPath = v;
-        });
-        if (k < 1) requestAnimationFrame(step);
-        else { box.className += ' done'; draws.forEach(function (el) { el.style.webkitClipPath = ''; el.style.clipPath = ''; }); }
-      }
-      requestAnimationFrame(step);
-    }, { threshold: 0.2 });
-    io.observe(box);
-  }
-
-  /* ---- the header: transparent over the hero, glass from block 2 down ---- */
+  /* ---- the header: transparent over the hero, glass below it. On a phone the WhatsApp bar rises under the
+     thumb once the hero has scrolled away, and steps aside while the last section's own button is on screen. ---- */
   function header() {
-    var hd = document.getElementById('hd'), end = document.getElementById('hero-end');
+    var hd = document.getElementById('hd'), end = document.getElementById('hero-end'),
+        bar = document.getElementById('wa-bar'), contact = document.getElementById('contact');
     if (!hd || !end) return;
-    if (!('IntersectionObserver' in window)) { hd.classList.add('past'); return; }
+    if (!('IntersectionObserver' in window)) { hd.classList.add('past'); if (bar) bar.classList.add('on'); return; }
+    var past = false, atEnd = false;
+    function show() { if (bar) bar.classList.toggle('on', past && !atEnd); }
     new IntersectionObserver(function (entries) {
       var e = entries[0];
-      hd.classList.toggle('past', !e.isIntersecting && e.boundingClientRect.top < 0);
+      past = !e.isIntersecting && e.boundingClientRect.top < 0;
+      hd.classList.toggle('past', past); show();
     }, { threshold: 0 }).observe(end);
+    if (contact) new IntersectionObserver(function (entries) { atEnd = entries[0].isIntersecting; show(); }, { threshold: 0.35 }).observe(contact);
   }
 
   var lang = document.documentElement.lang === 'en' ? 'en' : 'ar';   // the language is the URL: / is Arabic, /en/ is English (20 Sep 2026); the toggle is a link between them
   xray();
   apply(lang);
   countUp();
-  instrument();
   header();
   var toggle = document.getElementById('lang');
   if (toggle) toggle.addEventListener('click', function () {   // the other document opens at the block he was reading, not at the top

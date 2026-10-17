@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 749" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<defs>
+<pattern id="sy-g" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" stroke="#5AB0FF" stroke-opacity=".06" stroke-width="1.5"/></pattern>
+<radialGradient id="sy-r" cx=".62" cy=".62" r=".55"><stop offset="0" stop-color="#5AB0FF" stop-opacity=".18"/><stop offset="1" stop-color="#5AB0FF" stop-opacity="0"/></radialGradient>
+<rect id="sy-m" x="30" y="30" width="540" height="362" rx="22"/>
+<rect id="sy-ph" x="346" y="322" width="232" height="416" rx="40"/>
+<path id="sy-l" d="M412 223V404" pathLength="100"/>
+</defs>
+<style>
+.sy-gl{stroke:#5AB0FF;stroke-width:30;opacity:.15}
+.sy-hl,.sy-cd,.sy-ln,.sy-dt{animation:12s ease-in-out infinite}
+.sy-hl{animation-name:sy-hl}.sy-cd{animation-name:sy-cd}
+.sy-ln{stroke-dasharray:100 100;animation-name:sy-ln}
+.sy-dt{stroke-dasharray:.1 200;stroke-dashoffset:-100;opacity:0;animation-name:sy-dt}
+@keyframes sy-hl{0%{opacity:.3}4%,95%{opacity:1}100%{opacity:.3}}
+@keyframes sy-ln{0%,4%{stroke-dashoffset:100;opacity:1}12%,95%{stroke-dashoffset:0;opacity:1}99.9%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:100;opacity:0}}
+@keyframes sy-dt{0%,4%{stroke-dashoffset:0;opacity:0}5%{opacity:1}12%{stroke-dashoffset:-100;opacity:1}15%,100%{stroke-dashoffset:-100;opacity:0}}
+@keyframes sy-cd{0%,11%{opacity:.25}15%,95%{opacity:1}100%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.sy-hl,.sy-cd,.sy-ln,.sy-dt{animation:none}}
+</style>
+<rect width="600" height="749" rx="12" fill="#0A0A0D"/>
+<rect width="600" height="749" rx="12" fill="url(#sy-g)"/>
+<rect width="600" height="749" rx="12" fill="url(#sy-r)"/>
+<!-- the office computer: the accounting program, untouched -->
+<path d="M270 390L262 446H338L330 390" fill="#0F0F13" stroke="#5AB0FF" stroke-width="7"/>
+<rect x="214" y="444" width="172" height="14" rx="7" fill="#15151B" stroke="#5AB0FF" stroke-width="7"/>
+<use href="#sy-m" class="sy-gl"/>
+<use href="#sy-m" fill="#0F0F13" stroke="#5AB0FF" stroke-width="8"/>
+<path d="M30 76V52Q30 30 52 30H548Q570 30 570 52V76ZM30 326H570V370Q570 392 548 392H52Q30 392 30 370Z" fill="#1A1A20"/>
+<use href="#sy-m" stroke="#5AB0FF" stroke-width="8"/>
+<g fill="#2E2E38"><circle cx="62" cy="53" r="8"/><circle cx="88" cy="53" r="8"/><circle cx="114" cy="53" r="8"/><circle cx="300" cy="359" r="7"/></g>
+<!-- the ledger: names, quantities, balances, a total ruled twice -->
+<rect x="50" y="92" width="500" height="26" rx="6" fill="#1A1A20"/>
+<path d="M250 92V306M400 92V306" stroke="#24242C" stroke-width="3"/>
+<g fill="#8A8A9E" opacity=".7"><rect x="66" y="135" width="132" height="14" rx="7"/><rect x="66" y="167" width="104" height="14" rx="7"/><rect x="66" y="231" width="118" height="14" rx="7"/>
+<rect x="332" y="135" width="52" height="14" rx="7"/><rect x="344" y="167" width="40" height="14" rx="7"/><rect x="338" y="231" width="46" height="14" rx="7"/>
+<rect x="450" y="135" width="84" height="14" rx="7"/><rect x="470" y="167" width="64" height="14" rx="7"/><rect x="458" y="231" width="76" height="14" rx="7"/></g>
+<path d="M318 262H384M430 262H534M318 300H384M430 300H534M318 309H384M430 309H534" stroke="#9A9AA8" stroke-width="4"/>
+<g fill="#F4F4F7"><rect x="324" y="273" width="60" height="16" rx="8"/><rect x="430" y="273" width="104" height="16" rx="8"/></g>
+<g class="sy-hl"><rect x="46" y="189" width="508" height="34" rx="8" fill="rgba(90,176,255,.18)" stroke="#5AB0FF" stroke-width="4"/>
+<rect x="66" y="199" width="150" height="14" rx="7" fill="#9AD4FF"/><g fill="#FFFFFF"><rect x="324" y="199" width="60" height="14" rx="7"/><rect x="434" y="199" width="100" height="14" rx="7"/></g></g>
+<!-- the phone: the same balance, in a company hand -->
+<use href="#sy-ph" class="sy-gl"/>
+<use href="#sy-ph" fill="#0F0F13" stroke="#5AB0FF" stroke-width="9"/>
+<use href="#sy-ph" stroke="#9AD4FF" stroke-width="2.5"/>
+<rect x="360" y="336" width="204" height="388" rx="28" stroke="#24242C" stroke-width="3"/>
+<rect x="432" y="348" width="60" height="10" rx="5" fill="#24242C"/>
+<rect x="468" y="374" width="80" height="14" rx="7" fill="#2E2E38"/>
+<g class="sy-cd"><rect x="366" y="404" width="192" height="146" rx="16" fill="rgba(90,176,255,.18)" stroke="#5AB0FF" stroke-width="4"/>
+<rect x="468" y="422" width="72" height="14" rx="7" fill="#9AD4FF"/>
+<g fill="#FFFFFF"><rect x="382" y="450" width="24" height="44" rx="8"/><rect x="418" y="450" width="54" height="44" rx="8"/><rect x="484" y="450" width="56" height="44" rx="8"/></g>
+<rect x="452" y="512" width="88" height="12" rx="6" fill="#5AB0FF" opacity=".6"/></g>
+<g fill="#2E2E38"><rect x="462" y="578" width="86" height="18" rx="9"/><rect x="478" y="622" width="70" height="18" rx="9"/><rect x="454" y="666" width="94" height="18" rx="9"/></g>
+<g fill="#5AB0FF" opacity=".7"><rect x="374" y="578" width="46" height="18" rx="9"/><rect x="374" y="622" width="38" height="18" rx="9"/><rect x="374" y="666" width="52" height="18" rx="9"/></g>
+<!-- the leader: this row, that phone -->
+<g opacity=".18"><use href="#sy-l" stroke="#5AB0FF" stroke-width="22" class="sy-ln"/></g>
+<use href="#sy-l" stroke="#9AD4FF" stroke-width="6" class="sy-ln"/>
+<use href="#sy-l" stroke="#FFFFFF" stroke-width="16" class="sy-dt"/>
+<g fill="#FFFFFF"><circle cx="412" cy="223" r="8"/><circle cx="412" cy="404" r="8"/></g>
+</svg>
