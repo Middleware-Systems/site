@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-files='{"img":{"f":"img-6e3dbc3441.bin","t":"img","s":482757},"ar":{"f":"ar-2d8671af4d.bin","t":"html","s":134512},"en":{"f":"en-add572e339.bin","t":"html","s":132166}}'>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="dark">
+<title>MIDDLEWARE.</title>
+<!-- PUBLIC FILE. This page sits in the public site repo, so it names nobody and carries nothing but ciphertext
+     addresses. Each document is AES-GCM ciphertext in x/ (gzip inside); the key lives only in the link (?k=), never
+     in git. Written by site/v6/private.py. -->
+<style>
+  :root { --bg: #070A10; --fg: #EEF1F6; --dim: #9CA5B4; --blue: #5AB0FF; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Geeza Pro", "Noto Sans Arabic", Tahoma, sans-serif; }
+  main { min-height: 100%; display: grid; place-items: center; text-align: center; padding: 24px 16px; box-sizing: border-box; }
+  .mark { font-weight: 300; letter-spacing: .34em; font-size: 14px; direction: ltr; margin-inline-end: -.34em; }
+  .mark b { color: var(--blue); font-weight: 400; letter-spacing: 0; }
+  .bar { width: min(280px, 70vw); height: 2px; background: rgba(238, 241, 246, .12); margin: 22px auto 16px; border-radius: 2px; overflow: hidden; direction: ltr; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--blue); transition: width .2s; }
+  .bar.ind i { width: 30%; animation: ind 1.2s ease-in-out infinite; }
+  @keyframes ind { from { transform: translateX(-110%); } to { transform: translateX(340%); } }
+  @media (prefers-reduced-motion: reduce) { .bar.ind i { animation: none; width: 100%; opacity: .5; } }
+  p { margin: 6px 0; color: var(--dim); font-size: 14px; line-height: 1.6; }
+  .err .bar { visibility: hidden; }
+  .err p { color: var(--fg); }
+</style>
+</head>
+<body>
+<main id="m"><div>
+  <div class="mark">MIDDLEWARE<b>.</b></div>
+  <div class="bar" id="bar"><i></i></div>
+  <p id="ar">جارٍ الفتح…</p>
+  <p id="en" lang="en" dir="ltr">Opening…</p>
+</div></main>
+<script>
+(function () {
+  'use strict';
+  var FILES = JSON.parse(document.documentElement.getAttribute('data-files'));
+  var q = new URLSearchParams(location.search);
+  var doc = q.get('d') || 'ar', k = q.get('k') || '';
+  var bar = document.getElementById('bar');
+
+  function say(ar, en) { document.getElementById('ar').textContent = ar; document.getElementById('en').textContent = en; }
+  function fail(ar, en) { document.getElementById('m').className = 'err'; say(ar, en); window.__share = 'failed'; }
+
+  if (!Object.prototype.hasOwnProperty.call(FILES, doc) || FILES[doc].t !== 'html') return fail('هذا الرابط غير مكتمل.', 'This link is incomplete.');
+  if (!/^[A-Za-z0-9_-]{22}$/.test(k)) return fail('هذا الرابط لا يُفتح إلا بمفتاحه — اطلب الرابط كاملاً.', 'This link opens only with its key — ask for the whole link.');
+  if (!window.crypto || !crypto.subtle || !window.fetch || !window.TextDecoder || !window.DecompressionStream)
+    return fail('هذا المتصفح قديم — افتح الرابط في Safari أو Chrome حديث.', 'This browser is too old — open the link in a current Safari or Chrome.');
+
+  var F = FILES[doc];
+  var raw = Uint8Array.from(atob(k.replace(/-/g, '+').replace(/_/g, '/') + '=='), function (c) { return c.charCodeAt(0); });
+
+  function download(url) {
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      var total = +r.headers.get('content-length') || F.s;
+      if (!r.body || !r.body.getReader) { bar.className = 'bar ind'; return r.arrayBuffer(); }
+      var reader = r.body.getReader(), got = 0, parts = [];
+      return (function pump() {
+        return reader.read().then(function (x) {
+          if (x.done) {
+            var out = new Uint8Array(got), o = 0;
+            parts.forEach(function (p) { out.set(p, o); o += p.length; });
+            return out.buffer;
+          }
+          parts.push(x.value); got += x.value.length;
+          bar.firstChild.style.width = Math.min(100, got / total * 100).toFixed(1) + '%';
+          return pump();
+        });
+      })();
+    });
+  }
+
+  crypto.subtle.importKey('raw', raw, { name: 'AES-GCM' }, false, ['decrypt']).then(function (key) {
+    return download('x/' + F.f).then(function (buf) {
+      say('جارٍ فكّ التشفير…', 'Decrypting…');
+      var b = new Uint8Array(buf);
+      return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b.subarray(0, 12), additionalData: new TextEncoder().encode(doc) }, key, b.subarray(12))
+        .then(function (pt) { return pt; }, function () { throw { key: true }; });
+    }, function () { throw { net: true }; });
+  }).then(function (pt) {
+    return new Response(new Blob([pt]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+  }).then(function (html) {
+    window.__share = 'html';
+    document.open(); document.write(html); document.close();
+  }, function (e) {
+    if (e && e.net) return fail('تعذّر التحميل — تحقّق من الاتصال ثم أعد فتح الرابط.', 'Could not download — check the connection, then open the link again.');
+    if (e && e.key) return fail('المفتاح لا يطابق هذا الرابط — اطلب الرابط كاملاً.', 'The key does not match this link — ask for the whole link.');
+    fail('تعذّر فتح الرابط.', 'The link could not be opened.');
+  });
+})();
+</script>
+</body>
+</html>
