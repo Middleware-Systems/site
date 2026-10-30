@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl" data-files='{"img":{"f":"img-6e3dbc3441.bin","t":"img","s":482757},"ar":{"f":"ar-2d8671af4d.bin","t":"html","s":134512},"en":{"f":"en-add572e339.bin","t":"html","s":132166}}'>
+<html lang="ar" dir="rtl" data-files='{"img":{"f":"img-6e3dbc3441.bin","t":"img","s":482757},"ar":{"f":"ar-1f70358a98.bin","t":"html","s":137959},"en":{"f":"en-687b669ba5.bin","t":"html","s":135616}}'>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -55,6 +55,7 @@
 
   function download(url) {
     return fetch(url).then(function (r) {
+      if (r.status === 404) throw { gone: true };   // the link was redeployed while this page sat in a cache
       if (!r.ok) throw new Error('http ' + r.status);
       var total = +r.headers.get('content-length') || F.s;
       if (!r.body || !r.body.getReader) { bar.className = 'bar ind'; return r.arrayBuffer(); }
@@ -80,13 +81,14 @@
       var b = new Uint8Array(buf);
       return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b.subarray(0, 12), additionalData: new TextEncoder().encode(doc) }, key, b.subarray(12))
         .then(function (pt) { return pt; }, function () { throw { key: true }; });
-    }, function () { throw { net: true }; });
+    }, function (e) { throw e && e.gone ? e : { net: true }; });
   }).then(function (pt) {
     return new Response(new Blob([pt]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
   }).then(function (html) {
     window.__share = 'html';
     document.open(); document.write(html); document.close();
   }, function (e) {
+    if (e && e.gone) return fail('تم تحديث هذا الرابط — أعد تحميل الصفحة.', 'This link was updated — reload the page.');
     if (e && e.net) return fail('تعذّر التحميل — تحقّق من الاتصال ثم أعد فتح الرابط.', 'Could not download — check the connection, then open the link again.');
     if (e && e.key) return fail('المفتاح لا يطابق هذا الرابط — اطلب الرابط كاملاً.', 'The key does not match this link — ask for the whole link.');
     fail('تعذّر فتح الرابط.', 'The link could not be opened.');
