@@ -1,0 +1,53 @@
+/* PREVIEW ONLY (build.py links it in preview and never in release; the release refuses if any of this leaks).
+   Quiet blue-pencil proof marks for the client meeting (DESIGN.md §5 #17, SPEC "The Arches" §4.13): every
+   to-confirm sentence carries a dashed underline and a «?» chip, its question on hover; the placeholder logo and
+   every plate carry a mark; the draft strip is a 26 px band above the header. */
+:root { --proof: #1C5FC0; --proof-night: #9CC2F7; --strip-h: 26px; }
+[data-status="to_confirm"] {
+  text-decoration: underline dashed 1px var(--proof); text-underline-offset: 3px; cursor: help;
+}
+:is(.ground-night, .hero, .site-header, .site-footer, .sheet, .callbar) [data-status="to_confirm"] {
+  text-decoration-color: var(--proof-night);
+}
+[data-status="to_confirm"]::after {
+  content: "?"; display: inline-grid; place-items: center; width: 14px; height: 14px; margin-inline-start: 2px;
+  border-radius: 50%; vertical-align: super; font: 700 10px/1 "IBM Plex Sans", system-ui, sans-serif;
+  color: #fff; background: var(--proof); text-decoration: none; letter-spacing: 0; text-transform: none;
+}
+.proof-flag {
+  display: inline-block; font: 600 12px/1.3 "IBM Plex Sans", system-ui, sans-serif; letter-spacing: .02em;
+  color: #fff; background: var(--proof); padding: 3px 8px; border-radius: 6px; text-transform: none;
+}
+:lang(ar) .proof-flag { font-family: "IBM Plex Sans Arabic", system-ui, sans-serif; font-size: 13px; }
+.plate__frame .proof-flag, .plate__print > .proof-flag { position: absolute; inset-block-start: 8px; inset-inline-start: 8px; z-index: 3; }
+/* the arched print's corner is cut away: its flag sits on the spring of the arch, inside the photograph */
+.plate--arch .plate__print > .proof-flag { inset-block-start: 48%; }   /* under the spring, above the matted detail */
+/* the door panel's arched window: the flag sits in the dark under the shelf, clear of «Your brand» */
+.door-panel__arch .proof-flag { inset-block: auto 8px; inset-inline: 8px; text-align: center; }
+/* ── The draft strip (in flow before the header: never covers it, B19) ───────────────────────────────────────── */
+.proof-strip {
+  height: var(--strip-h); overflow: hidden; background: #0D1436; color: #E9E2D2;
+  font: 400 13px/var(--strip-h) var(--font-sans); white-space: nowrap;
+}
+:lang(ar) .proof-strip { font-family: var(--font-ar); }
+.proof-strip .wrap { display: flex; gap: var(--s-4); align-items: center; height: 100%; overflow: hidden; }
+.proof-strip a, .proof-strip__logo { color: #F3D9A4; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.proof-strip > .wrap > span:first-child { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+@media (max-width: 767px) {
+  .proof-strip { font-size: 12px; }
+  .proof-strip .wrap { gap: var(--s-3); }
+}
+/* the claims sheet's to-confirm chip (SPEC §4.10): white on the proof blue, 6.1:1 */
+.ledger__chip--to-confirm { color: #fff; background: var(--proof); }
+/* a dialog print with "Background graphics" off would print the white "?" on white: keep the chip's colour */
+@media print {
+  [data-status="to_confirm"]::after, .proof-flag, .proof-strip__logo { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+/* the hero's three photographs share one flag, under the legend and its note (critics honesty#2; share.py keeps it out
+   of the chat card). On a phone it sits on the photographs themselves, over the plinths above the ledge, the way every
+   other plate carries its flag: in flow it pushed the second door off a 360 × 740 first screen (A2). */
+.arcade__proof { width: 0; min-width: 100%; margin-block-start: 8px; line-height: 1; }
+@media (min-width: 761px) { .arcade__proof { text-align: center; } }
+@media (max-width: 760px) {
+  .arcade__proof { position: absolute; z-index: 3; inset-inline: 0; top: calc(var(--aw) * var(--ledge) - 32px); width: auto; min-width: 0; margin: 0; text-align: center; pointer-events: none; }
+}
