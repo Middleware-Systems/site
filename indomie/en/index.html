@@ -1,293 +1,466 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Indomie Syria — End of story.</title>
-<meta name="description" content="Hungry? Indomie. The flavours, eight hacks, and a bowl you build yourself.">
-<meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#D40203">
-<meta property="og:title" content="Indomie Syria — End of story."><meta property="og:description" content="Hungry? Indomie. The flavours, eight hacks, and a bowl you build yourself.">
+<meta name="robots" content="noindex, nofollow">
+<title>Indomie Syria — Every colour, a flavour.</title>
+<meta name="description" content="Indomie in Syria: four flavours in four colours, eight recipes, and a bowl you can pull from yourself.">
+<meta name="theme-color" content="#16100c">
 <meta property="og:type" content="website"><meta property="og:url" content="https://middlewaresy.com/indomie/en/"><meta property="og:image" content="https://middlewaresy.com/indomie/assets/img/share-en.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:,">
-<link rel="alternate" hreflang="ar" href="../">
-<link rel="preload" href="../assets/fonts/rubik-en.6ea4c7a4.woff2" as="font" type="font/woff2" crossorigin>
-<style>@font-face{font-family:"Rubik";src:url(../assets/fonts/rubik-en.6ea4c7a4.woff2) format("woff2");font-weight:300 900;font-display:swap}</style>
+<meta property="og:title" content="Indomie Syria — Every colour, a flavour.">
+<meta property="og:description" content="Indomie in Syria: four flavours in four colours, eight recipes, and a bowl you can pull from yourself.">
+<meta property="og:locale" content="en_GB">
+<link rel="preload" href="../assets/fonts/bric-en.f4957dbe.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Alexandria"; src: url("../assets/fonts/alex-en.7b1a98df.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Bric"; src: url("../assets/fonts/bric-en.f4957dbe.woff2") format("woff2"); font-weight: 200 800; font-stretch: 75% 100%; font-display: swap; }
+@font-face { font-family: "Hand"; src: url("../assets/fonts/hand-en.9f4f65af.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
+</style>
 <link rel="stylesheet" href="../assets/css/site.css">
-<script>document.documentElement.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: reduce)').matches||(navigator.connection&&navigator.connection.saveData))document.documentElement.classList.add('still')}catch(e){}</script>
+<link rel="alternate" hreflang="ar" href="../">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
-<body class="home">
+<body class="p-home">
 <a class="skip" href="#main">Skip to content</a>
-<div class="preview-bar"><span>Preview. Names, figures and pictures are waiting for Indomie Syria&#39;s confirmation.</span> <a href="../en/_claims/">The open questions</a></div><header class="top" data-top>
-  <a class="mark" href="../en/" aria-label="Indomie"><span class="mark__word">Indomie</span><span class="mark__dot"></span></a>
-  <nav class="top__nav" aria-label="Menu">
-    <a href="../en/#flavours">Flavours</a>
-    <a href="../en/hacks/">Hacks</a>
-    <a href="../en/#build">Build your bowl</a>
-    <a href="../en/about/">About</a>
-  </nav>
-  <a class="top__lang" href="../" hreflang="ar" lang="ar">عربي</a>
-  <a class="top__menu" href="#sheet" data-menu aria-controls="sheet" aria-expanded="false"><span class="burger"><i></i><i></i></span><span class="sr">Menu</span></a>
+
+<header class="top" data-top>
+  <div class="top-pill">
+    <a class="top-logo" href="../en/" aria-label="Indomie — Home"><img class="logo" src="../assets/img/logo-en.webp" width="180" height="119" alt=""></a>
+    <nav class="top-nav" aria-label="Menu">
+      <a href="../en/#flavours">Flavours</a>
+      <a href="../en/hacks/">Recipes</a>
+      <a href="../en/about/">About</a>
+    </nav>
+    <a class="top-lang" href="../" hreflang="ar" lang="ar">العربية</a>
+    <button class="top-burger" type="button" aria-expanded="false" aria-controls="sheet"><span></span><span></span><span class="vh">Menu</span></button>
+  </div>
 </header>
-<div class="sheet" id="sheet" data-sheet>
+<div class="sheet" id="sheet" hidden>
   <nav aria-label="Menu">
+    <a href="../en/">Home</a>
     <a href="../en/#flavours">Flavours</a>
-    <a href="../en/hacks/">Hacks</a>
-    <a href="../en/#build">Build your bowl</a>
+    <a href="../en/hacks/">Recipes</a>
     <a href="../en/about/">About</a>
-    <a class="sheet__lang" href="../" lang="ar">عربي</a>
+    <a href="../" lang="ar">العربية</a>
   </nav>
 </div>
+
 <main id="main">
-<section class="hero" style="--hero-red:#D40203" data-hero>
-  <div class="hero__media" data-hero-media>
-    <img class="hero__poster" src="../assets/img/hero-1080.webp" srcset="../assets/img/hero-640.webp 640w, ../assets/img/hero-1080.webp 1080w" sizes="(max-width: 900px) 100vw, 56vw" width="1080" height="1080" alt="" fetchpriority="high">
-    <video class="hero__video" muted loop playsinline preload="none" data-src="../assets/img/hero-loop.mp4" aria-hidden="true"></video>
+
+<section class="hero" data-hero data-theme="house" style="--bg:#120D0A;--fg:#FBF2E4;--ac:#FEC90A;--word:#2B1E15">
+  <h1 class="hero-word" data-word><span>Indomie</span></h1>
+  <div class="hero-stage">
+    <img class="hero-still" src="../assets/img/bowl-still.webp" width="1400" height="1100" alt="A bowl of Indomie with a fried egg and spring onion, chopsticks lifting the noodles." fetchpriority="high">
+    <canvas class="hero-gl" data-gl aria-hidden="true"></canvas>
+    <div class="hero-hit" data-hit aria-hidden="true"></div>
+    <p class="hero-hint" data-hint aria-hidden="true"><svg viewBox="0 0 60 70" width="34" height="40"><path d="M30 66C26 46 18 30 34 6M34 6l-12 9M34 6l7 13" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="hand">pull it up</span></p>
   </div>
-  <div class="hero__copy wrap">
-    <h1 class="hero__big"><q class="voice">Hungry?</q></h1>
-    <p class="hero__line"><q class="voice">Indomie. End of story.</q></p>
-    <p class="hero__sub">Three minutes from boiling water to the first bite, and more ways to make it yours than you can count.<a class="q" href="../en/_claims/#cook.minutes" title="What cooking time is printed on the Syrian pack? The timer, the dial and every recipe run on it." aria-label="to confirm">?</a></p>
-    <div class="hero__ctas">
-      <a class="btn btn--yolk" href="#flavours">Pick your flavour</a>
-      <a class="btn btn--ghost" href="#build">Build your bowl</a>
+  <div class="hero-copy">
+    <p class="kicker">Indomie Syria</p>
+    <p class="hero-line">Every colour, a flavour.</p>
+    <p class="hero-sub">Pull the noodles out of the bowl, then pick the colour of your flavour.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#flavours">The flavours</a>
+      <a class="btn btn-line" href="../en/hacks/">The recipes</a>
     </div>
   </div>
-  <div class="sticker sticker--hero" aria-hidden="true"><span class="sticker__n">3</span><q class="voice sticker__u">MIN</q></div>
-  <div class="hero__float hero__float--a" data-float="1.2"><img class="cut" src="../assets/img/top-chili-360.webp" srcset="../assets/img/top-chili-360.webp 360w" sizes="160px" width="360" height="395" alt="" loading="lazy" decoding="async"></div>
-  <div class="hero__float hero__float--b" data-float="0.7"><img class="cut" src="../assets/img/top-egg-360.webp" srcset="../assets/img/top-egg-360.webp 360w" sizes="160px" width="360" height="343" alt="" loading="lazy" decoding="async"></div>
-  <div class="hero__float hero__float--c" data-float="1.6"><img class="cut" src="../assets/img/top-onion-360.webp" srcset="../assets/img/top-onion-360.webp 360w" sizes="140px" width="360" height="346" alt="" loading="lazy" decoding="async"></div>
-  <a class="hero__scroll" href="#flavours" aria-label="Scroll"><span></span></a>
+  <div class="hero-pick" role="group" aria-label="Pick your flavour">
+    <p class="hero-pick-l">Pick your flavour</p>
+    <div class="hero-pick-row">
+      <button type="button" data-flavour="vegetable" aria-pressed="false" style="--c:#00A651;--c2:#FEC90A"><i></i><span class="cl" data-c="fl.veg.name">Vegetable</span></button>
+      <button type="button" data-flavour="chicken" aria-pressed="false" style="--c:#FEC90A;--c2:#ED1C24"><i></i><span class="cl" data-c="fl.chicken.name">Chicken</span></button>
+      <button type="button" data-flavour="hot" aria-pressed="false" style="--c:#D41F60;--c2:#FEC90A"><i></i><span class="cl" data-c="fl.hot.name">Hot</span></button>
+      <button type="button" data-flavour="curry" aria-pressed="false" style="--c:#F68521;--c2:#00AEEF"><i></i><span class="cl" data-c="fl.curry.name">Curry</span></button>
+    </div>
+  </div>
+  <script type="application/json" data-themes>{"vegetable": {"bg": "#00A651", "fg": "#06200F", "accent": "#FEC90A", "bowl": "#FBF6EE", "sticks": "#06200F", "tint": "#7D9A2A", "word": "#14B862"}, "chicken": {"bg": "#FEC90A", "fg": "#1A1206", "accent": "#ED1C24", "bowl": "#ED1C24", "sticks": "#1A1206", "tint": "#E0702A", "word": "#FFD84A"}, "hot": {"bg": "#D41F60", "fg": "#FFF4F8", "accent": "#FEC90A", "bowl": "#16100C", "sticks": "#FFF4F8", "tint": "#D8380F", "word": "#E2366F"}, "curry": {"bg": "#F68521", "fg": "#1A0F06", "accent": "#00AEEF", "bowl": "#00AEEF", "sticks": "#1A0F06", "tint": "#C86A12", "word": "#FF9838"}}</script>
 </section>
 
-<div class="bands" aria-hidden="true">
-  <div class="band band--yolk"><div class="band__run"><q class="voice">Exam night</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Match night</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">3 a.m.</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Lunch break</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">The family pot</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">On the road</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Gaming till late</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Rainy days</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Exam night</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Match night</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">3 a.m.</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Lunch break</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">The family pot</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">On the road</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Gaming till late</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Rainy days</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Exam night</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Match night</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">3 a.m.</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Lunch break</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">The family pot</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">On the road</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Gaming till late</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg><q class="voice">Rainy days</q><svg class="wave" viewBox="0 0 60 20"><path d="M2 10c5-8 9-8 14 0s9 8 14 0 9-8 14 0 9 8 14 0"/></svg></div></div>
-  <div class="band band--red"><div class="band__run band__run--rev"><span>Vegetable</span><span class="band__dot"></span><span>Chicken</span><span class="band__dot"></span><span>Hot</span><span class="band__dot"></span><span>Curry</span><span class="band__dot"></span><span>Vegetable</span><span class="band__dot"></span><span>Chicken</span><span class="band__dot"></span><span>Hot</span><span class="band__dot"></span><span>Curry</span><span class="band__dot"></span><span>Vegetable</span><span class="band__dot"></span><span>Chicken</span><span class="band__dot"></span><span>Hot</span><span class="band__dot"></span><span>Curry</span><span class="band__dot"></span></div></div>
-</div>
-
-<section class="fw" id="flavours" data-fw style="--n:4">
-  <div class="fw__stage" data-fw-stage style="--fb:#1FA04A;--ff:#FFFFFF;--fa:#FFC629;--fd:#127A35">
-    <div class="fw__words" aria-hidden="true"><span class="fw__word is-on" data-word="0">VEGGIE</span><span class="fw__word" data-word="1">CHICKEN</span><span class="fw__word" data-word="2">HOT</span><span class="fw__word" data-word="3">CURRY</span></div>
-    <div class="fw__scenes"><div class="fw-scene" data-scene="0" style="--fb:#1FA04A;--ff:#FFFFFF;--fa:#FFC629;--fd:#127A35">
-  <div class="fw-ing fw-ing--2" data-depth="0.25"><img class="cut" src="../assets/img/ing-vegetable-2-1100.webp" srcset="../assets/img/ing-vegetable-2-620.webp 620w, ../assets/img/ing-vegetable-2-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1120" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-ing fw-ing--1" data-depth="0.5"><img class="cut" src="../assets/img/ing-vegetable-1-1100.webp" srcset="../assets/img/ing-vegetable-1-620.webp 620w, ../assets/img/ing-vegetable-1-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1120" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-bowl"><img class="cut" src="../assets/img/bowl-vegetable-1000.webp" srcset="../assets/img/bowl-vegetable-560.webp 560w, ../assets/img/bowl-vegetable-1000.webp 1000w" sizes="(max-width: 700px) 80vw, 46vw" width="1000" height="1011" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-ing fw-ing--0" data-depth="1"><img class="cut" src="../assets/img/ing-vegetable-0-1100.webp" srcset="../assets/img/ing-vegetable-0-620.webp 620w, ../assets/img/ing-vegetable-0-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1120" alt="" loading="lazy" decoding="async"></div>
-</div>
-<div class="fw-scene" data-scene="1" style="--fb:#FFB21A;--ff:#22100A;--fa:#D40203;--fd:#E08E00">
-  <div class="fw-ing fw-ing--2" data-depth="0.25"><img class="cut" src="../assets/img/ing-chicken-2-1100.webp" srcset="../assets/img/ing-chicken-2-620.webp 620w, ../assets/img/ing-chicken-2-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1072" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-ing fw-ing--1" data-depth="0.5"><img class="cut" src="../assets/img/ing-chicken-1-1100.webp" srcset="../assets/img/ing-chicken-1-620.webp 620w, ../assets/img/ing-chicken-1-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1072" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-bowl"><img class="cut" src="../assets/img/bowl-chicken-1000.webp" srcset="../assets/img/bowl-chicken-560.webp 560w, ../assets/img/bowl-chicken-1000.webp 1000w" sizes="(max-width: 700px) 80vw, 46vw" width="1000" height="1010" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-ing fw-ing--0" data-depth="1"><img class="cut" src="../assets/img/ing-chicken-0-1100.webp" srcset="../assets/img/ing-chicken-0-620.webp 620w, ../assets/img/ing-chicken-0-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1072" alt="" loading="lazy" decoding="async"></div>
-</div>
-<div class="fw-scene" data-scene="2" style="--fb:#1B1210;--ff:#FFFFFF;--fa:#FF4A1C;--fd:#000000">
-  <div class="fw-ing fw-ing--2" data-depth="0.25"><img class="cut" src="../assets/img/ing-hot-2-1100.webp" srcset="../assets/img/ing-hot-2-620.webp 620w, ../assets/img/ing-hot-2-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1103" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-ing fw-ing--1" data-depth="0.5"><img class="cut" src="../assets/img/ing-hot-1-1100.webp" srcset="../assets/img/ing-hot-1-620.webp 620w, ../assets/img/ing-hot-1-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1103" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-bowl"><img class="cut" src="../assets/img/bowl-hot-1000.webp" srcset="../assets/img/bowl-hot-560.webp 560w, ../assets/img/bowl-hot-1000.webp 1000w" sizes="(max-width: 700px) 80vw, 46vw" width="1000" height="1011" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-ing fw-ing--0" data-depth="1"><img class="cut" src="../assets/img/ing-hot-0-1100.webp" srcset="../assets/img/ing-hot-0-620.webp 620w, ../assets/img/ing-hot-0-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1103" alt="" loading="lazy" decoding="async"></div>
-</div>
-<div class="fw-scene" data-scene="3" style="--fb:#EE7A12;--ff:#FFFFFF;--fa:#FFE08A;--fd:#C65F00">
-  <div class="fw-ing fw-ing--2" data-depth="0.25"><img class="cut" src="../assets/img/ing-curry-2-1100.webp" srcset="../assets/img/ing-curry-2-620.webp 620w, ../assets/img/ing-curry-2-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1109" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-ing fw-ing--1" data-depth="0.5"><img class="cut" src="../assets/img/ing-curry-1-1100.webp" srcset="../assets/img/ing-curry-1-620.webp 620w, ../assets/img/ing-curry-1-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1109" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-bowl"><img class="cut" src="../assets/img/bowl-curry-1000.webp" srcset="../assets/img/bowl-curry-560.webp 560w, ../assets/img/bowl-curry-1000.webp 1000w" sizes="(max-width: 700px) 80vw, 46vw" width="1000" height="1016" alt="" loading="lazy" decoding="async"></div>
-  <div class="fw-ing fw-ing--0" data-depth="1"><img class="cut" src="../assets/img/ing-curry-0-1100.webp" srcset="../assets/img/ing-curry-0-620.webp 620w, ../assets/img/ing-curry-0-1100.webp 1100w" sizes="(max-width: 700px) 120vw, 70vw" width="1100" height="1109" alt="" loading="lazy" decoding="async"></div>
-</div>
-</div>
-    <canvas class="fw__pack" data-pack aria-hidden="true"></canvas>
-    <div class="fw__copy wrap">
-      <p class="kicker"><span>The flavours</span> <span class="kicker__draft">The range shown is a draft<a class="q" href="../en/_claims/#fl.range" title="Which flavours are sold in Syria today? Please list every one, with its exact name on the pack in Arabic and English." aria-label="to confirm">?</a></span></p>
-      <div class="fw__texts">
-        <div class="fw__text is-on" data-text="0">
-          <p class="fw__num"><bdi dir="ltr">01</bdi> / <bdi dir="ltr">04</bdi></p>
-          <h2 class="fw__name">Vegetable<a class="q" href="../en/_claims/#fl.veg.name" title="What is the vegetable flavour&#x27;s exact name on the pack, in Arabic and English?" aria-label="to confirm">?</a></h2>
-          <p class="fw__mood">The everyday one.</p>
-<p class="fw__claim">The flavour Syrians ask for most.<a class="q" href="../en/_claims/#fl.veg.most_asked" title="Syria TV reported that vegetable is the flavour people ask for most. May the site say so, and do you have a source of your own?" aria-label="to confirm">?</a></p>          <a class="btn btn--light" href="../en/flavours/vegetable/">All about Vegetable</a>
-        </div>
-        <div class="fw__text" data-text="1">
-          <p class="fw__num"><bdi dir="ltr">02</bdi> / <bdi dir="ltr">04</bdi></p>
-          <h2 class="fw__name">Chicken<a class="q" href="../en/_claims/#fl.chicken.name" title="Is a chicken flavour sold in Syria? What is its exact name on the pack?" aria-label="to confirm">?</a></h2>
-          <p class="fw__mood">The cosy one.</p>
-          <a class="btn btn--light" href="../en/flavours/chicken/">All about Chicken</a>
-        </div>
-        <div class="fw__text" data-text="2">
-          <p class="fw__num"><bdi dir="ltr">03</bdi> / <bdi dir="ltr">04</bdi></p>
-          <h2 class="fw__name">Hot<a class="q" href="../en/_claims/#fl.hot.name" title="Is a hot flavour sold in Syria? What is its exact name on the pack?" aria-label="to confirm">?</a></h2>
-          <p class="fw__mood">The dare.</p>
-          <a class="btn btn--light" href="../en/flavours/hot/">All about Hot</a>
-        </div>
-        <div class="fw__text" data-text="3">
-          <p class="fw__num"><bdi dir="ltr">04</bdi> / <bdi dir="ltr">04</bdi></p>
-          <h2 class="fw__name">Curry<a class="q" href="../en/_claims/#fl.curry.name" title="Is a curry flavour sold in Syria? What is its exact name on the pack?" aria-label="to confirm">?</a></h2>
-          <p class="fw__mood">The trip.</p>
-          <a class="btn btn--light" href="../en/flavours/curry/">All about Curry</a>
-        </div>
-      </div>
-    </div>
-    <div class="fw__dots" role="tablist" aria-label="The flavours"><button type="button" class="fw__dot is-on" data-go="0" style="--c:#1FA04A">Vegetable</button><button type="button" class="fw__dot" data-go="1" style="--c:#FFB21A">Chicken</button><button type="button" class="fw__dot" data-go="2" style="--c:#1B1210">Hot</button><button type="button" class="fw__dot" data-go="3" style="--c:#EE7A12">Curry</button></div>
-  </div>
-  <script type="application/json" data-fw-data>[{"slug": "vegetable", "name": "Vegetable", "bg": "#1FA04A", "fg": "#FFFFFF", "accent": "#FFC629", "deep": "#127A35", "bowl": "../assets/img/bowl-vegetable-560.webp"}, {"slug": "chicken", "name": "Chicken", "bg": "#FFB21A", "fg": "#22100A", "accent": "#D40203", "deep": "#E08E00", "bowl": "../assets/img/bowl-chicken-560.webp"}, {"slug": "hot", "name": "Hot", "bg": "#1B1210", "fg": "#FFFFFF", "accent": "#FF4A1C", "deep": "#000000", "bowl": "../assets/img/bowl-hot-560.webp"}, {"slug": "curry", "name": "Curry", "bg": "#EE7A12", "fg": "#FFFFFF", "accent": "#FFE08A", "deep": "#C65F00", "bowl": "../assets/img/bowl-curry-560.webp"}]</script>
-</section>
-
-<section class="build" id="build" data-build>
-  <div class="wrap build__grid">
-    <div class="build__copy">
-      <p class="kicker kicker--red">Build your bowl</p>
-      <h2 class="h2"><q class="voice">Pile it on.</q></h2>
-      <p class="lede">Pick your toppings, then share your bowl as a picture made right here on your phone. Nothing is uploaded anywhere.</p>
-      <div class="build__tops" role="group" aria-label="Build your bowl">
-<button type="button" class="top-btn" data-topping="egg" aria-pressed="false"><img class="cut" src="../assets/img/top-egg-360.webp" srcset="../assets/img/top-egg-360.webp 360w" sizes="96px" width="360" height="343" alt="" loading="lazy" decoding="async"><span>Egg</span></button><button type="button" class="top-btn" data-topping="cheese" aria-pressed="false"><img class="cut" src="../assets/img/top-cheese-360.webp" srcset="../assets/img/top-cheese-360.webp 360w" sizes="96px" width="360" height="374" alt="" loading="lazy" decoding="async"><span>Cheese</span></button><button type="button" class="top-btn" data-topping="sausage" aria-pressed="false"><img class="cut" src="../assets/img/top-sausage-360.webp" srcset="../assets/img/top-sausage-360.webp 360w" sizes="96px" width="360" height="329" alt="" loading="lazy" decoding="async"><span>Sausage</span></button><button type="button" class="top-btn" data-topping="onion" aria-pressed="false"><img class="cut" src="../assets/img/top-onion-360.webp" srcset="../assets/img/top-onion-360.webp 360w" sizes="96px" width="360" height="346" alt="" loading="lazy" decoding="async"><span>Spring onion</span></button><button type="button" class="top-btn" data-topping="chili" aria-pressed="false"><img class="cut" src="../assets/img/top-chili-360.webp" srcset="../assets/img/top-chili-360.webp 360w" sizes="96px" width="360" height="395" alt="" loading="lazy" decoding="async"><span>Chili</span></button><button type="button" class="top-btn" data-topping="lemon" aria-pressed="false"><img class="cut" src="../assets/img/top-lemon-360.webp" srcset="../assets/img/top-lemon-360.webp 360w" sizes="96px" width="360" height="316" alt="" loading="lazy" decoding="async"><span>Lemon</span></button>      </div>
-      <div class="build__actions">
-        <button type="button" class="btn btn--red" data-share disabled>Share my bowl</button>
-        <button type="button" class="btn btn--line" data-again>Start again</button>
-        <a class="btn btn--line" data-download hidden download="my-indomie.png">Save the picture</a>
-      </div>
-    </div>
-    <div class="build__bowl" data-bowl>
-      <div class="build__plate"><img class="cut build__base" src="../assets/img/bowl-plain-1000.webp" srcset="../assets/img/bowl-plain-560.webp 560w, ../assets/img/bowl-plain-1000.webp 1000w" sizes="(max-width: 900px) 90vw, 46vw" width="1000" height="1016" alt="" loading="lazy" decoding="async"><div class="build__on" data-on></div></div>
-      <p class="build__hint" data-hint>Tap a topping to drop it in.</p>
-    </div>
-  </div>
-  <script type="application/json" data-build-data>{"line": "This is how I like it.", "name": "My bowl", "tag": "#EndOfStory", "brand": "Indomie", "dir": "ltr", "bowl": "../assets/img/bowl-plain-1000.webp", "tops": {"egg": "../assets/img/top-egg-360.webp", "cheese": "../assets/img/top-cheese-360.webp", "sausage": "../assets/img/top-sausage-360.webp", "onion": "../assets/img/top-onion-360.webp", "chili": "../assets/img/top-chili-360.webp", "lemon": "../assets/img/top-lemon-360.webp"}}</script>
-</section>
-
-<section class="hacks" id="hacks">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker kicker--yolk">Hacks</p>
-      <h2 class="h2"><q class="voice">Indomie, but not how you know it.</q></h2>
-      <p class="lede">Eight recipes from the Indomie kitchen, for every hour of the day.<a class="q" href="../en/_claims/#perm.recipes" title="Will your team cook the eight recipes and approve them before launch? They are signed &quot;From the Indomie kitchen&quot;." aria-label="to confirm">?</a></p>
-    </div>
-    <div class="bento">
-<a class="tile tile--big" href="../en/hacks/3am-egg/" style="--tb:#FFC629;--tf:#22100A" data-tilt>
-  <span class="tile__dish"><img class="cut" src="../assets/img/hack-3am-egg-900.webp" srcset="../assets/img/hack-3am-egg-520.webp 520w, ../assets/img/hack-3am-egg-900.webp 900w" sizes="(max-width: 700px) 60vw, 30vw" width="900" height="799" alt="" loading="lazy" decoding="async"></span>
-  <span class="tile__body">
-    <q class="voice tile__name">The 3 a.m. Egg</q>
-    <q class="voice tile__line">A hot bowl, then bed.</q>
-    <span class="tile__meta">
-      <span class="pill">Serves <bdi dir="ltr">1</bdi></span>
-<span class="pill heat heat--1">A kick</span>    </span>
-  </span>
-</a>
-<a class="tile" href="../en/hacks/midnight-fatteh/" style="--tb:#D40203;--tf:#FFFFFF" data-tilt>
-  <span class="tile__dish"><img class="cut" src="../assets/img/hack-midnight-fatteh-900.webp" srcset="../assets/img/hack-midnight-fatteh-520.webp 520w, ../assets/img/hack-midnight-fatteh-900.webp 900w" sizes="(max-width: 700px) 60vw, 30vw" width="900" height="726" alt="" loading="lazy" decoding="async"></span>
-  <span class="tile__body">
-    <q class="voice tile__name">Midnight Fatteh</q>
-    <q class="voice tile__line">Yesterday’s bread, yogurt and Indomie. That’s fatteh.</q>
-    <span class="tile__meta">
-<span class="pill"><bdi dir="ltr">4</bdi> min prep</span>      <span class="pill">Serves <bdi dir="ltr">2</bdi></span>
-<span class="pill heat heat--0">Mild</span>    </span>
-  </span>
-</a>
-<a class="tile" href="../en/hacks/match-night-ijjeh/" style="--tb:#1FA04A;--tf:#FFFFFF" data-tilt>
-  <span class="tile__dish"><img class="cut" src="../assets/img/hack-match-night-ijjeh-900.webp" srcset="../assets/img/hack-match-night-ijjeh-520.webp 520w, ../assets/img/hack-match-night-ijjeh-900.webp 900w" sizes="(max-width: 700px) 60vw, 30vw" width="900" height="685" alt="" loading="lazy" decoding="async"></span>
-  <span class="tile__body">
-    <q class="voice tile__name">Match-Night Ijjeh</q>
-    <q class="voice tile__line">Three eggs and a pack. Dinner for everyone.</q>
-    <span class="tile__meta">
-      <span class="pill">Serves <bdi dir="ltr">3</bdi></span>
-<span class="pill heat heat--1">A kick</span>    </span>
-  </span>
-</a>
-<a class="tile" href="../en/hacks/aleppo-in-a-bowl/" style="--tb:#EE7A12;--tf:#FFFFFF" data-tilt>
-  <span class="tile__dish"><img class="cut" src="../assets/img/hack-aleppo-in-a-bowl-900.webp" srcset="../assets/img/hack-aleppo-in-a-bowl-520.webp 520w, ../assets/img/hack-aleppo-in-a-bowl-900.webp 900w" sizes="(max-width: 700px) 60vw, 30vw" width="900" height="788" alt="" loading="lazy" decoding="async"></span>
-  <span class="tile__body">
-    <q class="voice tile__name">Aleppo in a Bowl</q>
-    <q class="voice tile__line">Muhammara you twirl.</q>
-    <span class="tile__meta">
-      <span class="pill">Serves <bdi dir="ltr">1</bdi></span>
-<span class="pill heat heat--2">Hot</span>    </span>
-  </span>
-</a>
-<a class="tile" href="../en/hacks/falafel-jealous/" style="--tb:#FFF7EA;--tf:#22100A" data-tilt>
-  <span class="tile__dish"><img class="cut" src="../assets/img/hack-falafel-jealous-900.webp" srcset="../assets/img/hack-falafel-jealous-520.webp 520w, ../assets/img/hack-falafel-jealous-900.webp 900w" sizes="(max-width: 700px) 60vw, 30vw" width="900" height="771" alt="" loading="lazy" decoding="async"></span>
-  <span class="tile__body">
-    <q class="voice tile__name">Make the Falafel Jealous</q>
-    <q class="voice tile__line">All the tarator, without leaving the house.</q>
-    <span class="tile__meta">
-<span class="pill"><bdi dir="ltr">2</bdi> min prep</span>      <span class="pill">Serves <bdi dir="ltr">1</bdi></span>
-<span class="pill heat heat--0">Mild</span>    </span>
-  </span>
-</a>
-<a class="tile" href="../en/hacks/knafeh-nope/" style="--tb:#FF7AA8;--tf:#22100A" data-tilt>
-  <span class="tile__dish"><img class="cut" src="../assets/img/hack-knafeh-nope-900.webp" srcset="../assets/img/hack-knafeh-nope-520.webp 520w, ../assets/img/hack-knafeh-nope-900.webp 900w" sizes="(max-width: 700px) 60vw, 30vw" width="900" height="687" alt="" loading="lazy" decoding="async"></span>
-  <span class="tile__body">
-    <q class="voice tile__name">Knafeh? Nope. Indomie.</q>
-    <q class="voice tile__line">Something sweet before sunrise.</q>
-    <span class="tile__meta">
-<span class="pill"><bdi dir="ltr">20</bdi> min prep</span>      <span class="pill">Serves <bdi dir="ltr">4</bdi></span>
-<span class="pill">Sweet</span>    </span>
-  </span>
-</a>
-<a class="tile" href="../en/hacks/breakfast-on-the-run/" style="--tb:#0FA3A3;--tf:#FFFFFF" data-tilt>
-  <span class="tile__dish"><img class="cut" src="../assets/img/hack-breakfast-on-the-run-900.webp" srcset="../assets/img/hack-breakfast-on-the-run-520.webp 520w, ../assets/img/hack-breakfast-on-the-run-900.webp 900w" sizes="(max-width: 700px) 60vw, 30vw" width="900" height="798" alt="" loading="lazy" decoding="async"></span>
-  <span class="tile__body">
-    <q class="voice tile__name">Breakfast on the Run</q>
-    <q class="voice tile__line">Labneh and za’atar, but hot.</q>
-    <span class="tile__meta">
-      <span class="pill">Serves <bdi dir="ltr">1</bdi></span>
-<span class="pill heat heat--0">Mild</span>    </span>
-  </span>
-</a>
-<a class="tile" href="../en/hacks/the-house-pot/" style="--tb:#F5B700;--tf:#22100A" data-tilt>
-  <span class="tile__dish"><img class="cut" src="../assets/img/hack-the-house-pot-900.webp" srcset="../assets/img/hack-the-house-pot-520.webp 520w, ../assets/img/hack-the-house-pot-900.webp 900w" sizes="(max-width: 700px) 60vw, 30vw" width="900" height="726" alt="" loading="lazy" decoding="async"></span>
-  <span class="tile__body">
-    <q class="voice tile__name">The House Pot</q>
-    <q class="voice tile__line">One pot. Enough for everyone.</q>
-    <span class="tile__meta">
-<span class="pill"><bdi dir="ltr">10</bdi> min prep</span>      <span class="pill">Serves <bdi dir="ltr">4</bdi></span>
-<span class="pill heat heat--0">Mild</span>    </span>
-  </span>
-</a>
-    </div>
-    <p class="center"><a class="btn btn--yolk" href="../en/hacks/">All hacks</a></p>
+<section class="timer sheet-up" data-timer style="--bg:#00AEEF;--fg:#04202C;--ac:#FEC90A">
+  <div class="timer-pin">
+    <p class="kicker">From the pack to the bowl</p>
+    <p class="clock" data-clock data-seconds="180" aria-label="3 minutes"><span class="cl" data-c="cook.minutes">3:00</span></p>
+    <ol class="timer-steps">
+<li data-step="0"><span class="n">01</span><span class="cl" data-c="cook.steps">Boil the water.</span></li><li data-step="1"><span class="n">02</span><span class="cl" data-c="cook.steps">Add the block and the seasoning.</span></li><li data-step="2"><span class="n">03</span><span class="cl" data-c="cook.steps">Wait, and stir once.</span></li>    </ol>
+    <p class="timer-done" data-done><q class="voice">Enjoy.</q></p>
+    <p class="timer-note"><span class="cl" data-c="cook.steps">The steps as printed on the pack.</span></p>
+    <div class="timer-bar" aria-hidden="true"><i data-bar></i></div>
   </div>
 </section>
 
-<section class="sealed">
-  <div class="wrap sealed__in">
-    <p class="kicker kicker--yolk">Sealed</p>
-    <h2 class="sealed__big"><q class="voice">Always in its pack.</q></h2>
-    <p class="lede">Indomie is sold in its sealed pack. Do not buy noodles sold loose.<a class="q" href="../en/_claims/#q.sealed" title="May the site warn against noodles sold loose (فرط)?" aria-label="to confirm">?</a></p>
+<section class="flav sheet-up" id="flavours">
+  <header class="sec-head">
+  <p class="kicker">Flavours</p>
+  <h2 class="sec-title" data-split>Four colours. Four flavours.</h2>
+<p class="sec-sub">Each flavour has its own colour and its own world. Pick one, and see what goes with it.</p></header>
+
+  <div class="flav-row">
+    <a class="flav-card" href="../en/flavours/vegetable/" style="--bg:#00A651;--fg:#06200F;--ac:#FEC90A" data-cursor="Open the flavour">
+      <span class="flav-code">IND·01 <b>#00A651</b></span>
+      <span class="flav-name"><span class="cl" data-c="fl.veg.name">Vegetable</span></span>
+      <span class="flav-mood"><q class="voice">The everyday one.</q></span>
+      <span class="flav-pic"><img class="" src="../assets/img/bowl-vegetable-1000.webp" srcset="../assets/img/bowl-vegetable-560.webp 560w, ../assets/img/bowl-vegetable-1000.webp 1000w" sizes="(max-width: 760px) 80vw, 34vw" width="1000" height="1011" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+      <span class="flav-line">Vegetables and a light spice, for a bowl you never tire of.</span>
+      <span class="flav-go">Open the flavour <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="flav-card" href="../en/flavours/chicken/" style="--bg:#FEC90A;--fg:#1A1206;--ac:#ED1C24" data-cursor="Open the flavour">
+      <span class="flav-code">IND·02 <b>#FEC90A</b></span>
+      <span class="flav-name"><span class="cl" data-c="fl.chicken.name">Chicken</span></span>
+      <span class="flav-mood"><q class="voice">The taste of home.</q></span>
+      <span class="flav-pic"><img class="" src="../assets/img/bowl-chicken-1000.webp" srcset="../assets/img/bowl-chicken-560.webp 560w, ../assets/img/bowl-chicken-1000.webp 1000w" sizes="(max-width: 760px) 80vw, 34vw" width="1000" height="1010" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+      <span class="flav-line">The chicken broth everyone knows, warm at any hour.</span>
+      <span class="flav-go">Open the flavour <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="flav-card" href="../en/flavours/hot/" style="--bg:#D41F60;--fg:#FFF4F8;--ac:#FEC90A" data-cursor="Open the flavour">
+      <span class="flav-code">IND·03 <b>#D41F60</b></span>
+      <span class="flav-name"><span class="cl" data-c="fl.hot.name">Hot</span></span>
+      <span class="flav-mood"><q class="voice">The dare.</q></span>
+      <span class="flav-pic"><img class="" src="../assets/img/bowl-hot-1000.webp" srcset="../assets/img/bowl-hot-560.webp 560w, ../assets/img/bowl-hot-1000.webp 1000w" sizes="(max-width: 760px) 80vw, 34vw" width="1000" height="1011" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+      <span class="flav-line">Heat that climbs with every bite. For the ones who mean it.</span>
+      <span class="flav-go">Open the flavour <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="flav-card" href="../en/flavours/curry/" style="--bg:#F68521;--fg:#1A0F06;--ac:#00AEEF" data-cursor="Open the flavour">
+      <span class="flav-code">IND·04 <b>#F68521</b></span>
+      <span class="flav-name"><span class="cl" data-c="fl.curry.name">Curry</span></span>
+      <span class="flav-mood"><q class="voice">The trip.</q></span>
+      <span class="flav-pic"><img class="" src="../assets/img/bowl-curry-1000.webp" srcset="../assets/img/bowl-curry-560.webp 560w, ../assets/img/bowl-curry-1000.webp 1000w" sizes="(max-width: 760px) 80vw, 34vw" width="1000" height="1016" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+      <span class="flav-line">A warm curry of turmeric and spice, a journey in a bowl.</span>
+      <span class="flav-go">Open the flavour <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
   </div>
-  <div class="sticker sticker--sealed" aria-hidden="true"><span class="sticker__n">✓</span></div>
 </section>
 
-<section class="share">
-  <div class="wrap share__in">
-    <p class="kicker kicker--red">Share</p>
-    <h2 class="h2"><q class="voice">Snap your bowl. Tag it.</q></h2>
-    <p class="share__tag"><bdi>#EndOfStory</bdi><a class="q" href="../en/_claims/#social.hashtag" title="May we propose the campaign line «إندومي. وخلصت القصة.» and the hashtag #وخلصت_القصة, or do you run one already?" aria-label="to confirm">?</a></p>
-    <p class="lede">Post your bowl with the hashtag. No picture appears on this site without its owner&#39;s permission.<a class="q" href="../en/_claims/#perm.community" title="Do you approve these terms? Who at the company decides what goes on the clock, how fast can a photo be removed on request, and what minimum age (or guardian&#x27;s consent) do you require?" aria-label="to confirm">?</a></p>
-    <div class="share__btns">
-      <a class="btn btn--ink" href="https://www.instagram.com/indomie_syria_/" rel="noopener">Instagram</a>
-      <a class="btn btn--ink" href="https://www.facebook.com/indomie.sy" rel="noopener">Facebook</a>
-      <span class="btn btn--ink btn--slot">WhatsApp<a class="q" href="../en/_claims/#contact.whatsapp" title="Which WhatsApp number may visitors write to (to send a bowl or ask a question), and who answers it?" aria-label="to confirm">?</a></span>
-    </div>
+<section class="globe sheet-up" data-globe>
+  <div class="globe-pin">
+    <header class="sec-head">
+  <p class="kicker">Around the world</p>
+  <h2 class="sec-title" data-split>Indomie, in the colours of the world.</h2>
+<p class="sec-sub"><span class="cl" data-c="world.countries">Indomie is sold in more than 100 countries.</span></p></header>
+
+    <div class="deck-wrap"><div class="deck" data-deck>
+<figure class="sw" style="--c:#F7F6F7;--c2:#EA1F23;--ink:#16100C">
+  <div class="sw-face">
+    <span class="sw-idx">01</span>
+<img src="../assets/img/pack-mi-goreng.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
   </div>
-  <div class="share__dishes" aria-hidden="true">
-<div class="share__dish share__dish--1" data-float="0.8999999999999999"><img class="cut" src="../assets/img/hack-3am-egg-520.webp" srcset="../assets/img/hack-3am-egg-520.webp 520w" sizes="220px" width="520" height="461" alt="" loading="lazy" decoding="async"></div><div class="share__dish share__dish--2" data-float="1.2"><img class="cut" src="../assets/img/hack-midnight-fatteh-520.webp" srcset="../assets/img/hack-midnight-fatteh-520.webp 520w" sizes="220px" width="520" height="420" alt="" loading="lazy" decoding="async"></div><div class="share__dish share__dish--3" data-float="1.5"><img class="cut" src="../assets/img/hack-match-night-ijjeh-520.webp" srcset="../assets/img/hack-match-night-ijjeh-520.webp 520w" sizes="220px" width="520" height="396" alt="" loading="lazy" decoding="async"></div><div class="share__dish share__dish--4" data-float="1.7999999999999998"><img class="cut" src="../assets/img/hack-aleppo-in-a-bowl-520.webp" srcset="../assets/img/hack-aleppo-in-a-bowl-520.webp 520w" sizes="220px" width="520" height="455" alt="" loading="lazy" decoding="async"></div>  </div>
+  <figcaption>
+    <b lang="en">Mi Goreng</b>
+    <span>Fried noodles</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#F7F6F7</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#E32B6F;--c2:#FDE703;--ink:#FFFFFF">
+  <div class="sw-face">
+    <span class="sw-idx">02</span>
+<img src="../assets/img/pack-pedas.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Mi Goreng Pedas</b>
+    <span>Fried noodles, hot</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#E32B6F</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#18A9E7;--c2:#FDE703;--ink:#04202C">
+  <div class="sw-face">
+    <span class="sw-idx">03</span>
+<img src="../assets/img/pack-ayam-panggang.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Jumbo Ayam Panggang</b>
+    <span>Grilled chicken, jumbo</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#18A9E7</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#852A7E;--c2:#F3EAEF;--ink:#FFFFFF">
+  <div class="sw-face">
+    <span class="sw-idx">04</span>
+<img src="../assets/img/pack-rendang.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Rendang</b>
+    <span>Spiced beef</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#852A7E</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#B30719;--c2:#FDE703;--ink:#FFFFFF">
+  <div class="sw-face">
+    <span class="sw-idx">05</span>
+<img src="../assets/img/pack-iga-penyet.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Iga Penyet</b>
+    <span>Smashed ribs, hot</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#B30719</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#043E24;--c2:#9DC041;--ink:#FFFFFF">
+  <div class="sw-face">
+    <span class="sw-idx">06</span>
+<img src="../assets/img/pack-cabe-ijo.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Cabe Ijo</b>
+    <span>Green chilli</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#043E24</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#111011;--c2:#BA9D43;--ink:#FFFFFF">
+  <div class="sw-face">
+    <span class="sw-idx">07</span>
+<img src="../assets/img/pack-hype-abis.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Hype Abis Ayam Geprek</b>
+    <span>Crushed fried chicken</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#111011</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#88C040;--c2:#FBEC01;--ink:#06200F">
+  <div class="sw-face">
+    <span class="sw-idx">08</span>
+<img src="../assets/img/pack-soto-mie.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Soto Mie</b>
+    <span>Indonesian soto soup</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#88C040</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#F6E821;--c2:#EA1B23;--ink:#1A1206">
+  <div class="sw-face">
+    <span class="sw-idx">09</span>
+<img src="../assets/img/pack-kari-ayam.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Kari Ayam</b>
+    <span>Chicken curry</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#F6E821</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#ED7E2A;--c2:#E0531F;--ink:#1A0F06">
+  <div class="sw-face">
+    <span class="sw-idx">10</span>
+<img src="../assets/img/pack-ayam-spesial.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Ayam Spesial</b>
+    <span>Special chicken</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#ED7E2A</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#F9F5B6;--c2:#EA1A21;--ink:#1A1206">
+  <div class="sw-face">
+    <span class="sw-idx">11</span>
+<img src="../assets/img/pack-ayam-bawang.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Ayam Bawang</b>
+    <span>Chicken and onion</span>
+    <span class="sw-cty">Indonesia</span>
+    <code>#F9F5B6</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#7FDDCE;--c2:#097D39;--ink:#04201A">
+  <div class="sw-face">
+    <span class="sw-idx">12</span>
+<img src="../assets/img/pack-eg-beef.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Beef</b>
+    <span>Beef</span>
+    <span class="sw-cty">Egypt</span>
+    <code>#7FDDCE</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#E7D328;--c2:#C8102A;--ink:#1A1206">
+  <div class="sw-face">
+    <span class="sw-idx">13</span>
+<img src="../assets/img/pack-eg-chicken.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Chicken</b>
+    <span>Chicken</span>
+    <span class="sw-cty">Egypt</span>
+    <code>#E7D328</code>
+  </figcaption>
+</figure>
+<figure class="sw" style="--c:#8EC61E;--c2:#097D39;--ink:#06200F">
+  <div class="sw-face">
+    <span class="sw-idx">14</span>
+<img src="../assets/img/pack-eg-vegetable.webp" alt="" loading="lazy" decoding="async">    <span class="sw-band" aria-hidden="true"></span>
+  </div>
+  <figcaption>
+    <b lang="en">Vegetable</b>
+    <span>Vegetable</span>
+    <span class="sw-cty">Egypt</span>
+    <code>#8EC61E</code>
+  </figcaption>
+</figure>
+    </div></div>
+    <p class="globe-note"><span class="cl" data-c="world.packs">Packs from Indomie&#x27;s ranges in other countries, shown for reference only. They are not necessarily sold in Syria.</span></p>
+  </div>
+</section>
+
+<section class="recipes sheet-up" id="recipes">
+  <header class="sec-head">
+  <p class="kicker">Recipes</p>
+  <h2 class="sec-title" data-split>Eight recipes. A bowl for every hour.</h2>
+<p class="sec-sub">Each one starts with a pack of Indomie and ends with a bowl you did not expect.</p></header>
+
+  <ol class="r-list" data-rlist>
+<li class="r-row">
+  <a href="../en/hacks/3am-egg/" data-img="../assets/img/hack-3am-egg-520.webp">
+    <span class="r-n">01</span>
+    <span class="r-name"><q class="voice">The 3 a.m. Egg</q></span>
+    <span class="r-line"><q class="voice">A hot bowl, then bed.</q></span>
+    <span class="r-meta">A little kick</span>
+    <span class="r-thumb"><img class="" src="../assets/img/hack-3am-egg-520.webp" srcset="../assets/img/hack-3am-egg-520.webp 520w" sizes="96px" width="520" height="461" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+  </a>
+</li>
+<li class="r-row">
+  <a href="../en/hacks/midnight-fatteh/" data-img="../assets/img/hack-midnight-fatteh-520.webp">
+    <span class="r-n">02</span>
+    <span class="r-name"><q class="voice">Midnight Fatteh</q></span>
+    <span class="r-line"><q class="voice">Yesterday’s bread, yogurt and Indomie. That’s fatteh.</q></span>
+    <span class="r-meta">Mild</span>
+    <span class="r-thumb"><img class="" src="../assets/img/hack-midnight-fatteh-520.webp" srcset="../assets/img/hack-midnight-fatteh-520.webp 520w" sizes="96px" width="520" height="420" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+  </a>
+</li>
+<li class="r-row">
+  <a href="../en/hacks/match-night-ijjeh/" data-img="../assets/img/hack-match-night-ijjeh-520.webp">
+    <span class="r-n">03</span>
+    <span class="r-name"><q class="voice">Match-Night Ijjeh</q></span>
+    <span class="r-line"><q class="voice">Three eggs and a pack. Dinner for everyone.</q></span>
+    <span class="r-meta">A little kick</span>
+    <span class="r-thumb"><img class="" src="../assets/img/hack-match-night-ijjeh-520.webp" srcset="../assets/img/hack-match-night-ijjeh-520.webp 520w" sizes="96px" width="520" height="396" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+  </a>
+</li>
+<li class="r-row">
+  <a href="../en/hacks/aleppo-in-a-bowl/" data-img="../assets/img/hack-aleppo-in-a-bowl-520.webp">
+    <span class="r-n">04</span>
+    <span class="r-name"><q class="voice">Aleppo in a Bowl</q></span>
+    <span class="r-line"><q class="voice">Muhammara you twirl.</q></span>
+    <span class="r-meta">Hot</span>
+    <span class="r-thumb"><img class="" src="../assets/img/hack-aleppo-in-a-bowl-520.webp" srcset="../assets/img/hack-aleppo-in-a-bowl-520.webp 520w" sizes="96px" width="520" height="455" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+  </a>
+</li>
+<li class="r-row">
+  <a href="../en/hacks/falafel-jealous/" data-img="../assets/img/hack-falafel-jealous-520.webp">
+    <span class="r-n">05</span>
+    <span class="r-name"><q class="voice">Make the Falafel Jealous</q></span>
+    <span class="r-line"><q class="voice">All the tarator, without leaving the house.</q></span>
+    <span class="r-meta">Mild</span>
+    <span class="r-thumb"><img class="" src="../assets/img/hack-falafel-jealous-520.webp" srcset="../assets/img/hack-falafel-jealous-520.webp 520w" sizes="96px" width="520" height="446" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+  </a>
+</li>
+<li class="r-row">
+  <a href="../en/hacks/knafeh-nope/" data-img="../assets/img/hack-knafeh-nope-520.webp">
+    <span class="r-n">06</span>
+    <span class="r-name"><q class="voice">Knafeh? Nope. Indomie.</q></span>
+    <span class="r-line"><q class="voice">Something sweet before sunrise.</q></span>
+    <span class="r-meta">Sweet</span>
+    <span class="r-thumb"><img class="" src="../assets/img/hack-knafeh-nope-520.webp" srcset="../assets/img/hack-knafeh-nope-520.webp 520w" sizes="96px" width="520" height="397" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+  </a>
+</li>
+<li class="r-row">
+  <a href="../en/hacks/breakfast-on-the-run/" data-img="../assets/img/hack-breakfast-on-the-run-520.webp">
+    <span class="r-n">07</span>
+    <span class="r-name"><q class="voice">Breakfast on the Run</q></span>
+    <span class="r-line"><q class="voice">Labneh and za’atar, but hot.</q></span>
+    <span class="r-meta">Mild</span>
+    <span class="r-thumb"><img class="" src="../assets/img/hack-breakfast-on-the-run-520.webp" srcset="../assets/img/hack-breakfast-on-the-run-520.webp 520w" sizes="96px" width="520" height="461" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+  </a>
+</li>
+<li class="r-row">
+  <a href="../en/hacks/the-house-pot/" data-img="../assets/img/hack-the-house-pot-520.webp">
+    <span class="r-n">08</span>
+    <span class="r-name"><q class="voice">The House Pot</q></span>
+    <span class="r-line"><q class="voice">One pot. Enough for everyone.</q></span>
+    <span class="r-meta">Mild</span>
+    <span class="r-thumb"><img class="" src="../assets/img/hack-the-house-pot-520.webp" srcset="../assets/img/hack-the-house-pot-520.webp 520w" sizes="96px" width="520" height="419" alt="Illustrative picture" loading="lazy" decoding="async"></span>
+  </a>
+</li>
+  </ol>
+  <p class="r-all"><a class="btn btn-solid" href="../en/hacks/">All recipes</a></p>
+  <div class="r-float" data-rfloat aria-hidden="true"></div>
+</section>
+
+<section class="made sheet-up" style="--bg:#D9161E;--fg:#FFFFFF;--ac:#FEC90A">
+  <p class="kicker">Made here</p>
+  <h2 class="made-big" data-split><span class="cl" data-c="id.made_in_syria">Made in Syria.</span></h2>
+  <dl class="made-facts">
+    <div><dt>The factory</dt><dd><span class="cl" data-c="id.adra">The factory is in Adra Industrial City, Rural Damascus.</span></dd></div>
+    <div><dt>Since</dt><dd><span class="cl" data-c="id.since">Made in Syria since 2006.</span></dd></div>
+    <div><dt>Maker</dt><dd><span class="cl" data-c="id.maker">Indomie is made in Syria by the Sawab company.</span></dd></div>
+  </dl>
+  <div class="made-sealed">
+    <p class="made-sealed-big"><q class="voice">Always in its pack.</q></p>
+    <p><span class="cl" data-c="q.sealed">Indomie is sold in its sealed pack. Do not buy noodles sold loose.</span></p>
+  </div>
+</section>
+
+<section class="share sheet-up" style="--bg:#852A7E;--fg:#FFF4FB;--ac:#FEC90A">
+  <p class="kicker">Share</p>
+  <h2 class="share-title" data-split>Shoot your bowl.</h2>
+  <p class="share-tag"><span class="cl" data-c="social.hashtag">#EveryColourAFlavour</span></p>
+  <p class="share-sub"><span class="cl" data-c="perm.community">Post a picture of your bowl with the hashtag. No picture appears on this site without its owner&#x27;s permission.</span></p>
+  <p class="share-links">
+    <a class="btn btn-solid" href="https://instagram.com/indomie_syria_" rel="noopener">Instagram</a>
+    <a class="btn btn-line" href="https://facebook.com/indomie.sy" rel="noopener">Facebook</a>
+  </p>
 </section>
 </main>
+
 <footer class="foot">
-  <div class="foot__cols wrap">
-    <div>
-      <h2 class="foot__h">Flavours</h2>
-<a href="../en/flavours/vegetable/">Vegetable</a><a href="../en/flavours/chicken/">Chicken</a><a href="../en/flavours/hot/">Hot</a><a href="../en/flavours/curry/">Curry</a>    </div>
-    <div>
-      <h2 class="foot__h">Hacks</h2>
-<a href="../en/hacks/3am-egg/"><q class="voice">The 3 a.m. Egg</q></a><a href="../en/hacks/midnight-fatteh/"><q class="voice">Midnight Fatteh</q></a><a href="../en/hacks/match-night-ijjeh/"><q class="voice">Match-Night Ijjeh</q></a><a href="../en/hacks/aleppo-in-a-bowl/"><q class="voice">Aleppo in a Bowl</q></a><a href="../en/hacks/falafel-jealous/"><q class="voice">Make the Falafel Jealous</q></a>      <a href="../en/hacks/">All hacks →</a>
-    </div>
-    <div>
-      <h2 class="foot__h">About Indomie</h2>
-<a href="../en/about/#made">The factory</a><a href="../en/about/#quality">Quality</a><a href="../en/about/#shops">For shops</a><a href="../en/about/#careers">Careers</a><a href="../en/about/#press">Press</a><a href="../en/about/#contact">Contact</a>    </div>
-    <div>
-      <h2 class="foot__h">Follow</h2>
-      <a href="https://www.instagram.com/indomie_syria_/" rel="noopener">Instagram <bdi dir="ltr">@indomie_syria_</bdi></a><a class="q" href="../en/_claims/#social.instagram" title="Which Instagram account is current: @indomie_syria_ or @indomie.syria?" aria-label="to confirm">?</a>
-      <a href="https://www.facebook.com/indomie.sy" rel="noopener">Facebook</a><a class="q" href="../en/_claims/#social.facebook" title="Which Facebook page is current?" aria-label="to confirm">?</a>
+  <svg class="foot-wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="fw" x1="0" x2="1"><stop offset="0" stop-color="#FEE500"/><stop offset=".5" stop-color="#F26F21"/><stop offset="1" stop-color="#FEE500"/></linearGradient></defs><path d="M0 0C260 90 520 96 760 70S1180 40 1440 120V160H0Z" fill="url(#fw)"/><path d="M0 46C260 128 520 132 760 108S1180 82 1440 160H0Z" fill="#00A651"/></svg>
+  <div class="foot-mark" aria-hidden="true"><img src="../assets/img/logo-en-big.webp" width="834" height="551" alt="" loading="lazy"></div>
+  <div class="foot-grid">
+    <nav class="foot-col" aria-label="Flavours">
+      <p class="foot-h">Flavours</p>
+<a href="../en/flavours/vegetable/"><i style="background:#00A651"></i>Vegetable</a><a href="../en/flavours/chicken/"><i style="background:#FEC90A"></i>Chicken</a><a href="../en/flavours/hot/"><i style="background:#D41F60"></i>Hot</a><a href="../en/flavours/curry/"><i style="background:#F68521"></i>Curry</a>    </nav>
+    <nav class="foot-col" aria-label="Recipes">
+      <p class="foot-h">Recipes</p>
+<a href="../en/hacks/3am-egg/">The 3 a.m. Egg</a><a href="../en/hacks/midnight-fatteh/">Midnight Fatteh</a><a href="../en/hacks/match-night-ijjeh/">Match-Night Ijjeh</a><a href="../en/hacks/aleppo-in-a-bowl/">Aleppo in a Bowl</a>      <a href="../en/hacks/">All recipes →</a>
+    </nav>
+    <nav class="foot-col" aria-label="About">
+      <p class="foot-h">About</p>
+      <a href="../en/about/#made">Made in Syria</a>
+      <a href="../en/about/#quality">Quality</a>
+      <a href="../en/about/#shops">For shops</a>
+      <a href="../en/about/#careers">Careers</a>
+      <a href="../en/about/#contact">Contact</a>
+    </nav>
+    <div class="foot-col">
+      <p class="foot-h">Follow</p>
+      <a href="https://instagram.com/indomie_syria_" rel="noopener"><span class="cl" data-c="social.instagram">@indomie_syria_</span></a>
+      <a href="https://facebook.com/indomie.sy" rel="noopener">Facebook</a>
     </div>
   </div>
-  <div class="foot__mark" aria-hidden="true">Indomie</div>
-  <p class="foot__legal wrap"><span>[trademark line]</span><a class="q" href="../en/_claims/#id.trademark" title="What exact trademark and licence line must appear on the site?" aria-label="to confirm">?</a> · <span>Preview</span><a class="q" href="../en/_claims/#id.logo" title="Please send the logo as a vector file (SVG, AI or PDF)." aria-label="to confirm">?</a><a class="q" href="../en/_claims/#id.colours" title="What are the brand&#x27;s exact colours (HEX or Pantone)?" aria-label="to confirm">?</a></p>
+  <div class="foot-base">
+    <p><span class="cl" data-c="id.trademark">[trademark line]</span></p>
+    <p>A preview by MIDDLEWARE</p>
+  </div>
 </footer>
+
+<aside class="pv" data-pv aria-label="Preview">
+  <button type="button" class="pv-btn" aria-pressed="false" data-show="Show what waits for confirmation" data-hide="Hide the marks" title="A preview. Names, numbers and pictures wait for Indomie Syria&#39;s confirmation.">
+    <span class="pv-dot"></span>Preview · <span class="pv-n">34 to confirm</span>
+  </button>
+  <a class="pv-q" href="../en/_claims/">Open questions</a>
+</aside>
+<div class="cursor" aria-hidden="true"><span></span><b></b></div>
 <script type="module" src="../assets/js/main.js"></script>
 </body>
 </html>
