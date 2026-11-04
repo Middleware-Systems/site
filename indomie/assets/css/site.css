@@ -201,11 +201,24 @@ html[dir="rtl"] .flav-go svg { transform: scaleX(-1); }
 .globe-pin { padding: calc(var(--g) * 1.6) 0 calc(var(--g) + var(--r)); display: flex; flex-direction: column; overflow: hidden; }
 .globe .sec-head { padding-inline: var(--g); }
 .js .globe { height: calc(100svh + var(--travel, 0px)); }
-.js .globe-pin { position: sticky; top: 0; height: 100svh; justify-content: center; padding-block: 90px var(--r); }
-.deck-wrap { margin-top: clamp(28px, 4vw, 56px); }
-.deck { display: flex; gap: clamp(10px, 1.2vw, 18px); padding-inline: var(--g); width: max-content; transform: translate3d(var(--x, 0), 0, 0); will-change: transform; }
-.no-js .deck-wrap, .still .deck-wrap { overflow-x: auto; }
-.sw { flex: 0 0 clamp(190px, 17.5vw, 290px); background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 1px 0 rgba(22, 16, 12, .06), 0 26px 40px -30px rgba(22, 16, 12, .45);
+.js .globe-pin { position: sticky; top: 0; height: 100svh; justify-content: center; padding-block: 76px calc(var(--r) * .6); }
+.globe .sec-head { max-width: none; }
+.globe .sec-title { font-size: clamp(34px, min(5.6vw, 8.4svh), 104px); }
+.globe .sec-sub { margin-top: 10px; }
+.deck-wrap { flex: none; margin-top: clamp(20px, 3.4svh, 48px); overflow-x: auto; overflow-y: hidden; scrollbar-width: none; overscroll-behavior-x: contain; outline-offset: -4px; }
+.deck-wrap::-webkit-scrollbar { display: none; }
+@media (hover: hover) and (pointer: fine) { .deck-wrap { cursor: grab; } .deck-wrap.dragging { cursor: grabbing; } .deck-wrap.dragging .sw { pointer-events: none; } }
+.deck { display: flex; gap: clamp(10px, 1.2vw, 18px); padding-inline: var(--g); padding-block: 14px 18px; width: max-content; user-select: none; -webkit-user-select: none; }
+.deck img { -webkit-user-drag: none; }
+.deck-ui { flex: none; display: flex; align-items: center; gap: 14px; padding: 4px var(--g) 0; }
+.deck-btn { flex: none; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; background: transparent; color: var(--ink);
+  border: 1.5px solid rgba(22, 16, 12, .22); transition: background-color .25s, color .25s, opacity .25s, transform .35s var(--ease); }
+.deck-btn:hover:not(:disabled) { background: var(--ink); color: var(--cream); transform: scale(1.06); }
+.deck-btn:disabled { opacity: .28; cursor: default; }
+html[dir="rtl"] .deck-btn svg { transform: scaleX(-1); }
+.deck-track { position: relative; flex: 0 1 360px; height: 4px; border-radius: 4px; background: rgba(22, 16, 12, .12); overflow: hidden; }
+.deck-track i { position: absolute; top: 0; bottom: 0; width: var(--w, 25%); inset-inline-start: calc(var(--p, 0) * (100% - var(--w, 25%))); border-radius: 4px; background: var(--ink); }
+.sw { flex: 0 0 clamp(168px, min(17.5vw, 25svh), 290px); background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 1px 0 rgba(22, 16, 12, .06), 0 26px 40px -30px rgba(22, 16, 12, .45);
   transition: transform .6s var(--ease); }
 .sw:hover { transform: translateY(-10px) rotate(-1.2deg); }
 .sw-face { position: relative; aspect-ratio: 1 / 1.08; background: var(--c); display: grid; place-items: center; overflow: hidden; }
@@ -213,12 +226,12 @@ html[dir="rtl"] .flav-go svg { transform: scaleX(-1); }
 .sw-face img { position: relative; z-index: 1; width: 78%; height: 84%; object-fit: contain; filter: drop-shadow(0 18px 18px rgba(0, 0, 0, .3)); transition: transform .7s var(--ease); }
 .sw:hover .sw-face img { transform: rotate(-6deg) scale(1.06); }
 .sw-idx { position: absolute; z-index: 2; top: 12px; inset-inline-start: 14px; font: 600 12px/1 "Bric", sans-serif; letter-spacing: .1em; color: var(--ink, #fff); opacity: .8; }
-.sw figcaption { display: grid; gap: 2px; padding: 14px 16px 16px; color: #16100C; font-size: 14px; line-height: 1.35; }
+.sw figcaption { display: grid; gap: 2px; padding: 12px 14px 14px; color: #16100C; font-size: 14px; line-height: 1.35; }
 .sw figcaption b { font-family: "Bric", sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
 .sw-cty { opacity: .6; }
 .sw code { font: 500 12px/1 "Bric", ui-monospace, monospace; letter-spacing: .08em; opacity: .55; margin-top: 8px; direction: ltr; text-align: start; }
 html[dir="rtl"] .sw code { text-align: end; }
-.globe-note { padding: 22px var(--g) 0; font-size: var(--t-s); opacity: .6; max-width: 70ch; }
+.globe-note { padding: 12px var(--g) 0; font-size: var(--t-s); opacity: .6; max-width: 70ch; }
 
 /* ── 5 · the recipes ──────────────────────────────────────────────────────────────────────────────────────── */
 .recipes { background: var(--paper); color: var(--ink); padding: calc(var(--g) * 1.6) var(--g) calc(var(--g) * 1.4 + var(--r)); }
@@ -370,13 +383,16 @@ html[dir="rtl"] .rc-meta > div { padding: 16px 0 0 28px; }
 .show-claims .cl::after { width: 1.4em; height: 1.4em; }
 
 /* ── the cursor ───────────────────────────────────────────────────────────────────────────────────────────── */
+/* the pointer stays the system's; over something you can act on, a small label says what it does */
 .cursor { display: none; }
 @media (hover: hover) and (pointer: fine) {
-  .js .cursor { display: block; position: fixed; z-index: 80; left: 0; top: 0; pointer-events: none; mix-blend-mode: difference; }
-  .cursor span { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: #fff; transition: width .35s var(--ease), height .35s var(--ease), margin .35s var(--ease); }
-  .cursor b { position: absolute; transform: translate(-50%, -50%); font: 600 13px/1 var(--font); color: #000; white-space: nowrap; opacity: 0; transition: opacity .2s; }
-  .cursor.big span { width: 92px; height: 92px; margin: -46px 0 0 -46px; }
-  .cursor.big b { opacity: 1; }
+  .js .cursor { display: block; position: fixed; z-index: 80; left: 0; top: 0; pointer-events: none; }
+  .cursor b { position: absolute; top: 20px; left: 16px; display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 999px; white-space: nowrap;
+    font: 600 14px/1 var(--font); background: #FBF2E4; color: #16100C; box-shadow: 0 14px 30px -12px rgba(0, 0, 0, .55), inset 0 0 0 1px rgba(22, 16, 12, .06);
+    opacity: 0; transform: translateY(6px) scale(.86); transform-origin: 0 0; transition: opacity .22s var(--ease), transform .35s var(--ease); }
+  html[dir="rtl"] .cursor b { left: auto; right: 16px; transform-origin: 100% 0; }
+  .cursor.ink b { background: #16100C; color: #FBF2E4; }
+  .cursor.on b { opacity: 1; transform: none; }
 }
 
 /* ── motion: words that rise, things that arrive ──────────────────────────────────────────────────────────── */

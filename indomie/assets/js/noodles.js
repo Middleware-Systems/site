@@ -2,7 +2,7 @@
 // Every strand is a rope of points (Verlet) on the CPU; the GPU draws it as a crinkled tube read from a float texture,
 // so ninety-odd noodles cost one draw call. Drag up and the nearest strands come with the chopsticks; let go and they
 // fall back and settle into the bowl. Left alone, the chopsticks lift a bundle by themselves now and then.
-import * as THREE from './three.module.min.js';
+import * as THREE from './three.module.min.js?v=512c8b83df';
 
 const BOWL = { R: 1.05, CY: 0.5, RIM: 0.32, T: 0.055 };            // the inner glaze is a sphere cap; rim height; wall
 const TOP = (x, z) => 0.17 - 0.22 * (x * x + z * z);                  // the top of the noodle mass, a low dome

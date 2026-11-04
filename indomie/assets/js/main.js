@@ -65,7 +65,7 @@ if (hero) {
   $$('[data-flavour]', hero).forEach((b) => b.addEventListener('click', () => setTheme(b.dataset.flavour)));
   const gl = !saveData && canvas && (() => { try { return !!document.createElement('canvas').getContext('webgl2'); } catch { return false; } })();
   if (gl) {
-    const start = () => import('./noodles.js').then(({ mountNoodles }) => {
+    const start = () => import('./noodles.js?v=74286160fa').then(({ mountNoodles }) => {
       const t = themes[hero.dataset.theme] || {};
       bowl = mountNoodles(canvas, { still, hit: $('[data-hit]', hero), bowl: t.bowl, sticks: t.sticks, tint: t.tint,
         onLift: () => hero.classList.add('lifted') });
@@ -98,24 +98,77 @@ if (timer && !still) {
   addEventListener('scroll', tick, { passive: true }); addEventListener('resize', tick); tick();
 }
 
-// ── the world's packs: a colour chart that travels sideways ───────────────────────────────────────────────────
+// ── the world's packs: a colour chart you can move either way ─────────────────────────────────────────────────
+// One position, two doors. The chart is a real sideways scroller (a swipe, shift + wheel, a trackpad, a mouse drag,
+// the arrows, the keyboard), and while the section is pinned the page's own scroll moves it too. Each door writes the
+// other: scrolling down slides the chart; sliding the chart moves the page to the matching place — so whichever way a
+// visitor pushes, the chart answers at once and the page never seems stuck.
 const globe = $('[data-globe]');
-if (globe && !still) {
-  const deck = $('[data-deck]', globe);
-  let travel = 0;
+if (globe) {
+  const wrap = $('[data-deckwrap]', globe), bar = $('[data-deckbar]', globe);
+  const prev = $('[data-deckprev]', globe), next = $('[data-decknext]', globe);
+  const pinned = !still;                                    // reduced motion: a plain row, no pinning
+  let max = 0, ours = null;
+  const pos = () => Math.abs(wrap.scrollLeft);             // in RTL scrollLeft runs from 0 to negative
+  const put = (x) => { ours = x; wrap.scrollLeft = rtl ? -x : x; };
+  const span = () => globe.offsetHeight - innerHeight;
+  const ui = () => {
+    const x = pos();
+    bar.style.setProperty('--p', max ? (x / max).toFixed(4) : 0);
+    bar.style.setProperty('--w', `${Math.min(100, wrap.clientWidth / wrap.scrollWidth * 100).toFixed(2)}%`);
+    prev.disabled = x < 2; next.disabled = x > max - 2;
+  };
+  const fromPage = () => {                                  // the page moved: slide the chart to match
+    if (pinned && max > 0) {
+      const r = globe.getBoundingClientRect(), s = span();
+      const x = (s > 0 ? Math.min(1, Math.max(0, -r.top / s)) : 0) * max;
+      if (Math.abs(x - pos()) >= 2) put(x);               // already there: leave a running swipe alone
+    }
+    ui();
+  };
   const measure = () => {
-    travel = Math.max(0, deck.scrollWidth - innerWidth);
-    globe.style.setProperty('--travel', `${travel}px`);
+    max = Math.max(0, wrap.scrollWidth - wrap.clientWidth);
+    if (pinned) globe.style.setProperty('--travel', `${max}px`);
+    fromPage();
   };
-  const move = () => {
-    const r = globe.getBoundingClientRect(), span = r.height - innerHeight;
-    const p = span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
-    deck.style.setProperty('--x', `${(rtl ? 1 : -1) * p * travel}px`);
-  };
-  measure(); move();
-  addEventListener('resize', () => { measure(); move(); });
-  addEventListener('scroll', move, { passive: true });
-  $$('img', deck).forEach((im) => im.complete || im.addEventListener('load', () => { measure(); move(); }, { once: true }));
+  wrap.addEventListener('scroll', () => {                  // the chart moved by hand: move the page to match
+    const x = pos();
+    if (ours !== null && Math.abs(x - ours) < 2) { ours = null; ui(); return; }
+    ours = null;
+    if (pinned && max > 0) {
+      const top = globe.getBoundingClientRect().top + scrollY;
+      scrollTo({ top: Math.round(top + (x / max) * span()), behavior: 'instant' });
+    }
+    ui();
+  }, { passive: true });
+  globe.addEventListener('wheel', (e) => {                 // a sideways swipe anywhere on the section, not only on the row
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) || wrap.contains(e.target)) return;
+    e.preventDefault(); wrap.scrollLeft += e.deltaX;
+  }, { passive: false });
+  const step = () => (wrap.querySelector('.sw')?.offsetWidth || 260) * 2;
+  prev.addEventListener('click', () => wrap.scrollBy({ left: (rtl ? 1 : -1) * step(), behavior: still ? 'auto' : 'smooth' }));
+  next.addEventListener('click', () => wrap.scrollBy({ left: (rtl ? -1 : 1) * step(), behavior: still ? 'auto' : 'smooth' }));
+  let drag = null;                                          // a mouse drags the row the way a finger does
+  wrap.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = { id: e.pointerId, x: e.clientX, s: pos() };
+  });
+  wrap.addEventListener('pointermove', (e) => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const dx = e.clientX - drag.x;
+    if (!wrap.classList.contains('dragging')) {
+      if (Math.abs(dx) < 4) return;
+      wrap.classList.add('dragging'); wrap.setPointerCapture(e.pointerId);
+    }
+    const x = Math.min(max, Math.max(0, drag.s + (rtl ? dx : -dx)));
+    wrap.scrollLeft = rtl ? -x : x;
+  });
+  const undrag = () => { drag = null; wrap.classList.remove('dragging'); };
+  wrap.addEventListener('pointerup', undrag); wrap.addEventListener('pointercancel', undrag);
+  measure();
+  addEventListener('resize', measure);
+  addEventListener('scroll', fromPage, { passive: true });
+  $$('img', wrap).forEach((im) => im.complete || im.addEventListener('load', measure, { once: true }));
 }
 
 // ── the recipe index: the dish follows the pointer ────────────────────────────────────────────────────────────
@@ -131,16 +184,23 @@ if (rfloat && fine && !still) {
   });
 }
 
-// ── the cursor ────────────────────────────────────────────────────────────────────────────────────────────────
+// ── the cursor: the system's own pointer, and a small label over what can be pulled, dragged or opened ─────────
 const cur = $('.cursor');
 if (cur && fine && !still) {
-  const label = $('b', cur), hint = $('[data-hint] .hand')?.textContent || '';
-  let x = -100, y = -100, tx = -100, ty = -100;
+  const label = $('b', cur);
+  let x = -300, y = -300, tx = -300, ty = -300, raf = 0;
+  const loop = () => { x += (tx - x) * 0.3; y += (ty - y) * 0.3; cur.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(loop) : 0; };
   addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse') return;
     tx = e.clientX; ty = e.clientY;
-    const t = e.target.closest?.('[data-cursor], [data-hit]');
-    cur.classList.toggle('big', !!t);
-    label.textContent = t ? (t.dataset.cursor || hint) : '';
+    if (!cur.classList.contains('on')) { x = tx; y = ty; }
+    const t = e.target.closest?.('[data-cursor]');
+    const show = !!t && !e.target.closest('.dragging') && !e.target.closest('a.btn, button');
+    if (t && label.textContent !== t.dataset.cursor) label.textContent = t.dataset.cursor;
+    if (t) cur.classList.toggle('ink', !!t.closest('.globe, .flav, .recipes, .pairs, .h-wall'));
+    cur.classList.toggle('on', show);
+    if (!raf) raf = requestAnimationFrame(loop);
   }, { passive: true });
-  (function loop() { x += (tx - x) * 0.22; y += (ty - y) * 0.22; cur.style.transform = `translate3d(${x}px, ${y}px, 0)`; requestAnimationFrame(loop); })();
+  document.documentElement.addEventListener('pointerleave', () => cur.classList.remove('on'));
 }
