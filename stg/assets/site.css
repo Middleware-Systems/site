@@ -581,10 +581,14 @@ html.js .card.enter { animation: enter .55s var(--ease) both; }
   .card__name { font-size: min(clamp(44px, 13vw, 70px), calc(100cqi / (var(--len, 8) * .66))); }
   .card__ghost { display: none; }
   .card__ring { width: 180px; }
-  .map__box { margin-inline: calc(var(--gut) * -1); overflow: hidden; }
-  .map__svg { width: 160%; max-width: none; margin-inline-start: -46%; }
-  [dir="rtl"] .map__svg { margin-inline-start: 0; margin-inline-end: -46%; }
+  /* the whole map on a phone, every pin on the screen (Samir, 5 Nov: the cropped map cut the US, Switzerland, China and
+     New Zealand off); at a third of its laptop size the pins and routes are drawn larger so they still read */
+  .map__svg { width: 100%; margin: 0; }
+  .map__pin, .map__dest, .map__pulse { transform-box: fill-box; transform-origin: center; scale: 2.4; }
+  .map__arc { stroke-width: 4.6; }
   .map__tag { display: none; }
+  .map__tag--damascus { display: grid; }
+  .map__tag--damascus b { font-size: 14px; padding: 3px 9px; }
   .map__list { display: grid; gap: 12px; margin-top: 22px; }
   .map__list li { display: grid; gap: 8px; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, .14); }
   .map__list b { font-size: 17px; }
