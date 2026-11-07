@@ -30,12 +30,50 @@
   var hero = document.querySelector("[data-hero]");
   /* rAF never fires in a background tab, so a timer starts it too; whichever comes first wins */
   function start() { if (hero) hero.classList.add("is-in"); }
-  raf(function () { raf(start); });
-  setTimeout(start, 80);
+  if (hero && hero.classList.contains("fcs") && "IntersectionObserver" in window && !still() && !document.hidden) {
+    /* Full Colour, under The Weave's hero (/sabpure/): the shelf is stocked when it is reached, not behind the fold */
+    var hio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { start(); hio.disconnect(); } }, { threshold: .12 });
+    hio.observe(hero);
+    setTimeout(function () { if (hero.getBoundingClientRect().top < window.innerHeight) start(); }, 80);
+  } else {
+    raf(function () { raf(start); });
+    setTimeout(start, 80);
+  }
+
+  /* The Weave's mark forms: the T comes through the S, over the G (/sabpure/) */
+  var markHero = document.querySelector(".mark-hero");
+  if (markHero) {
+    if (still() || document.hidden) markHero.classList.add("go", "done"); /* a page opened in the background shows it formed */
+    else {
+      setTimeout(function () { markHero.classList.add("go"); }, 350);
+      setTimeout(function () { markHero.classList.add("done"); }, 2250); /* the exact drawing, once the T has arrived */
+    }
+  }
+
+  /* the shelf's products follow the pointer, each at its own depth (Full Colour) */
+  var pics = [].slice.call(document.querySelectorAll(".facing__pic"));
+  if (pics.length && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var ptx = 0, pty = 0, pending = false;
+    hero.addEventListener("pointermove", function (e) {
+      if (still()) return;
+      ptx = (e.clientX / window.innerWidth - .5) * 2;
+      pty = (e.clientY / window.innerHeight - .5) * 2;
+      if (pending) return;
+      pending = true;
+      raf(function () {
+        pending = false;
+        pics.forEach(function (p) {
+          var d = parseFloat(p.getAttribute("data-depth")) || 1, img = p.firstElementChild;
+          img.style.setProperty("--px", (ptx * 10 * d).toFixed(1) + "px");
+          img.style.setProperty("--py", (pty * 8 * d).toFixed(1) + "px");
+        });
+      });
+    });
+  }
 
   /* ---------------------------------------------------------------- header: solid once scrolled, light on dark sections */
   var top = document.querySelector("[data-top]");
-  var darks = [].slice.call(document.querySelectorAll(".band, .orig, .order, .foot"));
+  var darks = [].slice.call(document.querySelectorAll(".wv, .band, .orig, .order, .foot"));
 
   /* ---------------------------------------------------------------- the wall: tiles come in as they are reached */
   var tiles = [].slice.call(document.querySelectorAll("[data-tile]")), t0 = Date.now();

@@ -627,3 +627,143 @@ html.js .card.enter { animation: enter .55s var(--ease) both; }
 }
 [data-motion="off"] *, [data-motion="off"] *::before, [data-motion="off"] *::after { animation-play-state: paused !important; }
 html.js[data-motion="off"] .map__arc { stroke-dashoffset: 0; transition: none; }
+
+/* ══ «Full Colour», for /sabpure/ (Samir, 7 Nov 2026; build.py --variant fc) ══════════════════════════════════════
+   The group's identity throughout, The Weave's hero (the loom, the mark forming), then Full Colour's shelf and cards
+   with their product pictures (web/MEDIA.md): FMCG on the first tier, the group's other sectors on the second, which
+   ends on the group's own facing for the next brand. A brand with a picture but no official logo yet carries its name. */
+.named { font-family: Montserrat, sans-serif; font-weight: 800; letter-spacing: -.02em; color: var(--navy); line-height: 1.05; text-align: center; padding: 0 8%; }
+.btn--line { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, .55); }
+.btn--line:hover { background: rgba(255, 255, 255, .1); box-shadow: none; }
+
+/* the hero: The Weave's, word for word, on its loom */
+.wv { position: relative; background: var(--navy); color: var(--white); overflow: hidden; isolation: isolate;
+  padding: calc(var(--top) + clamp(40px, 7vh, 90px)) 0 clamp(64px, 10vh, 120px); }
+.wv__in { display: grid; grid-template-columns: 1.25fr .75fr; gap: clamp(32px, 5vw, 80px); align-items: center; min-height: calc(min(100svh, 900px) - 300px); }
+.wv__eyebrow { font-size: 12.5px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(255, 255, 255, .7); }
+:lang(ar) .wv__eyebrow { letter-spacing: 0; font-size: 15px; font-weight: 500; }
+.wv__h1 { font-family: var(--display); font-size: clamp(40px, 5vw, 76px); font-weight: 600; line-height: 1.04; letter-spacing: -.03em; margin: 22px 0 26px; max-width: 16ch; }
+:lang(ar) .wv__h1 { max-width: 14ch; font-size: clamp(38px, 4.8vw, 72px); letter-spacing: 0; line-height: 1.25; }
+.wv__lead { font-size: clamp(17px, 1.35vw, 20px); line-height: 1.65; color: rgba(255, 255, 255, .78); max-width: 34em; }
+.wv__ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+.wv__art { display: flex; justify-content: center; color: var(--white); }
+.mark-hero { width: 100%; max-width: 500px; height: auto; overflow: visible; }
+html:not(.js) .mark-hero .forming { display: none; }
+html.js .mark-hero .formed { opacity: 0; }
+html.js .mark-hero.done .formed { opacity: 1; }
+html.js .mark-hero.done .forming { opacity: 0; }
+html.js .mark-hero .t-move { transform: translateX(-130px); transition: transform 1.7s var(--ease); }
+html.js .mark-hero .t-fade { opacity: 0; transition: transform 1.7s var(--ease), opacity .9s ease; }
+html.js .mark-hero.go .t-move { transform: none; }
+html.js .mark-hero.go .t-fade { opacity: 1; }
+[dir="rtl"] .mark-hero { direction: ltr; }
+
+/* the shelf: Full Colour's facings, the product breaking out of the top, the brand's own logo on a shelf-edge tag under
+   it, the sector under its run; the first tier is FMCG, the second the group's other sectors (wider facings: bigger goods) */
+.fcs { padding: clamp(56px, 9vh, 104px) 0 0; overflow: clip; }
+.shelf__label { display: flex; align-items: baseline; gap: 8px; font-weight: 700; font-size: 14px; color: var(--n60); margin-bottom: 4px; }
+:lang(ar) .shelf__label { font-weight: 500; font-size: 15px; }
+.shelf__n { font-family: Montserrat, sans-serif; font-weight: 800; font-size: 22px; color: var(--ink); }
+.shelf__hint { font-weight: 500; }
+@media (hover: none) { .shelf__hint { display: none; } }
+.shelf__tier { max-width: var(--max); margin: 0 auto; padding: 0 var(--gut) 40px; }
+.shelf__row { display: flex; gap: clamp(6px, .7vw, 12px); position: relative;
+  height: calc(clamp(230px, 31vh, 320px) + 70px); padding-top: 70px; padding-bottom: 104px; }
+.shelf__row::after { content: ""; position: absolute; inset-inline: -10px; bottom: 92px; height: 12px; border-radius: 3px; background: var(--navy);
+  box-shadow: 0 14px 24px -12px rgba(20, 37, 74, .55); }
+.facing { position: relative; flex: 1 1 0; min-width: 0; transition: flex-grow .6s var(--ease); }
+.facing__a {
+  container-type: inline-size;
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px 13px;
+  border-radius: 20px 20px 6px 6px; color: var(--ink); text-decoration: none; isolation: isolate;
+  background:
+    radial-gradient(120% 70% at 50% 0%, color-mix(in srgb, var(--c) 70%, var(--white)) 0%, transparent 60%),
+    linear-gradient(180deg, var(--c), color-mix(in srgb, var(--c) 78%, #000));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25);
+}
+.facing__a::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: var(--ink); opacity: .08;
+  -webkit-mask: url(weave.svg) repeat; mask: url(weave.svg) repeat; }
+/* sized by the facing's height, so a wide facing on the second tier carries a picture the size of the first tier's and
+   every name stays clear under it */
+.facing__pic { position: absolute; left: 50%; top: -70px; height: calc(70px + 50%); width: auto; max-width: 132%; aspect-ratio: 1 / 1.1; translate: -50% 0; z-index: 1; pointer-events: none; }
+.facing__img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 18px 18px rgba(20, 37, 74, .34)); transition: transform .6s var(--spring);
+  transform: translate3d(var(--px, 0), var(--py, 0), 0) rotate(var(--rot, 0deg)); }
+.facing__name {
+  position: relative; z-index: 2; color: var(--ink); font-family: Montserrat, sans-serif; font-weight: 800;
+  font-size: clamp(15px, 1.3vw, 21px); line-height: 1; letter-spacing: -.03em; white-space: nowrap;
+  writing-mode: vertical-rl; text-orientation: sideways; transform: rotate(180deg); align-self: flex-start;
+}
+.facing__name.long { font-size: clamp(13px, 1.05vw, 17px); }
+.facing__cat { position: relative; z-index: 2; color: var(--ink); font-size: 13px; font-weight: 600; overflow: hidden; transition: opacity .3s, max-height .4s; white-space: nowrap; }
+html.js .facing__cat { opacity: 0; max-height: 0; }
+:lang(ar) .facing__cat { font-weight: 500; }
+.facing:hover, .facing:focus-within { flex-grow: 2.3; }
+.facing:hover .facing__img, .facing:focus-within .facing__img { --rot: -4deg; transform: translate3d(var(--px, 0), calc(var(--py, 0px) - 12px), 0) rotate(var(--rot)) scale(1.1); }
+.facing:hover .facing__name, .facing:focus-within .facing__name { writing-mode: horizontal-tb; transform: none; font-size: min(clamp(18px, 1.6vw, 26px), calc(100cqi / (var(--len, 8) * .7))); white-space: normal; }
+html.js .facing:hover .facing__cat, html.js .facing:focus-within .facing__cat { opacity: .85; max-height: 2.4em; margin-top: 6px; white-space: normal; }
+/* the brand's own logo on a shelf-edge tag under its facing, as a shelf labels what stands on it */
+.facing__tag { position: absolute; inset-inline: 4%; top: calc(100% + 24px); height: 52px; display: grid; place-items: center; border-radius: 10px;
+  background: var(--white); box-shadow: 0 0 0 1px var(--line), 0 10px 18px -12px rgba(20, 37, 74, .45); pointer-events: none; }
+.facing__tag::before { content: ""; position: absolute; inset: 4px; border: 1.1px dashed rgba(20, 37, 74, .24); border-radius: 7px; }
+.facing__tag .logo { width: var(--lw); height: auto; max-height: 70%; object-fit: contain; }
+.facing__tag .named { font-size: 13px; }
+/* the sector under its run of facings, under the tags */
+.facing__rail { position: absolute; inset-inline-start: 0; top: calc(100% + 90px); display: inline-flex; align-items: baseline; gap: 8px; white-space: nowrap;
+  font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); text-decoration: none; }
+:lang(ar) .facing__rail { letter-spacing: 0; font-size: 14px; font-weight: 500; text-transform: none; }
+.facing__rail span { font-family: Montserrat, sans-serif; font-weight: 600; color: var(--n60); }
+.facing__rail::before { content: ""; width: 2px; height: 12px; background: var(--navy); align-self: center; }
+.facing__rail:hover b { text-decoration: underline; text-underline-offset: 3px; }
+/* the group's own facing, last: the next brand */
+.facing--you .facing__a { --ink: var(--white); background: var(--navy); color: var(--white); }
+.facing--you .facing__a::before { background: var(--white); opacity: .06; }
+.facing--you .facing__name, .facing--you .facing__cat { color: var(--white); }
+.facing__plus { position: absolute; left: 50%; top: 22%; translate: -50% 0; width: 56px; height: 56px; border-radius: 50%; border: 1.5px dashed rgba(255, 255, 255, .5); display: grid; place-items: center; }
+.facing__plus svg { width: 24px; height: 24px; fill: none; stroke: var(--white); stroke-width: 1.8; stroke-linecap: round; }
+.shelf__illus { font-size: 12px; color: var(--n60); padding-bottom: 28px; margin-top: -10px; }
+
+/* intro: the mark forms in the hero; the shelf is stocked as it is reached — only with JS and motion allowed */
+html.js .fcs .shelf__label { opacity: 0; transform: translateY(14px); }
+html.js .fcs .facing { transform: translateY(40px); opacity: 0; }
+html.js .fcs .facing__pic { opacity: 0; transform: translateY(-36px) scale(.9); }
+html.js .fcs.is-in .shelf__label { opacity: 1; transform: none; transition: opacity .8s .2s, transform .8s var(--ease) .2s; }
+html.js .fcs.is-in .facing { transform: none; opacity: 1; transition: transform .9s var(--spring) calc(.3s + var(--i) * 55ms), opacity .5s calc(.3s + var(--i) * 55ms), flex-grow .6s var(--ease); }
+html.js .fcs.is-in .facing__pic { opacity: 1; transform: none; transition: transform 1s var(--spring) calc(.55s + var(--i) * 60ms), opacity .5s calc(.55s + var(--i) * 60ms); }
+@keyframes fc-bob { from, to { translate: -50% 0; } 50% { translate: -50% -7px; } }
+.fcs.is-in .facing__pic { animation: fc-bob 6s ease-in-out calc(2.6s + var(--i) * -.45s) infinite; }
+
+/* the deck: the product picture large on each card, the logo sewn on beside it */
+.v-fc .card__img { position: relative; z-index: 1; width: min(84%, 520px); max-height: 88%; height: auto; object-fit: contain; filter: drop-shadow(0 30px 34px rgba(20, 37, 74, .36)); }
+.v-fc .dc-label { position: absolute; z-index: 2; width: min(40%, 250px); inset-inline-end: 3%; bottom: 7%; border-radius: 16px; }
+.v-fc .dc-label::before { inset: 8px; border-radius: 10px; }
+.dc-label .named, .card-label .named { font-size: clamp(18px, 2vw, 28px); }
+.order__row li.pic { background: color-mix(in srgb, var(--c) 86%, #000); overflow: hidden; }
+.order__row li.pic .order__pic { width: 80%; height: 80%; max-width: 80%; max-height: 80%; object-fit: contain; }
+
+@media (max-width: 1080px) {
+  .wv__in { grid-template-columns: 1fr; }
+  .wv__art { order: -1; justify-content: flex-start; }
+  .mark-hero { max-width: 210px; }
+  .wv__h1 { margin: 16px 0 18px; }
+  .wv__ctas { margin-top: 28px; }
+}
+@media (max-width: 760px) {
+  .wv { padding-bottom: 56px; }
+  .wv__in { min-height: 0; }
+  .wv__ctas .btn { flex: 1 1 auto; justify-content: center; }
+  .shelf__tier { overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gut); scrollbar-width: none; overscroll-behavior-x: contain; padding-bottom: 28px; }
+  .shelf__tier::-webkit-scrollbar { display: none; }
+  .shelf__row { height: auto; width: max-content; padding-top: 64px; }
+  .facing { flex: 0 0 42vw; height: 236px; scroll-snap-align: start; }
+  .facing:hover, .facing:focus-within { flex-grow: 0; }
+  .facing__pic { top: -58px; height: calc(58px + 50%); }
+  .facing__name, .facing:hover .facing__name, .facing:focus-within .facing__name { writing-mode: horizontal-tb; transform: none; font-size: min(20px, calc(100cqi / (var(--len, 8) * .7))); white-space: normal; }
+  html.js .facing__cat { opacity: .85; max-height: 2.4em; margin-top: 4px; white-space: normal; font-size: 12px; }
+  .v-fc .card__img { width: auto; height: 92%; max-width: 70%; }
+  .v-fc .dc-label { width: min(44%, 170px); bottom: 4%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js .fcs .shelf__label, html.js .fcs .facing, html.js .fcs .facing__pic { opacity: 1; transform: none; transition: none; }
+  .fcs.is-in .facing__pic { animation: none; }
+}
+[data-motion="off"] .fcs .facing__pic { animation: none !important; }
