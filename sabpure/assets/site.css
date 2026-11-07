@@ -733,6 +733,14 @@ html.js .fcs.is-in .facing__pic { opacity: 1; transform: none; transition: trans
 .fcs.is-in .facing__pic { animation: fc-bob 6s ease-in-out calc(2.6s + var(--i) * -.45s) infinite; }
 
 /* the deck: the product picture large on each card, the logo sewn on beside it */
+/* each picture's <picture> (AVIF with its WebP, 7 Nov 2026) takes the exact box the <img> had alone, and the <img> fills
+   it with the same object-fit: contain, so every picture is drawn at the size and place it was */
+.facing__pic > picture { display: block; width: 100%; height: 100%; }
+.facing__pic > picture > .facing__img { width: 100%; height: 100%; }
+.v-fc .card__art > picture { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; width: min(84%, 520px); height: 88%; }
+.v-fc .card__art > picture > .card__img { width: 100%; height: 100%; max-height: none; }
+.order__row li.pic > picture { display: block; width: 80%; height: 80%; }
+.order__row li.pic > picture > .order__pic { width: 100%; height: 100%; max-width: none; max-height: none; }
 .v-fc .card__img { position: relative; z-index: 1; width: min(84%, 520px); max-height: 88%; height: auto; object-fit: contain; filter: drop-shadow(0 30px 34px rgba(20, 37, 74, .36)); }
 .v-fc .dc-label { position: absolute; z-index: 2; width: min(40%, 250px); inset-inline-end: 3%; bottom: 7%; border-radius: 16px; }
 .v-fc .dc-label::before { inset: 8px; border-radius: 10px; }
@@ -760,6 +768,11 @@ html.js .fcs.is-in .facing__pic { opacity: 1; transform: none; transition: trans
   .facing__name, .facing:hover .facing__name, .facing:focus-within .facing__name { writing-mode: horizontal-tb; transform: none; font-size: min(20px, calc(100cqi / (var(--len, 8) * .7))); white-space: normal; }
   html.js .facing__cat { opacity: .85; max-height: 2.4em; margin-top: 4px; white-space: normal; font-size: 12px; }
   .v-fc .card__img { width: auto; height: 92%; max-width: 70%; }
+  /* on a phone the picture was 61.6 % of the art's width (70 % of its 88 %), its height its own, its top 6.82 % of its own
+     height below the art's, and never under 176 px tall (88 % of the 200 px art: a wide picture, Midea, on a narrow phone) —
+     measured on the build of 7 Nov at 360–760 px and held exactly here; --ar is the picture's height over its width */
+  .v-fc .card__art > picture { position: absolute; left: 50%; top: 0; width: max(61.6%, calc(176px / var(--ar, 1))); height: auto; translate: -50% 6.8182%; display: block; }
+  .v-fc .card__art > picture > .card__img { width: 100%; height: auto; max-width: none; max-height: none; }
   .v-fc .dc-label { width: min(44%, 170px); bottom: 4%; }
 }
 @media (prefers-reduced-motion: reduce) {
