@@ -1,0 +1,94 @@
+{
+ "palette": {
+  "claret": {
+   "hex": "#4A1420",
+   "use": "Claret: the house colour. Deep red wool, the lining of a jewel box, the evening."
+  },
+  "oxblood": {
+   "hex": "#2B0B12",
+   "use": "Oxblood: claret in shadow, for the deepest grounds and the footer."
+  },
+  "brass": {
+   "hex": "#C2A36B",
+   "use": "Brass: the metal. The monogram, rules and figures on claret and ink, never small text on ivory."
+  },
+  "ivory": {
+   "hex": "#F5EFE4",
+   "use": "Ivory: the page. Undyed cotton, honed limestone, where the brands' own logos sit."
+  },
+  "linen": {
+   "hex": "#E8DECD",
+   "use": "Linen: the second ground, for plates and panels on ivory."
+  },
+  "ink": {
+   "hex": "#1B1416",
+   "use": "Ink: text, a warm black with claret in it."
+  },
+  "cypress": {
+   "hex": "#1D3A32",
+   "use": "Cypress: the deep green of the Levant's trees, for industry, property and people."
+  },
+  "stone": {
+   "hex": "#7D7266",
+   "use": "Stone: quiet text and captions on ivory."
+  }
+ },
+ "geometry": {
+  "monogram_aspect": 1.5496,
+  "wordmark_en_aspect": 7.483,
+  "wordmark_ar_aspect": 1.967,
+  "join_units": 120,
+  "word_track_em": 0.16
+ },
+ "fonts": {
+  "display": "LibreCaslonDisplay-Regular.ttf",
+  "arabic": "MarkaziText[wght].ttf @ wght 500",
+  "label": "Jost[wght].ttf"
+ },
+ "files": [
+  "alzayed-canvas-tile.svg",
+  "alzayed-icon-claret-small.png",
+  "alzayed-icon-claret-small.svg",
+  "alzayed-icon-claret.png",
+  "alzayed-icon-claret.svg",
+  "alzayed-icon-ink-small.svg",
+  "alzayed-icon-ink.svg",
+  "alzayed-icon-ivory-small.svg",
+  "alzayed-icon-ivory.png",
+  "alzayed-icon-ivory.svg",
+  "alzayed-monogram-brass.png",
+  "alzayed-monogram-brass.svg",
+  "alzayed-monogram-claret.png",
+  "alzayed-monogram-claret.svg",
+  "alzayed-monogram-ink.svg",
+  "alzayed-monogram-ivory.svg",
+  "alzayed-stack-ar-brass.svg",
+  "alzayed-stack-ar-claret.svg",
+  "alzayed-stack-ar-ink.svg",
+  "alzayed-stack-ar-ivory.svg",
+  "alzayed-stack-bi-brass.svg",
+  "alzayed-stack-bi-claret.png",
+  "alzayed-stack-bi-claret.svg",
+  "alzayed-stack-bi-ink.svg",
+  "alzayed-stack-bi-ivory.png",
+  "alzayed-stack-bi-ivory.svg",
+  "alzayed-stack-en-brass.svg",
+  "alzayed-stack-en-claret.svg",
+  "alzayed-stack-en-ink.svg",
+  "alzayed-stack-en-ivory.svg",
+  "alzayed-stack-full-brass.svg",
+  "alzayed-stack-full-claret.svg",
+  "alzayed-stack-full-ink.svg",
+  "alzayed-stack-full-ivory.svg",
+  "alzayed-wordmark-ar-brass.svg",
+  "alzayed-wordmark-ar-claret.svg",
+  "alzayed-wordmark-ar-ink.png",
+  "alzayed-wordmark-ar-ink.svg",
+  "alzayed-wordmark-ar-ivory.svg",
+  "alzayed-wordmark-en-brass.svg",
+  "alzayed-wordmark-en-claret.svg",
+  "alzayed-wordmark-en-ink.png",
+  "alzayed-wordmark-en-ink.svg",
+  "alzayed-wordmark-en-ivory.svg"
+ ]
+}

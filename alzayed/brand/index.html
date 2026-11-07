@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALZAYED · Identity guide</title><meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/alzayed/brand/favicon.svg" type="image/svg+xml">
+<style>
+@font-face { font-family: "AZ Display"; src: url("/alzayed/fonts/az-display.woff2") format("woff2"); }
+@font-face { font-family: "AZ Text"; src: url("/alzayed/fonts/az-text.woff2") format("woff2"); font-weight: 400 600; }
+@font-face { font-family: "AZ Text"; src: url("/alzayed/fonts/az-italic.woff2") format("woff2"); font-style: italic; }
+@font-face { font-family: "AZ Sans"; src: url("/alzayed/fonts/az-sans.woff2") format("woff2"); font-weight: 400 600; }
+@font-face { font-family: "AZ Arabic"; src: url("/alzayed/fonts/az-ar.woff2") format("woff2"); font-weight: 400 700; }
+:root { --claret:#4A1420; --ox:#2B0B12; --brass:#C2A36B; --bd:#7E6436; --ivory:#F5EFE4; --linen:#E8DECD; --paper:#FBF8F2; --ink:#1B1416; --stone:#675D52; --cy:#1D3A32; }
+* { box-sizing: border-box; } body { margin: 0; background: var(--ivory); color: var(--ink); font: 17px/1.6 "AZ Text", Georgia, serif; -webkit-font-smoothing: antialiased; font-variant-ligatures: common-ligatures no-discretionary-ligatures no-historical-ligatures; font-feature-settings: "dlig" 0, "hlig" 0; }
+img, svg { display: block; max-width: 100%; }
+section { grid-template-columns: minmax(0, 1fr); min-height: 100vh; padding: clamp(48px, 7vw, 96px) clamp(20px, 6vw, 96px); display: grid; align-content: center; gap: 36px; border-bottom: 1px solid rgba(27,20,22,.1); }
+.n { font: 500 12px "AZ Sans", sans-serif; letter-spacing: .3em; text-transform: uppercase; color: var(--bd); display: flex; gap: 14px; align-items: center; }
+.n::before { content: ""; width: 34px; height: 1px; background: currentColor; }
+h1, h2 { font: 400 clamp(36px, 5vw, 68px)/1.05 "AZ Display", serif; margin: 0; letter-spacing: -.01em; max-width: 20ch; }
+h3 { font: 500 12px "AZ Sans", sans-serif; letter-spacing: .26em; text-transform: uppercase; color: var(--bd); margin: 0 0 12px; }
+p { margin: 0; max-width: 62ch; } .lead { font-size: clamp(19px, 1.7vw, 24px); line-height: 1.55; }
+.dark { background: var(--claret); color: var(--ivory); } .dark .n, .dark h3 { color: var(--brass); }
+.cover { background: var(--ox); color: var(--ivory); justify-items: center; text-align: center; position: relative; overflow: hidden; isolation: isolate; }
+.cover::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url("/alzayed/brand/canvas-tile-deep.svg") 0 0 / 240px; opacity: .9;
+  -webkit-mask-image: radial-gradient(closest-side, transparent 50%, #000); mask-image: radial-gradient(closest-side, transparent 50%, #000); }
+.cover img { width: min(420px, 70vw); } .cover p { font: 500 12px "AZ Sans"; letter-spacing: .3em; text-transform: uppercase; color: var(--brass); max-width: none; }
+.cover small { font: italic 16px "AZ Text"; color: rgba(245,239,228,.7); }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
+.cons { width: min(560px, 90%); height: auto; fill: var(--claret); overflow: visible; margin-inline: auto; }
+.cons .g { stroke: var(--brass); stroke-width: .35; stroke-dasharray: 1.4 1.4; } .cons .pt { fill: none; stroke: var(--bd); stroke-width: .6; }
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; border-top: 1px solid rgba(27,20,22,.14); padding-top: 22px; font-size: 15px; color: var(--stone); }
+.notes b { display: block; color: var(--ink); font: 400 22px "AZ Display"; margin-bottom: 6px; }
+.lks { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 300px; gap: 14px; }
+.lk { display: grid; place-items: center; padding: 8%; } .lk img { max-height: 62%; width: auto; }
+.lk.wide img { width: 80%; height: auto; }
+.cap { font: 500 11px "AZ Sans"; letter-spacing: .22em; text-transform: uppercase; color: var(--stone); margin-top: 8px; }
+.space { position: relative; width: min(520px, 90%); margin-inline: auto; padding: 9%; outline: 1px dashed var(--bd); outline-offset: -1px; background: var(--paper); }
+.space::after { content: "x"; position: absolute; top: 2%; left: 50%; font: italic 18px "AZ Text"; color: var(--bd); }
+.sws { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+.sw { display: grid; gap: 4px; font-size: 13px; color: var(--stone); } .sw i { display: block; aspect-ratio: 3 / 2; background: var(--c); border: 1px solid rgba(27,20,22,.08); }
+.sw b { font: 400 22px "AZ Display"; color: var(--ink); margin-top: 8px; } .sw em { font-style: italic; font-size: 14px; margin-top: 4px; }
+.bar { display: flex; height: 54px; } .bar i { display: block; }
+.type { display: grid; gap: 30px; } .type div { border-top: 1px solid rgba(27,20,22,.14); padding-top: 18px; display: grid; grid-template-columns: 240px 1fr; gap: 24px; align-items: baseline; }
+.canvas { height: 46vh; background: var(--claret) url("/alzayed/brand/canvas-tile.svg") 0 0 / 200px; }
+.canvas.deep { background: var(--ox) url("/alzayed/brand/canvas-tile-deep.svg") 0 0 / 160px; }
+.photo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; } .photo img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+.apps { display: grid; grid-template-columns: 1.1fr 1fr; gap: 14px; } .apps img { width: 100%; height: 100%; object-fit: cover; }
+.apps .tall { grid-row: span 2; }
+.card { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.card > div { aspect-ratio: 85 / 55; box-shadow: 0 30px 60px -30px rgba(43,11,18,.5); padding: 7%; display: grid; }
+.card .f { background: var(--claret); place-items: center; } .card .f img { width: 30%; }
+.card .b { background: var(--paper); align-content: space-between; font: 13px/1.6 "AZ Text"; } .card .b img { width: 34%; }
+.card .b strong { font: 400 20px "AZ Display"; display: block; } .card .b span { font: 500 10px "AZ Sans"; letter-spacing: .2em; text-transform: uppercase; color: var(--bd); }
+.donts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; } .donts div { background: var(--paper); aspect-ratio: 1; display: grid; place-items: center; padding: 16%; position: relative; }
+.donts div::after { content: ""; position: absolute; inset: 12px; background: linear-gradient(45deg, transparent 49.6%, var(--claret) 49.6% 50.4%, transparent 50.4%); opacity: .7; }
+.donts p { font-size: 14px; color: var(--stone); margin-top: 8px; }
+.files { columns: 3 260px; font: 13px/1.9 "AZ Sans"; color: var(--stone); }
+.btn { display: inline-block; padding: 15px 26px; border: 1px solid var(--claret); color: var(--claret); text-decoration: none; font: 500 12px "AZ Sans"; letter-spacing: .24em; text-transform: uppercase; margin-inline-end: 10px; }
+.ar { font-family: "AZ Arabic", serif; direction: rtl; }
+@media (max-width: 760px) { .lks { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; } .photo, .donts { grid-template-columns: 1fr 1fr; } .apps, .card { grid-template-columns: 1fr; } .type div { grid-template-columns: 1fr; } }
+@page { size: A4 landscape; margin: 0; }
+@media print { section { min-height: 0; height: 210mm; page-break-after: always; break-after: page; padding: 12mm 16mm; gap: 14px; overflow: hidden; align-content: start; }
+  .cover { align-content: center; } .cover img { width: 300px; } .canvas { height: 80mm; } h1, h2 { font-size: 36px; } .btn { display: none; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } p { font-size: 14px; } .lead { font-size: 17px; }
+  .notes { grid-template-columns: repeat(3, 1fr) !important; font-size: 12px; } .notes b { font-size: 17px; }
+  .lks { grid-template-columns: repeat(3, 1fr) !important; } .lk { aspect-ratio: 16 / 9; padding: 5%; } .lk img { max-height: 38mm; width: auto; } .lk.wide img { width: 70%; max-height: 22mm; }
+  .sws { grid-template-columns: repeat(4, 1fr) !important; gap: 8px; } .sw i { aspect-ratio: 3 / 1; } .sw { font-size: 10px; } .sw b { font-size: 16px; } .sw em { font-size: 10px; }
+  .cons { width: 360px; } .space { width: 300px; } .type { gap: 14px; } .type div { grid-template-columns: 200px 1fr !important; }
+  .photo { grid-template-columns: repeat(4, 1fr) !important; } .photo img { aspect-ratio: auto; height: 82mm; }
+  .apps { grid-template-columns: 1.15fr 1fr 1fr !important; } .apps .tall { grid-row: auto; } .apps img { height: 78mm; }
+  .card { grid-template-columns: 1fr 1fr !important; width: 58%; gap: 14px; }
+  .donts { grid-template-columns: repeat(4, 1fr) !important; } .donts div { padding: 12%; } .files { font-size: 10px; line-height: 1.6; } }
+</style></head><body>
+
+<section class="cover"><img src="/alzayed/brand/files/alzayed-stack-bi-ivory.svg" alt="ALZAYED · الزايد">
+<p>Identity guide · first edition · November 2026</p><small>Majed &amp; Mohamed Alzayed Trading and Industry Co.</small></section>
+
+<section><div class="n">01 · The idea</div><h2>Where two great strokes meet.</h2>
+<p class="lead">For three decades, Alzayed has stood where things meet: the world’s great names and the Syrian market, European wardrobes and Syrian sewing floors, cloth and bread, industry and property. The identity draws that meeting in two letters.</p>
+<p>The A and the Z are the first and the defining letter of the name. Cut in a classical Caslon, the A’s heavy right leg and the Z’s heavy diagonal meet at a single point on the baseline: two strong strokes from two directions, one foundation. Around them, a quiet system drawn from cloth and metal: claret wool, brass, ivory cotton, cypress green; a serif with three centuries of printing behind it; and room to breathe.</p>
+<div class="notes"><div><b>Timeless</b>A classical letterform, not a trend. Nothing in the system dates it.</div><div><b>Theirs</b>Their initials and their two languages, set as equals.</div><div><b>Strong</b>A monogram that holds at 16 pixels and on a building’s façade.</div></div></section>
+
+<section class="dark"><div class="n">02 · The monogram</div><h2>A and Z, joined on the baseline.</h2>
+<div style="background:var(--ivory);padding:48px 24px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154.96 100.00" data-meet="83.29" aria-hidden="true" class="cons"><line x1="-8" y1="100.00" x2="162.96" y2="100.00" class="g"/><line x1="83.29" y1="-6" x2="83.29" y2="106.00" class="g"/><path class="m-a" d="M100.28 98.87V100H65.58V98.87L77.2 97.45L63.88 61.19H29.6L17.85 92.49Q17.28 94.05 17.28 95.04Q17.28 96.6 18.2 97.24Q19.12 97.88 21.53 98.16L30.17 98.87V100H0V98.87L7.93 98.16Q11.47 97.88 12.96 96.74Q14.45 95.61 15.58 92.49L50.28 0H52.83L88.53 97.45ZM63.03 58.92 47.17 15.72H46.6L30.45 58.92Z"/><path class="m-z" d="M83.29 98.87V100H149.72L154.96 69.55L152.97 69.26L142.78 93.06Q141.36 96.18 139.8 97.24Q138.24 98.3 134.84 98.3H96.03V97.73L153.97 3.4V2.27H91.93L86.12 30.17L88.1 30.45L98.87 9.07Q100.28 5.95 101.98 4.96Q103.68 3.97 107.08 3.97H141.22V4.53Z"/><circle cx="83.29" cy="100.00" r="3.2" class="pt"/></svg>
+</div>
+<div class="notes" style="color:rgba(245,239,228,.75);border-color:rgba(194,163,107,.35)"><div><b style="color:var(--ivory)">Drawn, not typed</b>Both letters are Libre Caslon Display’s own outlines (SIL Open Font License), the Z set 120 units into the A and the two united into one shape.</div>
+<div><b style="color:var(--ivory)">The meeting point</b>The dashed lines cross where the A’s right leg lands and the Z’s diagonal begins: the one detail that makes the pair a mark.</div>
+<div><b style="color:var(--ivory)">Small-size cut</b>Below 64 px (favicons, app icons) a second master thickens every hairline by 2.6 % so the letters survive.</div></div></section>
+
+<section><div class="n">03 · The lockups</div><h2>The name in two scripts, as equals.</h2>
+<div class="lks"><div class="lk " style="background:var(--paper)"><img src="/alzayed/brand/files/alzayed-stack-bi-claret.svg" alt=""></div><div class="lk " style="background:var(--claret)"><img src="/alzayed/brand/files/alzayed-stack-bi-ivory.svg" alt=""></div><div class="lk " style="background:var(--paper)"><img src="/alzayed/brand/files/alzayed-stack-en-ink.svg" alt=""></div><div class="lk " style="background:var(--paper)"><img src="/alzayed/brand/files/alzayed-stack-ar-ink.svg" alt=""></div>
+<div class="lk wide" style="background:var(--paper)"><img src="/alzayed/brand/files/alzayed-wordmark-en-ink.svg" alt=""></div><div class="lk wide" style="background:var(--paper)"><img src="/alzayed/brand/files/alzayed-wordmark-ar-claret.svg" alt=""></div></div>
+<p class="cap">Primary: the bilingual stack. Then the English stack, the Arabic stack and the two wordmarks alone. The monogram never stands in a row beside the name.</p></section>
+
+<section><div class="n">04 · Space and size</div><h2>Room to breathe.</h2>
+<div class="space"><img src="/alzayed/brand/files/alzayed-stack-bi-claret.svg" alt=""></div>
+<div class="notes"><div><b>Clear space</b>On every side, at least x: the height of ALZAYED’s capitals in the lockup.</div><div><b>Smallest sizes</b>Stack 120 px / 30 mm wide. Wordmark 90 px / 22 mm. Monogram 16 px with the small-size cut.</div><div><b>Grounds</b>Ivory, paper, claret, oxblood, ink. On photographs, only over a calm area, in ivory or brass.</div></div></section>
+
+<section><div class="n">05 · Colour</div><h2>Claret, brass and ivory.</h2>
+<div class="sws"><div class="sw" style="--c:#4A1420"><i></i><b>Claret</b><span>#4A1420 · RGB 74, 20, 32</span>
+      <span>CMYK, approx. 0 · 73 · 57 · 71</span><em>the house colour. Deep red wool, the lining of a jewel box, the evening.</em></div><div class="sw" style="--c:#2B0B12"><i></i><b>Oxblood</b><span>#2B0B12 · RGB 43, 11, 18</span>
+      <span>CMYK, approx. 0 · 74 · 58 · 83</span><em>claret in shadow, for the deepest grounds and the footer.</em></div><div class="sw" style="--c:#C2A36B"><i></i><b>Brass</b><span>#C2A36B · RGB 194, 163, 107</span>
+      <span>CMYK, approx. 0 · 16 · 45 · 24</span><em>the metal. The monogram, rules and figures on claret and ink, never small text on ivory.</em></div><div class="sw" style="--c:#F5EFE4"><i></i><b>Ivory</b><span>#F5EFE4 · RGB 245, 239, 228</span>
+      <span>CMYK, approx. 0 · 2 · 7 · 4</span><em>the page. Undyed cotton, honed limestone, where the brands&#x27; own logos sit.</em></div><div class="sw" style="--c:#E8DECD"><i></i><b>Linen</b><span>#E8DECD · RGB 232, 222, 205</span>
+      <span>CMYK, approx. 0 · 4 · 12 · 9</span><em>the second ground, for plates and panels on ivory.</em></div><div class="sw" style="--c:#1B1416"><i></i><b>Ink</b><span>#1B1416 · RGB 27, 20, 22</span>
+      <span>CMYK, approx. 0 · 26 · 19 · 89</span><em>text, a warm black with claret in it.</em></div><div class="sw" style="--c:#1D3A32"><i></i><b>Cypress</b><span>#1D3A32 · RGB 29, 58, 50</span>
+      <span>CMYK, approx. 50 · 0 · 14 · 77</span><em>the deep green of the Levant&#x27;s trees, for industry, property and people.</em></div><div class="sw" style="--c:#7D7266"><i></i><b>Stone</b><span>#7D7266 · RGB 125, 114, 102</span>
+      <span>CMYK, approx. 0 · 9 · 18 · 51</span><em>quiet text and captions on ivory.</em></div></div>
+<div class="bar"><i style="flex:56;background:var(--ivory);border:1px solid rgba(27,20,22,.1)"></i><i style="flex:18;background:var(--claret)"></i><i style="flex:10;background:var(--ink)"></i><i style="flex:8;background:var(--cy)"></i><i style="flex:5;background:var(--brass)"></i><i style="flex:3;background:var(--ox)"></i></div>
+<p class="cap">Proportions in use: mostly ivory; claret for the house’s own moments; brass only as metal: rules, numerals, the mark. CMYK values are approximate; match on press.</p></section>
+
+<section><div class="n">06 · Type</div><h2>Three centuries of printing, two scripts.</h2>
+<div class="type">
+<div><h3>Display · Libre Caslon Display</h3><p style="font:400 54px/1.05 'AZ Display';max-width:none">A Syrian house for the world’s great names.</p></div>
+<div><h3>Text · Libre Caslon Text</h3><p>Sportswear, workwear and casual apparel for men, women and children, made to each customer’s specification. <i>Its italic is the voice: one line, never a paragraph.</i></p></div>
+<div><h3>Labels · Jost</h3><p style="font:500 13px 'AZ Sans';letter-spacing:.3em;text-transform:uppercase">Manufacture · Portfolio · Retail · Industry</p></div>
+<div><h3>Arabic · Markazi Text</h3><p class="ar" style="font-size:34px;line-height:1.5">دارٌ سوريّة لكبرى الأسماء العالمية.</p></div></div></section>
+
+<section class="dark" style="padding-bottom:0"><div class="n">07 · The house canvas</div><h2>The monogram as a cloth.</h2>
+<p style="color:rgba(245,239,228,.8)">Tone on tone, half-drop: for linings, tissue paper, gift boxes, the backs of cards, and quiet bands on screen. Never in brass, never behind text that must be read.</p>
+<div class="canvas"></div><div class="canvas deep" style="height:22vh"></div></section>
+
+<section><div class="n">08 · Photography</div><h2>Material, light and hands.</h2>
+<div class="photo"><img src="/alzayed/media/needle-720.webp" alt=""><img src="/alzayed/media/workwear-960.webp" alt=""><img src="/alzayed/media/boutique-960.webp" alt=""><img src="/alzayed/media/bread-960.webp" alt=""></div>
+<div class="notes"><div><b>Warm light, deep shadow</b>One source of light, falling across the subject; shadows allowed to go dark.</div><div><b>The house’s colours in the frame</b>Claret, ivory, brass, cypress, honey stone. No other brand in the picture.</div><div><b>Hands, not faces</b>Craft shown in the work itself. These are generated stand-ins until the house’s own photographs are taken.</div></div></section>
+
+<section><div class="n">09 · In use</div><h2>On cloth, paper and stone.</h2>
+<div class="apps"><img class="tall" src="/alzayed/media/mock-bag-960.webp" alt="The bilingual stack in brass on a claret shopping bag."><img src="/alzayed/media/mock-wall-960.webp" alt="ALZAYED in cast brass on a limestone wall."><img src="/alzayed/media/mock-label-960.webp" alt="The monogram and the name woven on an ivory label in claret wool."></div>
+<div class="card"><div class="f"><img src="/alzayed/brand/files/alzayed-monogram-brass.svg" alt=""></div>
+<div class="b"><img src="/alzayed/brand/files/alzayed-stack-en-ink.svg" alt=""><div><strong>Majed Alzayed</strong><span>Founder</span><br>Majed &amp; Mohamed Alzayed Trading and Industry Co.</div></div></div>
+<p class="cap">The surfaces are generated photographs; the marks are composited from the real files, not generated. The card is drawn here at 85 × 55 mm proportions.</p></section>
+
+<section><div class="n">10 · Never</div><h2>What keeps the mark the mark.</h2>
+<div class="donts"><div><img src="/alzayed/brand/files/alzayed-stack-en-claret.svg" alt="" style="transform:scaleX(1.5)"></div><div><img src="/alzayed/brand/files/alzayed-stack-en-claret.svg" alt="" style="filter:hue-rotate(200deg) saturate(3)"></div><div style="display:flex;gap:8%;align-items:center"><img src="/alzayed/brand/files/alzayed-monogram-claret.svg" alt="" style="width:26%"><img src="/alzayed/brand/files/alzayed-wordmark-en-ink.svg" alt="" style="width:62%"></div><div style="background:var(--claret)"><img src="/alzayed/brand/files/alzayed-stack-en-ivory.svg" alt="" style="filter:drop-shadow(4px 6px 3px #000)"></div></div>
+<div class="donts" style="aspect-ratio:auto"><p>Never stretched or redrawn.</p><p>Never in a colour outside the palette.</p><p>Never the monogram beside the name in one row.</p><p>No shadows, glows, gradients or outlines.</p></div></section>
+
+<section><div class="n">11 · The files</div><h2>Everything, drawn from the source.</h2>
+<p><a class="btn" href="/alzayed/brand/alzayed-identity.zip" download>Download the files (.zip)</a><a class="btn" href="/alzayed/brand/ALZAYED-identity-guide.pdf">The guide as PDF</a></p>
+<div class="files"><div>alzayed-canvas-tile.svg</div><div>alzayed-icon-claret-small.png</div><div>alzayed-icon-claret-small.svg</div><div>alzayed-icon-claret.png</div><div>alzayed-icon-claret.svg</div><div>alzayed-icon-ink-small.svg</div><div>alzayed-icon-ink.svg</div><div>alzayed-icon-ivory-small.svg</div><div>alzayed-icon-ivory.png</div><div>alzayed-icon-ivory.svg</div><div>alzayed-monogram-brass.png</div><div>alzayed-monogram-brass.svg</div><div>alzayed-monogram-claret.png</div><div>alzayed-monogram-claret.svg</div><div>alzayed-monogram-ink.svg</div><div>alzayed-monogram-ivory.svg</div><div>alzayed-stack-ar-brass.svg</div><div>alzayed-stack-ar-claret.svg</div><div>alzayed-stack-ar-ink.svg</div><div>alzayed-stack-ar-ivory.svg</div><div>alzayed-stack-bi-brass.svg</div><div>alzayed-stack-bi-claret.png</div><div>alzayed-stack-bi-claret.svg</div><div>alzayed-stack-bi-ink.svg</div><div>alzayed-stack-bi-ivory.png</div><div>alzayed-stack-bi-ivory.svg</div><div>alzayed-stack-en-brass.svg</div><div>alzayed-stack-en-claret.svg</div><div>alzayed-stack-en-ink.svg</div><div>alzayed-stack-en-ivory.svg</div><div>alzayed-stack-full-brass.svg</div><div>alzayed-stack-full-claret.svg</div><div>alzayed-stack-full-ink.svg</div><div>alzayed-stack-full-ivory.svg</div><div>alzayed-wordmark-ar-brass.svg</div><div>alzayed-wordmark-ar-claret.svg</div><div>alzayed-wordmark-ar-ink.png</div><div>alzayed-wordmark-ar-ink.svg</div><div>alzayed-wordmark-ar-ivory.svg</div><div>alzayed-wordmark-en-brass.svg</div><div>alzayed-wordmark-en-claret.svg</div><div>alzayed-wordmark-en-ink.png</div><div>alzayed-wordmark-en-ink.svg</div><div>alzayed-wordmark-en-ivory.svg</div></div>
+<p class="cap">SVG for every use, PNG at 2400 px for the principal files. Built by v2/brand/build.py from the fonts’ outlines; build.py --check proves the files match.</p></section>
+</body></html>
