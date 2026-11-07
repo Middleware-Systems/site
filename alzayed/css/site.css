@@ -216,9 +216,9 @@ body.menu-open .head .head__mono { color: var(--brass); }
 .heritage:not(.is-pinned) .chrono__track::after { content: ""; flex: none; width: 1px; }
 .heritage:not(.is-pinned) .era { scroll-snap-align: start; }
 html, body { overscroll-behavior-x: none; }
-@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .heritage.is-pinned { height: var(--pin-h, 300vh); }
-  .heritage.is-pinned .heritage__pin { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 64px 0 40px; }
+  .heritage.is-pinned .heritage__pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; flex-direction: column; justify-content: center; padding: 64px 0 40px; }
   .heritage.is-pinned .heritage__head { margin-bottom: 48px; }
 }
 
@@ -422,7 +422,6 @@ html, body { overscroll-behavior-x: none; }
   .head__menu { display: inline-flex; }
 }
 @media (max-width: 1023px) {
-  .chrono__track { transform: none !important; }
   .era { width: min(78vw, 360px); padding-inline-end: 34px; }
   .chrono__rule { top: clamp(62px, 6vw, 92px); }
   .era__tick { margin: -5px 0 24px; }
@@ -539,3 +538,20 @@ html, body { overscroll-behavior-x: none; }
 .ring.grab::after { right: 9px; transform: translateY(-50%) rotate(135deg); }
 .ring.press { scale: .82; }
 @media (hover: none), (pointer: coarse) { .ring { display: none; } }
+
+/* the pinned chronology on narrower screens: the heading compact, so the years and their text fit the screen (7 Nov) */
+@media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
+  .heritage.is-pinned .heritage__pin { padding: 72px 0 20px; justify-content: flex-start; }
+  .heritage.is-pinned .heritage__head { margin-bottom: 28px; }
+  .heritage.is-pinned .seam { display: none; }
+}
+@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+  .heritage.is-pinned .heritage__head .title { font-size: 30px; }
+  .heritage.is-pinned .heritage__head .intro { margin-top: 10px; font-size: 16px; }
+  .heritage.is-pinned .heritage__head { gap: 14px; margin-bottom: 20px; }
+  .heritage.is-pinned .era__text { font-size: 16px; }
+  .lang-ar .heritage.is-pinned .era__text { font-size: 18px; }
+}
+@media (max-height: 700px) and (prefers-reduced-motion: no-preference) {
+  .heritage.is-pinned .heritage__head .intro { display: none; }
+}

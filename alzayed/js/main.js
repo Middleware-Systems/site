@@ -75,7 +75,7 @@
   let span = 0;
   const layout = () => {
     if (!her) return;
-    const pin = wide.matches && !reduced;
+    const pin = !reduced;   // at every width: the scroll walks the years (Mazhar, 7 Nov 2026); a strip only with reduced motion
     her.classList.toggle("is-pinned", pin);
     if (!pin) { track.style.transform = ""; her.style.removeProperty("--pin-h"); return; }
     span = Math.max(0, track.scrollWidth - innerWidth);
