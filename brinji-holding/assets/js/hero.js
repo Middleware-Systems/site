@@ -154,14 +154,42 @@ export async function start(hero) {
     return t;
   };
 
-  let heroImg;
-  try { heroImg = await load(hero.dataset.atlas); } catch { return false; }
-  tex(0, heroImg);
+  // The four opening pictures are the ones the still picture underneath already shows (so they are downloaded once):
+  // laid 2 × 2 on a canvas, they are the shader's texture. Each still is a disc on white; only the disc's box is drawn.
+  const atlasFrom = async (urls, tile) => {
+    const ims = await Promise.all(urls.map(load));
+    const c = document.createElement('canvas');
+    c.width = c.height = tile * 2;
+    const g = c.getContext('2d');
+    ims.forEach((im, i) => {
+      const k = Math.min(im.naturalWidth, im.naturalHeight) * .985;
+      g.drawImage(im, (im.naturalWidth - k) / 2, (im.naturalHeight - k) / 2, k, k, (i % 2) * tile, Math.floor(i / 2) * tile, tile, tile);
+    });
+    return c;
+  };
+  let atlas;
+  try { atlas = await atlasFrom(hero.dataset.stills.split('|'), 720); } catch { return false; }
+  const heroTex = tex(0, atlas);
   tex(1, null);
   gl.uniform1i(U.uHero, 0);
   gl.uniform1i(U.uLat, 1);
   let latOn = 0;
-  load(hero.dataset.lattice).then((im) => { tex(1, im); latOn = 1; dirty = true; }).catch(() => {});
+  const conn = navigator.connection;
+  const slow = !!conn && (conn.saveData || /(^|-)2g|3g/.test(conn.effectiveType || ''));
+  const later = (fn, ms) => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: ms }) : setTimeout(fn, ms));
+  // the wall of circles is only seen after scrolling: fetch its pictures once the opening is on screen
+  later(() => load(hero.dataset.lattice).then((im) => { tex(1, im); latOn = 1; dirty = true; hero.dispatchEvent(new Event('hero:draw')); }).catch(() => {}), 1800);
+  // on a large sharp screen and a good connection, the same four pictures again at full size
+  const sharpen = () => {
+    if (slow || !hero.dataset.stillsHd || R * 2 < 860) return;
+    atlasFrom(hero.dataset.stillsHd.split('|'), 1024).then((c) => {
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, heroTex);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, c);
+      hero.dispatchEvent(new Event('hero:draw'));
+    }).catch(() => {});
+  };
 
   let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, R = 0;
   const size = () => {
@@ -230,6 +258,7 @@ export async function start(hero) {
   size();
   loop();
   requestAnimationFrame(() => hero.classList.add('is-live'));
+  later(sharpen, 2500);
   canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); hero.classList.remove('is-live'); });
   return true;
 }
