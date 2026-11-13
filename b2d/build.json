@@ -1,0 +1,86 @@
+{
+ "version": "7bcd181754",
+ "pages": [
+  "404.html",
+  "ar/about/bottling-agreements/index.html",
+  "ar/about/index.html",
+  "ar/about/machines-capacities/index.html",
+  "ar/about/quality-food-safety/index.html",
+  "ar/brands/carbonated-drinks/index.html",
+  "ar/brands/energy-drinks/index.html",
+  "ar/brands/index.html",
+  "ar/brands/juice/index.html",
+  "ar/careers/index.html",
+  "ar/contact/enquiries/index.html",
+  "ar/contact/index.html",
+  "ar/index.html",
+  "ar/news/brand-licensing-agreement-sgu/index.html",
+  "ar/news/established-2026-expansion-plan/index.html",
+  "ar/news/index.html",
+  "en/about/bottling-agreements/index.html",
+  "en/about/index.html",
+  "en/about/machines-capacities/index.html",
+  "en/about/quality-food-safety/index.html",
+  "en/brands/carbonated-drinks/index.html",
+  "en/brands/energy-drinks/index.html",
+  "en/brands/index.html",
+  "en/brands/juice/index.html",
+  "en/careers/index.html",
+  "en/contact/enquiries/index.html",
+  "en/contact/index.html",
+  "en/index.html",
+  "en/news/brand-licensing-agreement-sgu/index.html",
+  "en/news/established-2026-expansion-plan/index.html",
+  "en/news/index.html",
+  "index.html"
+ ],
+ "base": "/b2d/",
+ "index": false,
+ "figures": {
+  "can": {
+   "per_hour": 48000,
+   "per_minute": 800.0,
+   "per_second": 13.333333333333334,
+   "interval_ms": 75.0,
+   "per_bar": 32
+  },
+  "carton": {
+   "per_hour": 7500,
+   "per_minute": 125.0,
+   "per_second": 2.0833333333333335,
+   "interval_ms": 480.0,
+   "per_bar": 5
+  },
+  "glass": {
+   "per_hour": 6000,
+   "per_minute": 100.0,
+   "per_second": 1.6666666666666667,
+   "interval_ms": 600.0,
+   "per_bar": 4
+  },
+  "bar": {
+   "seconds": 2.4,
+   "ms": 2400.0,
+   "total": 41
+  },
+  "total": {
+   "per_hour": 61500,
+   "per_minute": 1025.0,
+   "per_second": 17.083333333333332
+  },
+  "tempo": {
+   "bpm": 100.0,
+   "beat_ms": 600.0,
+   "beats_per_bar": 4
+  },
+  "count": {
+   "lines": 3,
+   "formats": 3,
+   "brands": 5,
+   "own": 3,
+   "licensed": 2,
+   "products": 22,
+   "agreements": 1
+  }
+ }
+}
