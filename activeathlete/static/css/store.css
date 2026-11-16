@@ -700,3 +700,52 @@ table.data td { font-variant-numeric: tabular-nums; }
   .night-stick { position: relative; height: auto; min-height: 100svh; }
   .night-hint { animation: none; }
 }
+
+/* Two ways to present a product (15 Nov 2026): «Step in» and «Pull it», drawn by static/js/present.js over the first
+   picture. Without WebGL the bar hides and the figure is an ordinary photograph. */
+.gallery-col { min-width: 0; }
+.present-bar[data-wait], .present-ui[data-wait], .present-note[data-wait] { visibility: hidden; }   /* its room kept: nothing jumps when it appears */
+.present-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; margin: 0 0 10px; }
+.present-k { margin: 0; font: 500 11px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.present-k span { text-transform: none; letter-spacing: .02em; color: var(--ink3); }
+.present-modes { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line2); }
+.present-modes button { min-height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: none; color: var(--ink2);
+  font: 600 13px/1 var(--sans); transition: background-color .25s var(--ease), color .25s var(--ease); }
+.present-modes button:hover { color: var(--ink); }
+.present-modes button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.present-note { margin: 10px 0 0; font: 500 11px/1.5 var(--mono); letter-spacing: .04em; color: var(--ink3); }
+.gallery figure[data-present] { position: relative; }
+.present-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity .2s linear; }
+.present-on .present-canvas { opacity: 1; }
+.present-canvas:focus-visible { outline: 3px solid var(--yellow); outline-offset: -3px; }
+figure[data-present][data-mode="step"], figure[data-present][data-mode="pull"] { cursor: default; }
+figure[data-mode="pull"] .present-canvas { cursor: grab; touch-action: none; }
+figure[data-mode="pull"].grabbing .present-canvas { cursor: grabbing; }
+figure[data-mode="photo"] .present-canvas { display: none; }
+.present-ui { display: flex; align-items: center; min-height: 44px; margin: 0 0 10px; }
+.gallery-col[data-mode="photo"] .present-ui { visibility: hidden; }        /* its room kept: switching never moves the picture */
+.gallery-col[data-mode="pull"] .present-step, .gallery-col[data-mode="step"] .present-hint { display: none; }
+.present-step { display: flex; align-items: center; gap: 12px; width: 100%; }
+.present-play { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--yellow); color: var(--on-yellow); }
+.present-play svg { width: 18px; height: 18px; fill: currentColor; }
+.present-play path { display: none; }
+.present-play[data-state="play"] .i-play, .present-play[data-state="pause"] .i-pause, .present-play[data-state="again"] .i-again { display: inline; }
+.present-end { flex: none; font: 500 10px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink3); }
+.present-range { flex: 1; min-width: 0; height: 32px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; }
+.present-range::-webkit-slider-runnable-track { height: 2px; background: var(--line2); }
+.present-range::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; margin-top: -8px; border-radius: 50%; background: var(--ink); }
+.present-range::-moz-range-track { height: 2px; background: var(--line2); }
+.present-range::-moz-range-thumb { width: 18px; height: 18px; border: 0; border-radius: 50%; background: var(--ink); }
+.present-range:focus-visible { outline: none; }
+.present-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px var(--yellow); }
+.present-hint { margin: 0; display: inline-flex; align-items: center; gap: 10px; font: 500 11px/1.3 var(--mono); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink2); }
+.present-hint::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--yellow); }
+.gallery-col:not(.pulled) .present-hint::before { animation: present-nudge 1.6s var(--ease) infinite; }
+@keyframes present-nudge { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: .55; } }
+@media (max-width: 900px) {
+  .present-bar { margin-bottom: 8px; }
+  .present-modes { width: 100%; }
+  .present-modes button { flex: 1; padding: 0 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .present-hint::before { animation: none !important; } }
