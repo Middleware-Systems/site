@@ -9,6 +9,10 @@
    «Pull it» — press on the cloth and pull. The knit gives under the finger, opens to grey where it stretches (as black
    knit does), and springs back when you let go. A grid of springs over the photograph; only the cloth answers.
 
+   With the generated media (tools/present_media.py), the morph ends on a film of the same man sinking into a half
+   squat and back (A); «Motion study» lays twelve phases of that squat out as one plate, after Muybridge, each knee
+   angle measured on its frame (B); «Made for» shows the jogger at last light and after dark, two living photographs (C).
+
    «Photographs» — the gallery as it is everywhere else in the shop.
 
    The gallery's own pictures are the textures: the first figure's srcset is the garment alone, the second's the garment
@@ -274,7 +278,7 @@
       var t = now - S.t0;
       S.p = Math.max(0, Math.min(1, (t - HOLD) / DUR));
       if (range) range.value = String(Math.round(S.p * 1000));
-      if (S.p >= 1) { S.playing = false; S.played = true; said("The Tapered Jogger, worn."); setPlay(); }
+      if (S.p >= 1) { S.playing = false; S.played = true; said("The Tapered Jogger, worn."); setPlay(); showLunge(); }
     }
     if (S.mode === "pull" && pull) {
       var dt = Math.min(0.033, (now - (last || now)) / 1000) || 1 / 60, e = 0;
@@ -297,6 +301,7 @@
   }
   function start() {
     if (!step) return;
+    hideLunge(); prepLunge();
     if (S.p >= 1) S.p = 0;
     S.playing = true; S.t0 = performance.now() - (S.p > 0 ? HOLD + S.p * DUR : 0);
     setPlay(); kick();
@@ -304,7 +309,9 @@
 
   // ------------------------------------------------------------------ modes
   function setMode(m, quiet) {
-    if (["step", "pull", "photo"].indexOf(m) < 0) m = "step";
+    var allowed = media ? ["step", "study", "made", "pull", "photo"] : ["step", "pull", "photo"];
+    if (allowed.indexOf(m) < 0) m = "step";
+    var was = S.mode;
     S.mode = m; fig.setAttribute("data-mode", m); col.setAttribute("data-mode", m);
     if (bar) bar.querySelectorAll("[data-mode]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.mode === m)); });
     if (m !== "step") { S.playing = false; setPlay(); }
@@ -312,18 +319,28 @@
     cv.setAttribute("aria-label", m === "pull"
       ? "The Tapered Jogger. Press and pull the fabric to stretch it; with the keyboard, hold an arrow key."
       : "The Tapered Jogger, from the jogger alone to the jogger worn.");
-    if (m !== "photo") { size(); kick(); }
-    if (!quiet) said(m === "step" ? "Step in." : m === "pull" ? "Pull it: press and pull the fabric." : "Photographs.");
+    if (m === "step" || m === "pull") { size(); kick(); }
+    if (was === "step" && m !== "step") hideLunge();
+    if (was === "study" && m !== "study") studyStop();
+    if (was === "made" && m !== "made") madeStop();
+    if (m === "study") studyEnter();
+    if (m === "made") madeEnter();
+    if (m === "step" && S.p >= 1 && S.played) showLunge();
+    if (note && note.dataset["note" + m.charAt(0).toUpperCase() + m.slice(1)]) note.textContent = note.dataset["note" + m.charAt(0).toUpperCase() + m.slice(1)];
+    if (!quiet) said({ step: "Step in.", study: "Motion study: twelve phases of one squat.", made: "Made for: the jogger at last light and after dark.",
+                       pull: "Pull it: press and pull the fabric.", photo: "Photographs." }[m]);
     if (m === "step" && !S.played && !reduce && seen) start();
-    try { history.replaceState(history.state, "", location.pathname + (m === "step" ? "" : "?present=" + m) + location.hash); } catch (e) { /* a sandboxed frame */ }
+    var q = m === "step" ? "" : "?present=" + m + (m === "made" && C.scene ? "&scene=" + C.scene : "");
+    try { history.replaceState(history.state, "", location.pathname + q + location.hash); } catch (e) { /* a sandboxed frame */ }
   }
   if (bar) bar.addEventListener("click", function (e) {
     var b = e.target.closest("[data-mode]"); if (b) setMode(b.dataset.mode);
   });
 
   // the step: the slider, the button, a drag with a mouse (on a phone the slider; the picture still swipes the gallery)
-  if (range) range.addEventListener("input", function () { S.playing = false; S.p = +range.value / 1000; setPlay(); kick(); });
-  if (play) play.addEventListener("click", function () { if (S.playing) { S.playing = false; setPlay(); } else start(); });
+  if (range) range.addEventListener("input", function () { S.playing = false; S.p = +range.value / 1000; setPlay(); hideLunge(); kick(); });
+  if (range) range.addEventListener("change", function () { if (S.p >= 1) { S.played = true; prepLunge(); showLunge(); } });
+  if (play) play.addEventListener("click", function () { S.asked = true; if (S.playing) { S.playing = false; setPlay(); } else start(); });
 
   var drag = null;
   cv.addEventListener("click", function (e) { e.stopPropagation(); });   // the picture is not the zoom here
@@ -371,9 +388,125 @@
 
   window.addEventListener("resize", function () { if (S.mode !== "photo") { size(); kick(); } });
 
+  // ------------------------------------------------------------------ A: the squat after the morph (a generated film)
+  var note = document.getElementById("present-note");
+  var lunge = document.getElementById("present-lunge"), media = !!lunge;
+  function wide() { return fig.getBoundingClientRect().width * Math.min(window.devicePixelRatio || 1, 2) > 800; }
+  function srcOf(v) { return v.getAttribute(wide() ? "data-src-1080" : "data-src-720"); }   // (dataset cannot name "src-1080")
+  function prepLunge() { if (lunge && !lunge.getAttribute("src")) { lunge.src = srcOf(lunge); lunge.preload = "auto"; } }
+  function showLunge() {
+    if (!lunge || S.mode !== "step" || S.p < 1 || (reduce && !S.asked)) return;
+    prepLunge();
+    try { lunge.currentTime = 0; } catch (e) { /* not loaded yet */ }
+    var go = lunge.play();
+    if (go && go.then) go.then(function () { if (S.mode === "step" && S.p >= 1) fig.classList.add("lunge"); }, function () { /* no autoplay: the still stays */ });
+  }
+  function hideLunge() { if (!lunge) return; fig.classList.remove("lunge"); if (!lunge.paused) lunge.pause(); }
+  if (lunge) lunge.addEventListener("playing", function () { if (S.mode === "step" && S.p >= 1) fig.classList.add("lunge"); });
+
+  // ------------------------------------------------------------------ B: the motion study — one plate, twelve phases
+  var B = { el: document.getElementById("present-study"), range: document.getElementById("study-range"), read: document.getElementById("study-read"),
+            play: document.getElementById("study-play"), loupe: document.getElementById("study-loupe"), frame: document.getElementById("study-frame"),
+            legs: document.getElementById("study-legs"), phases: [], k: 0, timer: 0, ready: false };
+  if (B.el) { try { B.phases = JSON.parse(document.getElementById("study-data").textContent); } catch (e) { B.phases = []; } }
+  function studyEnter() {
+    if (!B.el) return;
+    if (!B.ready) {
+      B.ready = true;
+      B.el.querySelector(".study-plate").src = B.el.dataset.plate;
+      B.frame.style.backgroundImage = "url(\"" + B.el.dataset.strip + "\")";
+    }
+    studyShow(+B.range.value);
+  }
+  function deg(leg) { return leg ? leg.deg + "°" : "—"; }
+  function studyShow(k) {
+    B.k = k; B.range.value = String(k);
+    if (!k) { B.loupe.hidden = true; B.read.textContent = "12 phases"; return; }
+    var ph = B.phases[k - 1]; if (!ph) return;
+    B.loupe.hidden = false;
+    B.frame.style.backgroundPosition = "0 " + ((k - 1) / 11 * 100) + "%";
+    var svg = "";
+    [["right", ph.right], ["left", ph.left]].forEach(function (L) {
+      if (!L[1]) return;
+      var p = L[1].pts;
+      svg += '<polyline points="' + p.map(function (q) { return q[0] + "," + q[1]; }).join(" ") + '"/>' +
+             '<circle cx="' + p[1][0] + '" cy="' + p[1][1] + '" r="9"/>';
+    });
+    B.legs.innerHTML = svg;
+    B.read.textContent = "Phase " + k + " · " + ph.t.toFixed(2) + " s · knees " + deg(ph.right) + " · " + deg(ph.left);
+  }
+  function studyStop() { if (B.timer) { clearInterval(B.timer); B.timer = 0; } if (B.play) { B.play.dataset.state = "play"; B.play.setAttribute("aria-label", "Run the twelve phases"); } }
+  function studyRun() {                       // the plate run as a flip-book: 1 → 12 → 1, twice, then the plate again
+    studyStop();
+    var seq = [], k;
+    for (var r = 0; r < 2; r++) { for (k = 1; k <= 12; k++) seq.push(k); for (k = 11; k >= 2; k--) seq.push(k); }
+    seq.push(1, 0);
+    var i = 0;
+    B.play.dataset.state = "pause"; B.play.setAttribute("aria-label", "Stop");
+    B.timer = setInterval(function () { studyShow(seq[i++]); if (i >= seq.length) studyStop(); }, 1000 / 9);
+  }
+  if (B.el) {
+    B.range.addEventListener("input", function () { studyStop(); studyShow(+B.range.value); });
+    B.play.addEventListener("click", function () { if (B.timer) studyStop(); else studyRun(); });
+    B.el.addEventListener("click", function (e) {
+      e.stopPropagation();                    // the plate is not the zoom
+      var c = e.target.closest("[data-phase]");
+      studyStop();
+      if (c) studyShow(+c.dataset.phase); else if (!B.loupe.hidden) studyShow(0);
+    });
+  }
+
+  // ------------------------------------------------------------------ C: made for last light and after dark
+  var C = { el: document.getElementById("present-made"), play: document.getElementById("made-play"), scene: null, paused: false };
+  function sceneFor() {
+    var asked = new URLSearchParams(location.search).get("scene");
+    if (asked === "lastlight" || asked === "afterdark") return asked;
+    return document.documentElement.dataset.phase === "night" ? "afterdark" : "lastlight";   // the visitor's own light
+  }
+  function madeEnter(scene) {
+    if (!C.el) return;
+    C.scene = scene || C.scene || sceneFor();
+    C.el.setAttribute("data-scene", C.scene);
+    document.querySelectorAll(".made-scene").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.scene === C.scene)); });
+    C.el.querySelectorAll(".made-poster").forEach(function (im) { if (im.dataset.scene === C.scene) im.loading = "eager"; });
+    C.el.querySelectorAll(".made-video").forEach(function (v) {
+      if (v.dataset.scene !== C.scene) { v.pause(); v.classList.remove("on"); return; }
+      if (!v.getAttribute("src")) { v.src = srcOf(v); v.preload = "auto"; }
+      if (reduce && !C.asked || C.paused) { madePlayState(false); return; }
+      var go = v.play();
+      if (go && go.then) go.then(function () { v.classList.add("on"); madePlayState(true); }, function () { madePlayState(false); });
+    });
+    if (S.mode === "made") {
+      try { history.replaceState(history.state, "", location.pathname + "?present=made&scene=" + C.scene + location.hash); } catch (e) { /* sandboxed */ }
+    }
+  }
+  function madePlayState(on) { if (C.play) { C.play.dataset.state = on ? "pause" : "play"; C.play.setAttribute("aria-label", on ? "Pause" : "Play"); } }
+  function madeStop() { if (!C.el) return; C.el.querySelectorAll(".made-video").forEach(function (v) { v.pause(); }); }
+  if (C.el) {
+    C.el.querySelectorAll(".made-video").forEach(function (v) { v.addEventListener("playing", function () { v.classList.add("on"); }); });
+    document.querySelectorAll(".made-scene").forEach(function (b) { b.addEventListener("click", function () { C.asked = true; C.paused = false; madeEnter(b.dataset.scene); }); });
+    C.play.addEventListener("click", function () {
+      var v = C.el.querySelector('.made-video[data-scene="' + C.scene + '"]'); if (!v) return;
+      C.asked = true;
+      if (v.paused) { C.paused = false; madeEnter(C.scene); } else { C.paused = true; v.pause(); madePlayState(false); }
+    });
+    C.el.addEventListener("click", function (e) { e.stopPropagation(); });
+    // the page's own "Made for" words open the jogger in that light
+    document.querySelectorAll(".madefor .e").forEach(function (e) {
+      var sc = e.querySelector(".ph-dusk") ? "lastlight" : e.querySelector(".ph-night") ? "afterdark" : null;
+      if (!sc) return;
+      e.setAttribute("role", "button"); e.tabIndex = 0; e.classList.add("madefor-link");
+      e.setAttribute("aria-label", "See the " + "jogger " + (sc === "lastlight" ? "at last light" : "after dark"));
+      function go() { C.asked = true; C.paused = false; C.scene = sc; setMode("made"); fig.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" }); }
+      e.addEventListener("click", go);
+      e.addEventListener("keydown", function (k) { if (k.key === "Enter" || k.key === " ") { k.preventDefault(); go(); } });
+    });
+  }
+
   // ------------------------------------------------------------------ start: the pictures, the morph, then the first view
   var seen = false;
   var params = new URLSearchParams(location.search);
+  if (params.get("present") === "made") C.scene = sceneFor();
   setMode(params.get("present") || "step", true);
   Promise.all([
     load(imgA.currentSrc && /-1440\./.test(imgA.currentSrc) ? imgA.currentSrc : pick(imgA, 1)),
