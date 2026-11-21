@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl" data-t="ad09a1fcdbd2f643e74c9151.bin">
+<html lang="ar" dir="rtl" data-t="7a20214ea7df80c049ddf84b.bin">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -83,7 +83,7 @@
     var html = new TextDecoder('utf-8').decode(pt);
     var cfg = '<script>window.__hd=' + JSON.stringify({ m: ticket.m, base: '../' + ticket.p + '/x/' }) + ';<\/script>';
     html = html.replace('<head>', '<head>' + cfg);
-    if (ticket.lock) html = html.replace('<script>window.HD=window.HD||{};', '<script>window.HD=window.HD||{};HD.CFG=HD.CFG||{};HD.__lock=' + JSON.stringify(ticket.lock) + ';');
+    if (ticket.lock) html = html.replace('<script>window.HD=window.HD||{};', '<script>window.HD=window.HD||{};HD.__lock=' + JSON.stringify(ticket.lock) + ';');
     window.__share = 'page';
     document.open(); document.write(html); document.close();
   }).catch(function (e) {
