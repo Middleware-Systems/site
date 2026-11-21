@@ -287,7 +287,7 @@ dialog.search[open] { animation: drop .35s var(--ease); }
 .kit-tile .no { position: absolute; left: 10px; top: 10px; background: var(--yellow); color: var(--on-yellow); font: 500 11px/1 var(--mono); letter-spacing: .04em; padding: 5px 6px; border-radius: 2px; }
 .kit-tile.out img { opacity: .45; filter: grayscale(1); }
 .kit-list { position: sticky; top: calc(var(--head) + 24px); }
-/* a kit worn (21 Nov 2026): the man in the whole kit, each piece marked with its number in the list */
+/* a kit worn (21 Nov 2026): the man in the whole kit; the list beside it names the pieces */
 .kit.has-look { grid-template-columns: minmax(0, min(52%, calc((100svh - var(--head) - 120px) * .8))) minmax(0, 1fr); }
 .kit-views { display: inline-flex; gap: 2px; padding: 3px; margin: 0 0 10px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line2); }
 .kit-views[data-wait] { visibility: hidden; }
@@ -297,11 +297,6 @@ dialog.search[open] { animation: drop .35s var(--ease); }
 .kit-look-pic { position: relative; }
 .kit-look img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: var(--studio); }
 .kit-look[hidden] { display: none; }
-.kit-mark { position: absolute; transform: translate(-50%, -50%); min-width: 28px; height: 28px; padding: 0 6px; display: grid; place-items: center;
-  border-radius: 999px; background: var(--yellow); color: var(--on-yellow); font: 500 11px/1 var(--mono); letter-spacing: .04em; text-decoration: none;
-  box-shadow: 0 0 0 3px rgba(13,13,12,.28), 0 2px 8px rgba(0,0,0,.35); transition: transform .2s var(--ease); }
-a.kit-mark:hover, .kit-mark.on { transform: translate(-50%, -50%) scale(1.22); }
-.kit-mark.also { background: #F4F2EE; color: #0D0D0C; }
 .kit-look figcaption { margin: 8px 0 0; font: 500 11px/1.5 var(--mono); letter-spacing: .03em; color: var(--ink3); }
 .kit-look figcaption a { color: var(--ink2); }
 .kit-list li .th { grid-column: 2; grid-row: span 2; width: 44px; height: 55px; object-fit: cover; background: var(--studio); }

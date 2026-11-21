@@ -175,7 +175,7 @@
       e.preventDefault(); var to = all[(n + d + all.length) % all.length]; pickKit(to.dataset.kitTab, true);
     });
   });
-  /* a kit worn or laid out (21 Nov 2026); the marks light with the list's rows */
+  /* a kit worn or laid out (21 Nov 2026) */
   $$(".kit.has-look").forEach(function (kit) {
     var views = $(".kit-views", kit), look = $(".kit-look", kit), board = $(".kit-board", kit);
     if (!views || !look || !board) return;
@@ -186,13 +186,6 @@
         look.hidden = !worn; board.hidden = worn;
         $$("[data-kit-view]", views).forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
       });
-    });
-    var marks = $$(".kit-mark", look);
-    $$(".kit-list li", kit).forEach(function (li, n) {
-      var label = (n < 9 ? "0" : "") + (n + 1);
-      var m = marks.filter(function (x) { return x.textContent === label; })[0]; if (!m) return;
-      ["mouseenter", "focusin"].forEach(function (ev) { li.addEventListener(ev, function () { m.classList.add("on"); }); });
-      ["mouseleave", "focusout"].forEach(function (ev) { li.addEventListener(ev, function () { m.classList.remove("on"); }); });
     });
   });
   function kitTotals(form) {
