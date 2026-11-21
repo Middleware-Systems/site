@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-t="6d90d4af708c3e87f88ce53c.bin">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>…</title>
+<link rel="icon" href="data:,">
+<!-- PUBLIC FILE. This page sits in a public repository, so it names nobody and carries nothing but the address of a
+     ciphertext. Everything it opens is AES-GCM ciphertext; the key lives only in the link (?k=). -->
+<style>
+  html, body { margin: 0; height: 100%; background: #0b1020; color: #f4f5f9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Geeza Pro", "Noto Sans Arabic", Tahoma, sans-serif; }
+  main { min-height: 100%; display: grid; place-items: center; text-align: center; padding: 24px 16px; box-sizing: border-box; }
+  .bar { width: min(280px, 70vw); height: 3px; background: rgba(255, 255, 255, .12); margin: 0 auto 18px; border-radius: 3px; overflow: hidden; direction: ltr; }
+  .bar i { display: block; height: 100%; width: 0; background: #8f7bff; transition: width .2s; }
+  p { margin: 6px 0; color: rgba(244, 245, 249, .66); font-size: 15px; line-height: 1.7; }
+  .err .bar { visibility: hidden; }
+  .err p { color: #f4f5f9; }
+</style>
+</head>
+<body>
+<main id="m"><div>
+  <div class="bar" id="bar"><i></i></div>
+  <p id="ar" lang="ar" dir="rtl">جارٍ الفتح…</p>
+  <p id="en" lang="en" dir="ltr">Opening…</p>
+</div></main>
+<script>
+(function () {
+  'use strict';
+  var Q = new URLSearchParams(location.search), k = Q.get('k') || '';
+  var T = document.documentElement.getAttribute('data-t');
+  var bar = document.getElementById('bar'), enc = new TextEncoder();
+
+  function say(ar, en) { document.getElementById('ar').textContent = ar; document.getElementById('en').textContent = en; }
+  function fail(ar, en) { document.getElementById('m').className = 'err'; say(ar, en); window.__share = 'failed'; }
+
+  if (!/^[A-Za-z0-9_-]{22}$/.test(k)) return fail('هذا الرابط لا يُفتح إلا بمفتاحه: اطلب الرابط كاملاً.', 'This link opens only with its key: ask for the whole link.');
+  if (!window.crypto || !crypto.subtle || !window.fetch || !window.TextDecoder) return fail('هذا المتصفح قديم: افتح الرابط في Safari أو Chrome حديث.', 'This browser is too old: open the link in a current Safari or Chrome.');
+
+  function bytes(s) { return Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/') + '=='), function (c) { return c.charCodeAt(0); }); }
+  function key(s) { return crypto.subtle.importKey('raw', bytes(s), { name: 'AES-GCM' }, false, ['decrypt']); }
+  function open(kp, rel, buf) {
+    var b = new Uint8Array(buf);
+    return kp.then(function (K) { return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b.subarray(0, 12), additionalData: enc.encode(rel) }, K, b.subarray(12)); })
+      .then(function (pt) { return pt; }, function () { throw { key: true }; });
+  }
+  function get(url, total, got, i) {
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw { net: true };
+      if (!r.body || !r.body.getReader) return r.arrayBuffer();
+      var reader = r.body.getReader(), n = 0, parts = [];
+      return (function pump() {
+        return reader.read().then(function (x) {
+          if (x.done) { var out = new Uint8Array(n), o = 0; parts.forEach(function (p) { out.set(p, o); o += p.length; }); return out.buffer; }
+          parts.push(x.value); n += x.value.length;
+          if (got) { got[i] = n; bar.firstChild.style.width = Math.min(100, got.reduce(function (a, b) { return a + b; }, 0) / total * 100).toFixed(1) + '%'; }
+          return pump();
+        });
+      })();
+    }, function () { throw { net: true }; });
+  }
+  function whole(base, names, total) {
+    var got = names.map(function () { return 0; });
+    return Promise.all(names.map(function (n, i) { return get(base + n, total, got, i); })).then(function (bufs) {
+      var size = bufs.reduce(function (a, b) { return a + b.byteLength; }, 0), b = new Uint8Array(size), o = 0;
+      bufs.forEach(function (x) { b.set(new Uint8Array(x), o); o += x.byteLength; });
+      return b.buffer;
+    });
+  }
+  function gunzip(buf) {
+    return new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+  }
+
+  var ticket;
+  get('x/' + T).then(function (buf) { return open(key(k), 'ticket', buf); }).then(function (pt) {
+    ticket = JSON.parse(new TextDecoder('utf-8').decode(pt));
+    var base = '../' + ticket.p + '/x/', mk = key(ticket.m);
+    if (window.DecompressionStream) return whole(base, ticket.gz[0], ticket.gz[1]).then(function (b) { return open(mk, 'core.gz', b); }).then(gunzip);
+    return whole(base, ticket.raw[0], ticket.raw[1]).then(function (b) { return open(mk, 'core', b); });
+  }).then(function (pt) {
+    var html = new TextDecoder('utf-8').decode(pt);
+    var cfg = '<script>window.__hd=' + JSON.stringify({ m: ticket.m, base: '../' + ticket.p + '/x/' }) + ';<\/script>';
+    html = html.replace('<head>', '<head>' + cfg);
+    if (ticket.lock) html = html.replace('<script>window.HD=window.HD||{};', '<script>window.HD=window.HD||{};HD.CFG=HD.CFG||{};HD.__lock=' + JSON.stringify(ticket.lock) + ';');
+    window.__share = 'page';
+    document.open(); document.write(html); document.close();
+  }).catch(function (e) {
+    if (e && e.net) return fail('تعذّر التحميل: تحقّق من الاتصال ثم أعد فتح الرابط.', 'Could not download: check the connection, then open the link again.');
+    if (e && e.key) return fail('المفتاح لا يطابق هذا الرابط: اطلب الرابط كاملاً.', 'The key does not match this link: ask for the whole link.');
+    fail('تعذّر فتح الرابط.', 'The link could not be opened.');
+  });
+})();
+</script>
+</body>
+</html>
