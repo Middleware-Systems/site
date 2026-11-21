@@ -9,9 +9,9 @@
    «Pull it» — press on the cloth and pull. The knit gives under the finger, opens to grey where it stretches (as black
    knit does), and springs back when you let go. A grid of springs over the photograph; only the cloth answers.
 
-   With the generated media (tools/present_media.py), the morph ends on a film of the same man sinking into a half
-   squat and back (A); «Motion study» lays twelve phases of that squat out as one plate, after Muybridge, each knee
-   angle measured on its frame (B); «Made for» shows the jogger at last light and after dark, two living photographs (C).
+   With the generated media (tools/present_media.py), «Made for» shows the jogger at last light and after dark, two
+   living photographs. (A squat film after the morph and a Muybridge motion study were tried on 16 Nov 2026 and taken
+   off on 21 Nov at Mazhar's word: the morph ends on the still.)
 
    «Photographs» — the gallery as it is everywhere else in the shop.
 
@@ -278,7 +278,7 @@
       var t = now - S.t0;
       S.p = Math.max(0, Math.min(1, (t - HOLD) / DUR));
       if (range) range.value = String(Math.round(S.p * 1000));
-      if (S.p >= 1) { S.playing = false; S.played = true; said("The Tapered Jogger, worn."); setPlay(); showLunge(); }
+      if (S.p >= 1) { S.playing = false; S.played = true; said("The Tapered Jogger, worn."); setPlay(); }
     }
     if (S.mode === "pull" && pull) {
       var dt = Math.min(0.033, (now - (last || now)) / 1000) || 1 / 60, e = 0;
@@ -301,7 +301,6 @@
   }
   function start() {
     if (!step) return;
-    hideLunge(); prepLunge();
     if (S.p >= 1) S.p = 0;
     S.playing = true; S.t0 = performance.now() - (S.p > 0 ? HOLD + S.p * DUR : 0);
     setPlay(); kick();
@@ -309,7 +308,7 @@
 
   // ------------------------------------------------------------------ modes
   function setMode(m, quiet) {
-    var allowed = media ? ["step", "study", "made", "pull", "photo"] : ["step", "pull", "photo"];
+    var allowed = media ? ["step", "made", "pull", "photo"] : ["step", "pull", "photo"];
     if (allowed.indexOf(m) < 0) m = "step";
     var was = S.mode;
     S.mode = m; fig.setAttribute("data-mode", m); col.setAttribute("data-mode", m);
@@ -320,14 +319,10 @@
       ? "The Tapered Jogger. Press and pull the fabric to stretch it; with the keyboard, hold an arrow key."
       : "The Tapered Jogger, from the jogger alone to the jogger worn.");
     if (m === "step" || m === "pull") { size(); kick(); }
-    if (was === "step" && m !== "step") hideLunge();
-    if (was === "study" && m !== "study") studyStop();
     if (was === "made" && m !== "made") madeStop();
-    if (m === "study") studyEnter();
     if (m === "made") madeEnter();
-    if (m === "step" && S.p >= 1 && S.played) showLunge();
     if (note && note.dataset["note" + m.charAt(0).toUpperCase() + m.slice(1)]) note.textContent = note.dataset["note" + m.charAt(0).toUpperCase() + m.slice(1)];
-    if (!quiet) said({ step: "Step in.", study: "Motion study: twelve phases of one squat.", made: "Made for: the jogger at last light and after dark.",
+    if (!quiet) said({ step: "Step in.", made: "Made for: the jogger at last light and after dark.",
                        pull: "Pull it: press and pull the fabric.", photo: "Photographs." }[m]);
     if (m === "step" && !S.played && !reduce && seen) start();
     var q = m === "step" ? "" : "?present=" + m + (m === "made" && C.scene ? "&scene=" + C.scene : "");
@@ -338,8 +333,7 @@
   });
 
   // the step: the slider, the button, a drag with a mouse (on a phone the slider; the picture still swipes the gallery)
-  if (range) range.addEventListener("input", function () { S.playing = false; S.p = +range.value / 1000; setPlay(); hideLunge(); kick(); });
-  if (range) range.addEventListener("change", function () { if (S.p >= 1) { S.played = true; prepLunge(); showLunge(); } });
+  if (range) range.addEventListener("input", function () { S.playing = false; S.p = +range.value / 1000; setPlay(); kick(); });
   if (play) play.addEventListener("click", function () { S.asked = true; if (S.playing) { S.playing = false; setPlay(); } else start(); });
 
   var drag = null;
@@ -388,73 +382,11 @@
 
   window.addEventListener("resize", function () { if (S.mode !== "photo") { size(); kick(); } });
 
-  // ------------------------------------------------------------------ A: the squat after the morph (a generated film)
+  // ------------------------------------------------------------------ shared by «Made for»
   var note = document.getElementById("present-note");
-  var lunge = document.getElementById("present-lunge"), media = !!lunge;
+  var media = !!document.getElementById("present-made");
   function wide() { return fig.getBoundingClientRect().width * Math.min(window.devicePixelRatio || 1, 2) > 800; }
   function srcOf(v) { return v.getAttribute(wide() ? "data-src-1080" : "data-src-720"); }   // (dataset cannot name "src-1080")
-  function prepLunge() { if (lunge && !lunge.getAttribute("src")) { lunge.src = srcOf(lunge); lunge.preload = "auto"; } }
-  function showLunge() {
-    if (!lunge || S.mode !== "step" || S.p < 1 || (reduce && !S.asked)) return;
-    prepLunge();
-    try { lunge.currentTime = 0; } catch (e) { /* not loaded yet */ }
-    var go = lunge.play();
-    if (go && go.then) go.then(function () { if (S.mode === "step" && S.p >= 1) fig.classList.add("lunge"); }, function () { /* no autoplay: the still stays */ });
-  }
-  function hideLunge() { if (!lunge) return; fig.classList.remove("lunge"); if (!lunge.paused) lunge.pause(); }
-  if (lunge) lunge.addEventListener("playing", function () { if (S.mode === "step" && S.p >= 1) fig.classList.add("lunge"); });
-
-  // ------------------------------------------------------------------ B: the motion study — one plate, twelve phases
-  var B = { el: document.getElementById("present-study"), range: document.getElementById("study-range"), read: document.getElementById("study-read"),
-            play: document.getElementById("study-play"), loupe: document.getElementById("study-loupe"), frame: document.getElementById("study-frame"),
-            legs: document.getElementById("study-legs"), phases: [], k: 0, timer: 0, ready: false };
-  if (B.el) { try { B.phases = JSON.parse(document.getElementById("study-data").textContent); } catch (e) { B.phases = []; } }
-  function studyEnter() {
-    if (!B.el) return;
-    if (!B.ready) {
-      B.ready = true;
-      B.el.querySelector(".study-plate").src = B.el.dataset.plate;
-      B.frame.style.backgroundImage = "url(\"" + B.el.dataset.strip + "\")";
-    }
-    studyShow(+B.range.value);
-  }
-  function deg(leg) { return leg ? leg.deg + "°" : "—"; }
-  function studyShow(k) {
-    B.k = k; B.range.value = String(k);
-    if (!k) { B.loupe.hidden = true; B.read.textContent = "12 phases"; return; }
-    var ph = B.phases[k - 1]; if (!ph) return;
-    B.loupe.hidden = false;
-    B.frame.style.backgroundPosition = "0 " + ((k - 1) / 11 * 100) + "%";
-    var svg = "";
-    [["right", ph.right], ["left", ph.left]].forEach(function (L) {
-      if (!L[1]) return;
-      var p = L[1].pts;
-      svg += '<polyline points="' + p.map(function (q) { return q[0] + "," + q[1]; }).join(" ") + '"/>' +
-             '<circle cx="' + p[1][0] + '" cy="' + p[1][1] + '" r="9"/>';
-    });
-    B.legs.innerHTML = svg;
-    B.read.textContent = "Phase " + k + " · " + ph.t.toFixed(2) + " s · knees " + deg(ph.right) + " · " + deg(ph.left);
-  }
-  function studyStop() { if (B.timer) { clearInterval(B.timer); B.timer = 0; } if (B.play) { B.play.dataset.state = "play"; B.play.setAttribute("aria-label", "Run the twelve phases"); } }
-  function studyRun() {                       // the plate run as a flip-book: 1 → 12 → 1, twice, then the plate again
-    studyStop();
-    var seq = [], k;
-    for (var r = 0; r < 2; r++) { for (k = 1; k <= 12; k++) seq.push(k); for (k = 11; k >= 2; k--) seq.push(k); }
-    seq.push(1, 0);
-    var i = 0;
-    B.play.dataset.state = "pause"; B.play.setAttribute("aria-label", "Stop");
-    B.timer = setInterval(function () { studyShow(seq[i++]); if (i >= seq.length) studyStop(); }, 1000 / 9);
-  }
-  if (B.el) {
-    B.range.addEventListener("input", function () { studyStop(); studyShow(+B.range.value); });
-    B.play.addEventListener("click", function () { if (B.timer) studyStop(); else studyRun(); });
-    B.el.addEventListener("click", function (e) {
-      e.stopPropagation();                    // the plate is not the zoom
-      var c = e.target.closest("[data-phase]");
-      studyStop();
-      if (c) studyShow(+c.dataset.phase); else if (!B.loupe.hidden) studyShow(0);
-    });
-  }
 
   // ------------------------------------------------------------------ C: made for last light and after dark
   var C = { el: document.getElementById("present-made"), play: document.getElementById("made-play"), scene: null, paused: false };
