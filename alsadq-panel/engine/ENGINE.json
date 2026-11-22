@@ -1,0 +1,26 @@
+{
+ "_": "The engine of this demo: Pyodide and the wheels its site's build needs, each checked against its pinned hash by static.py.",
+ "pyodide": {
+  "version": "314.0.8",
+  "source": "https://registry.npmjs.org/pyodide/-/pyodide-314.0.8.tgz",
+  "sha512": "74Wq1kXOC+CCEzAfxuRAO701nAcCMLjf8NrwvWpu8S41dVMXwXmLQ05dYB+F4e46AdnGo0oq7YHSVUpHsoarLQ=="
+ },
+ "wheels": [
+  {
+   "name": "pillow",
+   "file": "pillow-12.2.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+   "source": "https://cdn.jsdelivr.net/pyodide/v314.0.8/full/pillow-12.2.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+   "sha256": "e29838b7a756e4ee0f27a9cfa9a387ee0dfa2e9dd44be2dd595130b9f9d93ac3"
+  }
+ ],
+ "files": {
+  "panel.zip": 61988,
+  "pillow-12.2.0-cp314-cp314-pyemscripten_2026_0_wasm32.whl": 1037806,
+  "pyodide-lock.json": 119077,
+  "pyodide.asm.mjs": 1250259,
+  "pyodide.asm.wasm": 9597892,
+  "pyodide.mjs": 17758,
+  "python_stdlib.zip": 2545550,
+  "site.zip": 1118087
+ }
+}
