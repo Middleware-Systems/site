@@ -8,14 +8,19 @@ const KEPT = [];
 const post = (m) => self.postMessage(m);
 const progress = (phase, done, total) => post({ progress: { phase, done, total } });
 
+let paused = false, resume = null;                    // the page is loading something: reading waits (engine-api.busy)
+const whilePaused = () => paused ? new Promise((r) => { resume = r; }) : null;
+
 async function fetchCounted(url, onBytes) {
-  // the big files are fetched once with their bytes counted, so the page can say how far the download is
-  const r = await fetch(url);
+  // each engine file crosses the network once: fetched here, at low priority, its bytes counted for the progress line,
+  // then handed to Pyodide from memory (BYTES, through the fetch below), so Pyodide's own loader never asks again
+  const r = await fetch(url, { priority: "low" });
   if (!r.ok) throw new Error(`${url}: ${r.status}`);
   const reader = r.body.getReader();
   const parts = [];
   let done = 0;
   for (;;) {
+    await whilePaused();
     const { value, done: end } = await reader.read();
     if (end) break;
     parts.push(value);
@@ -27,6 +32,17 @@ async function fetchCounted(url, onBytes) {
   for (const p of parts) { out.set(p, o); o += p.length; }
   return out;
 }
+
+// Pyodide fetches the wasm, the standard library, the lock file and the wheels with the global fetch: those URLs are
+// answered from the bytes already here. Anything else goes to the network as usual.
+const BYTES = new Map();
+const netFetch = self.fetch.bind(self);
+self.fetch = (input, init) => {
+  const url = typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
+  const b = BYTES.get(new URL(url, self.location.href).href);
+  if (b) return Promise.resolve(new Response(b, { status: 200, headers: { "Content-Type": url.endsWith(".wasm") ? "application/wasm" : "application/octet-stream" } }));
+  return netFetch(input, init);
+};
 
 const TYPES = { html: "text/html; charset=utf-8", css: "text/css; charset=utf-8", js: "text/javascript; charset=utf-8", json: "application/json",
   svg: "image/svg+xml", png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", webp: "image/webp", woff2: "font/woff2", ico: "image/x-icon",
@@ -58,15 +74,22 @@ const ops = {
     CFG = cfg;
     const t0 = performance.now();
     const E_URL = cfg.engine;
-    // the engine's own files, counted, then handed to Pyodide (the browser's HTTP cache serves the second read)
+    // the engine's own files, one at a time, each fetched once and counted; then Pyodide is started from those bytes
     let total = 0;
     for (const f of cfg.files) total += f.size;
     let base = 0;
     for (const f of cfg.files) {
-      const b = await fetchCounted(E_URL + f.name, (d) => progress("download", base + d, total));
+      const url = E_URL + f.name;
+      if (f.name.endsWith(".mjs")) {
+        // a module: imported once here; Pyodide's own import of the same address is the same module (no second fetch)
+        await whilePaused();
+        await import(url);
+      } else {
+        f.bytes = await fetchCounted(url, (d) => progress("download", base + d, total));
+        BYTES.set(new URL(url).href, f.bytes);
+      }
       base += f.size;
       progress("download", base, total);
-      f.bytes = b;
     }
     progress("start", 0, 1);
     const { loadPyodide } = await import(E_URL + "pyodide.mjs");
@@ -80,6 +103,7 @@ const ops = {
     E = py.pyimport("server.inbrowser");
     const r = JSON.parse(E.boot(cfg.work, cfg.folder.replace(/^\/|\/$/g, ""), cfg.client, JSON.stringify(cfg.user), JSON.stringify(cfg.seed)));
     for (const f of cfg.files) delete f.bytes;
+    BYTES.clear();
     progress("ready", 1, 1);
     return { ...r, seconds: (performance.now() - t0) / 1000 };
   },
@@ -142,6 +166,11 @@ const ops = {
 };
 
 self.onmessage = async (ev) => {
+  if ("pause" in ev.data) {
+    paused = !!ev.data.pause;
+    if (!paused && resume) { const r = resume; resume = null; r(); }
+    return;
+  }
   const { id, op, args } = ev.data;
   try {
     post({ id, ok: true, r: await ops[op](...(args || [])) });

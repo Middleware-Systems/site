@@ -229,6 +229,7 @@ async function openSite(sid, tab, replace) {
   const url = `/sites/${sid}/${S.tab}`;
   go(url, replace);
   shell();
+  if (S.tab !== "content") settleView();
   // back on the page after a change made elsewhere (a record, History): the page follows the newest build
   if (!S.st.preview.ready || S.st.preview.building || (same && S.tab === "content")) watchPreview(same ? 60 : 1400);
 }
@@ -486,7 +487,23 @@ function loadCanvas(hash) {
   S.frame.idOf = new Map(pv.ids.map(([k, l], i) => [k + "|" + l, i]));
   S.onPage = null;
   iframe = h("iframe", { title: siteName(site()), src: pv.base + path + (hash || ""), sandbox: "allow-scripts allow-same-origin allow-popups allow-forms", referrerpolicy: "no-referrer" });
+  if (STATIC) { const fr = iframe; fr._busy = true; STATIC.busy(true); setTimeout(() => unbusy(fr), 12000); }
   frame.append(iframe);
+}
+// the static demo's engine waits while the page in front loads (STATIC.busy), and starts once it has (STATIC.settle)
+function unbusy(fr) { if (fr && fr._busy) { fr._busy = false; STATIC.busy(false); } }
+function loaded(doc, cap) {
+  const imgs = [...doc.images].filter((i) => !i.complete && i.loading !== "lazy");
+  return Promise.race([
+    Promise.all([doc.fonts ? doc.fonts.ready : null, ...imgs.map((i) => new Promise((r) => { i.addEventListener("load", r, { once: true }); i.addEventListener("error", r, { once: true }); }))]),
+    new Promise((r) => setTimeout(r, cap)),
+  ]);
+}
+function settleView() {
+  // a view without the canvas (a list, Search, History): its pictures loaded, then the engine may start
+  if (!STATIC || !STATIC.engine()) return;
+  STATIC.busy(true);
+  requestAnimationFrame(() => setTimeout(() => loaded(document, 6000).then(() => { STATIC.busy(false); STATIC.settle(); }), 120));
 }
 let lastInput = 0;
 function softReload() {
@@ -510,7 +527,8 @@ window.addEventListener("message", (e) => {
     const p = pagesFor(S.plang).find((x) => x.path === m.path);
     if (p && p.id !== S.page) { S.page = p.id; viewContentBar(); }
     iframe.classList.add("on");
-    iframe.parentNode.querySelectorAll("iframe").forEach((x) => { if (x !== iframe) setTimeout(() => x.remove(), 260); });
+    iframe.parentNode.querySelectorAll("iframe").forEach((x) => { if (x !== iframe) setTimeout(() => { unbusy(x); x.remove(); }, 260); });
+    if (STATIC && iframe._busy) { const fr = iframe; loaded(fr.contentDocument, 10000).then(() => { unbusy(fr); STATIC.settle(); }); }
     document.getElementById("veil")?.classList.add("off");
     patchAll();
     rememberLabels(m.fields);

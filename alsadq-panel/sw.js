@@ -22,6 +22,9 @@ self.addEventListener("fetch", (e) => {
       || (!/\.[a-z0-9]+$/i.test(u.pathname) ? await c.match(key.replace(/\/?$/, "/index.html")) : null);
     if (hit) return hit;
     if (rel.startsWith("rf/")) return fetch(e.request);              // a picture static.py laid out with the demo
+    // a file of a rebuilt preview that the engine did not carry (the fonts): the same file of the page as delivered
+    const pv = rel.match(/^pv\/p\d+\/(.+)$/);
+    if (pv && !/\.html$/.test(pv[1]) && !pv[1].endsWith("/")) return fetch(SCOPE.pathname + "pv0/" + pv[1]);
     return new Response("<!doctype html><meta charset=utf-8><p style='font:15px system-ui;padding:2em'>This preview has been replaced.</p>",
       { status: 404, headers: { "Content-Type": "text/html; charset=utf-8", "X-Content-Type-Options": "nosniff" } });
   })());

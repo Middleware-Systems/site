@@ -53,6 +53,27 @@ async function registerSW() {
 }
 
 // ── the engine ───────────────────────────────────────────────────────────────────────────────────────────────────
+// It never competes with what the visitor came to see. After sign-in it is only WANTED; it starts when the page in
+// front of the visitor has finished loading (the canvas page with its fonts and pictures, or a list with its logos:
+// app.js calls settle()), or at once when a change needs it. While the interface loads something later (another page
+// in the canvas, a list's pictures: busy(true)), the engine's download stops reading until it is done (busy(false)).
+let wanted = false, allowed = false, busyN = 0, settleTimer = null;
+export const SETTLE_FALLBACK_MS = 15000;              // a page that never says it has loaded does not hold the engine forever
+export function want() {
+  wanted = true;
+  if (allowed) return start();
+  clearTimeout(settleTimer);
+  settleTimer = setTimeout(() => settle(), SETTLE_FALLBACK_MS);
+}
+export function settle() {
+  allowed = true;
+  clearTimeout(settleTimer);
+  if (wanted) start();
+}
+export function busy(on) {
+  busyN = Math.max(0, busyN + (on ? 1 : -1));
+  if (worker) worker.postMessage({ pause: busyN > 0 });
+}
 export function start() {
   if (worker || !D) return ready;
   status.phase = "download"; status.done = 0; status.total = D.files.reduce((a, f) => a + f.size, 0); tell();
@@ -78,6 +99,7 @@ export function start() {
     m.ok ? c.res(m.r) : c.rej(new Error(m.error));
   };
   worker.onerror = () => { if (status.phase !== "ready") { status.phase = "failed"; tell(); } };
+  if (busyN > 0) worker.postMessage({ pause: true });
   const t0 = performance.now();
   ready = call("boot", { engine: location.origin + FOLDER + "engine/", files: D.files.map((f) => ({ ...f })), wheels: D.wheels, work: D.work,
                           folder: FOLDER, client: D.client, user: D.user, seed: D.seed, origin: location.origin, cache: CACHE })
@@ -120,7 +142,7 @@ export async function api(method, path, body) {
   const sub = m[2] || "/";
   if (sub === "/labels") return { ok: true };
   if (!readyOK && method === "GET" && seeded(sub)) {
-    if (!ready) start();
+    if (!ready) want();
     return local(seeded(sub));
   }
   if (sub === "/preview" && method === "POST" && !readyOK) return local(D.state.preview);

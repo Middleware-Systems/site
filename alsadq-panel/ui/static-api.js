@@ -14,6 +14,8 @@ let ENG = null;            // a site with records: the panel's own server code i
 // the publish steps as this demo can honestly name them (a demo without the engine does not build the sites, it applies their rules)
 export function steps() { return ENG ? ENG.stepLabels : { build: "st_apply_demo", checks: "st_rules_demo", deploy: "st_deploy_demo", record: "st_record" }; }
 export function engine() { return !!ENG; }
+export function settle() { if (ENG) ENG.settle(); }          // the page in front of the visitor has finished loading
+export function busy(on) { if (ENG) ENG.busy(on); }          // the interface is loading something: the engine waits
 export function onEngine(fn) { load().then(() => ENG && ENG.onStatus(fn)).catch(() => {}); }
 export async function parity(base, origin) { await load(); return ENG.parity(base, origin); }
 
@@ -23,7 +25,7 @@ async function load() {
   if (DATA.engine) {
     ENG = await import("./engine-api.js");
     await ENG.init(DATA);
-    if (sessionStorage.getItem("mw.static.user")) ENG.start();     // signed in already: the engine starts at once
+    if (sessionStorage.getItem("mw.static.user")) ENG.want();      // signed in already: wanted, started once the page has loaded
     return DATA;
   }
   for (const s of DATA.sites) {
@@ -51,7 +53,7 @@ export async function api(method, path, body) {
     const u = DATA.user;
     if ((body.email || "").trim().toLowerCase() !== u.email || body.password !== DATA.password) fail(401, "wrong");
     sessionStorage.setItem("mw.static.user", u.email);
-    if (ENG) ENG.start();                               // after sign-in, the engine loads in the background
+    if (ENG) ENG.want();                                // after sign-in: wanted, started once the page in front has loaded
     return me();
   }
   if (path === "/api/logout") { sessionStorage.removeItem("mw.static.user"); return { ok: true }; }
