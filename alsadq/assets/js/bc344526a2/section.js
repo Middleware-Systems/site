@@ -1,8 +1,8 @@
-// section.js: the section drawing behind the hero and the six areas of work.
+// section.js: the section drawing behind the hero and the areas of work.
 //
 // One scene in world units: the ground is y = 0 and depth is +y. Above the line, what a community sees (white by day);
 // below it, what AlSadq builds (their navy). A camera moves between the stations as the page scrolls; water, wastewater
-// and solar power flow along their own lines; the well's length is drawn with a break, as drawings do. Every label a
+// solar power and data flow along their own lines; the well's length is drawn with a break, as drawings do. Every label a
 // person reads is HTML (the callouts) — the canvas draws levels in figures only, the same in both languages.
 
 const RM = matchMedia("(prefers-reduced-motion: reduce)");
@@ -16,7 +16,7 @@ const K = {
   navy: [0, 19, 42], white: [255, 255, 255], mist: [233, 237, 242], silver: [197, 201, 207],
   nightSky: [8, 26, 50], nightLine: [206, 218, 232], nightFace: [14, 38, 68], nightShade: [20, 48, 82],
   glass: [214, 224, 235], nightGlass: [27, 55, 90],
-  water: [56, 195, 240], waste: [205, 170, 107], power: [255, 178, 63], lamp: [255, 205, 120],
+  water: [56, 195, 240], waste: [205, 170, 107], power: [255, 178, 63], data: [213, 139, 255], lamp: [255, 205, 120],
   pipe: [16, 52, 92], pipeIn: [5, 28, 55],
 };
 // strata, top to bottom: navy shades getting deeper; the aquifer carries the water colour
@@ -25,20 +25,22 @@ const STRATA = [[0, 34, [12, 40, 72]], [34, 230, [7, 33, 62]], ["clay", [4, 27, 
 
 // ── the scene ─────────────────────────────────────────────────────────────────────────────────────────────────
 const X = { plant: [30, 315], registry: [340, 580], school: [620, 1000], bakery: [1060, 1270], tank: [1525, 1655],
-            array: [1690, 1900], cabinet: [1905, 1950], well: 1985, lights: [600, 1030, 1340, 1470] };
+            array: [1690, 1900], cabinet: [1905, 1950], well: 1985, lights: [600, 1030, 1340, 1470],
+            rack: [354, 398], duct: 22, handholes: [560, 830], ductEnd: 985 };
 const SUN = [1790, -455];
 const WORLD_W = 2060;
 
 // what each station looks at, and which groups it lights; the rest of the drawing dims
 const FOCUS = {
   solar:      { rect: [1250, -585, 2050, 40], groups: ["array", "lights", "sun", "cable"], parts: ["array", "light"] },
-  civil:      { rect: [300, -300, 1290, 34], groups: ["registry", "school", "bakery"], parts: ["school", "bakery", "registry"] },
+  civil:      { rect: [590, -300, 1290, 34], groups: ["school", "bakery"], parts: ["school", "bakery"] },
+  it:         { rect: [310, -290, 1010, 80], groups: ["registry", "dataroom", "duct"], parts: ["registry", "dataroom", "duct"] },
   equipment:  { rect: [1690, -230, 2040, 190], groups: ["cabinet", "wellhead", "cable", "valve"], parts: ["cabinet", "wellhead"] },
   water:      { rect: [560, -440, 1700, 120], groups: ["tank", "main", "lift"], parts: ["tank", "main"] },
   sanitation: { rect: [0, -110, 1300, 230], groups: ["sewer", "manholes", "plant", "treated"], parts: ["sewer", "manhole", "plant"] },
   wells:      { rect: null, groups: ["casing", "pump", "aquifer", "lift", "wellhead"], parts: ["casing", "pump", "aquifer"] },
 };
-const GROUPS = ["sky", "sun", "ridge", "plant", "registry", "school", "bakery", "lights", "tank", "array", "cabinet",
+const GROUPS = ["sky", "sun", "ridge", "plant", "registry", "dataroom", "duct", "school", "bakery", "lights", "tank", "array", "cabinet",
                 "wellhead", "valve", "casing", "pump", "aquifer", "main", "lift", "sewer", "manholes", "treated", "cable"];
 
 function polyline(pts) {
@@ -100,6 +102,7 @@ export function initSection(stage, opts = {}) {
       if (k === "wells") rc = mobile ? [X.well - 150, D - 260, X.well + 70, D + 170] : [X.well - 130, -60, X.well + 60, D + 170];
       keys[k] = fit(rc);
     }
+    keys.none = { ...keys.areas };
     buildPaths();
     // the hero's two lines sit either side of the ground; tell the page how tall the town is under the first line
     const h1a = document.querySelector(".hero .h1a");
@@ -143,6 +146,8 @@ export function initSection(stage, opts = {}) {
         polyline([[525, 0], [505, 139], [340, 146], [300, 146], [90, 146], [90, 70]]),
       ],
       treated: polyline([[195, 64], [195, 92], [-900, 92]]),
+      // the data duct: from the registry's data room down under the street, along it, and up into the school
+      duct: polyline([[(X.rack[0] + X.rack[1]) / 2, -12], [(X.rack[0] + X.rack[1]) / 2, X.duct], [X.ductEnd, X.duct], [X.ductEnd, -6]]),
       cable: polyline([[1722, -4], [1792, -4], [1862, -4], [1928, -4], [1928, 10], [w + 12, 10], [w + 12, D + 30]]),
       rays: [1722, 1792, 1862].map((x) => polyline([[SUN[0] - 30, SUN[1] + 30], [x + 34, -70]])),
     };
@@ -152,6 +157,7 @@ export function initSection(stage, opts = {}) {
       { g: "sewer", p: paths.sewer, c: K.waste, v: 60, gap: 58, dash: 14, w: 2.2 },
       { g: "treated", p: [paths.treated], c: K.water, v: 70, gap: 54, dash: 14, w: 2.2 },
       { g: "cable", p: [paths.cable], c: K.power, v: 170, gap: 40, dash: 8, w: 1.8, solar: true },
+      { g: "duct", p: [paths.duct], c: K.data, v: 150, gap: 28, dash: 9, w: 2.2 },
       { g: "sun", p: paths.rays, c: K.power, v: 110, gap: 90, dash: 10, w: 1.1, solar: true, sky: true, bare: true },
     ];
   }
@@ -185,13 +191,14 @@ export function initSection(stage, opts = {}) {
     return { a: stations[i].dataset.k, b: stations[Math.min(i + 1, stations.length - 1)].dataset.k, e };
   }
   function camera(st) {
-    const A = keys[st.a], B = keys[st.b], e = st.e;
+    const A = keys[st.a] || keys.areas, B = keys[st.b] || keys.areas, e = st.e;
     return { s: Math.exp(lerp(Math.log(A.s), Math.log(B.s), e)), cx: lerp(A.cx, B.cx, e), cy: lerp(A.cy, B.cy, e),
              ax: lerp(A.ax, B.ax, e), ay: lerp(A.ay, B.ay, e) };
   }
   function weightsFor(k) {
     const w = {};
     if (FOCUS[k]) { for (const g of GROUPS) w[g] = .2; for (const g of FOCUS[k].groups) w[g] = 1; w.sky = 1; }
+    else if (k === "none") for (const g of GROUPS) w[g] = g === "sky" ? 1 : .3;
     else for (const g of GROUPS) w[g] = k === "hero" ? 1 : .42;
     return w;
   }
@@ -278,9 +285,12 @@ export function initSection(stage, opts = {}) {
     drawFlows(under);
     drawNightGlow();
     ctx.globalAlpha = 1;
-    drawLevels(gy);
-    placeCallouts(st);
+    if (tag) tag.classList.toggle("on", (st.e < .5 ? st.a : st.b) !== "hero");   // before the obstacles are read
+    const obst = obstacles();
+    const levelBoxes = drawLevels(obst);
+    placeCallouts(st, obst, levelBoxes);
     if (!drawn) { drawn = true; root.dataset.drawn = "yes"; }
+    if (reveal >= 1 && root.dataset.revealed !== "yes") root.dataset.revealed = "yes";
   }
 
   function drawGrid(vx0, vx1) {
@@ -384,6 +394,18 @@ export function initSection(stage, opts = {}) {
     box(x0 + w / 2 - 22, -48, 44, 48, mix([24, 44, 70], [40, 70, 110], night), lineA());
     line([[x0 + w / 2 - 40, -54], [x0 + w / 2 + 40, -54]], lineA(), 2.4);
     for (const tx of [x0 + 20, x0 + 48]) { box(tx, -252, 22, 16, shadeA()); }
+    // the data room on the ground floor: a rack of servers, its lights blinking, the duct leaving through the floor
+    alpha("dataroom");
+    const [r0, r1] = X.rack;
+    box(r0 - 4, -74, r1 - r0 + 8, 74, mix([232, 238, 246], [22, 50, 86], night), lineA(), 1.1);
+    for (let i = 0; i < 6; i++) {
+      const y = -66 + i * 10;
+      box(r0, y, r1 - r0, 7, mix([30, 52, 84], [12, 34, 62], night), null);
+      for (let j = 0; j < 3; j++) {
+        const on = RM.matches ? (i + j) % 2 : (Math.sin(clock * (2.2 + j) + i * 1.7 + j) > -.2 ? 1 : 0);
+        ctx.fillStyle = rgba(K.data, on ? .95 : .25); ctx.fillRect(r1 - 8 - j * 6, y + 2.5, 3, 2);
+      }
+    }
   }
 
   function drawSchool() {
@@ -504,6 +526,13 @@ export function initSection(stage, opts = {}) {
     alpha("valve");
     box(1900, 8, 70, 46, [6, 30, 58], [255, 255, 255], 1);
     ctx.globalAlpha *= 1;
+    // the data duct and its handholes, shallow under the street
+    alpha("duct");
+    for (const x of X.handholes) {
+      box(x - 9, 2, 18, X.duct + 10, [6, 30, 58], [255, 255, 255], .9);
+      line([[x - 12, 1], [x + 12, 1]], [200, 214, 230], 1.8);
+    }
+    pipe(paths.duct, 7, [44, 28, 78]);
     alpha("sewer"); for (const p of paths.sewer) pipe(p, 9);
     alpha("main"); for (const p of paths.supply) pipe(p, 8);
     alpha("treated"); pipe(paths.treated, 8);
@@ -571,63 +600,123 @@ export function initSection(stage, opts = {}) {
     ctx.globalAlpha = 1;
   }
 
-  // levels, in figures, at screen size: the same on both pages
-  function drawLevels(gy) {
-    const marks = [[1366, 0, "±0.00", "up"], [1012, -186, "+6.00", "up"], [1356, 50, "−1.20", "down"], [1100, 114, "−3.50", "down"]];
+  const meets = (b, q, g = 4) => b[0] < q[2] + g && b[2] > q[0] - g && b[1] < q[3] + g && b[3] > q[1] - g;
+  // what the drawing's words must stay clear of: the text laid over the drawing, in the stage's coordinates
+  function obstacles() {
+    const sr = stage.getBoundingClientRect(), out = [];
+    for (const el of track.querySelectorAll(".station .card, .station.hero .eyebrow, .station.hero h1 > span, .station.hero .below, " +
+                                            ".station.hero .legend, .station.hero .cue, .manifesto .inner, .areas-head .inner")) {
+      const r = el.getBoundingClientRect();
+      if (r.width && r.bottom > sr.top && r.top < sr.bottom) out.push([r.left - sr.left, r.top - sr.top, r.right - sr.left, r.bottom - sr.top]);
+    }
+    if (tag && tag.classList.contains("on")) {
+      const r = tag.getBoundingClientRect(), b = [r.left - sr.left, r.top - sr.top, r.right - sr.left, r.bottom - sr.top];
+      if (out.some((q) => meets(b, q, 0))) tag.classList.remove("on");      // a card passing over the tag: the tag steps aside
+      else out.push(b);
+    }
+    return out;
+  }
+
+  // levels: the mark on the canvas, the figure as HTML beside it (so it is text the page can measure); the same on
+  // both pages; a level that would touch another level or the text over the drawing is not drawn at all
+  const LEVELS = [[1366, 0, "±0.00", "up"], [1012, -186, "+6.00", "up"], [1356, 50, "−1.20", "down"], [1100, 114, "−3.50", "down"], [870, X.duct, "−0.60", "down"]];
+  const lvlEls = LEVELS.map(([, , t]) => {
+    const el = document.createElement("div"); el.className = "lvl"; el.textContent = t; el.dir = "ltr";
+    stage.querySelector(".callouts").appendChild(el); return el;
+  });
+  function drawLevels(obst) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.font = `500 11px "IBM Plex Mono", ui-monospace, monospace`; ctx.textBaseline = "alphabetic"; ctx.textAlign = "left";
-    ctx.direction = "ltr";                                   // a level is a figure: "+6.00" on both pages
-    const base = (S.a === "hero" && S.b === "hero") ? 1 : .8;
-    const placed = [];
-    for (const [x, y, t, side] of marks) {
+    const base = (S.a === "hero" && S.b === "hero") ? 1 : .8, a = .75 * base * clamp((reveal - .5) * 2);
+    const boxes = [];
+    LEVELS.forEach(([x, y, t, side], i) => {
+      const el = lvlEls[i];
       const sx = (x - cam.cx) * cam.s * M + cam.ax, sy = (y - cam.cy) * cam.s + cam.ay;
-      if (sx < -40 || sx > W + 40 || sy < -20 || sy > H + 20) continue;
-      if (placed.some(([px_, py_]) => Math.abs(px_ - sx) < 64 && Math.abs(py_ - sy) < 26)) continue;   // too close to read: drop
-      placed.push([sx, sy]);
-      const aboveGround = y <= 0 && side === "up";
-      const c = aboveGround ? mix(K.navy, K.nightLine, night) : [235, 242, 250];
-      ctx.globalAlpha = .75 * base * clamp((reveal - .5) * 2);
+      const w = el.offsetWidth || 40, h = el.offsetHeight || 14;
+      // a level above the ground carries its figure over its mark, one below the ground under it: each reads on its own
+      // ground, and a figure that would cross the ground line is not drawn
+      const ty = side === "up" ? sy - 13 - h : sy + 3;
+      const text = [sx + 6, ty, sx + 10 + w, ty + h];
+      const box = [sx - 6, Math.min(ty, sy - 10), sx + Math.max(46, 10 + w), Math.max(ty + h, sy)];
+      const gy = (0 - cam.cy) * cam.s + cam.ay;
+      const onItsGround = side === "up" ? text[3] <= gy - 1 : text[1] >= gy + 1;
+      const ok = a > .02 && sx >= 6 && box[2] <= W - 4 && box[1] >= (mobile ? 72 : 80) && box[3] <= H - 4 && onItsGround
+        && !boxes.some((q) => meets(box, q)) && !obst.some((q) => meets(box, q));
+      el.classList.toggle("on", ok);
+      if (!ok) return;
+      boxes.push(box);
+      const c = side === "up" ? mix(K.navy, K.nightLine, night) : [235, 242, 250];
+      el.style.color = rgba(c); el.style.opacity = a.toFixed(3);
+      el.style.transform = `translate(${(sx + 8).toFixed(1)}px, ${ty.toFixed(1)}px)`;
+      ctx.globalAlpha = a;
       ctx.fillStyle = ctx.strokeStyle = rgba(c); ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(sx - 5, sy - 9); ctx.lineTo(sx + 5, sy - 9); ctx.lineTo(sx, sy - 2); ctx.closePath();
       if (side === "up") ctx.stroke(); else ctx.fill();
       ctx.beginPath(); ctx.moveTo(sx - 5, sy - 9); ctx.lineTo(sx + 44, sy - 9); ctx.stroke();
-      ctx.fillText(t, sx + 8, sy - 13);
-    }
+    });
     ctx.globalAlpha = 1;
+    return boxes;
   }
 
   // ── callouts: HTML labels pinned to the drawing ───────────────────────────────────────────────────────────
   function anchors() {
     return {
-      array: [1795, -96], light: [1470, -172], school: [806, -220], bakery: [1165, -150], registry: [460, -256],
+      array: [1795, -96], light: [1470, -172], school: [806, -220], bakery: [1165, -150], registry: [500, -256],
+      dataroom: [(X.rack[0] + X.rack[1]) / 2, -76], duct: [700, X.duct],
       tank: [1590, -428], main: [1040, 50], sewer: [800, 128], manhole: [935, 60], plant: [140, -30],
       cabinet: [1928, -72], wellhead: [1946, 40], casing: [X.well, D * .3], pump: [X.well, D + 36], aquifer: [X.well - 60, D + 120],
     };
   }
-  function placeCallouts(st) {
+  // Each label is placed beside its part, kept inside the screen and below the header, and moved off any other label,
+  // the levels, the text over the drawing and the drawing's tag; a label that finds no free place is not shown (it
+  // never overlaps).
+  function placeCallouts(st, obst, levelBoxes) {
     const an = anchors(), on = new Set();
     const key = st.e < .5 ? st.a : st.b;
     if (FOCUS[key] && Math.abs(st.e - .5) > .3) for (const p of FOCUS[key].parts) on.add(p);
     if (hover && key === "hero") on.add(hover);
-    const ctxLine = [];
-    for (const [part, el] of Object.entries(callouts)) {
-      const a = an[part]; if (!a) continue;
-      const sx = (a[0] - cam.cx) * cam.s * M + cam.ax, sy = (a[1] - cam.cy) * cam.s + cam.ay;
-      const deep = a[1] > 150, side = sx > W / 2 ? -1 : 1;          // deep labels stand off sideways, towards the page
-      const lx = deep ? sx + 46 * side : sx, ly = deep ? sy : sy - 34;
-      el.style.transform = deep ? `translate(${lx}px, ${ly}px) translate(${side < 0 ? -100 : 0}%, -50%)` : `translate(${lx}px, ${ly}px) translate(-50%, -100%)`;
-      const show = on.has(part) && sx > -20 && sx < W + 20 && sy > 0 && sy < H;
+    const gap = 6, top = (mobile ? 64 : 76) + 8;
+    const placed = [...obst];
+    for (const b of levelBoxes) placed.push(b);
+    const hit = (b) => placed.some((q) => b[0] < q[2] + gap && b[2] > q[0] - gap && b[1] < q[3] + gap && b[3] > q[1] - gap);
+    const lines = [];
+    const order = Object.entries(callouts).sort((x, y) => (an[x[0]]?.[1] ?? 0) - (an[y[0]]?.[1] ?? 0));
+    for (const [part, el] of order) {
+      const a = an[part];
+      let show = !!a && on.has(part);
+      let sx = 0, sy = 0;
+      if (show) {
+        sx = (a[0] - cam.cx) * cam.s * M + cam.ax; sy = (a[1] - cam.cy) * cam.s + cam.ay;
+        show = sx > -20 && sx < W + 20 && sy > 0 && sy < H;
+      }
+      if (show) {
+        const w = el.offsetWidth, h = el.offsetHeight;
+        const mode = a[1] > 150 ? "deep" : part === "duct" ? "below" : "above";
+        const side = sx > W / 2 ? -1 : 1;           // deep labels stand off sideways, towards the page
+        let x0 = mode === "deep" ? (side > 0 ? sx + 46 : sx - 46 - w) : sx - w / 2;
+        let y0 = mode === "deep" ? sy - h / 2 : mode === "below" ? sy + 26 : sy - 34 - h;
+        const step = h + gap, tries = mode === "above" ? [0, -1, -2, 1, 2, -3, 3] : [0, 1, 2, -1, -2, 3, -3];
+        let best = null;
+        for (const k of tries) {
+          const x = Math.max(8, Math.min(W - 8 - w, x0)), y = Math.max(top, Math.min(H - 8 - h, y0 + k * step));
+          const b = [x, y, x + w, y + h];
+          if (!hit(b)) { best = b; break; }
+        }
+        if (best) {
+          placed.push(best);
+          el.style.transform = `translate(${best[0]}px, ${best[1]}px)`;
+          const ex = Math.max(best[0], Math.min(best[2], sx)), ey = Math.max(best[1], Math.min(best[3], sy));
+          lines.push([sx, sy, ex, ey]);
+        } else show = false;
+      }
       el.classList.toggle("on", show);
-      if (show) ctxLine.push([sx, sy, lx, ly]);
     }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    for (const [sx, sy, lx, ly] of ctxLine) {
+    for (const [sx, sy, lx, ly] of lines) {
       ctx.globalAlpha = .9; ctx.strokeStyle = rgba(sy < (0 - cam.cy) * cam.s + cam.ay ? mix(K.navy, K.nightLine, night) : [235, 242, 250]);
       ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(lx, ly); ctx.stroke();
       ctx.beginPath(); ctx.arc(sx, sy, 3, 0, 7); ctx.fillStyle = ctx.strokeStyle; ctx.fill();
     }
     ctx.globalAlpha = 1;
-    if (tag) tag.classList.toggle("on", key !== "hero");
   }
 
   // ── the loop ───────────────────────────────────────────────────────────────────────────────────────────────

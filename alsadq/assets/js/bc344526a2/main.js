@@ -1,7 +1,7 @@
-// main.js: the page's wiring — the header's tone, the menu, the drawing, the map, the record, the enquiry, the preview.
+// main.js: the page's wiring — the header's tone, the menu, the drawing, the map, the projects, the enquiry.
 import { initSection } from "./section.js";
 import { initMap } from "./map.js";
-import { initRecord } from "./record.js";
+import { initProjects } from "./projects.js";
 import { initEnquiry } from "./enquiry.js";
 
 const root = document.documentElement;
@@ -9,7 +9,6 @@ root.classList.remove("no-js");
 const data = JSON.parse(document.getElementById("page-data").textContent);
 const RM = matchMedia("(prefers-reduced-motion: reduce)");
 
-// the junction assembles: the mark's three limbs meet
 requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove("boot")));
 setTimeout(() => root.classList.remove("boot"), 120);     // a page opened in the background gets no frames: arrive anyway
 
@@ -36,8 +35,10 @@ drawer.querySelector(".x").addEventListener("click", closeD);
 for (const a of drawer.querySelectorAll("a")) a.addEventListener("click", closeD);
 addEventListener("keydown", (e) => { if (e.key === "Escape") closeD(); });
 
-// the drawing, and day or night in it
-const section = initSection(document.querySelector(".stage"));
+// the drawing, and day or night in it (the home page); the projects page has no drawing
+const stage = document.querySelector(".stage");
+const section = stage ? initSection(stage) : null;
+if (!stage) root.dataset.drawn = "none";
 const note = document.querySelector(".legend .note");
 for (const b of document.querySelectorAll(".daynight button")) {
   b.addEventListener("click", () => {
@@ -49,17 +50,12 @@ for (const b of document.querySelectorAll(".daynight button")) {
   });
 }
 
-initMap(document.getElementById("plan"), data);
-initRecord(document.getElementById("record"), data);
-initEnquiry(document.querySelector("form.compose"), data);
-
-// the preview pill: the facts still to confirm, drawn where they stand
-const pill = document.querySelector(".pill button");
-if (pill) pill.addEventListener("click", () => {
-  const on = root.classList.toggle("show-claims");
-  pill.textContent = on ? data.t.hide : data.t.show;
-  pill.setAttribute("aria-pressed", on ? "true" : "false");
-});
+const plan = document.getElementById("plan");
+if (plan) initMap(plan, data);
+const list = document.querySelector(".projects-page");
+if (list) initProjects(list, data);
+const compose = document.querySelector("form.compose");
+if (compose) initEnquiry(compose, data);
 
 // what enters the screen eases in
 const rv = [...document.querySelectorAll(".rv")];
