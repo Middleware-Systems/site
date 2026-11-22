@@ -65,7 +65,10 @@ export function initProjects(sec, data) {
       g.hidden = ![...g.querySelectorAll("li.proj")].some((li) => shown.has(li));
       g.querySelector(".yc").textContent = count(data, "projects", inYear);
     }
-    out.textContent = fill(data.t.shown, { shown: shown.size, count: count(data, "projects", hit.length) });
+    // all of them on screen: the count alone («مشروعان»). "Showing 12 of 65" only while some wait; there the count is
+    // always over twelve, so the Arabic noun after «من أصل» is never a dual in the wrong case
+    const counted = count(data, "projects", hit.length);
+    out.textContent = shown.size === hit.length ? counted : fill(data.t.shown, { shown: shown.size, count: counted });
     empty.hidden = hit.length !== 0;
     const left = hit.length - shown.size;
     more.hidden = left <= 0;
