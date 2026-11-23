@@ -242,7 +242,9 @@ input:focus-visible+.chip{outline:3px solid var(--gold);outline-offset:3px}
   box-shadow:inset 0 8px 8px -6px rgba(54,26,6,.45),inset 0 -8px 8px -6px rgba(54,26,6,.35)}
 .phead-art{position:absolute;inset-block-end:-18%;inset-inline-end:-4%;width:min(46vw,560px);z-index:-1;opacity:.96;filter:drop-shadow(0 30px 30px rgba(2,20,60,.45))}
 .phead-art img{width:100%;height:auto}
-@media (max-width:860px){.phead-art{position:relative;inset:auto;width:min(64vw,300px);margin:-18px auto -20%;opacity:1}}
+/* on a phone the biscuit rises out of the slab's lower edge: its own box cuts it. A negative margin below it would
+   fall through the slab (nothing stops it there) and pull the sandwich rule up into the slab */
+@media (max-width:860px){.phead-art{position:relative;inset:auto;width:min(64vw,300px);margin:-18px auto 0;aspect-ratio:1/.8;overflow:hidden;opacity:1}}
 
 /* ───────── the opening: their line, with their biscuit inside it ─────────
    their lettering's first line · biscuit · cream · biscuit · its second line. Each band slides on its own,
