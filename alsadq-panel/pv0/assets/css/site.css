@@ -529,16 +529,16 @@ html[lang="ar"] .kind { font-family: var(--f); letter-spacing: 0; font-size: 14p
 .wall { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
 .plaque { display: grid; gap: 10px; align-content: start; }
 .plaque .face {
-  position: relative; aspect-ratio: 3 / 2; background: #FFFFFF; border: 1px solid var(--rule-l); border-radius: 2px; display: grid; place-items: center; padding: 10% 12%;
+  position: relative; aspect-ratio: 3 / 2; min-height: 0; background: #FFFFFF; border: 1px solid var(--rule-l); border-radius: 2px; display: grid; place-items: center; padding: 10% 12%;
   box-shadow: 0 1px 0 rgba(0, 19, 42, .04), 0 14px 30px -22px rgba(0, 19, 42, .35); min-width: 0;
 }
 .plaque img { position: absolute; inset: 18% 18%; width: 64%; height: 64%; max-width: none; object-fit: contain; display: block; }
 .plaque .pn { font-family: var(--f-d); font-size: clamp(19px, 1.6vw, 23px); line-height: 1.2; color: var(--navy); text-align: center; overflow-wrap: anywhere; }
 html[lang="ar"] .plaque .pn { font-weight: 700; line-height: 1.5; }
 html[lang="ar"] .plaque .pn[lang="en"] { font-family: "Marcellus", serif; font-weight: 400; }
-.plaque .pcap { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); padding-inline: 2px; }
-html[lang="ar"] .plaque .pcap { font-family: var(--f); letter-spacing: 0; font-size: 13px; }
-@media (max-width: 520px) { .wall { grid-template-columns: 1fr 1fr; gap: 12px; } .plaque .face { padding: 8% 8%; } .plaque img { inset: 16% 14%; width: 72%; height: 68%; } }
+.plaque .pn { text-wrap: balance; }
+.plaque .pn.long { font-size: clamp(15px, 1.2vw, 18px); }
+@media (max-width: 520px) { .wall { grid-template-columns: 1fr 1fr; gap: 12px; } .plaque .face { padding: 8% 8%; } .plaque .pn.long { font-size: 14px; } .plaque img { inset: 16% 14%; width: 72%; height: 68%; } }
 
 /* about */
 .about .lede p { margin: 0 0 14px; }
