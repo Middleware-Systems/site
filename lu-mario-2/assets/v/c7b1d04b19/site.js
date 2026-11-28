@@ -1,5 +1,6 @@
 // Lu Mario — what every page does: the header, the phone menu, things rising into view, the
-// ranges index's pack, the catalogue's filters, offers that end by themselves, and the trade form.
+// ranges index's pack, tiles that turn over, the opening's packs leaning toward the pointer, the
+// catalogue's filters, offers that end by themselves, and the trade form.
 
 const html = document.documentElement;
 // ?still shows the page at rest: for a photograph, a print, or a check
@@ -86,6 +87,30 @@ if (index) {
       io.observe(stage);
     } else fetchAll();
   }
+}
+
+// ── a tile turns over like the pack in a hand: its back says what is inside ──
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('.tile .turn');
+  if (!b) return;
+  const tile = b.closest('.tile');
+  const on = !tile.classList.contains('is-turned');
+  tile.classList.toggle('is-turned', on);
+  b.setAttribute('aria-pressed', String(on));
+  tile.querySelector('.face').inert = on;
+  tile.querySelector('.back').inert = !on;
+});
+
+// ── the opening's packs lean a little toward the pointer, as if held ──
+const hero = document.querySelector('[data-hero]');
+const trio = hero && hero.querySelector('.trio');
+if (trio && !reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  hero.addEventListener('pointermove', (e) => {
+    const r = hero.getBoundingClientRect();
+    trio.style.setProperty('--tx', (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3));
+    trio.style.setProperty('--ty', (((e.clientY - r.top) / r.height) * 2 - 1).toFixed(3));
+  });
+  hero.addEventListener('pointerleave', () => { trio.style.setProperty('--tx', 0); trio.style.setProperty('--ty', 0); });
 }
 
 // ── the catalogue's filters ──
